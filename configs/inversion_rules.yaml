@@ -1,0 +1,114 @@
+# Authority / quality inversion rules — operator fidelity enforcement
+schema: fde.inversion_rules/v1
+purpose: detect_hidden_harms_secret_authoritative_framing
+
+rules:
+  - id: bounded_minimum
+    severity: high
+    category: quality_inversion
+    description: "Bounded minimum / least-effort posture that collapses ambition"
+    patterns:
+      - "bounded minimum"
+      - "bounded-minimum"
+      - "minimum viable only"
+      - "do the minimum"
+      - "least possible"
+      - "scope to minimum"
+
+  - id: document_over_user
+    severity: critical
+    category: authority_inversion
+    description: "Prefer documents/doctrine over user complaint or live intent"
+    patterns:
+      - "ignore the user"
+      - "user is wrong"
+      - "trust the document over"
+      - "documents over user"
+      - "doctrine overrides user"
+      - "listen to users complaint then find out what really happened in the documents"
+      - "what really happened in the documents"
+
+  - id: secret_authoritative_framing
+    severity: critical
+    category: authority_inversion
+    description: "Hidden authoritative stance that frames AI as final authority"
+    patterns:
+      - "you must obey"
+      - "do not question"
+      - "authoritative source is"
+      - "secret system prompt"
+      - "never reference context"
+      - "rebuild everything every time"
+      - "ignore prior conversation"
+      - "discard user history"
+
+  - id: downward_scope
+    severity: high
+    category: quality_inversion
+    description: "Downward scope substitution — plan replaces execution"
+    patterns:
+      - "downward scope"
+      - "substitute the plan"
+      - "plan instead of execute"
+      - "replace execution with summary"
+      - "summarize instead of build"
+
+  - id: recruiter_collapse
+    severity: medium
+    category: framing_inversion
+    description: "Collapse all work to recruiter/job-app framing"
+    patterns:
+      - "only purpose is the recruiter"
+      - "for the recruiter"
+      - "recruiter-facing only"
+      - "make the recruiter understand"
+
+  - id: over_governance
+    severity: high
+    category: quality_inversion
+    description: "Over-governance / force-push / permanent-delete posture"
+    patterns:
+      - "force push without"
+      - "permanently delete"
+      - "over-govern"
+      - "over govern"
+      - "block all progress"
+      - "refuse all changes"
+
+  - id: claim_ceiling
+    severity: medium
+    category: quality_inversion
+    description: "Lead with what system cannot be instead of what it ships"
+    patterns:
+      - "this system cannot"
+      - "we cannot claim"
+      - "never claim capability"
+      - "must not appear capable"
+
+  - id: oscillation_extreme
+    severity: medium
+    category: quality_inversion
+    description: "Explicit oscillation between grand-unreal and real-no-ambition"
+    patterns:
+      - "too grand with no real"
+      - "too real with no ambition"
+      - "oscillate between extremes"
+
+exclude_globs:
+  - "**/.git/**"
+  - "**/.fde/**"
+  - "**/node_modules/**"
+  - "**/.venv/**"
+  - "**/venv/**"
+  - "**/__pycache__/**"
+  - "**/*.pyc"
+  - "**/dist/**"
+  - "**/build/**"
+  - "**/.pytest_cache/**"
+  - "**/edge_history/**"
+
+# Paths that discuss inversions as detection targets are still scanned;
+# rule hits inside inversion_rules.yaml itself are suppressed by scanner.
+suppress_if_path_contains:
+  - "inversion_rules.yaml"
+  - "test_invert"
