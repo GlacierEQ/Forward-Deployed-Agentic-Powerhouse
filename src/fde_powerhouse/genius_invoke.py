@@ -37,60 +37,51 @@ def genius_root() -> Path | None:
     return None
 
 
-def _tail(text: str, n: int = 3000) -> str:
+def _env_with_src(root: Path) -> dict[str, str]:
+    env = os.environ.copy()
+    src = root / "src"
+    if src.is_dir():
+        env["PYTHONPATH"] = str(src) + os.pathsep + env.get("PYTHONPATH", "")
+    return env
+
+
+def _tail(text: str, n: int = 4000) -> str:
     return text if len(text) <= n else text[-n:]
 
 
 def invoke_genius_doctor(timeout_sec: int = 60) -> GeniusInvokeResult:
-    """Run genius doctor / --version against local Genius-Mastery checkout."""
     root = genius_root()
     if root is None:
         return GeniusInvokeResult(
             available=False,
             action="skip",
             status="skip",
-            detail={"hint": "Set FDE_PATH_GENIUS_MASTERY to local Genius-Mastery checkout"},
+            detail={"hint": "Set FDE_PATH_GENIUS_MASTERY"},
         )
-
-    # Prefer installed CLI from that tree via python -m if package layout allows
+    env = _env_with_src(root)
     candidates = [
         [sys.executable, "-m", "genius", "--version"],
         [sys.executable, "-m", "genius", "doctor", "."],
     ]
-    src = root / "src"
-    env = os.environ.copy()
-    if src.is_dir():
-        env["PYTHONPATH"] = str(src) + os.pathsep + env.get("PYTHONPATH", "")
-
     last_err = ""
     for cmd in candidates:
         try:
             proc = subprocess.run(
-                cmd,
-                cwd=str(root),
-                capture_output=True,
-                text=True,
-                timeout=timeout_sec,
-                env=env,
-                check=False,
+                cmd, cwd=str(root), capture_output=True, text=True,
+                timeout=timeout_sec, env=env, check=False,
             )
         except (subprocess.TimeoutExpired, OSError) as exc:
             last_err = str(exc)
             continue
         if proc.returncode == 0:
             return GeniusInvokeResult(
-                available=True,
-                action=" ".join(cmd[2:]),
-                status="ok",
-                root=str(root),
-                returncode=0,
+                available=True, action=" ".join(cmd[2:]), status="ok",
+                root=str(root), returncode=0,
                 stdout_tail=_tail(proc.stdout or ""),
                 stderr_tail=_tail(proc.stderr or ""),
                 detail={"cmd": cmd},
             )
         last_err = _tail((proc.stderr or "") + (proc.stdout or ""))
-
-    # Fallback: presence of kernel markers = soft ok inventory
     markers = {
         "GENIUS.yaml": (root / "GENIUS.yaml").is_file(),
         "ROLE.yaml": (root / "ROLE.yaml").is_file(),
@@ -98,19 +89,12 @@ def invoke_genius_doctor(timeout_sec: int = 60) -> GeniusInvokeResult:
     }
     if all(markers.values()):
         return GeniusInvokeResult(
-            available=True,
-            action="marker_probe",
-            status="ok",
-            root=str(root),
-            detail={"markers": markers, "cli_note": last_err or "CLI not runnable; markers present"},
+            available=True, action="marker_probe", status="ok", root=str(root),
+            detail={"markers": markers, "cli_note": last_err or "CLI soft; markers present"},
         )
-
     return GeniusInvokeResult(
-        available=True,
-        action="doctor",
-        status="fail",
-        root=str(root),
-        detail={"error": last_err or "genius CLI failed", "markers": markers},
+        available=True, action="doctor", status="fail", root=str(root),
+        detail={"error": last_err or "failed", "markers": markers},
     )
 
 
@@ -118,7 +102,6 @@ def invoke_genius_role_brief(
     role: str = "ForwardDeployedAgentic",
     outcomes: list[str] | None = None,
 ) -> GeniusInvokeResult:
-    """Emit role brief structure (always local); optionally confirm Genius tree."""
     outcomes = outcomes or [
         "working multi-agent system",
         "tool policy gates",
@@ -139,4 +122,52 @@ def invoke_genius_role_brief(
         status="ok",
         root=str(root) if root else None,
         detail={"brief": brief, "local_kernel": root is not None},
+    )
+
+
+def invoke_genius_synthesize(
+    role: str = "ForwardDeployedAgentic",
+    outcome: str = "field agentic delivery",
+    dest: str | Path | None = None,
+    timeout_sec: int = 180,
+) -> GeniusInvokeResult:
+    """Call `genius synthesize` when local Genius-Mastery is available."""
+    root = genius_root()
+    if root is None:
+        return GeniusInvokeResult(
+            available=False,
+            action="synthesize",
+            status="skip",
+            detail={"hint": "Set FDE_PATH_GENIUS_MASTERY"},
+        )
+    dest_path = Path(dest) if dest else Path(".fde") / "genius_synth"
+    dest_path.mkdir(parents=True, exist_ok=True)
+    env = _env_with_src(root)
+    cmd = [
+        sys.executable, "-m", "genius", "synthesize", role,
+        "--outcome", outcome,
+        "--dest", str(dest_path.resolve()),
+    ]
+    mega = os.environ.get("FDE_PATH_MEGA_SKILLS")
+    if mega and Path(mega).is_dir():
+        cmd.extend(["--mega-skills-root", mega])
+    try:
+        proc = subprocess.run(
+            cmd, cwd=str(root), capture_output=True, text=True,
+            timeout=timeout_sec, env=env, check=False,
+        )
+    except (subprocess.TimeoutExpired, OSError) as exc:
+        return GeniusInvokeResult(
+            available=True, action="synthesize", status="fail", root=str(root),
+            detail={"error": str(exc), "cmd": cmd},
+        )
+    return GeniusInvokeResult(
+        available=True,
+        action="synthesize",
+        status="ok" if proc.returncode == 0 else "fail",
+        root=str(root),
+        returncode=proc.returncode,
+        stdout_tail=_tail(proc.stdout or ""),
+        stderr_tail=_tail(proc.stderr or ""),
+        detail={"cmd": cmd, "dest": str(dest_path)},
     )
