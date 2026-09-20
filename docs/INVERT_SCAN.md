@@ -1,30 +1,27 @@
 # Invert Scan — Authority / Quality Inversion Hunter
 
-**P0 automation.** Operator fidelity enforcement.
+**Layers:** pattern · semantic (negation/proximity) · cluster (co-occurrence)
 
 ## Run
 
 ```bash
 python -m fde_powerhouse invert-scan --target .
 python -m fde_powerhouse invert-scan --target /path/to/repo --fail-on-findings
-python -m fde_powerhouse maximize   # includes invert-scan step
 ```
 
-Reports: `.fde/invert_scan/INVERT_SCAN.json` + `INVERT_SCAN.md` (hash-bound).
+Reports: `.fde/invert_scan/INVERT_SCAN.json` + `.md` (SHA-256).
 
-## Rules (`configs/inversion_rules.yaml`)
+## Semantic clusters
 
-| Rule | Severity | Detects |
-|------|----------|---------|
-| `bounded_minimum` | high | Least-effort / ambition collapse |
-| `document_over_user` | critical | Docs/doctrine over user intent |
-| `secret_authoritative_framing` | critical | Hidden AI-as-authority posture |
-| `downward_scope` | high | Plan substitutes for execution |
-| `recruiter_collapse` | medium | All work collapsed to recruiter |
-| `over_governance` | high | Force-push / block-all posture |
-| `claim_ceiling` | medium | Lead with cannot-be |
-| `oscillation_extreme` | medium | Grand-unreal ↔ real-no-ambition |
+| Cluster | Signal |
+|---------|--------|
+| `authority_capture` | ≥2 authority/override terms in same file |
+| `ambition_collapse` | ≥2 bounded-minimum / downward-scope terms |
+| `governance_overreach` | ≥2 force-push / block-all terms |
+| `framing_collapse` | ≥2 recruiter-collapse terms |
 
-## Flip posture
+Negation / meta-discussion (`detect`, `forbid`, `anti-pattern`, …) **lowers confidence** so rules docs do not critical-fire on themselves.
 
-Findings are **detection**, not auto-delete. Human decides remediation. Default exit 0 even with findings; use `--fail-on-findings` in CI when ready.
+## Rules
+
+See `configs/inversion_rules.yaml`. Detection only — human remediates.

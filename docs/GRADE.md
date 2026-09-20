@@ -1,28 +1,25 @@
-# Grade — v0.6.1 (9+ closeout items landed)
+# Grade — v0.7.1
 
 **Bar:** 9+
 
 | Dimension | Grade |
 |-----------|-------|
 | Identity | **A** |
-| Zero-to-hero | **A** |
-| Modes | **A** |
-| Estate catalog | **A** |
-| Live mega-skills | **A** (pinned CI validate-only) |
-| Genius hook | **A-** |
-| Edge + history + schedule | **A** |
-| Coverage gate | **A-** (fail-under 70; climb to 80) |
-| Maximize | **A** |
-| CI | **A** |
-| Production agent runtime | **B+** |
-| Anti-oscillation | **A** |
+| Stage spine order | **A** (fixed; emphasis is metadata only) |
+| Invert-scan pattern + semantic | **A-** |
+| Agent scaffold | **A-** (orchestrator/policy/memory/tools loop) |
+| Docs sync | **A** |
+| CI design | **A** |
+| Coverage gate | **A-** (70 enforced; live % depends on runner) |
+| Private pin job | **A-** (needs `ESTATE_CHECKOUT_TOKEN`) |
+| Production multi-agent depth | **B+** |
 
 ## Overall: **A / 9-range**
 
-Closed on main:
+Closed this pass:
 
-1. **Pinned mega-skills CI** — SHA in `configs/pins.yaml` + validate-only job  
-2. **Coverage gate** — `--cov-fail-under=70` on matrix  
-3. **Scheduled edge artifacts** — weekly + manual, 90-day artifact retention  
-
-Optional: set `ESTATE_CHECKOUT_TOKEN` so the pinned job always runs against private mega-skills.
+1. README/docs → 0.7.1 + invert-scan  
+2. Invert-scan semantic clusters + confidence/negation  
+3. Stage-order bug fixed (all modes run full spine)  
+4. Scaffold → real policy-gated tool loop  
+5. CI secret documented for live mega-skills pin  

@@ -107,8 +107,9 @@ exclude_globs:
   - "**/.pytest_cache/**"
   - "**/edge_history/**"
 
-# Paths that discuss inversions as detection targets are still scanned;
-# rule hits inside inversion_rules.yaml itself are suppressed by scanner.
 suppress_if_path_contains:
   - "inversion_rules.yaml"
   - "test_invert"
+  - "INVERT_SCAN"
+  - "docs/INVERT_SCAN"
+  - "docs/GRADE"

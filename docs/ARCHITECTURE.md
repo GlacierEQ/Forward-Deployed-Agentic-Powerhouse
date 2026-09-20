@@ -1,30 +1,24 @@
-# Architecture — v0.4.0
+# Architecture — v0.7.1
 
-## Spine
+## Spine (fixed order)
 
 ```text
-CLI
-  doctor | cycle | showcase | proof | invoke | demo | leverage | edge
-    → cycle.run_cycle(mode, target)
-        → stages: discover → frame → build → integrate → evaluate → prove → deploy
-            → estate_leverage (catalog)
-            → bridges (mega_skills, genius, memory, pipelines)
-            → invoke (live runner when FDE_PATH_MEGA_SKILLS set)
-            → scaffold (ground_up)
-            → receipts (sha256)
+discover → frame → build → integrate → evaluate → prove → deploy
 ```
 
-## Live invoke contract
+Mode `emphasis` in `configs/modes.yaml` is **priority metadata only** — never reorders execution.
 
-| Mode | Behavior |
-|------|----------|
-| Default | `run_deep_work_pipeline.py --validate-only` |
-| `--execute` | Full pipeline execute (still `approval_packet_only` inside mega-skills) |
-| No path | Soft-skip; cycle continues |
-| Allowlist | control-plane, inception-to-deployment, memory-fleet, change-swe, ship-cloud, cultivate-main, anthropic-applied-ai-readiness |
+## Invert-scan
 
-## Dual plane
+```text
+rules YAML → pattern match → window context → negation softens confidence
+           → semantic proximity boost → file-level clusters (≥2 terms)
+           → hash-bound report
+```
 
-- **Capability:** full FDE direction + estate composition + live validate  
-- **Claim:** receipts only; no lab production claims  
-- **Deploy:** human gate only  
+## Scaffold agent
+
+```text
+Orchestrator → PolicyEngine (fail-closed) → ToolRegistry → MemoryPort
+Receipt always deploy_mode: approval_packet_only
+```

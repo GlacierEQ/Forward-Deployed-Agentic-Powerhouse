@@ -1,6 +1,6 @@
-"""Forward Deployed Agentic Powerhouse — maximized + invert-scan."""
+"""Forward Deployed Agentic Powerhouse."""
 
-__version__ = "0.7.0"
+__version__ = "0.7.1"
 
 from .cycle import run_cycle
 from .modes import MODES

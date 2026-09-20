@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fde-powerhouse"
-version = "0.7.0"
-description = "Forward Deployed Agentic Powerhouse — maximized + invert-scan"
+version = "0.7.1"
+description = "Forward Deployed Agentic Powerhouse — cycle, invert-scan, estate leverage"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "Proprietary" }
