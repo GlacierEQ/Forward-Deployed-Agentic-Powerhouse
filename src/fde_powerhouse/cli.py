@@ -1,4 +1,4 @@
-"""CLI — doctor, cycle, estate, compose, probe."""
+"""CLI — doctor, cycle, estate, compose, probe, edge."""
 
 from __future__ import annotations
 
@@ -10,12 +10,15 @@ from . import __version__
 from .bridges import GeniusBridge, MegaSkillsBridge, MemoryBridge, PipelineBridge
 from .cycle import run_cycle
 from .estate import estate_status, load_estate
+from .leading_edge import all_homepages, by_category, categories, library_stats
 from .modes import MODES
 
 
 def cmd_doctor(_: argparse.Namespace) -> int:
     print(f"fde-powerhouse {__version__}")
     print(f"modes: {', '.join(MODES)}")
+    stats = library_stats()
+    print(f"leading_edge: {stats.get('sources', 0)} sources across {stats.get('categories', 0)} categories")
     print("bridges:")
     for name, probe in (
         ("mega_skills", MegaSkillsBridge().probe()),
@@ -25,7 +28,6 @@ def cmd_doctor(_: argparse.Namespace) -> int:
     ):
         avail = probe.get("available")
         if avail is None and isinstance(probe, dict):
-            # memory returns nested
             avail = any(
                 (v or {}).get("available")
                 for k, v in probe.items()
@@ -82,12 +84,31 @@ def cmd_compose(args: argparse.Namespace) -> int:
     return 0 if receipt.status == "ok" else 1
 
 
+def cmd_edge(args: argparse.Namespace) -> int:
+    if args.stats:
+        print(json.dumps(library_stats(), indent=2))
+        return 0
+    if args.category:
+        print(json.dumps(by_category(args.category), indent=2))
+        return 0
+    if args.list_categories:
+        print(json.dumps(categories(), indent=2))
+        return 0
+    pages = all_homepages()
+    if args.urls_only:
+        for p in pages:
+            print(p["homepage"])
+        return 0
+    print(json.dumps(pages, indent=2))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="fde-powerhouse")
     parser.add_argument("--version", action="version", version=__version__)
     sub = parser.add_subparsers(dest="cmd", required=True)
 
-    p_doc = sub.add_parser("doctor", help="Kernel + estate + bridge health")
+    p_doc = sub.add_parser("doctor", help="Kernel + estate + bridge + edge library health")
     p_doc.set_defaults(func=cmd_doctor)
 
     p_cyc = sub.add_parser("cycle", help="Run full cycle")
@@ -115,6 +136,13 @@ def main(argv: list[str] | None = None) -> int:
     p_co.add_argument("--problem", default="")
     p_co.add_argument("--work-dir", default=".")
     p_co.set_defaults(func=cmd_compose)
+
+    p_edge = sub.add_parser("edge", help="Leading-edge public tech homepage library")
+    p_edge.add_argument("--stats", action="store_true")
+    p_edge.add_argument("--category", default=None, help="Filter by category id")
+    p_edge.add_argument("--list-categories", action="store_true")
+    p_edge.add_argument("--urls-only", action="store_true")
+    p_edge.set_defaults(func=cmd_edge)
 
     args = parser.parse_args(argv)
     return args.func(args)
