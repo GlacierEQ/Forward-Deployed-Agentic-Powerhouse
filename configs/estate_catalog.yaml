@@ -1,0 +1,127 @@
+# Verified estate leverage snapshot — sourced from live GlacierEQ repos (2026-09-20)
+# Counts and IDs are inventory facts, not production-deployment claims.
+schema: fde.estate_catalog/v1
+snapshot_date: "2026-09-20"
+
+mega_skills:
+  repo: GlacierEQ/mega-skills
+  registries:
+    atomic_skills: 709
+    compound_skills: 33
+    mega_skills: 29
+    mega_skill_pyramids: 29
+  pipelines:
+    - id: inception-to-deployment
+      family: master
+      deploy_mode: approval_packet_only
+      runner: scripts/run_deep_work_pipeline.py
+    - id: control-plane
+      family: control-plane
+      deploy_mode: approval_packet_only
+      runner: scripts/run_deep_work_pipeline.py
+      note: includes genius-epistemic combos
+    - id: memory-fleet
+      family: memory-fleet
+      deploy_mode: approval_packet_only
+    - id: change-swe
+      family: change-swe
+      deploy_mode: approval_packet_only
+    - id: ship-cloud
+      family: ship-cloud
+      deploy_mode: approval_packet_only
+    - id: cultivate-main
+      family: change-swe
+      deploy_mode: approval_packet_only
+      runner: scripts/cultivate_main.py
+    - id: anthropic-applied-ai-readiness
+      family: mission
+      deploy_mode: approval_packet_only
+    - id: transcribe-organize-legal-code
+      family: specialized
+    - id: deep-casebuilding
+      family: mission
+    - id: 1fdv-deep-casebuilding
+      family: mission
+  fde_priority_pipelines:
+    - control-plane
+    - inception-to-deployment
+    - memory-fleet
+    - change-swe
+    - anthropic-applied-ai-readiness
+
+genius_mastery:
+  repo: GlacierEQ/Genius-Mastery
+  package_version: "1.1.0"
+  doctrine: mastery-not-skills
+  kernel: true
+  mastery_loop:
+    - map
+    - research
+    - model
+    - build
+    - break
+    - measure
+    - verify
+    - operate
+    - explain
+    - synthesize
+    - prove
+    - expand
+    - teach
+  contracts:
+    - interfaces/COMPOSITION.yaml
+    - capabilities/STACK.yaml
+    - teaching/TEACHING.yaml
+    - ROLE.yaml
+  cli_entrypoints:
+    - genius synthesize
+    - genius analyze
+    - genius family
+    - genius validate
+    - genius doctor
+  fde_role_brief:
+    role: ForwardDeployedAgentic
+    outcomes:
+      - working multi-agent system
+      - tool policy gates
+      - hash-bound receipts
+      - field delivery under ambiguity
+
+mega_pipeline_production:
+  repo: GlacierEQ/mega-pipeline-production
+  skill: production-readiness-gate
+  dimensions:
+    - tests
+    - config
+    - telemetry
+    - persistence
+    - api_surface
+    - error_recovery
+    - integration
+  gate: 7/7 evidence required for delivery authorization
+
+memory:
+  aspen_grove_memory:
+    repo: GlacierEQ/aspen-grove-memory
+    tiers: [working, episodic, semantic, graph]
+  pro_memory:
+    repo: GlacierEQ/Pro-Memory
+    note: Pro-tier constellation (pgvector, Pinecone/Mem0, Neo4j)
+
+fde_proof_spine:
+  - repo: GlacierEQ/anthropic-agent-coordinator
+    signal: multi-agent scheduling
+  - repo: GlacierEQ/anthropic-safety-monitor
+    signal: tool policy ALLOW/CONFIRM/DENY
+  - repo: GlacierEQ/job-app-helix
+    signal: portfolio control + FDE hire package
+  - repo: GlacierEQ/Forward-Deployed-Agentic-Powerhouse
+    signal: universal cycle kernel
+
+hire_package_bridge:
+  repo: GlacierEQ/job-app-helix
+  path: hire_package/fde-powerhouse/
+  files:
+    - FDE_POWERHOUSE_PIPELINE.md
+    - OUTREACH_FDE_MASTER.md
+    - RESUME_PROFILE_FDE.md
