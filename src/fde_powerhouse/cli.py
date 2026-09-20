@@ -1,10 +1,11 @@
-"""CLI — maximized FDE powerhouse."""
+"""CLI — maximized FDE powerhouse + invert-scan."""
 
 from __future__ import annotations
 
 import argparse
 import json
 import sys
+from pathlib import Path
 
 from . import __version__
 from .bridges import GeniusBridge, MegaSkillsBridge, MemoryBridge, PipelineBridge
@@ -18,6 +19,7 @@ from .genius_invoke import (
     invoke_genius_role_brief,
     invoke_genius_synthesize,
 )
+from .invert_scan import scan_path, write_report
 from .invoke import ALLOWED_PIPELINES, invoke_pipeline, invoke_validate_hierarchy
 from .leading_edge import all_homepages, by_category, categories, library_stats
 from .modes import MODES
@@ -87,11 +89,7 @@ def cmd_invoke(args: argparse.Namespace) -> int:
 
 def cmd_genius(args: argparse.Namespace) -> int:
     if args.synthesize:
-        r = invoke_genius_synthesize(
-            role=args.role,
-            outcome=args.outcome,
-            dest=args.dest,
-        )
+        r = invoke_genius_synthesize(role=args.role, outcome=args.outcome, dest=args.dest)
     elif args.brief:
         r = invoke_genius_role_brief()
     else:
@@ -102,9 +100,7 @@ def cmd_genius(args: argparse.Namespace) -> int:
 
 def cmd_edge_probe(args: argparse.Namespace) -> int:
     if args.persist:
-        result = persist_probe(
-            work_dir=args.work_dir, category=args.category, limit=args.limit
-        )
+        result = persist_probe(work_dir=args.work_dir, category=args.category, limit=args.limit)
         print(json.dumps(result, indent=2, default=str))
         return 0
     if args.history:
@@ -122,8 +118,18 @@ def cmd_scan(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_invert_scan(args: argparse.Namespace) -> int:
+    report = scan_path(args.target)
+    out_dir = Path(args.out) if args.out else Path(args.work_dir) / ".fde" / "invert_scan"
+    path = write_report(report, out_dir)
+    print(json.dumps(report.to_dict(), indent=2))
+    print(f"# wrote {path}", file=sys.stderr)
+    if args.fail_on_findings and report.status == "findings":
+        return 2
+    return 0
+
+
 def cmd_maximize(args: argparse.Namespace) -> int:
-    """Run the full max surface in one shot."""
     steps: list[dict] = []
     steps.append({"step": "doctor", "version": __version__})
     steps.append({"step": "proof", "keys": list(proof_pack().keys())})
@@ -134,6 +140,14 @@ def cmd_maximize(args: argparse.Namespace) -> int:
     up = run_cycle("upgrade", target=args.work_dir, work_dir=args.work_dir)
     steps.append({"step": "upgrade_cycle", "status": up.status})
     steps.append({"step": "scan", "result": scan_target(args.work_dir)})
+    inv_report = scan_path(args.work_dir)
+    write_report(inv_report, Path(args.work_dir) / ".fde" / "invert_scan")
+    steps.append({
+        "step": "invert_scan",
+        "status": inv_report.status,
+        "count": len(inv_report.findings),
+        "by_severity": inv_report.by_severity,
+    })
     steps.append({"step": "leverage", "summary": catalog_summary()})
     inv = invoke_pipeline("control-plane", validate_only=True)
     steps.append({"step": "invoke", "status": inv.status})
@@ -150,7 +164,7 @@ def cmd_maximize(args: argparse.Namespace) -> int:
         "version": __version__,
         "identity": "Forward Deployed Agentic AI",
         "steps": steps,
-        "closing": "Maximized FDE powerhouse — cycle, estate, invoke, genius, edge store.",
+        "closing": "Maximized + invert-scan — operator fidelity automation live.",
     }
     print(json.dumps(out, indent=2, default=str))
     ok = cyc.status == "ok" and pack.cycle.get("status") == "ok"
@@ -267,6 +281,20 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("scan", help="Upgrade scan existing tree")
     p.add_argument("--target", required=True)
     p.set_defaults(func=cmd_scan)
+
+    p = sub.add_parser(
+        "invert-scan",
+        help="Authority/quality inversion hunter — operator fidelity",
+    )
+    p.add_argument("--target", default=".", help="Root path to scan")
+    p.add_argument("--out", default=None, help="Report directory")
+    p.add_argument("--work-dir", default=".")
+    p.add_argument(
+        "--fail-on-findings",
+        action="store_true",
+        help="Exit 2 if any inversion patterns matched",
+    )
+    p.set_defaults(func=cmd_invert_scan)
 
     p = sub.add_parser("maximize", help="Full max surface one-shot")
     p.add_argument("--work-dir", default=".")
