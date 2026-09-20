@@ -7,6 +7,7 @@ from typing import Any, Callable
 
 from .bridges import GeniusBridge, MegaSkillsBridge, MemoryBridge, PipelineBridge
 from .estate import estate_status, load_estate
+from .leading_edge import library_stats
 from .plan import build_plan
 from .receipts import StageReceipt
 from .scaffold import write_scaffold
@@ -20,11 +21,13 @@ def stage_discover(mode: str, target: str, ctx: dict[str, Any]) -> StageReceipt:
     genius = GeniusBridge(estate).probe()
     memory = MemoryBridge(estate).probe()
     pipes = PipelineBridge(estate).probe()
+    edge = library_stats()
     summary = (
         f"Discovered target={target!r} mode={mode}; "
         f"estate available={len(available)}/{len(status)}; "
         f"mega_skills={mega.get('available')}; genius={genius.get('available')}; "
-        f"memory={MemoryBridge(estate).available}"
+        f"memory={MemoryBridge(estate).available}; "
+        f"leading_edge_sources={edge.get('sources', 0)}"
     )
     return StageReceipt(
         stage="discover",
@@ -39,6 +42,7 @@ def stage_discover(mode: str, target: str, ctx: dict[str, Any]) -> StageReceipt:
             "genius": genius,
             "memory": memory,
             "pipelines": pipes,
+            "leading_edge": edge,
         },
     )
 
@@ -107,14 +111,10 @@ def stage_integrate(mode: str, target: str, ctx: dict[str, Any]) -> StageReceipt
     compose_graph = {
         "skills": mega.get("registries") or MegaSkillsBridge().suggested_pipelines(),
         "genius_loop": genius.get("loop")
-        or [
-            "MAP",
-            "BUILD",
-            "VERIFY",
-            "TEACH",
-        ],
+        or ["MAP", "BUILD", "VERIFY", "TEACH"],
         "memory_tiers": (memory.get("tiers_model") or ["working", "episodic", "semantic", "graph"]),
         "deploy_mode": pipes.get("default_deploy_mode", "approval_packet_only"),
+        "leading_edge_sources": library_stats().get("sources", 0),
     }
     ctx["compose_graph"] = compose_graph
     note = "wired" if wired else "soft-skip (set FDE_PATH_* for live estate)"
@@ -137,7 +137,7 @@ def stage_evaluate(mode: str, target: str, ctx: dict[str, Any]) -> StageReceipt:
         "plan_present": "plan" in ctx,
         "artifact_dir": bool(ctx.get("artifact_dir")),
         "identity_fde": True,
-        "compose_graph_present": "compose_graph" in ctx or mode not in ("compose", "innovate"),
+        "compose_graph_present": "compose_graph" in ctx,
     }
     if mode in ("ground_up", "invent") and ctx.get("scaffold"):
         checks["scaffold_files"] = ctx["scaffold"].get("count", 0) >= 5

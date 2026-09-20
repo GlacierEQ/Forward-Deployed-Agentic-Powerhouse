@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fde-powerhouse"
-version = "0.2.0"
+version = "0.2.1"
 description = "Forward Deployed Agentic Powerhouse — zero-to-hero universal cycle"
 readme = "README.md"
 requires-python = ">=3.11"
