@@ -1,40 +1,30 @@
-# Architecture — Forward-Deployed-Agentic-Powerhouse
+# Architecture — v0.4.0
 
 ## Spine
 
 ```text
-CLI / API
-   → cycle.run_cycle(mode, target)
-       → stages: discover → frame → build → integrate → evaluate → prove → deploy
-           → bridges: mega_skills | genius | memory | pipelines
-           → plan + scaffold (ground_up / invent)
-           → receipts (sha256)
+CLI
+  doctor | cycle | showcase | proof | invoke | demo | leverage | edge
+    → cycle.run_cycle(mode, target)
+        → stages: discover → frame → build → integrate → evaluate → prove → deploy
+            → estate_leverage (catalog)
+            → bridges (mega_skills, genius, memory, pipelines)
+            → invoke (live runner when FDE_PATH_MEGA_SKILLS set)
+            → scaffold (ground_up)
+            → receipts (sha256)
 ```
 
-## Dual use
+## Live invoke contract
 
-| Path | Behavior |
+| Mode | Behavior |
 |------|----------|
-| **Ground-up** | `build_plan` → `write_scaffold` → orchestrator/policy/memory stubs + smoke tests |
-| **Existing** | Upgrade workspace + estate probes; no vendor of mega-skills/genius/memory code |
+| Default | `run_deep_work_pipeline.py --validate-only` |
+| `--execute` | Full pipeline execute (still `approval_packet_only` inside mega-skills) |
+| No path | Soft-skip; cycle continues |
+| Allowlist | control-plane, inception-to-deployment, memory-fleet, change-swe, ship-cloud, cultivate-main, anthropic-applied-ai-readiness |
 
-## Bridges
+## Dual plane
 
-Adapters only. Resolve via `configs/estate.yaml` + `FDE_PATH_*`.
-
-| Bridge | Estate repo | Responsibility |
-|--------|-------------|----------------|
-| MegaSkillsBridge | mega-skills | Registry probe, pipeline hints |
-| GeniusBridge | Genius-Mastery | Markers, mastery loop, role brief |
-| MemoryBridge | aspen-grove-memory, Pro-Memory | Tier model, availability |
-| PipelineBridge | mega-pipeline-production, mega-skills | Deploy mode, path probe |
-
-## Anti-oscillation
-
-- Claim plane: receipts only  
-- Capability plane: full FDE direction + estate composition  
-- Deploy: `approval_packet_only` — no silent merge/network  
-
-## Version
-
-0.2.0 — expanded bridges, scaffolds, compose graph, CI.
+- **Capability:** full FDE direction + estate composition + live validate  
+- **Claim:** receipts only; no lab production claims  
+- **Deploy:** human gate only  

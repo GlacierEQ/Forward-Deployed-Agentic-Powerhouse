@@ -1,6 +1,7 @@
-# Full Process — Forward-Deployed-Agentic-Powerhouse
+# Full Process — v0.4.0
 
-**On main.** Identity: Forward Deployed Agentic AI.  
+**Branch:** `main`  
+**Identity:** Forward Deployed Agentic AI  
 **Law:** Full power + dual-plane honesty. No oscillation.
 
 ---
@@ -15,86 +16,44 @@ python -m fde_powerhouse doctor
 pytest -q
 ```
 
-## 2. Point estate (optional, for live integration)
+## 2. Recorded demo (canonical)
+
+```bash
+python -m fde_powerhouse demo
+# or follow docs/DEMO.md for a screen recording
+```
+
+## 3. Optional live estate
 
 ```bash
 export FDE_PATH_MEGA_SKILLS=/path/to/mega-skills
 export FDE_PATH_GENIUS_MASTERY=/path/to/Genius-Mastery
-export FDE_PATH_ASPEN_GROVE_MEMORY=/path/to/aspen-grove-memory
-export FDE_PATH_MEGA_PIPELINE_PRODUCTION=/path/to/mega-pipeline-production
-python -m fde_powerhouse probe
+python -m fde_powerhouse invoke --pipeline control-plane
+python -m fde_powerhouse cycle --mode compose --target live
 ```
 
-Missing paths soft-skip with receipt. Evaluation stays fail-closed.
-
-## 3. Ground-up (zero → hero)
+## 4. Ground-up
 
 ```bash
-python -m fde_powerhouse cycle --mode ground_up --name my-agent \
-  --problem "Ship a tool-using agent with policy gates"
+python -m fde_powerhouse cycle --mode ground_up --name field-agent \
+  --problem "Tool-using agent with policy gates"
 ```
 
-Produces:
-- 7-stage hash-bound receipt (stdout JSON)
-- `.fde/my-agent/` scaffold: orchestrator, policy, memory port, PLAN.yaml, smoke tests
-
-## 4. Existing surface (upgrade / merge / invent / compose)
-
-```bash
-python -m fde_powerhouse cycle --mode upgrade --target /path/to/system
-python -m fde_powerhouse cycle --mode merge --target surface-a+surface-b
-python -m fde_powerhouse cycle --mode invent --name new-capability
-python -m fde_powerhouse compose --target portfolio
-```
-
-## 5. Leading edge (public tech)
-
-```bash
-python -m fde_powerhouse edge --stats
-python -m fde_powerhouse edge --category ai_frontier
-python -m fde_powerhouse edge --urls-only
-```
-
-Library: `configs/leading_edge_sources.yaml` (tech news, AI labs, dev, arXiv, declassified/public technical, security, hardware).
-
-## 6. Cycle spine (every mode)
+## 5. Cycle spine
 
 ```text
-DISCOVER  → estate + bridges + leading-edge catalog awareness
-FRAME     → CyclePlan (skills, genius, memory, pipelines, constraints)
-BUILD     → scaffold (ground_up/invent) or upgrade workspace
-INTEGRATE → mega-skills / genius / memory / pipelines compose graph
+DISCOVER  → estate + catalog + edge
+FRAME     → CyclePlan + FDE priority pipelines
+BUILD     → scaffold or upgrade workspace
+INTEGRATE → compose graph + live validate-only invoke
 EVALUATE  → fail-closed gates
-PROVE     → receipt chain + FDE proof spine pointers
-DEPLOY    → human-gated approval packet only
+PROVE     → receipts + spine
+DEPLOY    → approval_packet_only
 ```
 
-## 7. Modes
-
-| Mode | When |
-|------|------|
-| ground_up | Greenfield agent system |
-| refactor | Structure change, same contract |
-| repoint | New identity or integration targets |
-| update | Contracts/tests drift |
-| upgrade | Raise skills / memory / pipeline level |
-| merge | Combine unique lineage |
-| invent | Capability that did not exist |
-| innovate | Novel cross-estate composition |
-| compose | Explicit skills + genius + memory + pipelines |
-
-## 8. Anti-oscillation
-
-| Forbidden | Required |
-|-----------|----------|
-| Lead with what it cannot be | Lead with what it ships |
-| Grand claims without receipt | Architecture ambition + verified core |
-| Auto-merge / silent network | `approval_packet_only` |
-| Vendor estate code | Adapters + FDE_PATH_* |
-
-## 9. Done when
+## 6. Done when
 
 - `doctor` exits 0  
+- `demo` exits 0  
 - `pytest -q` green  
-- One ground_up cycle emits 7 ok stages  
-- Edge library loads ≥40 HTTPS homepages  
+- Optional: `invoke --pipeline control-plane` returns VALID when path set  
