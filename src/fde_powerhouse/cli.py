@@ -1,4 +1,4 @@
-"""CLI — doctor, cycle, estate, compose, probe, edge, leverage."""
+"""CLI — doctor, cycle, showcase, proof, estate, edge, leverage."""
 
 from __future__ import annotations
 
@@ -13,6 +13,8 @@ from .estate import estate_status, load_estate
 from .estate_leverage import catalog_summary, leverage_map
 from .leading_edge import all_homepages, by_category, categories, library_stats
 from .modes import MODES
+from .proof_pack import proof_pack
+from .showcase import run_showcase
 
 
 def cmd_doctor(_: argparse.Namespace) -> int:
@@ -60,6 +62,26 @@ def cmd_cycle(args: argparse.Namespace) -> int:
     )
     print(json.dumps(receipt.to_dict(), indent=2))
     return 0 if receipt.status == "ok" else 1
+
+
+def cmd_showcase(args: argparse.Namespace) -> int:
+    pack = run_showcase(
+        target=args.target or "showcase",
+        work_dir=args.work_dir,
+        mode=args.mode,
+    )
+    print(json.dumps(pack.to_dict(), indent=2, default=str))
+    print(
+        f"\n# artifacts: .fde/showcase_{args.target or 'showcase'}/"
+        f"{{SHOWCASE.json,OPERATOR_CARD.md,COMPOSITION.md}}",
+        file=sys.stderr,
+    )
+    return 0 if pack.cycle.get("status") == "ok" else 1
+
+
+def cmd_proof(_: argparse.Namespace) -> int:
+    print(json.dumps(proof_pack(), indent=2))
+    return 0
 
 
 def cmd_estate(_: argparse.Namespace) -> int:
@@ -134,6 +156,15 @@ def main(argv: list[str] | None = None) -> int:
     p_cyc.add_argument("--work-dir", default=".")
     p_cyc.add_argument("--continue-on-fail", action="store_true")
     p_cyc.set_defaults(func=cmd_cycle)
+
+    p_sh = sub.add_parser("showcase", help="Full impressive pack: cycle + estate + edge + cards")
+    p_sh.add_argument("--target", default="showcase")
+    p_sh.add_argument("--mode", default="compose", choices=MODES)
+    p_sh.add_argument("--work-dir", default=".")
+    p_sh.set_defaults(func=cmd_showcase)
+
+    p_pf = sub.add_parser("proof", help="One-page diligence proof pack")
+    p_pf.set_defaults(func=cmd_proof)
 
     p_est = sub.add_parser("estate", help="Show local path resolution")
     p_est.set_defaults(func=cmd_estate)

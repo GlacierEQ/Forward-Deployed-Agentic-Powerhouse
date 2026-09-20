@@ -1,61 +1,88 @@
 # Forward-Deployed-Agentic-Powerhouse
 
-**Zero → hero.** Universal powerhouse for building agent systems from nothing **and** upgrading anything that already exists.
-
 ```text
 DISCOVER → FRAME → BUILD → INTEGRATE → EVALUATE → PROVE → DEPLOY
 ```
 
 **Identity:** Forward Deployed Agentic AI  
-**Version:** 0.2.1 · **Branch:** `main`  
-**Law:** Full power + dual-plane honesty. No oscillation.
+**Version:** 0.3.1 · **main**  
+**Law:** Full power + dual-plane honesty · `approval_packet_only`
 
-## Quick start
+---
+
+## 30-second impress
 
 ```bash
 pip install -e ".[dev]"
-python -m fde_powerhouse doctor
-python -m fde_powerhouse cycle --mode ground_up --name demo-agent
-python -m fde_powerhouse edge --stats
+python -m fde_powerhouse showcase
+python -m fde_powerhouse proof
 pytest -q
 ```
 
-## What this is
+`showcase` emits:
 
-1. **Ground-up** — new agentic system from zero (orchestrator, policy, memory port, tests)
-2. **Existing** — refactor · repoint · update · upgrade · merge · invent · innovate · compose
-3. **Estate adapters** — mega-skills, Genius-Mastery, Aspen/Pro-Memory, mega-pipeline-production
-4. **Leading-edge library** — public tech/dev/AI/declassified technical homepages for continuous edge awareness
+| Artifact | Content |
+|----------|---------|
+| `SHOWCASE.json` | Full cycle receipt + estate catalog + leverage + edge + signals |
+| `OPERATOR_CARD.md` | Who / cycle / estate / law |
+| `COMPOSITION.md` | 7-layer matrix: skills → pipelines → genius → gate → memory → edge → proof spine |
+
+`proof` is the diligence one-pager: what it **is** / what it **is not**.
+
+---
+
+## Estate power (verified inventory)
+
+| System | Scale |
+|--------|-------|
+| mega-skills | **709** atomic · **33** compound · **29** mega · **10** pipelines |
+| Genius-Mastery | Kernel **v1.1.0** · 13-step mastery loop |
+| Production gate | **7/7** dimensions |
+| Leading edge | **40+** public HTTPS tech/dev/AI/declassified homepages |
+| Modes | **9** — ground_up through compose |
+
+FDE priority pipelines: `control-plane` · `inception-to-deployment` · `memory-fleet` · `change-swe` · `anthropic-applied-ai-readiness`
+
+---
 
 ## Commands
 
 | Command | Purpose |
 |---------|---------|
-| `doctor` | Kernel + bridges + edge library health |
-| `cycle --mode …` | Full 7-stage cycle |
-| `compose` | Skills + genius + memory + pipelines |
-| `probe` | Estate bridge probes |
-| `edge` | Leading-edge homepage library |
-| `estate` | Path resolution dump |
+| **`showcase`** | Full impressive pack |
+| **`proof`** | Diligence one-pager |
+| `doctor` | Health + catalog counts |
+| `cycle --mode …` | Single full cycle |
+| `compose` | Estate composition cycle |
+| `leverage` | Mode-specific estate recommendations |
+| `edge` | Public tech homepage library |
+| `probe` | Local bridge availability |
 
-## Docs
+---
 
-- [Full process](docs/PROCESS.md)
-- [Zero → Hero](docs/ZERO_TO_HERO.md)
-- [Architecture](docs/ARCHITECTURE.md)
-- [Grade](docs/GRADE.md)
+## Ground-up + existing
 
-## Modes
+```bash
+# zero → hero scaffold
+python -m fde_powerhouse cycle --mode ground_up --name field-agent
 
-`ground_up` · `refactor` · `repoint` · `update` · `upgrade` · `merge` · `invent` · `innovate` · `compose`
+# upgrade / merge / invent against estate
+python -m fde_powerhouse cycle --mode upgrade --target /path/to/system
+python -m fde_powerhouse leverage --mode compose
+```
 
-## Estate paths
+Optional local execution:
 
 ```bash
 export FDE_PATH_MEGA_SKILLS=/path/to/mega-skills
 export FDE_PATH_GENIUS_MASTERY=/path/to/Genius-Mastery
-export FDE_PATH_ASPEN_GROVE_MEMORY=/path/to/aspen-grove-memory
 ```
+
+---
+
+## Docs
+
+[PROCESS](docs/PROCESS.md) · [ARCHITECTURE](docs/ARCHITECTURE.md) · [GRADE](docs/GRADE.md) · [ZERO_TO_HERO](docs/ZERO_TO_HERO.md)
 
 ---
 
