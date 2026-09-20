@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fde-powerhouse"
-version = "0.5.0"
-description = "Forward Deployed Agentic Powerhouse — zero-to-hero universal cycle"
+version = "0.6.0"
+description = "Forward Deployed Agentic Powerhouse — maximized universal cycle"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "Proprietary" }
@@ -15,7 +15,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0", "ruff>=0.6"]
+dev = ["pytest>=8.0", "ruff>=0.6", "pytest-cov>=5.0"]
 
 [project.scripts]
 fde-powerhouse = "fde_powerhouse.cli:main"
@@ -26,3 +26,12 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+addopts = "-q"
+
+[tool.coverage.run]
+source = ["fde_powerhouse"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_empty = true

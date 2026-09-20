@@ -1,6 +1,6 @@
-"""Forward Deployed Agentic Powerhouse — zero-to-hero universal cycle."""
+"""Forward Deployed Agentic Powerhouse — maximized universal cycle."""
 
-__version__ = "0.5.0"
+__version__ = "0.6.0"
 
 from .cycle import run_cycle
 from .modes import MODES

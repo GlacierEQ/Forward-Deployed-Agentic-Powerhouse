@@ -1,4 +1,4 @@
-"""CLI — doctor, cycle, showcase, proof, invoke, genius, edge-probe, demo."""
+"""CLI — maximized FDE powerhouse."""
 
 from __future__ import annotations
 
@@ -10,28 +10,33 @@ from . import __version__
 from .bridges import GeniusBridge, MegaSkillsBridge, MemoryBridge, PipelineBridge
 from .cycle import run_cycle
 from .edge_probe import probe_edge
+from .edge_store import history_summary, persist_probe
 from .estate import estate_status, load_estate
 from .estate_leverage import catalog_summary, leverage_map
-from .genius_invoke import invoke_genius_doctor, invoke_genius_role_brief
+from .genius_invoke import (
+    invoke_genius_doctor,
+    invoke_genius_role_brief,
+    invoke_genius_synthesize,
+)
 from .invoke import ALLOWED_PIPELINES, invoke_pipeline, invoke_validate_hierarchy
 from .leading_edge import all_homepages, by_category, categories, library_stats
 from .modes import MODES
 from .proof_pack import proof_pack
 from .showcase import run_showcase
+from .upgrade_scan import scan_target
 
 
 def cmd_doctor(_: argparse.Namespace) -> int:
     print(f"fde-powerhouse {__version__}")
     print(f"modes: {', '.join(MODES)}")
     stats = library_stats()
-    print(f"leading_edge: {stats.get('sources', 0)} sources across {stats.get('categories', 0)} categories")
+    print(f"leading_edge: {stats.get('sources', 0)} sources")
     cat = catalog_summary()
     ms = cat.get("mega_skills") or {}
     print(
-        f"estate_catalog: atomic={ms.get('atomic')} compound={ms.get('compound')} "
+        f"estate: atomic={ms.get('atomic')} compound={ms.get('compound')} "
         f"mega={ms.get('mega')} pipelines={ms.get('pipelines')}"
     )
-    print("bridges:")
     for name, probe in (
         ("mega_skills", MegaSkillsBridge().probe()),
         ("genius", GeniusBridge().probe()),
@@ -41,17 +46,10 @@ def cmd_doctor(_: argparse.Namespace) -> int:
         avail = probe.get("available")
         if avail is None and isinstance(probe, dict):
             avail = any(
-                (v or {}).get("available")
-                for k, v in probe.items()
+                (v or {}).get("available") for k, v in probe.items()
                 if isinstance(v, dict) and "available" in v
             )
-        print(f"  [{'OK' if avail else '--'}] {name}")
-    status = estate_status()
-    print("estate local paths:")
-    for key, entry in status.items():
-        flag = "OK" if entry.get("available") else "--"
-        path = entry.get("effective_path") or entry.get("default_path") or "(unset)"
-        print(f"  [{flag}] {key}: {entry.get('repo')} → {path}")
+        print(f"  bridge [{'OK' if avail else '--'}] {name}")
     return 0
 
 
@@ -68,11 +66,7 @@ def cmd_cycle(args: argparse.Namespace) -> int:
 
 
 def cmd_showcase(args: argparse.Namespace) -> int:
-    pack = run_showcase(
-        target=args.target or "showcase",
-        work_dir=args.work_dir,
-        mode=args.mode,
-    )
+    pack = run_showcase(target=args.target or "showcase", work_dir=args.work_dir, mode=args.mode)
     print(json.dumps(pack.to_dict(), indent=2, default=str))
     return 0 if pack.cycle.get("status") == "ok" else 1
 
@@ -86,72 +80,85 @@ def cmd_invoke(args: argparse.Namespace) -> int:
     if args.hierarchy:
         result = invoke_validate_hierarchy()
     else:
-        result = invoke_pipeline(
-            args.pipeline,
-            validate_only=not args.execute,
-            timeout_sec=args.timeout,
-        )
+        result = invoke_pipeline(args.pipeline, validate_only=not args.execute, timeout_sec=args.timeout)
     print(json.dumps(result.to_dict(), indent=2, default=str))
-    if result.status == "skip":
-        return 0
-    return 0 if result.status == "ok" else 1
+    return 0 if result.status in ("ok", "skip") else 1
 
 
 def cmd_genius(args: argparse.Namespace) -> int:
-    if args.brief:
+    if args.synthesize:
+        r = invoke_genius_synthesize(
+            role=args.role,
+            outcome=args.outcome,
+            dest=args.dest,
+        )
+    elif args.brief:
         r = invoke_genius_role_brief()
     else:
         r = invoke_genius_doctor()
     print(json.dumps(r.to_dict(), indent=2, default=str))
-    if r.status == "skip":
-        return 0
-    return 0 if r.status == "ok" else 1
+    return 0 if r.status in ("ok", "skip") else 1
 
 
 def cmd_edge_probe(args: argparse.Namespace) -> int:
+    if args.persist:
+        result = persist_probe(
+            work_dir=args.work_dir, category=args.category, limit=args.limit
+        )
+        print(json.dumps(result, indent=2, default=str))
+        return 0
+    if args.history:
+        print(json.dumps(history_summary(args.work_dir), indent=2))
+        return 0
     receipt = probe_edge(
-        category=args.category,
-        limit=args.limit,
-        timeout=args.timeout,
-        workers=args.workers,
+        category=args.category, limit=args.limit, timeout=args.timeout, workers=args.workers
     )
     print(json.dumps(receipt.to_dict(), indent=2))
-    # Soft: do not fail CI if some hosts down
     return 0 if receipt.ok_count > 0 or receipt.sample_size == 0 else 1
 
 
-def cmd_demo(args: argparse.Namespace) -> int:
-    steps = []
+def cmd_scan(args: argparse.Namespace) -> int:
+    print(json.dumps(scan_target(args.target), indent=2))
+    return 0
+
+
+def cmd_maximize(args: argparse.Namespace) -> int:
+    """Run the full max surface in one shot."""
+    steps: list[dict] = []
     steps.append({"step": "doctor", "version": __version__})
-    steps.append({"step": "proof", "pack_keys": list(proof_pack().keys())})
-    pack = run_showcase(target="recorded-demo", work_dir=args.work_dir, mode="compose")
+    steps.append({"step": "proof", "keys": list(proof_pack().keys())})
+    pack = run_showcase(target="max", work_dir=args.work_dir, mode="compose")
     steps.append({"step": "showcase", "status": pack.cycle.get("status")})
-    cyc = run_cycle("ground_up", target="demo-field-agent", work_dir=args.work_dir)
+    cyc = run_cycle("ground_up", target="max-agent", work_dir=args.work_dir)
     steps.append({"step": "ground_up", "status": cyc.status})
-    steps.append({"step": "leverage", "priority": (leverage_map("compose").get("catalog") or {}).get("mega_skills")})
+    up = run_cycle("upgrade", target=args.work_dir, work_dir=args.work_dir)
+    steps.append({"step": "upgrade_cycle", "status": up.status})
+    steps.append({"step": "scan", "result": scan_target(args.work_dir)})
+    steps.append({"step": "leverage", "summary": catalog_summary()})
     inv = invoke_pipeline("control-plane", validate_only=True)
-    steps.append({"step": "invoke_validate", "status": inv.status})
+    steps.append({"step": "invoke", "status": inv.status})
     g = invoke_genius_doctor()
     steps.append({"step": "genius", "status": g.status})
-    # small edge probe
-    edge = probe_edge(limit=4, timeout=4.0)
-    steps.append(
-        {
-            "step": "edge_probe",
-            "ok": edge.ok_count,
-            "fail": edge.fail_count,
-            "sha256": edge.to_dict().get("sha256", "")[:16],
-        }
-    )
+    edge = persist_probe(work_dir=args.work_dir, limit=6)
+    steps.append({
+        "step": "edge_store",
+        "ok": edge["receipt"].get("ok_count"),
+        "sha": (edge["receipt"].get("sha256") or "")[:16],
+    })
     out = {
-        "demo": "recorded-path-v0.5",
-        "doc": "docs/DEMO.md",
+        "maximize": True,
+        "version": __version__,
+        "identity": "Forward Deployed Agentic AI",
         "steps": steps,
-        "closing": "Forward Deployed Agentic AI — stronger: live genius + edge probe receipts.",
+        "closing": "Maximized FDE powerhouse — cycle, estate, invoke, genius, edge store.",
     }
     print(json.dumps(out, indent=2, default=str))
     ok = cyc.status == "ok" and pack.cycle.get("status") == "ok"
     return 0 if ok else 1
+
+
+def cmd_demo(args: argparse.Namespace) -> int:
+    return cmd_maximize(args)
 
 
 def cmd_estate(_: argparse.Namespace) -> int:
@@ -174,10 +181,8 @@ def cmd_probe(args: argparse.Namespace) -> int:
 
 def cmd_compose(args: argparse.Namespace) -> int:
     receipt = run_cycle(
-        mode="compose",
-        target=args.target or "compose",
-        work_dir=args.work_dir,
-        problem=args.problem or "Compose mega-skills + genius + memory + pipelines",
+        mode="compose", target=args.target or "compose",
+        work_dir=args.work_dir, problem=args.problem or "",
     )
     print(json.dumps(receipt.to_dict(), indent=2))
     return 0 if receipt.status == "ok" else 1
@@ -215,70 +220,85 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--version", action="version", version=__version__)
     sub = parser.add_subparsers(dest="cmd", required=True)
 
-    sub.add_parser("doctor", help="Health").set_defaults(func=cmd_doctor)
+    sub.add_parser("doctor").set_defaults(func=cmd_doctor)
 
-    p_cyc = sub.add_parser("cycle", help="Full cycle")
-    p_cyc.add_argument("--mode", required=True, choices=MODES)
-    p_cyc.add_argument("--name", default=None)
-    p_cyc.add_argument("--target", default=None)
-    p_cyc.add_argument("--problem", default="")
-    p_cyc.add_argument("--work-dir", default=".")
-    p_cyc.add_argument("--continue-on-fail", action="store_true")
-    p_cyc.set_defaults(func=cmd_cycle)
+    p = sub.add_parser("cycle")
+    p.add_argument("--mode", required=True, choices=MODES)
+    p.add_argument("--name", default=None)
+    p.add_argument("--target", default=None)
+    p.add_argument("--problem", default="")
+    p.add_argument("--work-dir", default=".")
+    p.add_argument("--continue-on-fail", action="store_true")
+    p.set_defaults(func=cmd_cycle)
 
-    p_sh = sub.add_parser("showcase", help="Impressive pack")
-    p_sh.add_argument("--target", default="showcase")
-    p_sh.add_argument("--mode", default="compose", choices=MODES)
-    p_sh.add_argument("--work-dir", default=".")
-    p_sh.set_defaults(func=cmd_showcase)
+    p = sub.add_parser("showcase")
+    p.add_argument("--target", default="showcase")
+    p.add_argument("--mode", default="compose", choices=MODES)
+    p.add_argument("--work-dir", default=".")
+    p.set_defaults(func=cmd_showcase)
 
-    sub.add_parser("proof", help="Diligence pack").set_defaults(func=cmd_proof)
+    sub.add_parser("proof").set_defaults(func=cmd_proof)
 
-    p_inv = sub.add_parser("invoke", help="Live mega-skills")
-    p_inv.add_argument("--pipeline", default="control-plane", choices=sorted(ALLOWED_PIPELINES))
-    p_inv.add_argument("--execute", action="store_true")
-    p_inv.add_argument("--hierarchy", action="store_true")
-    p_inv.add_argument("--timeout", type=int, default=120)
-    p_inv.set_defaults(func=cmd_invoke)
+    p = sub.add_parser("invoke")
+    p.add_argument("--pipeline", default="control-plane", choices=sorted(ALLOWED_PIPELINES))
+    p.add_argument("--execute", action="store_true")
+    p.add_argument("--hierarchy", action="store_true")
+    p.add_argument("--timeout", type=int, default=120)
+    p.set_defaults(func=cmd_invoke)
 
-    p_g = sub.add_parser("genius", help="Live Genius-Mastery hook")
-    p_g.add_argument("--brief", action="store_true", help="Emit FDE role brief only")
-    p_g.set_defaults(func=cmd_genius)
+    p = sub.add_parser("genius")
+    p.add_argument("--brief", action="store_true")
+    p.add_argument("--synthesize", action="store_true")
+    p.add_argument("--role", default="ForwardDeployedAgentic")
+    p.add_argument("--outcome", default="field agentic delivery")
+    p.add_argument("--dest", default=".fde/genius_synth")
+    p.set_defaults(func=cmd_genius)
 
-    p_ep = sub.add_parser("edge-probe", help="Probe public tech homepages (receipts)")
-    p_ep.add_argument("--category", default=None)
-    p_ep.add_argument("--limit", type=int, default=12)
-    p_ep.add_argument("--timeout", type=float, default=5.0)
-    p_ep.add_argument("--workers", type=int, default=6)
-    p_ep.set_defaults(func=cmd_edge_probe)
+    p = sub.add_parser("edge-probe")
+    p.add_argument("--category", default=None)
+    p.add_argument("--limit", type=int, default=12)
+    p.add_argument("--timeout", type=float, default=5.0)
+    p.add_argument("--workers", type=int, default=6)
+    p.add_argument("--persist", action="store_true")
+    p.add_argument("--history", action="store_true")
+    p.add_argument("--work-dir", default=".")
+    p.set_defaults(func=cmd_edge_probe)
 
-    p_demo = sub.add_parser("demo", help="Recorded demo path")
-    p_demo.add_argument("--work-dir", default=".")
-    p_demo.set_defaults(func=cmd_demo)
+    p = sub.add_parser("scan", help="Upgrade scan existing tree")
+    p.add_argument("--target", required=True)
+    p.set_defaults(func=cmd_scan)
 
-    sub.add_parser("estate", help="Paths").set_defaults(func=cmd_estate)
+    p = sub.add_parser("maximize", help="Full max surface one-shot")
+    p.add_argument("--work-dir", default=".")
+    p.set_defaults(func=cmd_maximize)
 
-    p_pr = sub.add_parser("probe", help="Bridges")
-    p_pr.add_argument("--bridge", choices=["mega_skills", "genius", "memory", "pipelines"], default=None)
-    p_pr.set_defaults(func=cmd_probe)
+    p = sub.add_parser("demo")
+    p.add_argument("--work-dir", default=".")
+    p.set_defaults(func=cmd_demo)
 
-    p_co = sub.add_parser("compose", help="Compose cycle")
-    p_co.add_argument("--target", default="compose")
-    p_co.add_argument("--problem", default="")
-    p_co.add_argument("--work-dir", default=".")
-    p_co.set_defaults(func=cmd_compose)
+    sub.add_parser("estate").set_defaults(func=cmd_estate)
 
-    p_edge = sub.add_parser("edge", help="Homepage library")
-    p_edge.add_argument("--stats", action="store_true")
-    p_edge.add_argument("--category", default=None)
-    p_edge.add_argument("--list-categories", action="store_true")
-    p_edge.add_argument("--urls-only", action="store_true")
-    p_edge.set_defaults(func=cmd_edge)
+    p = sub.add_parser("probe")
+    p.add_argument("--bridge", choices=["mega_skills", "genius", "memory", "pipelines"], default=None)
+    p.set_defaults(func=cmd_probe)
 
-    p_lev = sub.add_parser("leverage", help="Recommendations")
-    p_lev.add_argument("--mode", default="compose", choices=MODES)
-    p_lev.add_argument("--summary", action="store_true")
-    p_lev.set_defaults(func=cmd_leverage)
+    p = sub.add_parser("compose")
+    p.add_argument("--target", default="compose")
+    p.add_argument("--problem", default="")
+    p.add_argument("--work-dir", default=".")
+    p.set_defaults(func=cmd_compose)
+
+    p = sub.add_parser("edge")
+    p.add_argument("--stats", action="store_true")
+    p.add_argument("--category", default=None)
+    p.add_argument("--list-categories", action="store_true")
+    p.add_argument("--urls-only", action="store_true")
+    p.set_defaults(func=cmd_edge)
+
+    p = sub.add_parser("leverage")
+    p.add_argument("--mode", default="compose", choices=MODES)
+    p.add_argument("--summary", action="store_true")
+    p.set_defaults(func=cmd_leverage)
 
     args = parser.parse_args(argv)
     return args.func(args)
