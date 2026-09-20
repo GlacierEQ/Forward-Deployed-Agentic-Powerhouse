@@ -1,4 +1,4 @@
-"""CLI — doctor, cycle, showcase, proof, estate, edge, leverage."""
+"""CLI — doctor, cycle, showcase, proof, invoke, demo, estate, edge, leverage."""
 
 from __future__ import annotations
 
@@ -11,6 +11,7 @@ from .bridges import GeniusBridge, MegaSkillsBridge, MemoryBridge, PipelineBridg
 from .cycle import run_cycle
 from .estate import estate_status, load_estate
 from .estate_leverage import catalog_summary, leverage_map
+from .invoke import ALLOWED_PIPELINES, invoke_pipeline, invoke_validate_hierarchy
 from .leading_edge import all_homepages, by_category, categories, library_stats
 from .modes import MODES
 from .proof_pack import proof_pack
@@ -82,6 +83,50 @@ def cmd_showcase(args: argparse.Namespace) -> int:
 def cmd_proof(_: argparse.Namespace) -> int:
     print(json.dumps(proof_pack(), indent=2))
     return 0
+
+
+def cmd_invoke(args: argparse.Namespace) -> int:
+    if args.hierarchy:
+        result = invoke_validate_hierarchy()
+    else:
+        result = invoke_pipeline(
+            args.pipeline,
+            validate_only=not args.execute,
+            timeout_sec=args.timeout,
+        )
+    print(json.dumps(result.to_dict(), indent=2, default=str))
+    if result.status == "skip":
+        return 0
+    return 0 if result.status == "ok" else 1
+
+
+def cmd_demo(args: argparse.Namespace) -> int:
+    """Run the recorded demo path non-interactively."""
+    steps = []
+    # 1 doctor counts
+    steps.append({"step": "doctor", "ok": True, "version": __version__})
+    # 2 proof
+    steps.append({"step": "proof", "pack": proof_pack()})
+    # 3 showcase
+    pack = run_showcase(target="recorded-demo", work_dir=args.work_dir, mode="compose")
+    steps.append({"step": "showcase", "status": pack.cycle.get("status")})
+    # 4 ground_up
+    cyc = run_cycle("ground_up", target="demo-field-agent", work_dir=args.work_dir)
+    steps.append({"step": "ground_up", "status": cyc.status})
+    # 5 leverage
+    steps.append({"step": "leverage", "map": leverage_map("compose")})
+    # 6 invoke validate-only (skip ok)
+    inv = invoke_pipeline("control-plane", validate_only=True)
+    steps.append({"step": "invoke_validate", "result": inv.to_dict()})
+    out = {
+        "demo": "recorded-path",
+        "doc": "docs/DEMO.md",
+        "steps": steps,
+        "closing": "Forward Deployed Agentic AI — universal cycle, estate-aligned, human-gated deploy.",
+    }
+    print(json.dumps(out, indent=2, default=str))
+    ok = cyc.status == "ok" and pack.cycle.get("status") == "ok"
+    return 0 if ok else 1
 
 
 def cmd_estate(_: argparse.Namespace) -> int:
@@ -157,16 +202,35 @@ def main(argv: list[str] | None = None) -> int:
     p_cyc.add_argument("--continue-on-fail", action="store_true")
     p_cyc.set_defaults(func=cmd_cycle)
 
-    p_sh = sub.add_parser("showcase", help="Full impressive pack: cycle + estate + edge + cards")
+    p_sh = sub.add_parser("showcase", help="Full impressive pack")
     p_sh.add_argument("--target", default="showcase")
     p_sh.add_argument("--mode", default="compose", choices=MODES)
     p_sh.add_argument("--work-dir", default=".")
     p_sh.set_defaults(func=cmd_showcase)
 
-    p_pf = sub.add_parser("proof", help="One-page diligence proof pack")
+    p_pf = sub.add_parser("proof", help="Diligence one-pager")
     p_pf.set_defaults(func=cmd_proof)
 
-    p_est = sub.add_parser("estate", help="Show local path resolution")
+    p_inv = sub.add_parser("invoke", help="Live mega-skills runner (validate-only default)")
+    p_inv.add_argument(
+        "--pipeline",
+        default="control-plane",
+        choices=sorted(ALLOWED_PIPELINES),
+    )
+    p_inv.add_argument(
+        "--execute",
+        action="store_true",
+        help="Run full pipeline (default is --validate-only)",
+    )
+    p_inv.add_argument("--hierarchy", action="store_true", help="Run validate_hierarchy.py")
+    p_inv.add_argument("--timeout", type=int, default=120)
+    p_inv.set_defaults(func=cmd_invoke)
+
+    p_demo = sub.add_parser("demo", help="Run recorded demo path (see docs/DEMO.md)")
+    p_demo.add_argument("--work-dir", default=".")
+    p_demo.set_defaults(func=cmd_demo)
+
+    p_est = sub.add_parser("estate", help="Local path resolution")
     p_est.set_defaults(func=cmd_estate)
 
     p_pr = sub.add_parser("probe", help="Probe estate bridges")
@@ -183,14 +247,14 @@ def main(argv: list[str] | None = None) -> int:
     p_co.add_argument("--work-dir", default=".")
     p_co.set_defaults(func=cmd_compose)
 
-    p_edge = sub.add_parser("edge", help="Leading-edge public tech library")
+    p_edge = sub.add_parser("edge", help="Leading-edge library")
     p_edge.add_argument("--stats", action="store_true")
     p_edge.add_argument("--category", default=None)
     p_edge.add_argument("--list-categories", action="store_true")
     p_edge.add_argument("--urls-only", action="store_true")
     p_edge.set_defaults(func=cmd_edge)
 
-    p_lev = sub.add_parser("leverage", help="Estate catalog + mode recommendations")
+    p_lev = sub.add_parser("leverage", help="Estate recommendations")
     p_lev.add_argument("--mode", default="compose", choices=MODES)
     p_lev.add_argument("--summary", action="store_true")
     p_lev.set_defaults(func=cmd_leverage)

@@ -1,4 +1,4 @@
-"""Cycle stages — DISCOVER through DEPLOY with estate leverage."""
+"""Cycle stages — DISCOVER through DEPLOY with estate leverage + live invoke."""
 
 from __future__ import annotations
 
@@ -8,6 +8,7 @@ from typing import Any, Callable
 from .bridges import GeniusBridge, MegaSkillsBridge, MemoryBridge, PipelineBridge
 from .estate import estate_status, load_estate
 from .estate_leverage import catalog_summary, leverage_map
+from .invoke import invoke_pipeline
 from .leading_edge import library_stats
 from .plan import build_plan
 from .receipts import StageReceipt
@@ -56,7 +57,6 @@ def stage_discover(mode: str, target: str, ctx: dict[str, Any]) -> StageReceipt:
 def stage_frame(mode: str, target: str, ctx: dict[str, Any]) -> StageReceipt:
     problem = ctx.get("problem", "")
     plan = build_plan(mode, target, problem=problem)
-    # Prefer catalog FDE priority pipelines when framing compose/upgrade
     lev = ctx.get("leverage") or leverage_map(mode)
     cat = lev.get("catalog") or {}
     priority = (cat.get("mega_skills") or {}).get("fde_priority") or []
@@ -123,6 +123,15 @@ def stage_integrate(mode: str, target: str, ctx: dict[str, Any]) -> StageReceipt
         pipes.get("mega_skills_pipelines") or {}
     ).get("available"):
         wired.append("pipelines")
+
+    # Live invoke: validate-only when mega-skills path is present
+    pipeline_id = "control-plane"
+    plan = ctx.get("plan")
+    if plan and getattr(plan, "pipeline_hints", None):
+        pipeline_id = plan.pipeline_hints[0]
+    inv = invoke_pipeline(pipeline_id, validate_only=True)
+    ctx["invoke"] = inv.to_dict()
+
     cat = lev.get("catalog") or catalog_summary()
     compose_graph = {
         "catalog_mega": (cat.get("mega_skills") or {}).get("mega"),
@@ -135,19 +144,22 @@ def stage_integrate(mode: str, target: str, ctx: dict[str, Any]) -> StageReceipt
         "deploy_mode": pipes.get("default_deploy_mode", "approval_packet_only"),
         "leading_edge_sources": library_stats().get("sources", 0),
         "recommendations": lev.get("recommendations"),
+        "live_invoke": inv.to_dict(),
     }
     ctx["compose_graph"] = compose_graph
-    note = "wired" if wired else "catalog-driven (set FDE_PATH_* for local execution)"
+    note = "wired" if wired else "catalog-driven"
+    inv_note = inv.status
     return StageReceipt(
         stage="integrate",
         mode=mode,
         status="ok",
-        summary=f"Integrate: {note}; wired={wired}; catalog mega={(cat.get('mega_skills') or {}).get('mega')}",
+        summary=f"Integrate: {note}; wired={wired}; live_invoke={inv_note} pipeline={pipeline_id}",
         evidence={
             "wired": wired,
             "compose_graph": compose_graph,
+            "live_invoke": inv.to_dict(),
             "probes": {"mega": mega, "genius": genius, "memory": memory, "pipelines": pipes},
-            "policy": "catalog_inventory_plus_optional_local_execution",
+            "policy": "validate_only_default_no_network_deploy",
         },
     )
 
@@ -162,6 +174,12 @@ def stage_evaluate(mode: str, target: str, ctx: dict[str, Any]) -> StageReceipt:
     }
     if mode in ("ground_up", "invent") and ctx.get("scaffold"):
         checks["scaffold_files"] = ctx["scaffold"].get("count", 0) >= 5
+    # Live invoke fail does not fail the cycle unless path was set and validate failed hard
+    inv = ctx.get("invoke") or {}
+    if inv.get("available") and inv.get("action") == "validate_only" and inv.get("status") == "fail":
+        checks["live_validate"] = False
+    else:
+        checks["live_validate"] = True
     ok = all(bool(v) for v in checks.values())
     return StageReceipt(
         stage="evaluate",
@@ -187,7 +205,12 @@ def stage_prove(mode: str, target: str, ctx: dict[str, Any]) -> StageReceipt:
         mode=mode,
         status="ok",
         summary="Proof packet — stage receipts + estate spine",
-        evidence={"proof_spine": spine, "mode": mode, "target": target},
+        evidence={
+            "proof_spine": spine,
+            "mode": mode,
+            "target": target,
+            "live_invoke": ctx.get("invoke"),
+        },
     )
 
 
@@ -198,7 +221,7 @@ def stage_deploy(mode: str, target: str, ctx: dict[str, Any]) -> StageReceipt:
         "mode": mode,
         "artifact_dir": ctx.get("artifact_dir"),
         "next": "Human approval required before merge/network/send",
-        "estate_note": "Local FDE_PATH_* enables mega-skills/Genius runners without vendoring",
+        "estate_note": "FDE_PATH_MEGA_SKILLS enables live validate; --execute for full pipeline",
     }
     return StageReceipt(
         stage="deploy",
