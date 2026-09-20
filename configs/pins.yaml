@@ -1,0 +1,9 @@
+# Pinned upstream SHAs for reproducible CI
+schema: fde.pins/v1
+mega_skills:
+  repository: GlacierEQ/mega-skills
+  ref: c100fbb3b603d5cc3141c3dd8755c2d0f62ac39a
+  note: main tip at 2026-09-20 powerhouse integration
+genius_mastery:
+  repository: GlacierEQ/Genius-Mastery
+  ref: a868653db84f3cd0833652bcc14db93a9a1b5286

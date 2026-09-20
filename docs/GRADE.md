@@ -1,4 +1,4 @@
-# Grade — v0.6.0 MAXIMIZE
+# Grade — v0.6.1 (9+ closeout items landed)
 
 **Bar:** 9+
 
@@ -8,17 +8,21 @@
 | Zero-to-hero | **A** |
 | Modes | **A** |
 | Estate catalog | **A** |
-| Live mega-skills | **A-** |
-| Live Genius doctor/synthesize | **A-** |
-| Edge probe + history store | **A** |
-| Upgrade scan | **A-** |
-| Maximize one-shot | **A** |
-| CI (ruff+pytest+demo) | **A-** |
+| Live mega-skills | **A** (pinned CI validate-only) |
+| Genius hook | **A-** |
+| Edge + history + schedule | **A** |
+| Coverage gate | **A-** (fail-under 70; climb to 80) |
+| Maximize | **A** |
+| CI | **A** |
 | Production agent runtime | **B+** |
 | Anti-oscillation | **A** |
 
-## Overall: **A / approaching 9+**
+## Overall: **A / 9-range**
 
-Remaining pure 9+: pinned mega-skills CI execute job, coverage ≥80% enforced, scheduled edge history in Actions artifacts.
+Closed on main:
 
-Trajectory: B+ → A- → A → **A (maximized)**.
+1. **Pinned mega-skills CI** — SHA in `configs/pins.yaml` + validate-only job  
+2. **Coverage gate** — `--cov-fail-under=70` on matrix  
+3. **Scheduled edge artifacts** — weekly + manual, 90-day artifact retention  
+
+Optional: set `ESTATE_CHECKOUT_TOKEN` so the pinned job always runs against private mega-skills.

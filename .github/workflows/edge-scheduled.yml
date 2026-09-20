@@ -1,0 +1,48 @@
+name: Scheduled edge artifacts
+
+on:
+  schedule:
+    # Weekly Monday 16:00 UTC
+    - cron: "0 16 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  edge-probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Probe and persist edge receipts
+        run: |
+          python -m fde_powerhouse edge-probe --persist --limit 20 --work-dir .
+          python -m fde_powerhouse edge-probe --history --work-dir .
+          ls -la .fde/edge_history/ || true
+
+      - name: Upload edge history artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: edge-history-${{ github.run_id }}
+          path: |
+            .fde/edge_history/
+          retention-days: 90
+
+      - name: Summary
+        run: |
+          echo "## Edge probe" >> $GITHUB_STEP_SUMMARY
+          if [ -f .fde/edge_history/LATEST.json ]; then
+            python -c "import json; d=json.load(open('.fde/edge_history/LATEST.json')); print(f\"ok={d.get('ok_count')} fail={d.get('fail_count')} sha={d.get('sha256','')[:16]}\")" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "No LATEST.json" >> $GITHUB_STEP_SUMMARY
+          fi
