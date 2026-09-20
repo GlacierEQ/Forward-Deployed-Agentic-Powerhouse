@@ -14,7 +14,8 @@ def test_scaffold_writes_agent_package(tmp_path: Path):
     assert (root / "src/agent/orchestrator.py").is_file()
     assert (root / "src/agent/policy.py").is_file()
     assert (root / "src/agent/memory_port.py").is_file()
-    assert (root / "tests/test_scaffold_smoke.py").is_file()
+    assert (root / "src/agent/tools.py").is_file()
+    assert (root / "tests/test_agent_loop.py").is_file()
 
 
 def test_ground_up_cycle_creates_scaffold(tmp_path: Path):
