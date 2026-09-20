@@ -1,4 +1,8 @@
-"""Universal modes: ground_up, refactor, repoint, update, upgrade, merge, invent, innovate, compose."""
+"""Universal modes: ground_up through compose.
+
+Emphasis in modes.yaml is a priority signal only.
+Stage execution order is always the fixed FDE spine.
+"""
 
 from __future__ import annotations
 
@@ -41,15 +45,14 @@ def load_modes(config_path: Path | None = None) -> dict[str, Any]:
 
 
 def mode_emphasis(mode: str) -> list[str]:
+    """Return fixed spine order. Emphasis metadata is available via load_modes."""
+    _ = mode  # mode selects plan/skill targets elsewhere; spine is universal
+    return list(STAGES)
+
+
+def mode_priority_stages(mode: str) -> list[str]:
+    """Optional priority list from config (does not change execution order)."""
     cfg = load_modes()
     entry = (cfg.get("modes") or {}).get(mode) or {}
     emphasis = entry.get("emphasis") or list(STAGES)
-    # Always run full spine; emphasis is priority signal only
-    ordered = []
-    for s in STAGES:
-        if s in emphasis or s.replace("_", "-") in emphasis:
-            ordered.append(s)
-    for s in STAGES:
-        if s not in ordered:
-            ordered.append(s)
-    return ordered
+    return [s for s in emphasis if s in STAGES]
