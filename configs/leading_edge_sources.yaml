@@ -1,0 +1,313 @@
+# Leading-edge public tech library
+# Homepages for continuous edge-catching — tech news, dev news, declassified/public technical
+schema: fde.leading_edge_sources/v1
+purpose: continuous_public_tech_edge
+policy:
+  public_only: true
+  no_paywall_scraping_claims: true
+  refresh_hint: poll_homepages_and_rss_where_available
+
+categories:
+  tech_news:
+    description: General and industry tech news homepages
+    sources:
+      - id: techcrunch
+        name: TechCrunch
+        homepage: https://techcrunch.com/
+        focus: [startups, funding, consumer_tech]
+      - id: the_verge
+        name: The Verge
+        homepage: https://www.theverge.com/
+        focus: [consumer_tech, policy, products]
+      - id: ars_technica
+        name: Ars Technica
+        homepage: https://arstechnica.com/
+        focus: [deep_tech, science, policy]
+      - id: wired
+        name: WIRED
+        homepage: https://www.wired.com/
+        focus: [culture, security, AI]
+      - id: mit_tech_review
+        name: MIT Technology Review
+        homepage: https://www.technologyreview.com/
+        focus: [research, AI, climate, biotech]
+      - id: ieee_spectrum
+        name: IEEE Spectrum
+        homepage: https://spectrum.ieee.org/
+        focus: [engineering, hardware, standards]
+      - id: venturebeat
+        name: VentureBeat
+        homepage: https://venturebeat.com/
+        focus: [AI, enterprise, games]
+      - id: protocol_sf
+        name: Protocol (archive/redirect aware)
+        homepage: https://www.protocol.com/
+        focus: [policy, platforms]
+      - id: rest_of_world
+        name: Rest of World
+        homepage: https://restofworld.org/
+        focus: [global_tech, emerging_markets]
+      - id: semi_analysis
+        name: SemiAnalysis
+        homepage: https://www.semianalysis.com/
+        focus: [semiconductors, AI_infra, supply_chain]
+
+  ai_frontier:
+    description: AI research labs, model releases, safety/public research
+    sources:
+      - id: openai_blog
+        name: OpenAI Blog
+        homepage: https://openai.com/blog
+        focus: [models, research, products]
+      - id: anthropic_news
+        name: Anthropic News
+        homepage: https://www.anthropic.com/news
+        focus: [models, safety, research]
+      - id: deepmind_blog
+        name: Google DeepMind Blog
+        homepage: https://deepmind.google/discover/blog/
+        focus: [research, agents, science]
+      - id: meta_ai_blog
+        name: Meta AI Blog
+        homepage: https://ai.meta.com/blog/
+        focus: [open_models, research]
+      - id: huggingface_blog
+        name: Hugging Face Blog
+        homepage: https://huggingface.co/blog
+        focus: [open_source, models, tools]
+      - id: microsoft_research
+        name: Microsoft Research Blog
+        homepage: https://www.microsoft.com/en-us/research/blog/
+        focus: [research, systems, AI]
+      - id: nvidia_blog
+        name: NVIDIA Blog
+        homepage: https://blogs.nvidia.com/
+        focus: [GPU, CUDA, inference, data_center]
+      - id: xai_news
+        name: xAI
+        homepage: https://x.ai/
+        focus: [models, Grok]
+      - id: cohere_blog
+        name: Cohere Blog
+        homepage: https://cohere.com/blog
+        focus: [enterprise_LLM, retrieval]
+      - id: mistral_news
+        name: Mistral AI
+        homepage: https://mistral.ai/news/
+        focus: [open_models, Europe]
+
+  dev_news:
+    description: Developer-facing news, changelogs, engineering blogs
+    sources:
+      - id: hacker_news
+        name: Hacker News
+        homepage: https://news.ycombinator.com/
+        focus: [dev_discourse, launches, papers]
+      - id: lobsters
+        name: Lobsters
+        homepage: https://lobste.rs/
+        focus: [engineering_discussion]
+      - id: dev_to
+        name: DEV Community
+        homepage: https://dev.to/
+        focus: [tutorials, community]
+      - id: infoq
+        name: InfoQ
+        homepage: https://www.infoq.com/
+        focus: [architecture, practices]
+      - id: thenewstack
+        name: The New Stack
+        homepage: https://thenewstack.io/
+        focus: [cloud_native, platform]
+      - id: github_changelog
+        name: GitHub Changelog
+        homepage: https://github.blog/changelog/
+        focus: [platform, Actions, Copilot]
+      - id: github_blog
+        name: GitHub Blog
+        homepage: https://github.blog/
+        focus: [engineering, open_source]
+      - id: stackoverflow_blog
+        name: Stack Overflow Blog
+        homepage: https://stackoverflow.blog/
+        focus: [developers, surveys, AI_tools]
+      - id: aws_news
+        name: AWS News Blog
+        homepage: https://aws.amazon.com/blogs/aws/
+        focus: [cloud, services]
+      - id: google_cloud_blog
+        name: Google Cloud Blog
+        homepage: https://cloud.google.com/blog
+        focus: [cloud, AI, data]
+      - id: azure_blog
+        name: Azure Blog
+        homepage: https://azure.microsoft.com/en-us/blog/
+        focus: [cloud, enterprise]
+      - id: cloudflare_blog
+        name: Cloudflare Blog
+        homepage: https://blog.cloudflare.com/
+        focus: [edge, security, networking]
+      - id: vercel_blog
+        name: Vercel Blog
+        homepage: https://vercel.com/blog
+        focus: [frontend, AI_sdk, DX]
+      - id: docker_blog
+        name: Docker Blog
+        homepage: https://www.docker.com/blog/
+        focus: [containers, supply_chain]
+      - id: kubernetes_blog
+        name: Kubernetes Blog
+        homepage: https://kubernetes.io/blog/
+        focus: [orchestration, CNCF]
+
+  research_preprints:
+    description: Open research and preprint homepages
+    sources:
+      - id: arxiv
+        name: arXiv
+        homepage: https://arxiv.org/
+        focus: [cs_AI, systems, papers]
+      - id: arxiv_cs_ai
+        name: arXiv cs.AI
+        homepage: https://arxiv.org/list/cs.AI/recent
+        focus: [AI_recent]
+      - id: arxiv_cs_lg
+        name: arXiv cs.LG
+        homepage: https://arxiv.org/list/cs.LG/recent
+        focus: [ML_recent]
+      - id: arxiv_cs_cl
+        name: arXiv cs.CL
+        homepage: https://arxiv.org/list/cs.CL/recent
+        focus: [NLP_recent]
+      - id: arxiv_cs_se
+        name: arXiv cs.SE
+        homepage: https://arxiv.org/list/cs.SE/recent
+        focus: [software_engineering]
+      - id: papers_with_code
+        name: Papers with Code
+        homepage: https://paperswithcode.com/
+        focus: [SOTA, benchmarks, code]
+      - id: openreview
+        name: OpenReview
+        homepage: https://openreview.net/
+        focus: [peer_review, conferences]
+      - id: acl_anthology
+        name: ACL Anthology
+        homepage: https://aclanthology.org/
+        focus: [NLP_papers]
+
+  declassified_public_technical:
+    description: Declassified and public-domain technical / government / standards sources
+    sources:
+      - id: nasa_technical_reports
+        name: NASA Technical Reports Server
+        homepage: https://ntrs.nasa.gov/
+        focus: [aerospace, systems, public_research]
+      - id: nasa_software
+        name: NASA Software Catalog
+        homepage: https://software.nasa.gov/
+        focus: [public_software]
+      - id: nist
+        name: NIST
+        homepage: https://www.nist.gov/
+        focus: [standards, cybersecurity, AI_risk]
+      - id: nist_csrc
+        name: NIST Computer Security Resource Center
+        homepage: https://csrc.nist.gov/
+        focus: [security_publications, frameworks]
+      - id: cisa
+        name: CISA
+        homepage: https://www.cisa.gov/
+        focus: [cybersecurity, advisories]
+      - id: cia_foia_reading
+        name: CIA FOIA Electronic Reading Room
+        homepage: https://www.cia.gov/readingroom/
+        focus: [declassified, historical_intel_tech]
+      - id: nsa_foia
+        name: NSA FOIA Reading Room
+        homepage: https://www.nsa.gov/Helpful-Links/NSA-FOIA/
+        focus: [declassified, cryptology_history]
+      - id: dod_dtics
+        name: DTIC (Defense Technical Information Center)
+        homepage: https://discover.dtic.mil/
+        focus: [defense_technical, public_releases]
+      - id: energy_osti
+        name: DOE OSTI
+        homepage: https://www.osti.gov/
+        focus: [energy_science, technical_reports]
+      - id: loc_digital
+        name: Library of Congress Digital Collections
+        homepage: https://www.loc.gov/collections/
+        focus: [public_domain, historical_tech]
+      - id: data_gov
+        name: Data.gov
+        homepage: https://data.gov/
+        focus: [open_government_data]
+      - id: regulations_gov
+        name: Regulations.gov
+        homepage: https://www.regulations.gov/
+        focus: [policy, rulemaking]
+      - id: rfc_editor
+        name: RFC Editor
+        homepage: https://www.rfc-editor.org/
+        focus: [internet_standards]
+      - id: ietf
+        name: IETF
+        homepage: https://www.ietf.org/
+        focus: [protocols, drafts]
+      - id: w3c
+        name: W3C
+        homepage: https://www.w3.org/
+        focus: [web_standards]
+      - id: cncf
+        name: CNCF
+        homepage: https://www.cncf.io/
+        focus: [cloud_native, projects]
+      - id: linux_foundation
+        name: Linux Foundation
+        homepage: https://www.linuxfoundation.org/
+        focus: [open_source_governance]
+
+  security_edge:
+    description: Security research and advisory homepages
+    sources:
+      - id: krebs
+        name: Krebs on Security
+        homepage: https://krebsonsecurity.com/
+        focus: [breach_investigation]
+      - id: project_zero
+        name: Google Project Zero
+        homepage: https://googleprojectzero.blogspot.com/
+        focus: [vulnerability_research]
+      - id: msrc
+        name: Microsoft Security Response Center
+        homepage: https://msrc.microsoft.com/blog/
+        focus: [advisories]
+      - id: nvd
+        name: NVD
+        homepage: https://nvd.nist.gov/
+        focus: [CVE, vulnerability_data]
+      - id: cve
+        name: CVE
+        homepage: https://www.cve.org/
+        focus: [vulnerability_ids]
+
+  standards_hardware:
+    description: Hardware, chips, systems public edge
+    sources:
+      - id: anandtech_archive
+        name: AnandTech (historical/archive aware)
+        homepage: https://www.anandtech.com/
+        focus: [hardware_analysis]
+      - id: tomshardware
+        name: Tom's Hardware
+        homepage: https://www.tomshardware.com/
+        focus: [components, reviews]
+      - id: nextplatform
+        name: The Next Platform
+        homepage: https://www.nextplatform.com/
+        focus: [HPC, data_center, systems]
+      - id: chips_and_cheese
+        name: Chips and Cheese
+        homepage: https://chipsandcheese.com/
+        focus: [microarchitecture]
