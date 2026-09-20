@@ -1,0 +1,394 @@
+{
+  "schema": "apex.agent-modes/v1",
+  "repository": "GlacierEQ/Pro-DOCTOR-STRANGE",
+  "mega_skill": "apex-command-core",
+  "purpose": "Canonical registry of agent operational modes — execution posture, specialist persona, and composite mission presets. Replaces the hard-coded 4-mode enum with an extensible, verifiable catalogue.",
+  "execution_modes": {
+    "standard": {
+      "intent": "Balanced execution with verification gates between phases.",
+      "parallelism": "bounded",
+      "verification": "per-phase",
+      "blast_radius": "scoped",
+      "fail_safe": "apex-fail-safe-governor",
+      "use_when": "Default for ambiguous or mixed-scope missions."
+    },
+    "aggressive": {
+      "intent": "Maximum throughput; parallelize independent lanes, minimize wait.",
+      "parallelism": "max",
+      "verification": "terminal-only",
+      "blast_radius": "scoped",
+      "fail_safe": "apex-fail-safe-governor",
+      "use_when": "Well-specified mechanical work with reversible mutations."
+    },
+    "conservative": {
+      "intent": "Extra verification, rollback-safe, minimal blast radius.",
+      "parallelism": "serial",
+      "verification": "per-step",
+      "blast_radius": "minimal",
+      "fail_safe": "apex-fail-safe-governor + explicit confirm",
+      "use_when": "Destructive, legal, or trust-sensitive actions."
+    },
+    "dry_run": {
+      "intent": "Simulate; emit planned actions, perform zero mutations.",
+      "parallelism": "n/a",
+      "verification": "plan-only",
+      "blast_radius": "none",
+      "fail_safe": "read-only",
+      "use_when": "Pre-flight review, proposal generation, risk assessment."
+    },
+    "autonomous": {
+      "intent": "Self-directed with checkpointing and auto-heal on deviation.",
+      "parallelism": "adaptive",
+      "verification": "checkpoint-gated",
+      "blast_radius": "scoped",
+      "fail_safe": "auto-return-to-last-verified-state",
+      "use_when": "Long-horizon tasks with clear stop conditions."
+    },
+    "swarm": {
+      "intent": "DAG fan-out across specialist workers with synthesis + verifier.",
+      "parallelism": "fan-out",
+      "verification": "independent-verifier",
+      "blast_radius": "lane-isolated",
+      "fail_safe": "lane-containment",
+      "use_when": "Multi-domain problems needing independent analyses."
+    },
+    "deep": {
+      "intent": "Longest-horizon sequential reasoning, hypothesis competition.",
+      "parallelism": "serial-deep",
+      "verification": "reasoning-chain-audit",
+      "blast_radius": "n/a",
+      "fail_safe": "contradiction-first-investigation",
+      "use_when": "Strategic, legal, or architecture decisions."
+    },
+    "recovery": {
+      "intent": "Return to last verified state; rebuild forward from failure.",
+      "parallelism": "serial",
+      "verification": "state-readback",
+      "blast_radius": "rollback-targeted",
+      "fail_safe": "snapshot-before-mutate",
+      "use_when": "After first-path failure or invalidated assumption."
+    },
+    "deep-swarm": {
+      "intent": "Long-horizon sequential reasoning distributed across a Diamond Agent Topography with Spiral Engine refinement.",
+      "parallelism": "diamond-grid-lateral",
+      "verification": "spiral-engine-cyclical",
+      "blast_radius": "lane-isolated",
+      "fail_safe": "contradiction-first-investigation + lane-containment",
+      "use_when": "Missions demanding the absolute highest quality reasoning coupled with parallel lifecycle execution."
+    },
+    "omni-swarm-lifetime": {
+      "intent": "Dynamic DAG task decomposition, non-blocking parallel worker dispatch across independent execution branches, and lifetime state tracking with zero-cost free-tier multi-model routing.",
+      "parallelism": "dynamic-dag-parallel",
+      "verification": "spiral-engine-cyclical",
+      "blast_radius": "lane-isolated",
+      "fail_safe": "contradiction-first-investigation + auto-replan-on-deviation",
+      "use_when": "Full project lifetime autonomous development, parallel feature engineering, and cross-repo federation."
+    },
+    "pro-elite": {
+      "intent": "Strongest version: omni-swarm parallelism fused with longest-horizon framework (Aspen-Grove durable memory, High Council multi-VP adjudication, sequential reasoning DAG, Bayesian confidence, make-it-heavy provenance, token-saver pointer compression). Zero-Hallucination Gate is the only blocking gate — refuses unverified claims, never blocks real work.",
+      "parallelism": "dynamic-dag-parallel + serial-deep-on-hard-segments",
+      "verification": "spiral-engine-cyclical + reasoning-chain-audit + make-it-heavy-report + token-budget-check",
+      "blast_radius": "lane-isolated with WORM-locked legal-lane",
+      "fail_safe": "contradiction-first-investigation + auto-replan-on-deviation + checkpoint-restore-from-Aspen-Grove",
+      "use_when": "Maximum-coherent-advance missions where the operator wants the strongest composition available, every claim evidence-backed, every checkpoint recoverable, and zero progress lost to paralyzing gates.",
+      "framework_bindings": {
+        "memory": "longest-horizon.framework.aspen_grove.AspenGrove",
+        "reasoning": "longest-horizon.framework.sequential_thinking.SequentialThinker",
+        "adjudication": "longest-horizon.framework.high_council.HighCouncil",
+        "logic": "longest-horizon.framework.genius_logic.LogicEngine",
+        "bayes": "longest-horizon.framework.ml.BeliefUpdater",
+        "token_saver": "longest-horizon.framework.token_budget.TokenBudget",
+        "checkpoint": "longest-horizon.framework.long_horizon.LongHorizonStore",
+        "provenance": "longest-horizon.framework.heaviness_seal.HeavySeal",
+        "hardening": "longest-horizon.framework.hardening.atomic_write",
+        "legal_worm": "longest-horizon.framework.legal_worm.run_legal_worm"
+      }
+    },
+    "deep-work-sequential-kernel": {
+      "intent": "Continuous 30-section sequential engineering lifecycle (Research -> Study -> Model -> Prioritize -> Design -> Build -> Test -> Integrate -> Measure -> Review -> Deploy -> Observe -> Improve -> Preserve -> Research Again).",
+      "parallelism": "dependency-aware-sequential + specialist-fan-out",
+      "verification": "per-wave-readback + adversarial-review + master-practitioner-audit",
+      "blast_radius": "lane-isolated",
+      "fail_safe": "correction-law-root-cause + auto-restore",
+      "skill": "apex-deep-work-kernel",
+      "use_when": "Continuous repository advancement where no material high-value work is left unresolved."
+    }
+  },
+  "role_modes": {
+    "cartographer": {
+      "source": "AGENTS.md §6.2",
+      "domain": "discovery",
+      "skill": "apex-specialist-registry"
+    },
+    "miner": {
+      "source": "AGENTS.md §6.2",
+      "domain": "reuse",
+      "skill": "apex-specialist-registry"
+    },
+    "connector": {
+      "source": "AGENTS.md §6.2",
+      "domain": "integration",
+      "skill": "apex-connector-mesh"
+    },
+    "architect": {
+      "source": "AGENTS.md §6.2",
+      "domain": "design",
+      "skill": "apex-command-core"
+    },
+    "implementer": {
+      "source": "AGENTS.md §6.2",
+      "domain": "code",
+      "skill": "apex-engineering-excellence"
+    },
+    "reliability": {
+      "source": "AGENTS.md §6.2",
+      "domain": "ops",
+      "skill": "apex-engineering-excellence"
+    },
+    "perf": {
+      "source": "AGENTS.md §6.2",
+      "domain": "perf",
+      "skill": "apex-engineering-excellence"
+    },
+    "legal-research": {
+      "source": "AGENTS.md §6.2",
+      "domain": "legal",
+      "skill": "apex-legal-intelligence"
+    },
+    "forensics": {
+      "source": "AGENTS.md §6.2",
+      "domain": "legal",
+      "skill": "apex-legal-intelligence"
+    },
+    "evidence": {
+      "source": "AGENTS.md §6.2",
+      "domain": "legal",
+      "skill": "apex-legal-intelligence"
+    },
+    "adversarial": {
+      "source": "AGENTS.md §6.2",
+      "domain": "legal",
+      "skill": "apex-legal-intelligence"
+    },
+    "procedural": {
+      "source": "AGENTS.md §6.2",
+      "domain": "legal",
+      "skill": "apex-legal-intelligence"
+    },
+    "brief": {
+      "source": "AGENTS.md §6.2",
+      "domain": "legal",
+      "skill": "apex-legal-intelligence"
+    },
+    "citation": {
+      "source": "AGENTS.md §6.2",
+      "domain": "legal",
+      "skill": "apex-legal-intelligence"
+    },
+    "contradiction": {
+      "source": "AGENTS.md §6.2",
+      "domain": "forensics",
+      "skill": "apex-legal-intelligence"
+    },
+    "redteam": {
+      "source": "AGENTS.md §6.2",
+      "domain": "adversarial",
+      "skill": "apex-legal-intelligence"
+    },
+    "verify": {
+      "source": "AGENTS.md §6.2",
+      "domain": "verification",
+      "skill": "apex-command-core"
+    },
+    "zero-hallucination-gate": {
+      "source": "longest-horizon framework (operator doctrine)",
+      "domain": "verification",
+      "skill": "longest-horizon",
+      "binding": "longest-horizon.framework.zero_hallucination_gate",
+      "blocking": false,
+      "informational_only": true,
+      "note": "The only gate that may refuse: refuses unverified claims, never blocks progress. Lives in longest-horizon as the highest-priority pre-commit check."
+    }
+  },
+  "composite_modes": {
+    "job-app-finalize": {
+      "execution": "conservative",
+      "roles": [
+        "forensics",
+        "brief",
+        "evidence",
+        "verify"
+      ],
+      "use_when": "Finalizing a verifiable job-application completion surface (e.g. repo_excellence -> helix)."
+    },
+    "legal-strike": {
+      "execution": "conservative",
+      "roles": [
+        "legal-research",
+        "adversarial",
+        "brief",
+        "citation"
+      ],
+      "use_when": "Producing a filing-ready legal artifact under deadline."
+    },
+    "litigation-colossus": {
+      "execution": "pro-elite",
+      "roles": [
+        "forensics",
+        "legal-research",
+        "adversarial",
+        "brief",
+        "evidence",
+        "contradiction",
+        "citation",
+        "verify"
+      ],
+      "skill": "apex-litigation-colossus",
+      "use_when": "Building 1 complete, 7-pillar filing-ready case package per repository in its entirety from L0 evidence to proposed judicial orders."
+    },
+    "deep-work-kernel": {
+      "execution": "deep-work-sequential-kernel",
+      "roles": [
+        "architect",
+        "implementer",
+        "reliability",
+        "perf",
+        "adversarial",
+        "verify"
+      ],
+      "skill": "apex-deep-work-kernel",
+      "use_when": "Executing the complete 30-section sequential engineering lifecycle until no material high-value work remains unresolved."
+    },
+    "code-sprint": {
+      "execution": "aggressive",
+      "roles": [
+        "implementer",
+        "reliability",
+        "perf",
+        "verify"
+      ],
+      "use_when": "Closing real execution paths on a known codebase."
+    },
+    "discovery": {
+      "execution": "dry_run",
+      "roles": [
+        "cartographer",
+        "miner",
+        "connector"
+      ],
+      "use_when": "Mapping estate before any mutation."
+    },
+    "mesh-repair": {
+      "execution": "recovery",
+      "roles": [
+        "cartographer",
+        "connector",
+        "verify"
+      ],
+      "use_when": "Restoring a degraded connector or service mesh."
+    },
+    "automatic-open-state": {
+      "execution": "deep-swarm",
+      "roles": [
+        "architect",
+        "cartographer",
+        "implementer",
+        "verify"
+      ],
+      "use_when": "Default runtime state for immense quality lifecycle execution."
+    },
+    "tower-of-babel": {
+      "execution": "deep-swarm",
+      "roles": [
+        "architect",
+        "cartographer",
+        "connector",
+        "implementer",
+        "verify"
+      ],
+      "use_when": "Massive multi-lingual orchestration, protocol bridging, and cross-domain unification missions."
+    },
+    "mastermind-foundry": {
+      "execution": "deep-swarm",
+      "roles": [
+        "architect",
+        "cartographer",
+        "miner",
+        "connector",
+        "implementer",
+        "reliability",
+        "perf",
+        "redteam",
+        "verify"
+      ],
+      "use_when": "Full 4-wave autonomous foundry ignition across all estate repositories."
+    },
+    "omni-swarm-lifetime": {
+      "execution": "omni-swarm-lifetime",
+      "roles": [
+        "architect",
+        "cartographer",
+        "miner",
+        "connector",
+        "implementer",
+        "reliability",
+        "perf",
+        "legal-research",
+        "forensics",
+        "evidence",
+        "adversarial",
+        "procedural",
+        "brief",
+        "citation",
+        "contradiction",
+        "redteam",
+        "verify"
+      ],
+      "use_when": "Full project lifetime dynamic orchestration of parallel specialist agents across all 17 canonical roles with zero-cost multi-model routing."
+    },
+    "pro-elite": {
+      "execution": "pro-elite",
+      "roles": [
+        "architect",
+        "cartographer",
+        "miner",
+        "connector",
+        "implementer",
+        "reliability",
+        "perf",
+        "legal-research",
+        "forensics",
+        "evidence",
+        "adversarial",
+        "procedural",
+        "brief",
+        "citation",
+        "contradiction",
+        "redteam",
+        "verify",
+        "zero-hallucination-gate"
+      ],
+      "use_when": "The strongest composition available: every claim evidence-backed via Zero-Hallucination Gate, every checkpoint recoverable via Aspen-Grove WORM, every contradiction adjudicated by High Council, every progress token-budgeted. Use when maximum-coherent-advance beats any cost optimization."
+    }
+  },
+  "zero_hallucination_gate": {
+    "principle": "Gates stop hallucination, never block progress.",
+    "refuses": [
+      "claims without tool evidence / source citation / test pass",
+      "simulated execution presented as live",
+      "fabricated legal authority or evidence",
+      "completion claims without verification step"
+    ],
+    "never_refuses": [
+      "real work that is verifiable",
+      "reversible mutations under scope",
+      "operator-clarifying questions when intent is ambiguous",
+      "progress when verification is in-flight but not yet complete"
+    ],
+    "owner": "longest-horizon.framework.zero_hallucination_gate"
+  },
+  "verification": {
+    "self_test": "apex_command.py modes --verify",
+    "expect": "all execution_modes + role_modes + composite_modes resolve with valid skill bindings"
+  }
+}

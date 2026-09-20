@@ -1,0 +1,125 @@
+{
+  "schema": "apex.service-manifest/v1",
+  "services": [
+    {
+      "id": "colossus_gateway",
+      "name": "Colossus Gateway",
+      "owner": "mega_supervisor",
+      "host": "127.0.0.1",
+      "port": 3000,
+      "command": ["python3", "/root/src/colossus_trinity_runner.py", "3000"],
+      "log_file": "/tmp/colossus_gateway.log",
+      "readiness": {"path": "/health", "status": ["ONLINE"], "required": ["status", "service", "port"]}
+    },
+    {
+      "id": "colossus_gatekeeper",
+      "name": "Colossus Gatekeeper",
+      "owner": "mega_supervisor",
+      "host": "127.0.0.1",
+      "port": 4000,
+      "command": ["python3", "/root/src/colossus_trinity_runner.py", "4000"],
+      "log_file": "/tmp/colossus_gatekeeper.log",
+      "readiness": {"path": "/health", "status": ["ONLINE"], "required": ["status", "service", "port"]}
+    },
+    {
+      "id": "colossus_key_master",
+      "name": "Colossus Key Master",
+      "owner": "mega_supervisor",
+      "host": "127.0.0.1",
+      "port": 4001,
+      "command": ["python3", "/root/src/colossus_trinity_runner.py", "4001"],
+      "log_file": "/tmp/colossus_key_master.log",
+      "readiness": {"path": "/health", "status": ["ONLINE"], "required": ["status", "service", "port"]}
+    },
+    {
+      "id": "supermemory_brain",
+      "name": "Supermemory Unified Brain",
+      "owner": "mega_supervisor",
+      "host": "127.0.0.1",
+      "port": 4002,
+      "command": ["python3", "/root/src/colossus_trinity_runner.py", "4002"],
+      "log_file": "/tmp/supermemory_unified_brain.log",
+      "readiness": {"path": "/health", "status": ["ONLINE"], "required": ["status", "service", "port"]}
+    },
+    {
+      "id": "apex_device_rpc",
+      "name": "APEX Device RPC Bridge",
+      "owner": "mega_supervisor",
+      "host": "127.0.0.1",
+      "port": 8990,
+      "command": ["python3", "/root/.agents/skills/apex-sovereign-supreme/scripts/device_access_supreme.py", "--serve"],
+      "log_file": "/tmp/apex_device_rpc.log",
+      "readiness": {"path": "/health", "status": ["OK", "ONLINE"], "required": ["status", "service", "port"]}
+    },
+    {
+      "id": "apex_connector_gateway",
+      "name": "APEX Connector Gateway",
+      "owner": "mega_supervisor",
+      "host": "127.0.0.1",
+      "port": 9000,
+      "command": ["python3", "/root/.agents/skills/apex-sovereign-supreme/scripts/connector_hub_supreme.py", "--serve"],
+      "log_file": "/tmp/apex_connector_gateway.log",
+      "readiness": {"path": "/health", "status": ["OK", "ONLINE"], "required": ["status", "service", "port"]}
+    },
+    {
+      "id": "smithery_mesh_proxy",
+      "name": "Holographic Mesh Proxy",
+      "owner": "mega_supervisor",
+      "host": "127.0.0.1",
+      "port": 8999,
+      "command": ["python3", "/root/.agents/skills/smithery-holographic-mesh/scripts/smithery_proxy_server.py", "8999"],
+      "log_file": "/tmp/holographic_mesh.log",
+      "readiness": {"path": "/health", "status": ["ONLINE"], "required": ["status", "service", "port"]}
+    },
+    {
+      "id": "mastermind_api",
+      "name": "Mastermind API Engine",
+      "owner": "mega_supervisor",
+      "host": "127.0.0.1",
+      "port": 8741,
+      "command": ["python3", "/data/data/com.termux/files/home/CATEGORIES/04_LEGAL_AND_FORENSIC_INTEL/case_1fdv_nexus/mastermind/core/server.py"],
+      "log_file": "/tmp/mastermind_api.log",
+      "readiness": {"path": "/health", "status": ["ok", "OK", "ONLINE"], "required": ["status"]}
+    },
+    {
+      "id": "apex_memory_bridge",
+      "name": "Apex Memory Bridge",
+      "owner": "mega_supervisor",
+      "host": "127.0.0.1",
+      "port": 8787,
+      "command": ["python3", "/data/data/com.termux/files/home/scripts/memory_bridge.py", "8787"],
+      "log_file": "/tmp/apex_memory_bridge.log",
+      "readiness": {"path": "/health", "status": ["ONLINE"], "required": ["status", "service", "port"]}
+    },
+    {
+      "id": "nexus_api_gateway",
+      "name": "Nexus API Gateway",
+      "owner": "mega_supervisor",
+      "host": "127.0.0.1",
+      "port": 8002,
+      "command": ["python3", "/data/data/com.termux/files/home/scripts/nexus_api.py"],
+      "log_file": "/tmp/nexus_api.log",
+      "readiness": {"path": "/health", "status": ["ok", "OK", "ONLINE"], "required": ["status", "service"]}
+    },
+    {
+      "id": "apex_router",
+      "name": "Apex Router",
+      "owner": "mega_supervisor",
+      "host": "127.0.0.1",
+      "port": 8003,
+      "command": ["python3", "/data/data/com.termux/files/home/scripts/apex_router.py"],
+      "log_file": "/tmp/apex_router.log",
+      "readiness": {"path": "/health", "status": ["ok", "OK", "ONLINE"], "required": ["status", "service"]}
+    },
+    {
+      "id": "apex_google_mcp",
+      "name": "APEX Local Google MCP",
+      "owner": "runtime_optimizer",
+      "host": "127.0.0.1",
+      "port": 8888,
+      "command": ["python3", "/root/0_ORGANIZATION/scripts/_loose_root_scripts/apex_google_mcp_server.py"],
+      "log_file": "/tmp/apex_google_mcp.log",
+      "readiness": {"path": "/health", "status": ["OK", "ONLINE"], "required": ["status", "service", "version"]}
+    }
+  ]
+}
