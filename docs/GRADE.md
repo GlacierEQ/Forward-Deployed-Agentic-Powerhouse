@@ -1,7 +1,7 @@
 # Grade — Forward-Deployed-Agentic-Powerhouse
 
-**Graded:** 2026-09-20 · **Ref:** `main` v0.4.0  
-**Bar:** 9+ is the standard. Scores are honest.
+**Graded:** 2026-09-20 · **Ref:** `main` v0.5.0  
+**Bar:** 9+
 
 ---
 
@@ -9,29 +9,30 @@
 
 | Dimension | Grade | Notes |
 |-----------|-------|--------|
-| Identity lock (FDE) | **A** | Consistent everywhere |
-| Zero-to-hero path | **A** | Scaffold + 7 stages + demo |
-| Universal modes | **A-** | All nine run; upgrade/merge still thinner than ground_up |
-| Estate catalog leverage | **A** | Live 709/33/29 + pipeline IDs from mega-skills |
-| Live mega-skills invoke | **A-** | Real runner when path set; validate-only default; execute opt-in |
-| Receipts / honesty | **A** | SHA digests; soft-skip; human-gated deploy |
-| Leading-edge library | **A-** | Strong homepage set; not a live poller |
-| Showcase / proof / demo | **A** | Runnable impress path |
-| Tests / CI | **B+** | Coverage solid for kernel; no coverage gate yet |
-| Production agent depth | **B** | Scaffold is strong start, not full field multi-agent runtime |
-| Anti-oscillation | **A** | Dual-plane explicit |
+| Identity lock (FDE) | **A** | Locked |
+| Zero-to-hero | **A** | Scaffold + demo |
+| Universal modes | **A-** | All run |
+| Estate catalog | **A** | Live inventory |
+| Live mega-skills invoke | **A-** | validate-only default |
+| Live Genius hook | **A-** | doctor/markers when path set |
+| Edge probe receipts | **A-** | HEAD/GET sample + sha256 |
+| Receipts / honesty | **A** | Dual-plane |
+| Showcase / proof / demo | **A** | Includes genius + edge |
+| Tests / CI | **A-** | pytest + ruff + demo on 3.11–3.13 |
+| Production agent depth | **B+** | Strong scaffold, not full field runtime |
+| Anti-oscillation | **A** | Explicit |
 
 ---
 
-## Overall: **A-**
+## Overall: **A**
 
-Moved from **B+** (v0.2) → **A-** (v0.4) by: estate catalog, live invoke, showcase/proof/demo, integrate-stage validate.
+Trajectory: B+ (0.2) → A- (0.4) → **A** (0.5).
 
-**Still short of pure 9+ / A:**
+**Remaining to pure 9+ / A+:**
 
-1. Full pipeline `--execute` under CI against a pinned mega-skills checkout  
-2. Genius `synthesize` live hook when `FDE_PATH_GENIUS_MASTERY` set  
-3. Edge homepage poller with receipts  
-4. Coverage + ruff gates in CI  
+1. CI job with pinned mega-skills checkout + `--execute` dry path  
+2. `genius synthesize` full forge when path set  
+3. Scheduled edge probe with historical receipt store  
+4. Coverage gate ≥80%  
 
-Those close the last gap. The spine is real, right, and strong on `main`.
+Spine is real, right, and strong. Better is continuous.
