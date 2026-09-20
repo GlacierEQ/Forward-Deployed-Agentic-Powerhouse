@@ -1,0 +1,29 @@
+schema: fde.modes/v1
+modes:
+  ground_up:
+    description: Nothing to working agent system
+    emphasis: [discover, frame, build, integrate, evaluate, prove, deploy]
+  refactor:
+    description: Restructure without changing external contract
+    emphasis: [discover, frame, build, evaluate, prove]
+  repoint:
+    description: Retarget identity, deps, integration points
+    emphasis: [discover, frame, integrate, evaluate, prove]
+  update:
+    description: Bring to current contracts and tests
+    emphasis: [discover, update_contracts, evaluate, prove]
+  upgrade:
+    description: Raise capability via skills, memory, pipelines, genius
+    emphasis: [discover, frame, integrate, evaluate, prove, deploy]
+  merge:
+    description: Compose unique value from multiple surfaces
+    emphasis: [discover, frame, merge, evaluate, prove]
+  invent:
+    description: New capability not previously present
+    emphasis: [discover, frame, build, invent, evaluate, prove]
+  innovate:
+    description: Novel composition across estate systems
+    emphasis: [discover, frame, compose, evaluate, prove, deploy]
+  compose:
+    description: Wire mega-skills + pipelines + genius + memory
+    emphasis: [discover, compose, integrate, evaluate, prove]

@@ -1,0 +1,50 @@
+# Estate integration map — override paths locally or via FDE_ESTATE_ROOT
+schema: fde.estate.map/v1
+owner: GlacierEQ
+
+repos:
+  mega_skills:
+    repo: GlacierEQ/mega-skills
+    role: skill_hierarchy_and_deep_work_pipelines
+    default_path: null  # set to local checkout when available
+  mega_pipeline_production:
+    repo: GlacierEQ/mega-pipeline-production
+    role: production_readiness_phases
+    default_path: null
+  genius_mastery:
+    repo: GlacierEQ/Genius-Mastery
+    role: entity_forge_mastery_epistemic
+    default_path: null
+  aspen_grove_memory:
+    repo: GlacierEQ/aspen-grove-memory
+    role: multi_tier_memory
+    default_path: null
+  pro_memory:
+    repo: GlacierEQ/Pro-Memory
+    role: pro_tier_memory_constellation
+    default_path: null
+  agent_coordinator:
+    repo: GlacierEQ/anthropic-agent-coordinator
+    role: multi_agent_scheduling_proof
+    default_path: null
+  safety_monitor:
+    repo: GlacierEQ/anthropic-safety-monitor
+    role: tool_policy_gates
+    default_path: null
+  job_app_helix:
+    repo: GlacierEQ/job-app-helix
+    role: portfolio_control_fde_package
+    default_path: null
+  monolith:
+    repo: GlacierEQ/monolith
+    role: library_catalog
+    default_path: null
+  tower_of_babel:
+    repo: GlacierEQ/the-tower-of-babel
+    role: polyglot_placement
+    default_path: null
+
+integration_policy:
+  vendor_code: false
+  require_local_path_for_execution: true
+  missing_path_behavior: soft_skip_with_receipt
