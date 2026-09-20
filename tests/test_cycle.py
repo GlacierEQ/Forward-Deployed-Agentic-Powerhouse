@@ -30,3 +30,9 @@ def test_receipt_hash_stable_fields(tmp_path: Path):
     d2 = r.digest()
     assert d1 == d2
     assert len(d1) == 64
+
+
+def test_compose_includes_graph(tmp_path: Path):
+    r = run_cycle("compose", target="c1", work_dir=tmp_path)
+    integ = next(s for s in r.stages if s.stage == "integrate")
+    assert "compose_graph" in integ.evidence

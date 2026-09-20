@@ -1,4 +1,4 @@
-"""CLI — doctor, cycle, estate status."""
+"""CLI — doctor, cycle, estate, compose, probe."""
 
 from __future__ import annotations
 
@@ -7,6 +7,7 @@ import json
 import sys
 
 from . import __version__
+from .bridges import GeniusBridge, MegaSkillsBridge, MemoryBridge, PipelineBridge
 from .cycle import run_cycle
 from .estate import estate_status, load_estate
 from .modes import MODES
@@ -15,6 +16,22 @@ from .modes import MODES
 def cmd_doctor(_: argparse.Namespace) -> int:
     print(f"fde-powerhouse {__version__}")
     print(f"modes: {', '.join(MODES)}")
+    print("bridges:")
+    for name, probe in (
+        ("mega_skills", MegaSkillsBridge().probe()),
+        ("genius", GeniusBridge().probe()),
+        ("memory", MemoryBridge().probe()),
+        ("pipelines", PipelineBridge().probe()),
+    ):
+        avail = probe.get("available")
+        if avail is None and isinstance(probe, dict):
+            # memory returns nested
+            avail = any(
+                (v or {}).get("available")
+                for k, v in probe.items()
+                if isinstance(v, dict) and "available" in v
+            )
+        print(f"  [{'OK' if avail else '--'}] {name}")
     status = estate_status()
     print("estate:")
     for key, entry in status.items():
@@ -30,6 +47,7 @@ def cmd_cycle(args: argparse.Namespace) -> int:
         target=args.name or args.target or "default",
         work_dir=args.work_dir,
         stop_on_fail=not args.continue_on_fail,
+        problem=args.problem or "",
     )
     print(json.dumps(receipt.to_dict(), indent=2))
     return 0 if receipt.status == "ok" else 1
@@ -40,24 +58,63 @@ def cmd_estate(_: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_probe(args: argparse.Namespace) -> int:
+    probes = {
+        "mega_skills": MegaSkillsBridge().probe(),
+        "genius": GeniusBridge().probe(),
+        "memory": MemoryBridge().probe(),
+        "pipelines": PipelineBridge().probe(),
+    }
+    if args.bridge:
+        probes = {args.bridge: probes[args.bridge]}
+    print(json.dumps(probes, indent=2, default=str))
+    return 0
+
+
+def cmd_compose(args: argparse.Namespace) -> int:
+    receipt = run_cycle(
+        mode="compose",
+        target=args.target or "compose",
+        work_dir=args.work_dir,
+        problem=args.problem or "Compose mega-skills + genius + memory + pipelines",
+    )
+    print(json.dumps(receipt.to_dict(), indent=2))
+    return 0 if receipt.status == "ok" else 1
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="fde-powerhouse")
     parser.add_argument("--version", action="version", version=__version__)
     sub = parser.add_subparsers(dest="cmd", required=True)
 
-    p_doc = sub.add_parser("doctor", help="Kernel + estate health")
+    p_doc = sub.add_parser("doctor", help="Kernel + estate + bridge health")
     p_doc.set_defaults(func=cmd_doctor)
 
     p_cyc = sub.add_parser("cycle", help="Run full cycle")
     p_cyc.add_argument("--mode", required=True, choices=MODES)
     p_cyc.add_argument("--name", default=None, help="ground_up system name")
     p_cyc.add_argument("--target", default=None, help="existing path/repo for upgrade modes")
+    p_cyc.add_argument("--problem", default="", help="problem statement")
     p_cyc.add_argument("--work-dir", default=".")
     p_cyc.add_argument("--continue-on-fail", action="store_true")
     p_cyc.set_defaults(func=cmd_cycle)
 
     p_est = sub.add_parser("estate", help="Show estate resolution")
     p_est.set_defaults(func=cmd_estate)
+
+    p_pr = sub.add_parser("probe", help="Probe estate bridges")
+    p_pr.add_argument(
+        "--bridge",
+        choices=["mega_skills", "genius", "memory", "pipelines"],
+        default=None,
+    )
+    p_pr.set_defaults(func=cmd_probe)
+
+    p_co = sub.add_parser("compose", help="Run compose mode (skills+genius+memory+pipelines)")
+    p_co.add_argument("--target", default="compose")
+    p_co.add_argument("--problem", default="")
+    p_co.add_argument("--work-dir", default=".")
+    p_co.set_defaults(func=cmd_compose)
 
     args = parser.parse_args(argv)
     return args.func(args)

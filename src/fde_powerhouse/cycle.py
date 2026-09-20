@@ -15,11 +15,12 @@ def run_cycle(
     target: str = "default",
     work_dir: str | Path = ".",
     stop_on_fail: bool = True,
+    problem: str = "",
 ) -> CycleReceipt:
     if mode not in MODES:
         raise ValueError(f"Unknown mode {mode!r}; choose from {MODES}")
 
-    ctx: dict[str, Any] = {"work_dir": str(work_dir)}
+    ctx: dict[str, Any] = {"work_dir": str(work_dir), "problem": problem}
     stages: list[StageReceipt] = []
     overall = "ok"
 
