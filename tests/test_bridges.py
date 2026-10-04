@@ -1,4 +1,9 @@
-from fde_powerhouse.bridges import GeniusBridge, MegaSkillsBridge, MemoryBridge, PipelineBridge
+from fde_powerhouse.bridges import (
+    GeniusBridge,
+    MegaSkillsBridge,
+    MemoryBridge,
+    PipelineBridge,
+)
 
 
 def test_mega_skills_probe_soft():
