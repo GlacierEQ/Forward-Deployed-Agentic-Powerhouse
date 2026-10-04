@@ -8,10 +8,10 @@ from .plan import CyclePlan, build_plan
 from .showcase import run_showcase
 
 __all__ = [
-    "run_cycle",
-    "run_showcase",
     "MODES",
     "CyclePlan",
-    "build_plan",
     "__version__",
+    "build_plan",
+    "run_cycle",
+    "run_showcase",
 ]
