@@ -34,7 +34,7 @@ class CycleReceipt:
     target: str
     stages: list[StageReceipt]
     status: str
-    timestamp: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+    timestamp: str = field(default_factory=lambda: datetime.now(UTC).isoformat())
 
     def digest(self) -> str:
         payload = json.dumps(
