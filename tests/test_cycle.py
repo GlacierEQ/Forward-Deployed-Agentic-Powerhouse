@@ -36,3 +36,13 @@ def test_compose_includes_graph(tmp_path: Path):
     r = run_cycle("compose", target="c1", work_dir=tmp_path)
     integ = next(s for s in r.stages if s.stage == "integrate")
     assert "compose_graph" in integ.evidence
+
+
+def test_unavailable_integration_is_not_claimed_verified(tmp_path: Path):
+    r = run_cycle("compose", target="evidence-semantics", work_dir=tmp_path)
+    evaluate = next(s for s in r.stages if s.stage == "evaluate")
+    integrate = next(s for s in r.stages if s.stage == "integrate")
+    inv = integrate.evidence["live_invoke"]
+    if not inv.get("available"):
+        assert evaluate.evidence["live_validate_state"] == "unverified"
+        assert evaluate.evidence["live_validate_state"] != "verified"
