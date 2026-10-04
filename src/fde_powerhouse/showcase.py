@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import asdict, dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -115,7 +115,7 @@ def run_showcase(
     lev = leverage_map(mode)
     pack = ShowcasePack(
         version=__version__,
-        generated_at=datetime.now(timezone.utc).isoformat(),
+        generated_at=datetime.now(UTC).isoformat(),
         cycle=cycle.to_dict(),
         estate=cat,
         leverage=lev,
