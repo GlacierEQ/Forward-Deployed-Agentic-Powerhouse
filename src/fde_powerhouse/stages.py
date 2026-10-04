@@ -175,13 +175,21 @@ def stage_evaluate(mode: str, target: str, ctx: dict[str, Any]) -> StageReceipt:
     }
     if mode in ("ground_up", "invent") and ctx.get("scaffold"):
         checks["scaffold_files"] = ctx["scaffold"].get("count", 0) >= 5
-    # Live invoke fail does not fail the cycle unless path was set and validate failed hard
+    # External integration evidence is tri-state. An unavailable bridge is not a
+    # validation success; it is explicitly unverified while the self-contained
+    # lifecycle may still pass.
     inv = ctx.get("invoke") or {}
-    if inv.get("available") and inv.get("action") == "validate_only" and inv.get("status") == "fail":
-        checks["live_validate"] = False
+    if not inv.get("available"):
+        live_validate_state = "unverified"
+    elif inv.get("action") == "validate_only" and inv.get("status") == "ok":
+        live_validate_state = "verified"
+    elif inv.get("action") == "validate_only" and inv.get("status") == "fail":
+        live_validate_state = "failed"
     else:
-        checks["live_validate"] = True
-    ok = all(bool(v) for v in checks.values())
+        live_validate_state = str(inv.get("status") or "unverified")
+    checks["live_validate_state"] = live_validate_state
+    core_checks = {k: v for k, v in checks.items() if k != "live_validate_state"}
+    ok = all(bool(v) for v in core_checks.values()) and live_validate_state != "failed"
     return StageReceipt(
         stage="evaluate",
         mode=mode,
