@@ -6,8 +6,8 @@ from .memory import MemoryBridge
 from .pipelines import PipelineBridge
 
 __all__ = [
-    "MegaSkillsBridge",
     "GeniusBridge",
+    "MegaSkillsBridge",
     "MemoryBridge",
     "PipelineBridge",
 ]
