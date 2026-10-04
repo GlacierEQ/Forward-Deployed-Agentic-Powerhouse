@@ -5,10 +5,11 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+from collections.abc import Iterator
 from dataclasses import asdict, dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Iterator
+from typing import Any
 
 import yaml
 
@@ -252,7 +253,7 @@ def scan_path(
 
     status = "clean" if not findings else "findings"
     report = InvertReport(
-        scanned_at=datetime.now(timezone.utc).isoformat(),
+        scanned_at=datetime.now(UTC).isoformat(),
         root=str(root_p),
         files_scanned=files_scanned,
         findings=findings,
