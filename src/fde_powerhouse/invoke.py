@@ -148,10 +148,14 @@ def invoke_pipeline(
         parsed = {"raw": True}
 
     status = "ok" if proc.returncode == 0 else "fail"
-    if isinstance(parsed, dict) and parsed.get("status"):
+    if (
+        isinstance(parsed, dict)
+        and parsed.get("status")
+        and parsed["status"] in ("VALID", "COMPLETE")
+        and proc.returncode == 0
+    ):
         # VALID / COMPLETE from runner
-        if parsed["status"] in ("VALID", "COMPLETE") and proc.returncode == 0:
-            status = "ok"
+        status = "ok"
 
     return InvokeResult(
         available=True,

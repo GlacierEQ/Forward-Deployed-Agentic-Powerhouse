@@ -11,7 +11,7 @@ import urllib.error
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict, dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 
 from .leading_edge import all_homepages, by_category
@@ -124,7 +124,7 @@ def probe_edge(
     items.sort(key=lambda x: (x.category, x.id))
     ok_count = sum(1 for i in items if i.ok)
     receipt = EdgeProbeReceipt(
-        generated_at=datetime.now(timezone.utc).isoformat(),
+        generated_at=datetime.now(UTC).isoformat(),
         sample_size=len(items),
         ok_count=ok_count,
         fail_count=len(items) - ok_count,

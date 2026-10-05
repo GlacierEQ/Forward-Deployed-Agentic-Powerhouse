@@ -1,25 +1,22 @@
-# Grade — v0.7.1
+# Verification status — v0.7.1
 
-**Bar:** 9+
+This document records objective verification surfaces. It does not self-grade the project.
 
-| Dimension | Grade |
-|-----------|-------|
-| Identity | **A** |
-| Stage spine order | **A** (fixed; emphasis is metadata only) |
-| Invert-scan pattern + semantic | **A-** |
-| Agent scaffold | **A-** (orchestrator/policy/memory/tools loop) |
-| Docs sync | **A** |
-| CI design | **A** |
-| Coverage gate | **A-** (70 enforced; live % depends on runner) |
-| Private pin job | **A-** (needs `ESTATE_CHECKOUT_TOKEN`) |
-| Production multi-agent depth | **B+** |
+| Surface | Current contract |
+|---|---|
+| Stage spine | DISCOVER → FRAME → BUILD → INTEGRATE → EVALUATE → PROVE → DEPLOY |
+| Invert scan | Pattern + semantic checks with confidence/negation handling |
+| Agent scaffold | Orchestrator / policy / memory / tools loop |
+| CI matrix | Python 3.11–3.13 |
+| Coverage gate | 70% minimum |
+| Optional private integration | VERIFIED only when the pinned checkout succeeds and validate-only invocation actually runs |
+| Missing private integration | UNVERIFIED, never promoted to VERIFIED |
+| External authority | Human-gated; approval_packet_only |
 
-## Overall: **A / 9-range**
+## Evidence interpretation
 
-Closed this pass:
+A green core CI run proves the self-contained public proof path passed its configured checks. It does **not** prove an optional private integration ran.
 
-1. README/docs → 0.7.1 + invert-scan  
-2. Invert-scan semantic clusters + confidence/negation  
-3. Stage-order bug fixed (all modes run full spine)  
-4. Scaffold → real policy-gated tool loop  
-5. CI secret documented for live mega-skills pin  
+Catalog snapshots are inventory evidence, not live runtime verification. Live integration claims require an executed validation receipt from the relevant integration path.
+
+The project should be evaluated from reproducible behavior, tests, receipts, and explicit evidence state rather than an author-assigned score.
