@@ -48,8 +48,8 @@ def _load_compounding(genius_root: Path | None = None):
 
 
 def _git_revision(root: Path) -> str | None:
-    proc = subprocess.run(  # noqa: S603
-        ["git", "rev-parse", "HEAD"],  # noqa: S607
+    proc = subprocess.run(
+        ["git", "rev-parse", "HEAD"],
         cwd=root,
         capture_output=True,
         text=True,
@@ -95,7 +95,7 @@ def _fresh_process_hydrate(db_path: Path, mission_id: str) -> dict[str, Any]:
         )
     recovered = json.loads(proc.stdout)
     if not isinstance(recovered, dict):
-        raise RuntimeError("fresh-process resurrection did not return an object")
+        raise TypeError("fresh-process resurrection did not return an object")
     return recovered
 
 
@@ -175,11 +175,11 @@ def run_compounding_proof(
     )
     selected = selection.get("selected")
     if not isinstance(selected, dict):
-        raise RuntimeError("Mission 2 did not select a reusable capability")
+        raise TypeError("Mission 2 did not select a reusable capability")
 
     selected_capability = selected.get("capability")
     if not isinstance(selected_capability, dict):
-        raise RuntimeError("Mission 2 selection is missing capability details")
+        raise TypeError("Mission 2 selection is missing capability details")
     selected_id = str(selected_capability.get("id") or "")
     if selected_id != str(capability["id"]):
         raise RuntimeError(
