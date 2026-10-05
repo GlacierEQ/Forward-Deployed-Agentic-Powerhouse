@@ -1,0 +1,290 @@
+{
+  "schema": "glaciereq.scale-fde.workstream.v1",
+  "mission": "Scale FDE demonstration",
+  "workstream": "A",
+  "role": "Estate Intelligence / Gatling Tsunami",
+  "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+  "base_branch": "scale-fde-demo",
+  "branch": "scale/estate-intelligence",
+  "state": "COMPLETE_WITH_EXPLICIT_EVIDENCE_BOUNDARY",
+  "exclusive_ownership": [
+    "full estate reconnaissance",
+    "concurrent bounded read-only workers",
+    "deterministic aggregation",
+    "SCALE_CAPABILITY_GRAPH.json",
+    "serial_vs_gatling_metrics"
+  ],
+  "excluded_ownership": [
+    "runtime implementation",
+    "memory implementation",
+    "MCP/provider mutation implementation",
+    "verification product",
+    "UI"
+  ],
+  "recovery": {
+    "preexisting_scale_artifacts_found": false,
+    "searched_artifacts": [
+      "SCALE_FDE_MISSION.yaml",
+      "SCALE_CAPABILITY_GRAPH.json",
+      "WORKSTREAM_A.json",
+      "ARCHITECTURE_CONTRACT.json"
+    ],
+    "preexisting_scale_branches_found": true,
+    "mature_capability_reused": [
+      "GlacierEQ/monolith",
+      "GlacierEQ/aspen-grove-core",
+      "GlacierEQ/aspen-grove-memory",
+      "GlacierEQ/aspen-grove-swarm",
+      "GlacierEQ/aspen-grove-connectors",
+      "GlacierEQ/apex-boot-core",
+      "GlacierEQ/apex-bootup-core",
+      "GlacierEQ/Genius-Mastery",
+      "GlacierEQ/mega-skills",
+      "GlacierEQ/job-app-helix",
+      "GlacierEQ/sigma-glue",
+      "GlacierEQ/computer-user",
+      "GlacierEQ/apex-control-plane",
+      "GlacierEQ/make-it-heavy-private",
+      "GlacierEQ/apex-singularity-head"
+    ],
+    "scale_branches_at_recovery": {
+      "scale-fde-demo": "824cd7edc41ed8fa0da2ef491a27c079fd62d1a6",
+      "scale/estate-intelligence": "824cd7edc41ed8fa0da2ef491a27c079fd62d1a6",
+      "relationship": "identical to main when recovered"
+    },
+    "concurrent_artifact_reconciliation": {
+      "detected": true,
+      "action": "Preserved existing 331-node graph and WORKSTREAM_A record, then layered current live census, exact-revision probes, proof-boundary corrections, and executable Gatling implementation.",
+      "no_blind_overwrite": true
+    }
+  },
+  "reconnaissance": {
+    "estate_map": {
+      "repository": "GlacierEQ/monolith",
+      "revision": "2751283b3ecf9f4fd18481f5e7335455ea70c356",
+      "path": "catalog/library.json",
+      "blob_sha": "c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
+    },
+    "estate_entries_considered": 1385,
+    "estate_inventory_incomplete": false,
+    "estate_inventory_limit": "Authenticated connector scope was exhaustively paginated by creation-year partition; inaccessible repositories remain outside observable scope.",
+    "deterministic_relevant_candidates": 338,
+    "deep_source_verified_nodes": 27,
+    "catalog_only_nodes": 311,
+    "rule": "Catalog-only nodes are never promoted to implementation/runtime proof. Current-head promotion requires direct source/test/receipt recovery.",
+    "legacy_monolith_snapshot": {
+      "repository": "GlacierEQ/monolith",
+      "revision": "2751283b3ecf9f4fd18481f5e7335455ea70c356",
+      "path": "catalog/library.json",
+      "entries": 1273,
+      "limitation": "Catalog declares itself incomplete as a GitHub mirror."
+    },
+    "live_github_inventory": {
+      "source": "authenticated GitHub connector repository search",
+      "owner": "GlacierEQ",
+      "partition_strategy": "creation-year partitions to avoid GitHub first-1000 search ceiling",
+      "unique_repositories": 1385,
+      "partitions": {
+        "2025": 705,
+        "2026": 680,
+        "before_2025": 0
+      },
+      "pages_exhausted_to_zero": true,
+      "wall_clock_ms": 7943,
+      "worker_count": 20,
+      "scope_complete": true,
+      "scope_definition": "repositories returned to the authenticated connector for owner GlacierEQ under the tested creation partitions",
+      "absolute_universe_caveat": "Repositories invisible to the authenticated connector cannot be enumerated or disproved."
+    },
+    "live_name_screen_candidates": 302
+  },
+  "gatling_tsunami": {
+    "engineering_state": "IMPLEMENTED_AND_EXECUTED_BOUNDED_PARALLEL_READS",
+    "implementation": {
+      "path": "src/fde_powerhouse/gatling_estate.py",
+      "implementation_commit": "de9109b8c9dcc3695c3ed81a1f6ee078907c5d0c",
+      "test_path": "tests/test_gatling_estate.py",
+      "test_commit": "796bce888a1fb777eb13124650651ca0e80479dd",
+      "tdd_red": "ModuleNotFoundError before implementation",
+      "tdd_green": "3 passed in 0.12s",
+      "compileall": "PASS",
+      "ruff": "UNAVAILABLE_IN_LOCAL_RUNTIME"
+    },
+    "benchmark": {
+      "workload": "Fetch README for identical eight-repository load-bearing set.",
+      "repositories": [
+        "GlacierEQ/mega-skills",
+        "GlacierEQ/Genius-Mastery",
+        "GlacierEQ/aspen-grove-memory",
+        "GlacierEQ/aspen-grove-swarm",
+        "GlacierEQ/apex-boot-core",
+        "GlacierEQ/sigma-glue",
+        "GlacierEQ/computer-user",
+        "GlacierEQ/job-app-helix"
+      ],
+      "serial": {
+        "worker_count": 1,
+        "repos_inspected": 8,
+        "wall_clock_ms": 3043,
+        "parent_context_payload_bytes": 81280
+      },
+      "parallel": {
+        "worker_count": 8,
+        "repos_inspected": 8,
+        "wall_clock_ms": 888,
+        "parent_context_payload_bytes": 81280
+      },
+      "speedup": 3.4268018018018016,
+      "wall_clock_reduction_pct": 70.81827144265527,
+      "deterministic_result_match": true,
+      "duplicate_findings": 0
+    },
+    "deterministic_aggregator_invariants": [
+      "required node fields validated",
+      "maturity enum validated",
+      "donor_value constrained to 0..10",
+      "list fields canonicalized",
+      "exact duplicates collapsed",
+      "same-identity conflicting findings rejected",
+      "output sorted deterministically",
+      "worker concurrency bounded",
+      "worker results collected by input index before reduction"
+    ]
+  },
+  "deliverables": {
+    "capability_graph": {
+      "path": "shared/SCALE_CAPABILITY_GRAPH.json",
+      "latest_reconciliation_commit": "4a2a9b1f62660784100a4025e7f7ac5b448c5f64",
+      "readback_blob_sha": "d37cf7b8355c26a0d27db858d43567b53925eba2",
+      "json_valid": true,
+      "node_count": 338,
+      "required_node_contract_satisfied": true,
+      "deterministic_sort": "repository+capability+revision+implementation_paths"
+    },
+    "gatling_engine": {
+      "path": "src/fde_powerhouse/gatling_estate.py",
+      "implementation_commit": "de9109b8c9dcc3695c3ed81a1f6ee078907c5d0c",
+      "focused_test_path": "tests/test_gatling_estate.py",
+      "focused_test_commit": "796bce888a1fb777eb13124650651ca0e80479dd"
+    }
+  },
+  "verified_revisions": {
+    "GlacierEQ/aspen-grove-core": "27f67c64ccc5ce3eb4521d458fbdfb73d1830ae0",
+    "GlacierEQ/aspen-grove-memory": "fa47e191a4e0c4f23cd98705c9467b6ceb2aed3f",
+    "GlacierEQ/aspen-grove-swarm": "58bdaddfd43c544abe6c6a4223f62ab5c1590da5",
+    "GlacierEQ/aspen-grove-connectors": "fd37faa07b8f05cd287163af92747970a2a4061e",
+    "GlacierEQ/apex-boot-core": "d81d579c73d859bdfa5ef25c14a2800d5586f985",
+    "GlacierEQ/apex-bootup-core": "8ccb37e18d20539db53c9dc67963c05e32a4cfbc",
+    "GlacierEQ/Genius-Mastery": "10aa50c09f37bfd0fd313b5fb8d5e80a021d6fbf",
+    "GlacierEQ/mega-skills": "7dee0c0a98468e29d364ee18a9c0bcd57f05b91f",
+    "GlacierEQ/job-app-helix": "e369764107921b25cb67d398aed0bf54fb521ca7",
+    "GlacierEQ/sigma-glue": "4a1ca8e5c88a62e8a94a43213b2c509af6afcea3",
+    "GlacierEQ/computer-user": "1f0ae18968b4e830f66ee97dd4a2dc4805c6c298",
+    "GlacierEQ/colossus-gateway": "851f50ae67a8a333b480ef8106a5bcbd579c6a76",
+    "GlacierEQ/apex-control-plane": "134abd020485d440fc657e1171671824b05a276f",
+    "GlacierEQ/make-it-heavy-private": "85b4b247cb4e1767d32bc47b34b9969bafec3227",
+    "GlacierEQ/Forward-Deployed-Agentic-Powerhouse": "824cd7edc41ed8fa0da2ef491a27c079fd62d1a6",
+    "GlacierEQ/apex-singularity-head": "38aec8da1e29f8365e54abf6bdaf5dfcf96a75d0",
+    "GlacierEQ/monolith": "2751283b3ecf9f4fd18481f5e7335455ea70c356",
+    "GlacierEQ/anthropic-agent-coordinator": "4ef98097e729af125459188a071048112552bad0",
+    "GlacierEQ/anthropic-safety-monitor": "9f6ece4280245c9605f4981c531343228100d59b",
+    "GlacierEQ/mega-pipeline-production": "806df98d7ba185a7367ae2436685da3d32685cd4",
+    "GlacierEQ/Pro-Memory": "bb2eb0916abe4566f19e2a8e7d35a050855441db",
+    "GlacierEQ/mastermind": "dd6360390087f7719671f53b650388ccb4bd97e0",
+    "GlacierEQ/Casebuilder4000": "0eb97204b1a38456d764bb926abd2160a618a772",
+    "GlacierEQ/snowball-steamroller": "e1fde69c1ace8c27faba410e039e94de3c915888",
+    "GlacierEQ/scale-ai-label-consensus-fence": "9aa713b8564b22f0207ba053a71a9988556181e2"
+  },
+  "defects": [
+    {
+      "id": "A-DEFECT-001",
+      "severity": "low",
+      "scope": "estate_inventory",
+      "state": "RESOLVED_WITH_AUTHENTICATED_SCOPE_BOUNDARY",
+      "finding": "The legacy Monolith catalog had 1273 entries and declared itself incomplete. Agent A bypassed that ceiling with authenticated GitHub search partitioned by creation year and exhaustively paginated 1385 unique repositories.",
+      "consequence": "The 1385 count is complete for the authenticated connector's observable GlacierEQ repository scope; it does not prove non-existence of repositories hidden from that identity."
+    },
+    {
+      "id": "A-DEFECT-002",
+      "severity": "medium",
+      "scope": "capability_depth",
+      "state": "ACCEPTED_EVIDENCE_BOUNDARY",
+      "finding": "311 graph nodes remain catalog-only rather than current-head implementation/test/receipt inspections.",
+      "consequence": "They remain prototype/catalog-only and are discovery candidates, never execution proof."
+    },
+    {
+      "id": "A-DEFECT-003",
+      "severity": "high",
+      "scope": "GlacierEQ/colossus-gateway",
+      "state": "OPEN",
+      "finding": "Current repository contains gateway/provider tests and code while README describes a latent-attention/hardware-acceleration compiler graph.",
+      "consequence": "Consumers must inspect current paths/tests and must not treat README identity as authoritative."
+    },
+    {
+      "id": "A-DEFECT-004",
+      "severity": "low",
+      "scope": "Gatling_Tsunami",
+      "state": "RESOLVED_FOR_AGENT_A",
+      "finding": "Branding/doctrine was insufficient concurrency evidence.",
+      "consequence": "Agent A now has executable bounded ThreadPoolExecutor workers, deterministic conflict-aware aggregation, focused tests, and a measured 8-worker benchmark."
+    },
+    {
+      "id": "A-DEFECT-005",
+      "severity": "medium",
+      "scope": "Agent_A_branch_verification",
+      "state": "OPEN_EVIDENCE_BOUNDARY",
+      "finding": "Focused Gatling tests passed and compileall passed, but the full Forward-Deployed-Agentic-Powerhouse regression suite was not rerun at this branch revision.",
+      "consequence": "Do not claim branch-wide regression proof from the focused suite."
+    },
+    {
+      "id": "A-DEFECT-006",
+      "severity": "low",
+      "scope": "Agent_A_branch_lint",
+      "state": "OPEN_ENVIRONMENT_BOUNDARY",
+      "finding": "ruff was not installed in the available local execution runtime.",
+      "consequence": "No ruff-clean claim is made for the new files."
+    },
+    {
+      "id": "A-DEFECT-007",
+      "severity": "medium",
+      "scope": "exact_head_ci",
+      "state": "OPEN_EVIDENCE_BOUNDARY",
+      "finding": "Available GitHub exact-head combined-status/workflow probes returned no Actions status for most deeply inspected repositories; Mastermind returned a Vercel success only.",
+      "consequence": "README test counts and historical promotion receipts are preserved but not silently promoted into exact-current-head CI proof."
+    }
+  ],
+  "integration_contract": {
+    "publishes": [
+      "shared/SCALE_CAPABILITY_GRAPH.json",
+      "shared/WORKSTREAM_A.json"
+    ],
+    "consumes": [
+      "shared/SCALE_FDE_MISSION.yaml when supplied by mission owner",
+      "shared/ARCHITECTURE_CONTRACT.json when supplied by mission owner"
+    ],
+    "invariants": [
+      "Do not reinterpret catalog-only nodes as implementation proof.",
+      "Do not overwrite sibling WORKSTREAM_B-E artifacts.",
+      "Do not move runtime, memory, MCP, verification-product, or UI ownership into Workstream A.",
+      "Exact revisions and evidence ceilings travel with every deep-source node."
+    ],
+    "harvestable_change": {
+      "donor_repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+      "paths": [
+        "src/fde_powerhouse/gatling_estate.py",
+        "tests/test_gatling_estate.py"
+      ],
+      "condition": "Transcribe/merge only after parent integration review; no sibling workstream ownership changes."
+    }
+  },
+  "unresolved_external_dependencies": [
+    "Canonical shared/SCALE_FDE_MISSION.yaml was not present at workstream start and is not owned by Agent A.",
+    "Canonical shared/ARCHITECTURE_CONTRACT.json was not present at workstream start and is not owned by Agent A.",
+    "Sibling WORKSTREAM_B-E artifacts, INTEGRATION_QUEUE.json, DEFECT_QUEUE.json and RECEIPT_INDEX.json are not owned by Agent A."
+  ],
+  "terminal_condition": {
+    "workstream_a_complete": true,
+    "mission_complete": false,
+    "reason": "Authenticated estate census, deterministic semantic/candidate graph, exact-revision deep probes, executable bounded Gatling worker/reducer, serial-vs-parallel benchmark, and durable Agent A artifacts are present. Remaining mission completion belongs to sibling workstreams/shared mission integration."
+  }
+}
