@@ -1,4 +1,4 @@
-"""Workstream C integration contract tests."""
+"""Workstream C integration contract tests: RED before implementation."""
 from __future__ import annotations
 
 import json
