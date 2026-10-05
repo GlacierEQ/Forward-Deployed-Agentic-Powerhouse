@@ -1,0 +1,186 @@
+{
+  "schema": "glaciereq.scale-fde.workstream.v1",
+  "mission": "Scale FDE demonstration",
+  "workstream": "A",
+  "role": "Estate Intelligence / Gatling Tsunami",
+  "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+  "base_branch": "scale-fde-demo",
+  "branch": "scale/estate-intelligence",
+  "state": "COMPLETE_WITH_EXPLICIT_EVIDENCE_BOUNDARY",
+  "exclusive_ownership": [
+    "full estate reconnaissance",
+    "concurrent bounded read-only workers",
+    "deterministic aggregation",
+    "SCALE_CAPABILITY_GRAPH.json",
+    "serial_vs_gatling_metrics"
+  ],
+  "excluded_ownership": [
+    "runtime implementation",
+    "memory implementation",
+    "MCP/provider mutation implementation",
+    "verification product",
+    "UI"
+  ],
+  "recovery": {
+    "preexisting_scale_artifacts_found": false,
+    "searched_artifacts": [
+      "SCALE_FDE_MISSION.yaml",
+      "SCALE_CAPABILITY_GRAPH.json",
+      "WORKSTREAM_A.json",
+      "ARCHITECTURE_CONTRACT.json"
+    ],
+    "preexisting_scale_branches_found": false,
+    "mature_capability_reused": [
+      "GlacierEQ/monolith",
+      "GlacierEQ/aspen-grove-core",
+      "GlacierEQ/aspen-grove-memory",
+      "GlacierEQ/aspen-grove-swarm",
+      "GlacierEQ/aspen-grove-connectors",
+      "GlacierEQ/apex-boot-core",
+      "GlacierEQ/apex-bootup-core",
+      "GlacierEQ/Genius-Mastery",
+      "GlacierEQ/mega-skills",
+      "GlacierEQ/job-app-helix",
+      "GlacierEQ/sigma-glue",
+      "GlacierEQ/computer-user",
+      "GlacierEQ/apex-control-plane",
+      "GlacierEQ/make-it-heavy-private",
+      "GlacierEQ/apex-singularity-head"
+    ]
+  },
+  "reconnaissance": {
+    "estate_map": {
+      "repository": "GlacierEQ/monolith",
+      "revision": "2751283b3ecf9f4fd18481f5e7335455ea70c356",
+      "path": "catalog/library.json",
+      "blob_sha": "c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
+    },
+    "estate_entries_considered": 1273,
+    "estate_inventory_incomplete": true,
+    "estate_inventory_limit": "Full private universe may exceed gh list page; forks may not all appear in repo list; do not treat library.json as complete GH mirror.",
+    "deterministic_relevant_candidates": 331,
+    "deep_source_verified_nodes": 17,
+    "catalog_only_nodes": 314,
+    "rule": "Catalog-only nodes are never promoted to implementation/runtime proof. They remain prototype with explicit unverified current-head/test/receipt boundaries."
+  },
+  "gatling_tsunami": {
+    "engineering_state": "EXECUTED_BOUNDED_PARALLEL_READS",
+    "workload": "Resolve latest commit for the identical six-repository set.",
+    "repositories": [
+      "GlacierEQ/aspen-grove-core",
+      "GlacierEQ/apex-boot-core",
+      "GlacierEQ/Genius-Mastery",
+      "GlacierEQ/mega-skills",
+      "GlacierEQ/sigma-glue",
+      "GlacierEQ/computer-user"
+    ],
+    "serial": {
+      "worker_count": 1,
+      "repos_inspected": 6,
+      "wall_clock_ms": 2162
+    },
+    "parallel": {
+      "worker_count": 6,
+      "repos_inspected": 6,
+      "wall_clock_ms": 692
+    },
+    "speedup": 3.1242774566473988,
+    "wall_clock_reduction_pct": 67.99259944495837,
+    "deterministic_result_match": true,
+    "duplicate_findings": 0,
+    "parent_context_consumption": {
+      "normalized_aggregator_payload_bytes": 505,
+      "method": "repo+sha result projection only; raw worker exploration output excluded from parent aggregation"
+    }
+  },
+  "deliverables": {
+    "capability_graph": {
+      "path": "shared/SCALE_CAPABILITY_GRAPH.json",
+      "creation_commit": "e43cea27ad417ea6d124a12cdad9344bbead75b6",
+      "readback_blob_sha": "575ec46f95dd9e4cf70df3ee280abf50d6a49d71",
+      "json_valid": true,
+      "node_count": 331,
+      "required_node_contract_satisfied": true,
+      "deterministic_sort": "repository ascending"
+    }
+  },
+  "verified_revisions": {
+    "GlacierEQ/aspen-grove-core": "27f67c64ccc5ce3eb4521d458fbdfb73d1830ae0",
+    "GlacierEQ/aspen-grove-memory": "fa47e191a4e0c4f23cd98705c9467b6ceb2aed3f",
+    "GlacierEQ/aspen-grove-swarm": "58bdaddfd43c544abe6c6a4223f62ab5c1590da5",
+    "GlacierEQ/aspen-grove-connectors": "fd37faa07b8f05cd287163af92747970a2a4061e",
+    "GlacierEQ/apex-boot-core": "d81d579c73d859bdfa5ef25c14a2800d5586f985",
+    "GlacierEQ/apex-bootup-core": "8ccb37e18d20539db53c9dc67963c05e32a4cfbc",
+    "GlacierEQ/Genius-Mastery": "10aa50c09f37bfd0fd313b5fb8d5e80a021d6fbf",
+    "GlacierEQ/mega-skills": "7dee0c0a98468e29d364ee18a9c0bcd57f05b91f",
+    "GlacierEQ/job-app-helix": "e369764107921b25cb67d398aed0bf54fb521ca7",
+    "GlacierEQ/sigma-glue": "4a1ca8e5c88a62e8a94a43213b2c509af6afcea3",
+    "GlacierEQ/computer-user": "1f0ae18968b4e830f66ee97dd4a2dc4805c6c298",
+    "GlacierEQ/colossus-gateway": "851f50ae67a8a333b480ef8106a5bcbd579c6a76",
+    "GlacierEQ/apex-control-plane": "134abd020485d440fc657e1171671824b05a276f",
+    "GlacierEQ/make-it-heavy-private": "85b4b247cb4e1767d32bc47b34b9969bafec3227",
+    "GlacierEQ/Forward-Deployed-Agentic-Powerhouse": "824cd7edc41ed8fa0da2ef491a27c079fd62d1a6",
+    "GlacierEQ/apex-singularity-head": "38aec8da1e29f8365e54abf6bdaf5dfcf96a75d0",
+    "GlacierEQ/monolith": "2751283b3ecf9f4fd18481f5e7335455ea70c356"
+  },
+  "defects": [
+    {
+      "id": "A-DEFECT-001",
+      "severity": "medium",
+      "scope": "estate_inventory",
+      "state": "OPEN_EXTERNAL_TO_WORKSTREAM",
+      "finding": "Monolith's 1273-entry catalog explicitly declares itself an incomplete GitHub mirror.",
+      "consequence": "Agent A can prove exhaustive inspection of the available machine inventory, not absolute enumeration of every inaccessible/unlisted private/fork repository."
+    },
+    {
+      "id": "A-DEFECT-002",
+      "severity": "medium",
+      "scope": "capability_depth",
+      "state": "ACCEPTED_EVIDENCE_BOUNDARY",
+      "finding": "314 relevant candidates are catalog-only nodes rather than current-head path/test/receipt inspections.",
+      "consequence": "Their graph state is intentionally prototype/catalog-only and must not be used as execution proof."
+    },
+    {
+      "id": "A-DEFECT-003",
+      "severity": "high",
+      "scope": "GlacierEQ/colossus-gateway",
+      "state": "OPEN",
+      "finding": "Current repository head is active provider/integration work while README identity still describes an ML compiler graph.",
+      "consequence": "Consumers must inspect current implementation paths before treating README identity as authoritative."
+    },
+    {
+      "id": "A-DEFECT-004",
+      "severity": "medium",
+      "scope": "Gatling_Tsunami",
+      "state": "RESOLVED_FOR_AGENT_A_BENCHMARK",
+      "finding": "Historical Gatling branding exists in doctrine and prior simple-loop runs; doctrine alone is not concurrency proof.",
+      "consequence": "Agent A uses only the measured six-worker benchmark as current Gatling execution evidence."
+    }
+  ],
+  "integration_contract": {
+    "publishes": [
+      "shared/SCALE_CAPABILITY_GRAPH.json",
+      "shared/WORKSTREAM_A.json"
+    ],
+    "consumes": [
+      "shared/SCALE_FDE_MISSION.yaml when supplied by mission owner",
+      "shared/ARCHITECTURE_CONTRACT.json when supplied by mission owner"
+    ],
+    "invariants": [
+      "Do not reinterpret catalog-only nodes as implementation proof.",
+      "Do not overwrite sibling WORKSTREAM_B-E artifacts.",
+      "Do not move runtime, memory, MCP, verification-product, or UI ownership into Workstream A.",
+      "Exact revisions and evidence ceilings travel with every deep-source node."
+    ]
+  },
+  "unresolved_external_dependencies": [
+    "Canonical shared/SCALE_FDE_MISSION.yaml was not present at workstream start and is not owned by Agent A.",
+    "Canonical shared/ARCHITECTURE_CONTRACT.json was not present at workstream start and is not owned by Agent A.",
+    "Sibling WORKSTREAM_B-E artifacts, INTEGRATION_QUEUE.json, DEFECT_QUEUE.json and RECEIPT_INDEX.json are not owned by Agent A."
+  ],
+  "terminal_condition": {
+    "workstream_a_complete": true,
+    "mission_complete": false,
+    "reason": "Agent A's estate map, bounded-concurrency benchmark, deterministic candidate aggregation and capability graph are emitted and read back; mission-level completion depends on sibling workstreams and shared mission artifacts."
+  }
+}
