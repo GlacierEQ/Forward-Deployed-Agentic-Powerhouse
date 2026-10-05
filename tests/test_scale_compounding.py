@@ -7,6 +7,7 @@ from types import SimpleNamespace
 from typing import ClassVar
 
 import pytest
+
 from fde_powerhouse.scale_compounding import run_compounding_proof
 
 
