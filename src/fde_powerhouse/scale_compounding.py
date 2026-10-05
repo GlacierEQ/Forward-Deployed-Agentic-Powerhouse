@@ -81,7 +81,7 @@ def _fresh_process_hydrate(db_path: Path, mission_id: str) -> dict[str, Any]:
         "--mission",
         mission_id,
     ]
-    proc = subprocess.run(  # noqa: S603
+    proc = subprocess.run(
         command,
         env=os.environ.copy(),
         capture_output=True,
