@@ -4,14 +4,14 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from types import SimpleNamespace
+from typing import ClassVar
 
 import pytest
-
 from fde_powerhouse.scale_compounding import run_compounding_proof
 
 
 class FakeContinuityStore:
-    records: dict[str, list[tuple[str, dict]]] = {}
+    records: ClassVar[dict[str, list[tuple[str, dict]]]] = {}
 
     def __init__(self, db_path: str | Path):
         self.key = str(db_path)
@@ -58,7 +58,7 @@ def _compounding_api():
         return {"path": str(path), "capability_count": 1, "sha256": "fixture-registry"}
 
     def select(mission, capabilities, minimum_score=0.35):
-        capability = list(capabilities)[0]
+        capability = next(iter(capabilities))
         return {
             "mission_id": mission["mission_id"],
             "minimum_score": minimum_score,
