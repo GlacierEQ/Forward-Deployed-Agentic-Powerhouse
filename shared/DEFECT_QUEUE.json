@@ -1,0 +1,57 @@
+{
+  "schema_version": "scale-fde/defect-queue-v2",
+  "as_of": "2026-10-05T07:33:00Z",
+  "mission_id": "SCALE-FDE-DEMO-001",
+  "defects": [
+    {
+      "id": "R2-DEF-001",
+      "owner": "control-plane",
+      "severity": "critical",
+      "status": "fixed_on_round2_branch",
+      "defect": "Canonical control plane materialized Scale artifacts at runtime root while workers published under shared/, preventing convergence.",
+      "fix_revision": "3ee3883b541def3179aeeb30cdacfaa8671fb8c5",
+      "verification": "RED CI run 37278166847 failed on missing shared/SCALE_FDE_MISSION.yaml; GREEN run 37278419952 has Python 3.11/3.12 full test+doctor+demo success and 3.13 test path success observed."
+    },
+    {
+      "id": "R2-DEF-002",
+      "owner": "control-plane",
+      "severity": "medium",
+      "status": "fixed_on_round2_branch",
+      "defect": "Main Scale control-plane source failed current Ruff UP037 before regression tests could execute.",
+      "fix_revision": "c405a70cebc299938264c03c8a48f699a0bb6163",
+      "verification": "Subsequent CI reached and executed the intended convergence regression test."
+    },
+    {
+      "id": "R2-DEF-003",
+      "owner": "B",
+      "severity": "high",
+      "status": "open",
+      "defect": "Exact running-task process-death lease reclaim and exactly-once continuation remains to be proved on current B branch.",
+      "source_revision": "73fce9a2ef6b439c62bf8ad95cdc039d6930e616"
+    },
+    {
+      "id": "R2-DEF-004",
+      "owner": "D",
+      "severity": "critical",
+      "status": "open",
+      "defect": "No verified sigma-glue transport route to the live deployed Colossus gateway yet.",
+      "source_revision": "a910c04402d99ea811c19a7700ea879ed9e267e7"
+    },
+    {
+      "id": "R2-DEF-005",
+      "owner": "E",
+      "severity": "critical",
+      "status": "open",
+      "defect": "Verification-product branch is still identical to base; no Scale-specific independent verifier artifact exists yet.",
+      "source_revision": "1f0ae18968b4e830f66ee97dd4a2dc4805c6c298"
+    },
+    {
+      "id": "R2-DEF-006",
+      "owner": "A",
+      "severity": "medium",
+      "status": "open",
+      "defect": "A focused Gatling proof is strong but branch-wide regression/lint receipts remain open at current artifact revision.",
+      "source_revision": "2245469e89a9cdaf602d8b1e63d3a86fbe7d7111"
+    }
+  ]
+}
