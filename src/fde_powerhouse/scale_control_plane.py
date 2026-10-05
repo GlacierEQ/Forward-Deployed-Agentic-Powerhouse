@@ -19,7 +19,7 @@ class ScaleControlPlane:
     root: Path
 
     @classmethod
-    def bootstrap(cls, root: Path) -> "ScaleControlPlane":
+    def bootstrap(cls, root: Path) -> ScaleControlPlane:
         root.mkdir(parents=True, exist_ok=True)
         cp = cls(root)
         if not cp._state_path.exists():
