@@ -1,0 +1,101 @@
+{
+  "schema_version": "scale-fde/integration-queue-v2",
+  "as_of": "2026-10-05T07:33:00Z",
+  "mission_id": "SCALE-FDE-DEMO-001",
+  "entries": [
+    {
+      "producer": "control-plane",
+      "target_workstream": "A",
+      "id": "R2-A-001",
+      "created_at": "2026-10-05T07:33:00Z",
+      "contract_revision": "3ee3883b541def3179aeeb30cdacfaa8671fb8c5",
+      "status": "ready",
+      "payload": {
+        "source_repo": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+        "source_branch": "scale/estate-intelligence",
+        "source_revision": "2245469e89a9cdaf602d8b1e63d3a86fbe7d7111",
+        "objective": "Close A-DEFECT-005 and A-DEFECT-006: run branch-wide regression and lint at the current artifact revision, preserve the 338-node graph, then expose exact receipts to E. Do not deepen catalog-only nodes unless required by a consumer."
+      }
+    },
+    {
+      "producer": "control-plane",
+      "target_workstream": "B",
+      "id": "R2-B-001",
+      "created_at": "2026-10-05T07:33:00Z",
+      "contract_revision": "3ee3883b541def3179aeeb30cdacfaa8671fb8c5",
+      "status": "ready",
+      "payload": {
+        "source_repo": "GlacierEQ/computer-user",
+        "source_branch": "scale/runtime-swarm",
+        "source_revision": "73fce9a2ef6b439c62bf8ad95cdc039d6930e616",
+        "objective": "Prove the missing exact cross-process continuation invariant: kill the orchestrator while a task is running, allow lease recovery, start a new process against the same durable state, complete exactly once without replaying completed work, and emit runtime/checkpoint receipts. Reconcile the result against deployed runtime drift; do not overwrite the dirty live checkout."
+      }
+    },
+    {
+      "producer": "control-plane",
+      "target_workstream": "C",
+      "id": "R2-C-001",
+      "created_at": "2026-10-05T07:33:00Z",
+      "contract_revision": "3ee3883b541def3179aeeb30cdacfaa8671fb8c5",
+      "status": "ready",
+      "payload": {
+        "source_repo": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+        "source_branch": "scale/memory-composition",
+        "source_revision": "2e3cfe61c7071422589fd4d234b144203a32efbb",
+        "objective": "Execute the real-donor Aspen Grove + Genius compounding proof at pinned donor revisions, produce durable WORKSTREAM_C evidence, and prove a fresh process resurrects Mission 1 structured state and Mission 2 automatically selects the verified reusable capability. No transcript-as-memory substitute."
+      }
+    },
+    {
+      "producer": "control-plane",
+      "target_workstream": "D",
+      "id": "R2-D-001",
+      "created_at": "2026-10-05T07:33:00Z",
+      "contract_revision": "3ee3883b541def3179aeeb30cdacfaa8671fb8c5",
+      "status": "ready",
+      "payload": {
+        "source_repo": "GlacierEQ/sigma-glue",
+        "source_branch": "scale/integration-mcp",
+        "source_revision": "a910c04402d99ea811c19a7700ea879ed9e267e7",
+        "objective": "Consume the now-materialized mission, architecture, and A capability graph; close the verified sigma-glue to deployed Colossus transport gap; then execute bounded provider ambiguity/readback proofs through the routed path without direct connector bypass. Preserve Gatekeeper and credential boundaries."
+      }
+    },
+    {
+      "producer": "control-plane",
+      "target_workstream": "E",
+      "id": "R2-E-001",
+      "created_at": "2026-10-05T07:33:00Z",
+      "contract_revision": "3ee3883b541def3179aeeb30cdacfaa8671fb8c5",
+      "status": "ready",
+      "payload": {
+        "source_repo": "GlacierEQ/computer-user",
+        "source_branch": "scale/verification-product",
+        "source_revision": "1f0ae18968b4e830f66ee97dd4a2dc4805c6c298",
+        "objective": "The E branch is still identical to its base. Implement the independent verifier now: same-mission baseline vs full-stack harness, evidence graph, receipt validation, architecture/reproduction surface, and falsifiable Mission 1/Mission 2 metrics. Consume A and D immediately; consume B/C only after their new exact receipts exist. E alone may certify mission completion."
+      }
+    },
+    {
+      "producer": "D",
+      "target_workstream": "B",
+      "id": "D-IQ-004",
+      "created_at": "2026-10-05T03:01:28Z",
+      "contract_revision": "a910c04402d99ea811c19a7700ea879ed9e267e7",
+      "status": "blocked_cross_workstream",
+      "payload": {
+        "artifact": "verified Colossus runtime endpoint/transport contract",
+        "reason": "D must not bypass Colossus; live provider mutations need B's durable path or another already-verified deployed Colossus route."
+      }
+    },
+    {
+      "producer": "D",
+      "target_workstream": "E",
+      "id": "D-IQ-005",
+      "created_at": "2026-10-05T03:01:28Z",
+      "contract_revision": "a910c04402d99ea811c19a7700ea879ed9e267e7",
+      "status": "ready_for_consumer",
+      "payload": {
+        "artifact": "CI and PR evidence",
+        "reason": "Ingest RED run 37257539385/job 111597735615 and GREEN run 37257654701/job 111598075584 plus sigma-glue PR #15."
+      }
+    }
+  ]
+}

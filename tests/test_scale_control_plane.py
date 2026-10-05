@@ -45,3 +45,30 @@ def test_mission_only_exhausts_when_every_workstream_is_verified(tmp_path: Path)
     state = cp.snapshot()
     assert state["mission"]["frontier_exhausted"] is True
     assert state["mission"]["status"] == "verified"
+
+
+def test_canonical_contracts_materialize_under_shared_directory(tmp_path: Path) -> None:
+    ScaleControlPlane.bootstrap(tmp_path)
+
+    shared = tmp_path / "shared"
+    assert (shared / "SCALE_FDE_MISSION.yaml").exists()
+    assert (shared / "ARCHITECTURE_CONTRACT.json").exists()
+    assert (shared / "SCALE_CAPABILITY_GRAPH.json").exists()
+    assert (shared / "INTEGRATION_QUEUE.json").exists()
+    assert (shared / "DEFECT_QUEUE.json").exists()
+    assert (shared / "RECEIPT_INDEX.json").exists()
+    for worker in "ABCDE":
+        assert (shared / f"WORKSTREAM_{worker}.json").exists()
+
+
+def test_materialization_does_not_overwrite_richer_worker_artifact(tmp_path: Path) -> None:
+    shared = tmp_path / "shared"
+    shared.mkdir()
+    worker_artifact = shared / "WORKSTREAM_A.json"
+    worker_artifact.write_text(
+        '{"schema":"glaciereq.scale-fde.workstream.v1","workstream":"A","state":"COMPLETE_WITH_EVIDENCE"}\n'
+    )
+
+    ScaleControlPlane.bootstrap(tmp_path)
+
+    assert '"state":"COMPLETE_WITH_EVIDENCE"' in worker_artifact.read_text()

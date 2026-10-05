@@ -1,0 +1,40 @@
+schema: glaciereq.scale-fde-mission.v1
+id: SCALE-FDE-DEMO-001
+revision: 2
+objective: >
+  Accept an ambiguous operator objective; recover context; discover internal capabilities;
+  compose and execute a dependency-aware mission through durable runtime and MCP/provider
+  integrations; survive intentional failures and ambiguity; verify the real desired state;
+  produce inspectable receipts; extract a reusable capability; and prove Mission 2 benefits
+  automatically from Mission 1.
+terminal_condition: >
+  recover -> discover -> compose -> decompose -> execute -> fail -> recover -> verify ->
+  deploy -> readback -> compound -> preserve, with all five workstreams independently
+  evidenced and Mission 2 automatic reuse verified.
+command: scale-fde-demo run SCALE_FDE_MISSION.yaml
+principles:
+  - recover_before_recreate
+  - continue_before_reconstruct
+  - compound_before_replace
+  - checkpoint_is_not_completion
+  - provider_readback_required
+  - preserve_stronger_existing_capability
+  - no_sixth_orchestration_framework
+workstreams:
+  A: estate_intelligence_gatling
+  B: runtime_swarm_durability
+  C: memory_composition_compounding
+  D: integration_mcp_sigma_glue
+  E: independent_verification_scale_product
+shared_artifacts:
+  - SCALE_FDE_MISSION.yaml
+  - SCALE_CAPABILITY_GRAPH.json
+  - ARCHITECTURE_CONTRACT.json
+  - WORKSTREAM_A.json
+  - WORKSTREAM_B.json
+  - WORKSTREAM_C.json
+  - WORKSTREAM_D.json
+  - WORKSTREAM_E.json
+  - INTEGRATION_QUEUE.json
+  - DEFECT_QUEUE.json
+  - RECEIPT_INDEX.json

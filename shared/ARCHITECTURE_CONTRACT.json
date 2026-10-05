@@ -1,0 +1,88 @@
+{
+  "schema": "glaciereq.scale-fde-architecture.v2",
+  "mission_id": "SCALE-FDE-DEMO-001",
+  "orchestration_rule": "compose_existing_estate_no_sixth_framework",
+  "workstreams": {
+    "A": {
+      "role": "Estate Intelligence / Gatling Tsunami",
+      "authority": "observational_only",
+      "owns": [
+        "estate reconnaissance",
+        "bounded concurrent discovery",
+        "deterministic aggregation",
+        "SCALE_CAPABILITY_GRAPH.json",
+        "serial_vs_gatling_metrics"
+      ]
+    },
+    "B": {
+      "role": "Runtime / Swarm / Durability",
+      "authority": "runtime_task_state",
+      "owns": [
+        "APEX Swarm",
+        "computer-user durable execution",
+        "mission DAG",
+        "dependency validation",
+        "retries",
+        "frontier",
+        "failure injection",
+        "cross-process continuation"
+      ]
+    },
+    "C": {
+      "role": "Memory / Composition / Compounding",
+      "authority": "continuity_only",
+      "owns": [
+        "Aspen Grove continuity",
+        "Genius composition",
+        "resurrection",
+        "verified capability extraction",
+        "Mission-2 automatic reuse"
+      ]
+    },
+    "D": {
+      "role": "Integration / MCP / sigma-glue",
+      "authority": "external_mutation_only_from_B_intent",
+      "owns": [
+        "sigma-glue state machine",
+        "tool selection",
+        "argument construction",
+        "provider ambiguity",
+        "idempotency",
+        "reconciliation",
+        "provider readback"
+      ]
+    },
+    "E": {
+      "role": "Verification / Scale Product / Evidence",
+      "authority": "independent_verification",
+      "owns": [
+        "baseline_vs_stack_harness",
+        "execution_verification_mission_receipts",
+        "evidence graph",
+        "architecture exhibit",
+        "REPRODUCE.md",
+        "metrics",
+        "RECEIPT_INDEX.json"
+      ]
+    }
+  },
+  "typed_handoffs": [
+    "RuntimeCheckpoint",
+    "ContinuityBundle",
+    "MutationIntent",
+    "ExternalMutationReceipt",
+    "VerificationDecision",
+    "ReusableCapabilityRegistration"
+  ],
+  "invariants": [
+    "A capability scoring confers no project authority",
+    "B is authoritative for runtime task state",
+    "C preserves and resurrects B checkpoints without changing meaning",
+    "D mutates providers only from B-issued MutationIntent and returns ExternalMutationReceipt",
+    "E verifies independently and does not repair sibling implementation",
+    "shared queues are append-only, revision-aware, and source-attributed",
+    "raw credentials are never stored in shared artifacts",
+    "worker completion is not mission completion"
+  ],
+  "canonical_shared_root": "shared/"
+}
