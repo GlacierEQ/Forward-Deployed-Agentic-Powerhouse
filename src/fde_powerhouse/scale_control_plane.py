@@ -85,17 +85,40 @@ class ScaleControlPlane:
 
     def _materialize_contracts(self, state: dict[str, Any]) -> None:
         mission = """schema: glaciereq.scale-fde-mission.v1\nid: SCALE-FDE-DEMO-001\nobjective: prove ambiguous mission to verified deployed outcome with recovery and compounding\nterminal_condition: all five workstreams verified, integration reconciled, receipts indexed\nprinciples:\n  - recover_before_recreate\n  - checkpoint_is_not_completion\n  - provider_readback_required\n  - preserve_stronger_existing_capability\n"""
-        (self.root / "SCALE_FDE_MISSION.yaml").write_text(mission)
         architecture = {"schema": "glaciereq.scale-fde-architecture.v1", "workstreams": WORKSTREAMS, "shared_artifacts": ["SCALE_CAPABILITY_GRAPH.json", "INTEGRATION_QUEUE.json", "DEFECT_QUEUE.json", "RECEIPT_INDEX.json"]}
+
+        shared = self.root / "shared"
+        shared.mkdir(parents=True, exist_ok=True)
+
+        # Keep the original runtime-root projection for backwards compatibility,
+        # but materialize the canonical cross-workstream contract plane under shared/.
+        (self.root / "SCALE_FDE_MISSION.yaml").write_text(mission)
         self._write_json(self.root / "ARCHITECTURE_CONTRACT.json", architecture)
+        (shared / "SCALE_FDE_MISSION.yaml").write_text(mission)
+        self._write_json(shared / "ARCHITECTURE_CONTRACT.json", architecture)
+
         for worker in WORKSTREAMS:
-            self._write_json(self.root / f"WORKSTREAM_{worker}.json", state["workstreams"][worker])
-        self._write_json(self.root / "INTEGRATION_QUEUE.json", state["integration_queue"])
-        self._write_json(self.root / "DEFECT_QUEUE.json", state["defect_queue"])
-        self._write_json(self.root / "RECEIPT_INDEX.json", state["receipts"])
-        cap = self.root / "SCALE_CAPABILITY_GRAPH.json"
-        if not cap.exists():
-            self._write_json(cap, {"schema": "glaciereq.scale-capability-graph.v1", "nodes": [], "edges": []})
+            runtime_projection = state["workstreams"][worker]
+            self._write_json(self.root / f"WORKSTREAM_{worker}.json", runtime_projection)
+            shared_path = shared / f"WORKSTREAM_{worker}.json"
+            if not shared_path.exists():
+                self._write_json(shared_path, runtime_projection)
+
+        generated = {
+            "INTEGRATION_QUEUE.json": state["integration_queue"],
+            "DEFECT_QUEUE.json": state["defect_queue"],
+            "RECEIPT_INDEX.json": state["receipts"],
+        }
+        for name, value in generated.items():
+            self._write_json(self.root / name, value)
+            shared_path = shared / name
+            if not shared_path.exists():
+                self._write_json(shared_path, value)
+
+        empty_graph = {"schema": "glaciereq.scale-capability-graph.v1", "nodes": [], "edges": []}
+        for cap in (self.root / "SCALE_CAPABILITY_GRAPH.json", shared / "SCALE_CAPABILITY_GRAPH.json"):
+            if not cap.exists():
+                self._write_json(cap, empty_graph)
 
     @staticmethod
     def _write_json(path: Path, value: Any) -> None:
