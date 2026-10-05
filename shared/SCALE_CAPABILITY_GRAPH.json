@@ -9,41 +9,98 @@
     "inventory_blob_sha": "c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
     "fetched_entries": 1273,
     "inventory_incomplete": true,
-    "inventory_limit_note": "Full private universe may exceed gh list page; forks may not all appear in repo list; do not treat library.json as complete GH mirror."
+    "inventory_limit_note": "Full private universe may exceed gh list page; forks may not all appear in repo list; do not treat library.json as complete GH mirror.",
+    "live_github_enumeration": {
+      "source": "authenticated GitHub connector repository search",
+      "owner": "GlacierEQ",
+      "partition_strategy": "creation-year partitions to avoid GitHub first-1000 search ceiling",
+      "partitions": {
+        "2025": {
+          "repositories": 705,
+          "pages": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            5,
+            0,
+            0
+          ]
+        },
+        "2026": {
+          "repositories": 680,
+          "pages": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            80,
+            0,
+            0,
+            0
+          ]
+        },
+        "before_2025": {
+          "repositories": 0,
+          "queries": [
+            "created:2024-01-01..2024-12-31",
+            "created:<2024-01-01"
+          ]
+        }
+      },
+      "unique_repositories": 1385,
+      "wall_clock_ms": 7943,
+      "bounded_workers": 20,
+      "scope": "all repositories returned to the authenticated connector for owner GlacierEQ under the tested creation partitions"
+    }
   },
   "deterministic_screen": {
     "algorithm": "case-insensitive lexical weighted mission-term scan over name+description+domain+status_detail; +3 for apex_cognitive_os/mcp_connectors/memory_aspen; +2 for role=whole; include score>=7 plus explicit mission components",
     "threshold": 7,
     "estate_entries_considered": 1273,
-    "capability_candidates": 331,
-    "deep_source_enriched_nodes": 17
+    "capability_candidates": 338,
+    "deep_source_enriched_nodes": 27,
+    "monolith_capability_candidates": 331,
+    "live_name_screen": {
+      "candidates": 302,
+      "rule": "case-insensitive repository-name screen for aspen|apex|sigma|computer|helix|mega|pipeline|swarm|gatling|steamroller|colossus|mastermind|memory|connector|agent|orchestr|receipt|verify|evidence|fde|scale|genius|casebuilder|proof",
+      "role": "corroborating live triage; not a substitute for semantic Monolith screen"
+    }
   },
   "gatling_benchmark": {
-    "task": "resolve latest commit for identical six-repository set",
+    "task": "Fetch README for identical eight-repository load-bearing set",
     "repositories": [
-      "GlacierEQ/aspen-grove-core",
-      "GlacierEQ/apex-boot-core",
-      "GlacierEQ/Genius-Mastery",
       "GlacierEQ/mega-skills",
+      "GlacierEQ/Genius-Mastery",
+      "GlacierEQ/aspen-grove-memory",
+      "GlacierEQ/aspen-grove-swarm",
+      "GlacierEQ/apex-boot-core",
       "GlacierEQ/sigma-glue",
-      "GlacierEQ/computer-user"
+      "GlacierEQ/computer-user",
+      "GlacierEQ/job-app-helix"
     ],
     "serial": {
       "worker_count": 1,
-      "wall_clock_ms": 2162
+      "repos_inspected": 8,
+      "wall_clock_ms": 3043,
+      "parent_context_payload_bytes": 81280
     },
     "parallel": {
-      "worker_count": 6,
-      "wall_clock_ms": 692
+      "worker_count": 8,
+      "repos_inspected": 8,
+      "wall_clock_ms": 888,
+      "parent_context_payload_bytes": 81280
     },
-    "speedup": 3.1242774566473988,
-    "wall_clock_reduction_pct": 67.99259944495837,
+    "speedup": 3.4268018018018016,
+    "wall_clock_reduction_pct": 70.81827144265527,
     "deterministic_result_match": true,
     "duplicate_findings": 0,
-    "parent_context_consumption": {
-      "normalized_aggregator_payload_bytes": 505,
-      "method": "repo+sha only; worker exploration logs not emitted to parent context"
-    }
+    "note": "Connector benchmark returns identical README payloads to parent context; executable gatling_estate.py separately measures normalized worker-result payload bytes."
   },
   "nodes": [
     {
@@ -279,26 +336,73 @@
     },
     {
       "repository": "GlacierEQ/anthropic-agent-coordinator",
-      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "Multi-agent coordinator (portfolio) AZOP waves · AKOS portfolio",
-      "implementation_paths": [],
-      "tests": [],
+      "revision": "4ef98097e729af125459188a071048112552bad0",
+      "capability": "Deterministic specialist-task DAG scheduler with fail-closed graph validation, global-budget accounting, aggregate role-cap enforcement, continuation semantics, and explicit deferred-work reasons.",
+      "implementation_paths": [
+        "src/agent_coordinator.py",
+        "src/anthropic_agent_coordinator/continuation.py",
+        "scripts/operate.py",
+        "machine/integration-lineage.json",
+        "machine/target-contract.json"
+      ],
+      "tests": [
+        "tests/test_coordinator.py",
+        "tests/test_dag_router.py",
+        "tests/test_continuation.py",
+        "tests/test_policy_and_scale.py",
+        "tests/test_operate_continuation.py",
+        "tests/test_verification.py"
+      ],
       "receipts": [
-        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
+        "machine/excellence-state.json",
+        "machine/integration-lineage.json"
       ],
       "dependencies": [],
-      "maturity": "prototype",
-      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
+      "maturity": "working",
+      "verified_state": "CURRENT_HEAD_SOURCE_RECOVERED; repository README explicitly limits executable proof to historical commit 87438f57bdfd2cb380730cf51140611963d7c95b with 62/62 governed tests. That historical proof is not promoted to current head.",
       "scale_relevance": [
-        "agent",
-        "coordinator",
-        "lab_hire_stamps"
+        "dependency-aware scheduling",
+        "bounded specialist coordination",
+        "global resource budgeting",
+        "continuation",
+        "swarm donor"
       ],
       "known_defects": [
-        "Catalog-only evidence; implementation maturity is not verified.",
-        "Current repository revision not independently resolved in this node."
+        "No fresh exact-current-head runtime/test receipt was returned during Agent A reconnaissance.",
+        "Historical exact-revision proof must not be transferred to current head without rerun."
       ],
-      "donor_value": 2
+      "donor_value": 9
+    },
+    {
+      "repository": "GlacierEQ/anthropic-safety-monitor",
+      "revision": "9f6ece4280245c9605f4981c531343228100d59b",
+      "capability": "Deterministic proposed-tool policy boundary returning allow, confirm, or deny with stable rule identifiers, reasons, severity, and explicit human-confirmation semantics.",
+      "implementation_paths": [
+        "src/anthropic_safety_monitor/policy.py",
+        "verification/policy_replay_scenarios.json"
+      ],
+      "tests": [
+        "tests/test_policy_replay.py",
+        "tests/test_safety_monitor.py",
+        "tests/test_tool_transcript.py",
+        "tests/test_verification.py",
+        "tests/test_adversarial.py"
+      ],
+      "receipts": [],
+      "dependencies": [],
+      "maturity": "hardened",
+      "verified_state": "CURRENT_HEAD_SOURCE_AND_TEST_SURFACE_RECOVERED; README records canonical TEST-evidence promotion at c7ab52e0e70a5cd449f9335f90030059d254325f, but Agent A did not obtain an exact-current-head Actions receipt.",
+      "scale_relevance": [
+        "tool-policy gates",
+        "fail-closed action review",
+        "human confirmation boundary",
+        "agent safety"
+      ],
+      "known_defects": [
+        "Canonical promotion revision differs from current head.",
+        "No exact-current-head CI status was returned by the available commit-status/workflow probes."
+      ],
+      "donor_value": 8
     },
     {
       "repository": "GlacierEQ/antigravity-awesome-skills",
@@ -692,6 +796,28 @@
       "donor_value": 2
     },
     {
+      "repository": "GlacierEQ/Apex-Gemma4",
+      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
+      "capability": "Cataloged apex_cognitive_os repository candidate.",
+      "implementation_paths": [],
+      "tests": [],
+      "receipts": [
+        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
+      ],
+      "dependencies": [],
+      "maturity": "prototype",
+      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
+      "scale_relevance": [
+        "apex",
+        "apex_cognitive_os"
+      ],
+      "known_defects": [
+        "Catalog-only evidence; implementation maturity is not verified.",
+        "Current repository revision not independently resolved in this node."
+      ],
+      "donor_value": 2
+    },
+    {
       "repository": "GlacierEQ/apex-gemma",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
       "capability": "Apex Gemma: On-device + cloud Gemma 4 dispatch system with E4B/26B router, Notion/ClickUp/Supermemory integrations",
@@ -713,28 +839,6 @@
         "Current repository revision not independently resolved in this node."
       ],
       "donor_value": 3
-    },
-    {
-      "repository": "GlacierEQ/Apex-Gemma4",
-      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "Cataloged apex_cognitive_os repository candidate.",
-      "implementation_paths": [],
-      "tests": [],
-      "receipts": [
-        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
-      ],
-      "dependencies": [],
-      "maturity": "prototype",
-      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
-      "scale_relevance": [
-        "apex",
-        "apex_cognitive_os"
-      ],
-      "known_defects": [
-        "Catalog-only evidence; implementation maturity is not verified.",
-        "Current repository revision not independently resolved in this node."
-      ],
-      "donor_value": 2
     },
     {
       "repository": "GlacierEQ/apex-github-worker",
@@ -1341,21 +1445,28 @@
       "implementation_paths": [
         "src/universal_memory_client.py",
         "scripts/verify_memory_mesh.py",
-        "APEX_POINTER_INDEX.json"
+        "machine/excellence-state.json",
+        "health/latest.json"
       ],
       "tests": [
-        "scripts/verify_memory_mesh.py",
-        "tests/"
+        "tests/test_aspen_grove_memory_proof.py",
+        "tests/test_universal_memory_client.py",
+        "tests/test_federation_authority_semantics.py",
+        "tests/test_promotion_authority.py"
       ],
-      "receipts": [],
+      "receipts": [
+        "health/latest.json",
+        "machine/excellence-state.json",
+        "machine/promotion_authority.json"
+      ],
       "dependencies": [
         "GlacierEQ/aspen-grove-core",
         "GlacierEQ/aspen-grove-supabase",
         "GlacierEQ/aspen-grove-evidence",
         "GlacierEQ/apex-boot-core"
       ],
-      "maturity": "working",
-      "verified_state": "SOURCE_VERIFIED_CURRENT_HEAD: memory client and mesh verification entrypoints are declared; live multi-tier provider health not re-executed by Agent A.",
+      "maturity": "hardened",
+      "verified_state": "CURRENT_HEAD_SOURCE_TEST_AND_LOCAL_RECEIPT_SURFACES_RECOVERED; live external Tier 2/3/4 provider health was not re-executed by Agent A.",
       "scale_relevance": [
         "context resurrection",
         "continuity",
@@ -1363,7 +1474,7 @@
         "cross-session recovery"
       ],
       "known_defects": [
-        "Provider-backed Tier 2/3/4 health remains outside this read-only sweep."
+        "Provider-backed Tier 2/3/4 liveness remains outside this read-only sweep."
       ],
       "donor_value": 10
     },
@@ -1678,6 +1789,43 @@
       "donor_value": 4
     },
     {
+      "repository": "GlacierEQ/Casebuilder4000",
+      "revision": "0eb97204b1a38456d764bb926abd2160a618a772",
+      "capability": "Deterministic evidence-driven construction engine mapping SOURCE→FACT→EVENT→ACTOR/FUNCTION→ALLEGATION→ELEMENT→DEFENSE→GAP→DISCOVERY→REMEDY→ARTIFACT with build receipts.",
+      "implementation_paths": [
+        "casebuilder/evidence_bridge.py",
+        "casebuilder/evidence_store.py",
+        "casebuilder/digital_evidence_surface.py",
+        "casebuilder/evidence_cli.py",
+        "docs/JACK_CASEBUILDER_ENGINE.md"
+      ],
+      "tests": [
+        "tests/test_casebuilder_engine.py",
+        "tests/test_evidence_bridge.py",
+        "tests/test_evidence_store.py",
+        "tests/test_pipeline_hardening.py",
+        "tests/test_reconciliation.py",
+        "tests/test_execution.py"
+      ],
+      "receipts": [
+        "receipts/CASE-33-Cross-Case-Evidence-Preservation-Spoliation-and_BUILD_RECEIPT.json",
+        "receipts/CASE-28-Teresa-Evidence-Integrity-False-Statements-and-F_BUILD_RECEIPT.json"
+      ],
+      "dependencies": [],
+      "maturity": "hardened",
+      "verified_state": "CURRENT_HEAD_SOURCE_TEST_AND_RECEIPT_SURFACES_RECOVERED; Agent A did not execute a live case build.",
+      "scale_relevance": [
+        "evidence graph donor",
+        "claim-source lineage",
+        "machine-readable receipts",
+        "gap-to-action conversion"
+      ],
+      "known_defects": [
+        "Domain-specific legal semantics are donor patterns, not Scale mission runtime ownership."
+      ],
+      "donor_value": 8
+    },
+    {
       "repository": "GlacierEQ/casey-custom-mcp-constellation",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
       "capability": "🚀 Casey's Custom MCP Constellation - Legal AI Warfare Engine + Business Intelligence + Quantum Memory Integration for Case 1FDV-23-0001009 & Hi-Class Home Services",
@@ -1938,28 +2086,6 @@
       "donor_value": 3
     },
     {
-      "repository": "GlacierEQ/Codex",
-      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "Cataloged apex_cognitive_os repository candidate.",
-      "implementation_paths": [],
-      "tests": [],
-      "receipts": [
-        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
-      ],
-      "dependencies": [],
-      "maturity": "prototype",
-      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
-      "scale_relevance": [
-        "apex",
-        "apex_cognitive_os"
-      ],
-      "known_defects": [
-        "Catalog-only evidence; implementation maturity is not verified.",
-        "Current repository revision not independently resolved in this node."
-      ],
-      "donor_value": 2
-    },
-    {
       "repository": "GlacierEQ/codex_py2cpp",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
       "capability": "Converts python code into c++ by using OpenAI CODEX.",
@@ -2008,6 +2134,28 @@
       "repository": "GlacierEQ/codex-universal",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
       "capability": "Base docker image used in Codex environments",
+      "implementation_paths": [],
+      "tests": [],
+      "receipts": [
+        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
+      ],
+      "dependencies": [],
+      "maturity": "prototype",
+      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
+      "scale_relevance": [
+        "apex",
+        "apex_cognitive_os"
+      ],
+      "known_defects": [
+        "Catalog-only evidence; implementation maturity is not verified.",
+        "Current repository revision not independently resolved in this node."
+      ],
+      "donor_value": 2
+    },
+    {
+      "repository": "GlacierEQ/Codex",
+      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
+      "capability": "Cataloged apex_cognitive_os repository candidate.",
       "implementation_paths": [],
       "tests": [],
       "receipts": [
@@ -2077,14 +2225,24 @@
       "revision": "851f50ae67a8a333b480ef8106a5bcbd579c6a76",
       "capability": "Gateway repository currently carrying provider/integration work, including current-head Box/NEX native migration changes; historical README identity is materially stale.",
       "implementation_paths": [
-        "README.md",
-        "provider/integration code at current head requires direct path-level inspection"
+        "bootstrap.ts",
+        "src/",
+        "api/",
+        "lib/",
+        "tests/",
+        "ARCHITECTURE.md"
       ],
-      "tests": [],
+      "tests": [
+        "tests/test_gateway_surface.py",
+        "tests/test_contracts.py",
+        "tests/ownedInvocation.test.ts",
+        "tests/securityHardening.test.ts",
+        "tests/memoryRouter.test.ts"
+      ],
       "receipts": [],
       "dependencies": [],
       "maturity": "working",
-      "verified_state": "REVISION_VERIFIED_BUT_CAPABILITY_IDENTITY_DRIFTED: current commit proves active provider-integration mutation while README still describes ML compiler routing.",
+      "verified_state": "CURRENT_HEAD_REVISION_SOURCE_AND_TEST_SURFACE_RECOVERED; gateway code/tests are present, but README identity describes latent-attention/hardware acceleration and is materially inconsistent with the provider/gateway role.",
       "scale_relevance": [
         "MCP/provider gateway",
         "external mutation path",
@@ -2092,7 +2250,7 @@
       ],
       "known_defects": [
         "README/current implementation identity drift.",
-        "Exact current provider routing paths/tests were not fully recovered in this bounded sweep."
+        "Idempotency search surfaced only src/tools/computerUser.ts; full gateway idempotency contract remains unresolved in Agent A evidence."
       ],
       "donor_value": 8
     },
@@ -2171,6 +2329,29 @@
       "donor_value": 4
     },
     {
+      "repository": "GlacierEQ/computer-user-storage",
+      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
+      "capability": "Distributed Storage Backend - Phase deployments, artifacts, configurations, and system state",
+      "implementation_paths": [],
+      "tests": [],
+      "receipts": [
+        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
+      ],
+      "dependencies": [],
+      "maturity": "prototype",
+      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
+      "scale_relevance": [
+        "apex",
+        "computer",
+        "apex_cognitive_os"
+      ],
+      "known_defects": [
+        "Catalog-only evidence; implementation maturity is not verified.",
+        "Current repository revision not independently resolved in this node."
+      ],
+      "donor_value": 3
+    },
+    {
       "repository": "GlacierEQ/computer-user",
       "revision": "1f0ae18968b4e830f66ee97dd4a2dc4805c6c298",
       "capability": "Governed durable computer execution kernel with SQLite-backed task queue, connector dispatch, browser adapter, verification and durable receipt/readback.",
@@ -2206,29 +2387,6 @@
         "Persistent production host requires environment-specific live proof."
       ],
       "donor_value": 10
-    },
-    {
-      "repository": "GlacierEQ/computer-user-storage",
-      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "Distributed Storage Backend - Phase deployments, artifacts, configurations, and system state",
-      "implementation_paths": [],
-      "tests": [],
-      "receipts": [
-        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
-      ],
-      "dependencies": [],
-      "maturity": "prototype",
-      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
-      "scale_relevance": [
-        "apex",
-        "computer",
-        "apex_cognitive_os"
-      ],
-      "known_defects": [
-        "Catalog-only evidence; implementation maturity is not verified.",
-        "Current repository revision not independently resolved in this node."
-      ],
-      "donor_value": 3
     },
     {
       "repository": "GlacierEQ/constellation-memory-engine",
@@ -2627,17 +2785,52 @@
     },
     {
       "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+      "revision": "de9109b8c9dcc3695c3ed81a1f6ee078907c5d0c",
+      "capability": "Agent A Gatling Tsunami: bounded ThreadPoolExecutor discovery workers plus contract-validating, conflict-detecting, deterministic capability-node aggregation and context-consumption metrics.",
+      "implementation_paths": [
+        "src/fde_powerhouse/gatling_estate.py"
+      ],
+      "tests": [
+        "tests/test_gatling_estate.py"
+      ],
+      "receipts": [
+        "shared/WORKSTREAM_A.json"
+      ],
+      "dependencies": [
+        "src/fde_powerhouse/estate.py",
+        "src/fde_powerhouse/estate_leverage.py"
+      ],
+      "maturity": "working",
+      "verified_state": "IMPLEMENTED_AND_FOCUSED_TESTED: RED import failure observed before implementation; GREEN focused suite passed 3 tests in 0.12s; Python compileall passed. Ruff was unavailable in the local execution runtime, and the full repository suite has not yet been rerun at this branch revision.",
+      "scale_relevance": [
+        "real bounded concurrency",
+        "deterministic aggregation",
+        "duplicate detection",
+        "parent-context measurement",
+        "estate reconnaissance"
+      ],
+      "known_defects": [
+        "Full repository regression suite not yet executed for this branch revision.",
+        "Local runtime did not have ruff installed."
+      ],
+      "donor_value": 10
+    },
+    {
+      "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
       "revision": "824cd7edc41ed8fa0da2ef491a27c079fd62d1a6",
       "capability": "Forward-deployed agentic orchestration scaffold composing Mega Skills and Genius, with maximize/invert-scan/invoke/proof/demo commands and coverage-gated CI.",
       "implementation_paths": [
-        "fde_powerhouse/",
-        "configs/pins.yaml",
-        "docs/CI_AND_PINS.md",
-        "docs/INVERT_SCAN.md"
+        "src/fde_powerhouse/estate.py",
+        "src/fde_powerhouse/estate_leverage.py",
+        "configs/estate.yaml",
+        "configs/estate_catalog.yaml",
+        "src/fde_powerhouse/proof_pack.py"
       ],
       "tests": [
-        "pytest --cov=fde_powerhouse --cov-report=term-missing --cov-fail-under=70",
-        "tests/"
+        "tests/test_estate.py",
+        "tests/test_estate_leverage.py",
+        "tests/test_showcase.py",
+        ".github/workflows/ci.yml"
       ],
       "receipts": [
         "scheduled edge artifacts",
@@ -2648,7 +2841,7 @@
         "GlacierEQ/Genius-Mastery"
       ],
       "maturity": "working",
-      "verified_state": "SOURCE_VERIFIED_CURRENT_HEAD: 70% coverage gate and FDE CLI surfaces recovered; full Scale mission artifacts did not pre-exist before this workstream.",
+      "verified_state": "BASELINE_SOURCE_VERIFIED_AT_MISSION_BRANCH_POINT: existing estate/leverage/proof substrate was recovered at 824cd7edc41ed8fa0da2ef491a27c079fd62d1a6 and extended rather than replaced.",
       "scale_relevance": [
         "Scale FDE demonstration host",
         "composition scaffold",
@@ -2656,7 +2849,7 @@
         "edge probes"
       ],
       "known_defects": [
-        "No pre-existing SCALE_FDE_MISSION.yaml, SCALE_CAPABILITY_GRAPH.json, WORKSTREAM_A.json or scale branches were found at mission start."
+        "Baseline estate_catalog snapshot was dated 2026-09-20 and required current revalidation."
       ],
       "donor_value": 10
     },
@@ -2809,29 +3002,6 @@
       "donor_value": 2
     },
     {
-      "repository": "GlacierEQ/GlacierEQ",
-      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "GlacierEQ sovereign evidence and pro-code repository for Apex infrastructure.",
-      "implementation_paths": [],
-      "tests": [],
-      "receipts": [
-        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
-      ],
-      "dependencies": [],
-      "maturity": "prototype",
-      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
-      "scale_relevance": [
-        "apex",
-        "evidence",
-        "apex_cognitive_os"
-      ],
-      "known_defects": [
-        "Catalog-only evidence; implementation maturity is not verified.",
-        "Current repository revision not independently resolved in this node."
-      ],
-      "donor_value": 3
-    },
-    {
       "repository": "GlacierEQ/GlacierEQ_Swarm",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
       "capability": "Local Swarm OS: MICROWAVE flippers, token-saver, voice Stage A/C queue, make-heavy, toolbelt. Code only — no legal/voice audio.",
@@ -2949,6 +3119,29 @@
         "Current repository revision not independently resolved in this node."
       ],
       "donor_value": 7
+    },
+    {
+      "repository": "GlacierEQ/GlacierEQ",
+      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
+      "capability": "GlacierEQ sovereign evidence and pro-code repository for Apex infrastructure.",
+      "implementation_paths": [],
+      "tests": [],
+      "receipts": [
+        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
+      ],
+      "dependencies": [],
+      "maturity": "prototype",
+      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
+      "scale_relevance": [
+        "apex",
+        "evidence",
+        "apex_cognitive_os"
+      ],
+      "known_defects": [
+        "Catalog-only evidence; implementation maturity is not verified.",
+        "Current repository revision not independently resolved in this node."
+      ],
+      "donor_value": 3
     },
     {
       "repository": "GlacierEQ/gmail-mcp-server",
@@ -3276,6 +3469,50 @@
       "donor_value": 3
     },
     {
+      "repository": "GlacierEQ/job-app-helix",
+      "revision": "e369764107921b25cb67d398aed0bf54fb521ca7",
+      "capability": "Evidence/role-intelligence control plane with recovery, capability archaeology, proof-state machine, evidence ledger and public-safe projections.",
+      "implementation_paths": [
+        "src/job_app_helix/estate_intelligence.py",
+        "src/job_app_helix/estate_compiler.py",
+        "scripts/project_estate_intelligence.py",
+        "scripts/compile_estate_graph.py",
+        "docs/ESTATE_INTELLIGENCE_PROJECTION.md",
+        "solidify_records/"
+      ],
+      "tests": [
+        "tests/test_estate_intelligence.py",
+        "tests/test_estate_federated_recovery.py",
+        "tests/test_proof_identity_receipts.py",
+        "tests/test_public_proof_runtime.py",
+        "tests/test_worker_science.py",
+        ".github/workflows/ci.yml"
+      ],
+      "receipts": [
+        "solidify_records/",
+        "status/",
+        "manifests/"
+      ],
+      "dependencies": [
+        "GlacierEQ/monolith",
+        "GlacierEQ/computer-user",
+        "GlacierEQ/AKOS"
+      ],
+      "maturity": "hardened",
+      "verified_state": "CURRENT_HEAD_SOURCE_AND_LARGE_TEST_SURFACE_RECOVERED; README reports 961 tests and 54 workflows, but the available exact-head status/workflow probes returned no current Actions receipt, so production is not independently promoted here.",
+      "scale_relevance": [
+        "evidence graph",
+        "verification receipts",
+        "capability archaeology",
+        "baseline evaluation"
+      ],
+      "known_defects": [
+        "Public control plane intentionally excludes private application execution.",
+        "README test/workflow counts were not independently rerun by Agent A at this exact head."
+      ],
+      "donor_value": 10
+    },
+    {
       "repository": "GlacierEQ/job-app",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
       "capability": "Cataloged apex_cognitive_os repository candidate.",
@@ -3296,46 +3533,6 @@
         "Current repository revision not independently resolved in this node."
       ],
       "donor_value": 2
-    },
-    {
-      "repository": "GlacierEQ/job-app-helix",
-      "revision": "e369764107921b25cb67d398aed0bf54fb521ca7",
-      "capability": "Evidence/role-intelligence control plane with recovery, capability archaeology, proof-state machine, evidence ledger and public-safe projections.",
-      "implementation_paths": [
-        "manifests/portfolio_repositories.json",
-        "manifests/unified_deserving_manifest.json",
-        "solidify_records/",
-        "evidence_ledger_UPDATED.json",
-        "job_app_helix/"
-      ],
-      "tests": [
-        "pytest",
-        "python scripts/check_public_surface.py",
-        ".github/workflows/ci.yml"
-      ],
-      "receipts": [
-        "solidify_records/",
-        "FINAL_FORM_MANIFEST",
-        "INTEGRITY_MANIFEST"
-      ],
-      "dependencies": [
-        "GlacierEQ/monolith",
-        "GlacierEQ/computer-user",
-        "GlacierEQ/AKOS"
-      ],
-      "maturity": "production",
-      "verified_state": "SOURCE_VERIFIED_CURRENT_HEAD: README reports 961 passing tests on CI and evidence-state hard-no-go behavior; Agent A did not independently rerun the suite.",
-      "scale_relevance": [
-        "evidence graph",
-        "verification receipts",
-        "capability archaeology",
-        "baseline evaluation"
-      ],
-      "known_defects": [
-        "Public control plane intentionally excludes private application execution.",
-        "Some historical repo anchors remain explicitly unverified in the machine contract."
-      ],
-      "donor_value": 10
     },
     {
       "repository": "GlacierEQ/job-application",
@@ -3499,29 +3696,6 @@
       "donor_value": 4
     },
     {
-      "repository": "GlacierEQ/make-it-heavy",
-      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "A Python framework that emulates Grok Heavy functionality using intelligent multi-agent orchestration. Deploy 4 (or more) specialized AI agents in parallel to deliver comprehensive, multi-perspective analysis on any query.",
-      "implementation_paths": [],
-      "tests": [],
-      "receipts": [
-        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
-      ],
-      "dependencies": [],
-      "maturity": "prototype",
-      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
-      "scale_relevance": [
-        "orchestr",
-        "agent",
-        "long_tail"
-      ],
-      "known_defects": [
-        "Catalog-only evidence; implementation maturity is not verified.",
-        "Current repository revision not independently resolved in this node."
-      ],
-      "donor_value": 2
-    },
-    {
       "repository": "GlacierEQ/make-it-heavy-private",
       "revision": "85b4b247cb4e1767d32bc47b34b9969bafec3227",
       "capability": "Policy-bound multi-agent swarm runner with mission decomposition, parallel role-bound workers, synthesis, local writes, bounded timeouts and optional fail-closed MCP.",
@@ -3553,6 +3727,29 @@
         "External mutations require deployment-specific opt-in."
       ],
       "donor_value": 10
+    },
+    {
+      "repository": "GlacierEQ/make-it-heavy",
+      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
+      "capability": "A Python framework that emulates Grok Heavy functionality using intelligent multi-agent orchestration. Deploy 4 (or more) specialized AI agents in parallel to deliver comprehensive, multi-perspective analysis on any query.",
+      "implementation_paths": [],
+      "tests": [],
+      "receipts": [
+        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
+      ],
+      "dependencies": [],
+      "maturity": "prototype",
+      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
+      "scale_relevance": [
+        "orchestr",
+        "agent",
+        "long_tail"
+      ],
+      "known_defects": [
+        "Catalog-only evidence; implementation maturity is not verified.",
+        "Current repository revision not independently resolved in this node."
+      ],
+      "donor_value": 2
     },
     {
       "repository": "GlacierEQ/master-memory-nexus",
@@ -3604,31 +3801,6 @@
       "donor_value": 3
     },
     {
-      "repository": "GlacierEQ/mastermind",
-      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "APEX Mastermind — Boss API, forensic pipeline, control plane. AKOS-linked. Live job application.",
-      "implementation_paths": [],
-      "tests": [],
-      "receipts": [
-        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
-      ],
-      "dependencies": [],
-      "maturity": "prototype",
-      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
-      "scale_relevance": [
-        "apex",
-        "control",
-        "pipeline",
-        "mastermind",
-        "apex_cognitive_os"
-      ],
-      "known_defects": [
-        "Catalog-only evidence; implementation maturity is not verified.",
-        "Current repository revision not independently resolved in this node."
-      ],
-      "donor_value": 5
-    },
-    {
       "repository": "GlacierEQ/mastermind-law",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
       "capability": "🏛️ Law-specialized APEX Mastermind variant — autonomous legal warfare engine. Bolt-on deployment to case brain",
@@ -3652,27 +3824,42 @@
       "donor_value": 3
     },
     {
-      "repository": "GlacierEQ/mcp",
-      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "Cataloged mcp_connectors repository candidate.",
-      "implementation_paths": [],
-      "tests": [],
+      "repository": "GlacierEQ/mastermind",
+      "revision": "dd6360390087f7719671f53b650388ccb4bd97e0",
+      "capability": "Receipt-backed mission-control sidecar implementing an Alpha/Omega spiral: intent and routing into execution, then validation, chained receipts, memory/continuation, and capability delta.",
+      "implementation_paths": [
+        "runtime/spine.py",
+        "runtime/lane.py",
+        "runtime/receipt.py",
+        "runtime/checkpoint.py",
+        "runtime/morpheus.py",
+        "mcp_server.py"
+      ],
+      "tests": [
+        "tests/test_runtime.py",
+        "tests/test_lane_routing_strength.py",
+        "tests/test_quality_forge.py",
+        "tests/test_morpheus.py",
+        "tests/test_permanent_memory.py",
+        "tests/test_checkpoint.py"
+      ],
       "receipts": [
-        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
+        "runtime receipt chain"
       ],
       "dependencies": [],
-      "maturity": "prototype",
-      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
+      "maturity": "hardened",
+      "verified_state": "CURRENT_HEAD_SOURCE_AND_TEST_SURFACE_RECOVERED; GitHub combined-status probe returned a successful Vercel status for this exact head, which proves deployment status only, not the full mission runtime.",
       "scale_relevance": [
-        "mcp",
-        "connector",
-        "mcp_connectors"
+        "mission routing",
+        "Alpha/Omega spiral",
+        "receipt chaining",
+        "capability evolution",
+        "continuation"
       ],
       "known_defects": [
-        "Catalog-only evidence; implementation maturity is not verified.",
-        "Current repository revision not independently resolved in this node."
+        "Vercel success does not establish all runtime/test claims."
       ],
-      "donor_value": 3
+      "donor_value": 8
     },
     {
       "repository": "GlacierEQ/MCP-Bridge",
@@ -4127,29 +4314,6 @@
       "donor_value": 4
     },
     {
-      "repository": "GlacierEQ/mcp-server",
-      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "Giving Claude ability to run code with E2B via MCP (Model Context Protocol)",
-      "implementation_paths": [],
-      "tests": [],
-      "receipts": [
-        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
-      ],
-      "dependencies": [],
-      "maturity": "prototype",
-      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
-      "scale_relevance": [
-        "mcp",
-        "connector",
-        "mcp_connectors"
-      ],
-      "known_defects": [
-        "Catalog-only evidence; implementation maturity is not verified.",
-        "Current repository revision not independently resolved in this node."
-      ],
-      "donor_value": 3
-    },
-    {
       "repository": "GlacierEQ/mcp-server-browserbase",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
       "capability": "Allow LLMs to control a browser with Browserbase and Stagehand",
@@ -4248,6 +4412,29 @@
       "repository": "GlacierEQ/mcp-server-qdrant",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
       "capability": "An official Qdrant Model Context Protocol (MCP) server implementation",
+      "implementation_paths": [],
+      "tests": [],
+      "receipts": [
+        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
+      ],
+      "dependencies": [],
+      "maturity": "prototype",
+      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
+      "scale_relevance": [
+        "mcp",
+        "connector",
+        "mcp_connectors"
+      ],
+      "known_defects": [
+        "Catalog-only evidence; implementation maturity is not verified.",
+        "Current repository revision not independently resolved in this node."
+      ],
+      "donor_value": 3
+    },
+    {
+      "repository": "GlacierEQ/mcp-server",
+      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
+      "capability": "Giving Claude ability to run code with E2B via MCP (Model Context Protocol)",
       "implementation_paths": [],
       "tests": [],
       "receipts": [
@@ -4413,6 +4600,29 @@
       "donor_value": 3
     },
     {
+      "repository": "GlacierEQ/mcp",
+      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
+      "capability": "Cataloged mcp_connectors repository candidate.",
+      "implementation_paths": [],
+      "tests": [],
+      "receipts": [
+        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
+      ],
+      "dependencies": [],
+      "maturity": "prototype",
+      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
+      "scale_relevance": [
+        "mcp",
+        "connector",
+        "mcp_connectors"
+      ],
+      "known_defects": [
+        "Catalog-only evidence; implementation maturity is not verified.",
+        "Current repository revision not independently resolved in this node."
+      ],
+      "donor_value": 3
+    },
+    {
       "repository": "GlacierEQ/mcpdoc",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
       "capability": "Expose llms-txt to IDEs for development",
@@ -4486,6 +4696,37 @@
       "donor_value": 6
     },
     {
+      "repository": "GlacierEQ/mega-pipeline-production",
+      "revision": "806df98d7ba185a7367ae2436685da3d32685cd4",
+      "capability": "Deterministic ten-phase engineering pipeline with a seven-dimension evidence gate covering tests, config, telemetry, persistence, API surface, error recovery, and integration.",
+      "implementation_paths": [
+        "SKILL.md",
+        "scripts/pipeline_runner.py",
+        "scripts/production_auditor.py",
+        "verify_all.py"
+      ],
+      "tests": [
+        "tests/test_apex_orchestration_overlay.py",
+        "tests/test_combo.py",
+        "tests/test_combo_skills.py",
+        "tests/test_legal_issue_assessment.py"
+      ],
+      "receipts": [],
+      "dependencies": [],
+      "maturity": "working",
+      "verified_state": "CURRENT_HEAD_SOURCE_AND_TEST_SURFACE_RECOVERED; production-readiness mechanism exists, but Agent A did not execute the target-independent full pipeline or obtain a current CI receipt.",
+      "scale_relevance": [
+        "stage sequencing",
+        "evidence gates",
+        "production readiness",
+        "Mega Pipeline donor"
+      ],
+      "known_defects": [
+        "No exact-current-head execution receipt recovered in this read-only sweep."
+      ],
+      "donor_value": 8
+    },
+    {
       "repository": "GlacierEQ/mega-skills",
       "revision": "7dee0c0a98468e29d364ee18a9c0bcd57f05b91f",
       "capability": "Canonical recursive capability repository: 709 atomic Skills, 33 Compound Skills, 29 Mega Skills and executable deep-work DAG pipelines.",
@@ -4522,6 +4763,35 @@
       "donor_value": 10
     },
     {
+      "repository": "GlacierEQ/mega-skills",
+      "revision": "7dee0c0a98468e29d364ee18a9c0bcd57f05b91f",
+      "capability": "Faraway Party bounded candidate-swarm discovery surface layered on the canonical Mega-Skills hierarchy.",
+      "implementation_paths": [
+        "scripts/faraway_party_candidate_swarm.py",
+        "skills/faraway-party/SKILL.md",
+        ".github/workflows/faraway-party-candidate-uplift.yml"
+      ],
+      "tests": [
+        "tests/test_faraway_swarm.py"
+      ],
+      "receipts": [],
+      "dependencies": [
+        "GlacierEQ/mega-skills"
+      ],
+      "maturity": "working",
+      "verified_state": "CURRENT_HEAD_SOURCE_AND_TEST_SURFACE_RECOVERED; Agent A did not execute this repository's own Faraway workflow.",
+      "scale_relevance": [
+        "Gatling donor",
+        "bounded discovery",
+        "parallel candidate research",
+        "skill composition"
+      ],
+      "known_defects": [
+        "Current-head runtime benchmark for Faraway Party was not recovered."
+      ],
+      "donor_value": 9
+    },
+    {
       "repository": "GlacierEQ/mem-agent-mcp",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
       "capability": "mem-agent mcp server",
@@ -4544,31 +4814,6 @@
         "Current repository revision not independently resolved in this node."
       ],
       "donor_value": 4
-    },
-    {
-      "repository": "GlacierEQ/mem0",
-      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "Universal memory layer for AI Agents; Announcing OpenMemory MCP - local and secure memory management.",
-      "implementation_paths": [],
-      "tests": [],
-      "receipts": [
-        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
-      ],
-      "dependencies": [],
-      "maturity": "prototype",
-      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
-      "scale_relevance": [
-        "agent",
-        "memory",
-        "aspen",
-        "mcp",
-        "memory_aspen"
-      ],
-      "known_defects": [
-        "Catalog-only evidence; implementation maturity is not verified.",
-        "Current repository revision not independently resolved in this node."
-      ],
-      "donor_value": 5
     },
     {
       "repository": "GlacierEQ/mem0-mcp-integration",
@@ -4620,9 +4865,34 @@
       "donor_value": 4
     },
     {
-      "repository": "GlacierEQ/memory",
+      "repository": "GlacierEQ/mem0",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "Cataloged memory_aspen repository candidate.",
+      "capability": "Universal memory layer for AI Agents; Announcing OpenMemory MCP - local and secure memory management.",
+      "implementation_paths": [],
+      "tests": [],
+      "receipts": [
+        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
+      ],
+      "dependencies": [],
+      "maturity": "prototype",
+      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
+      "scale_relevance": [
+        "agent",
+        "memory",
+        "aspen",
+        "mcp",
+        "memory_aspen"
+      ],
+      "known_defects": [
+        "Catalog-only evidence; implementation maturity is not verified.",
+        "Current repository revision not independently resolved in this node."
+      ],
+      "donor_value": 5
+    },
+    {
+      "repository": "GlacierEQ/memory-tool-build",
+      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
+      "capability": "Repository for building and storing memory tool facts and analysis.",
       "implementation_paths": [],
       "tests": [],
       "receipts": [
@@ -4643,9 +4913,9 @@
       "donor_value": 3
     },
     {
-      "repository": "GlacierEQ/memory-tool-build",
+      "repository": "GlacierEQ/memory",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "Repository for building and storing memory tool facts and analysis.",
+      "capability": "Cataloged memory_aspen repository candidate.",
       "implementation_paths": [],
       "tests": [],
       "receipts": [
@@ -4779,29 +5049,6 @@
       "donor_value": 2
     },
     {
-      "repository": "GlacierEQ/MiMo-Config",
-      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "MiMo Code configuration, skills, and distill assets for APEX operator",
-      "implementation_paths": [],
-      "tests": [],
-      "receipts": [
-        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
-      ],
-      "dependencies": [],
-      "maturity": "prototype",
-      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
-      "scale_relevance": [
-        "apex",
-        "skill",
-        "apex_cognitive_os"
-      ],
-      "known_defects": [
-        "Catalog-only evidence; implementation maturity is not verified.",
-        "Current repository revision not independently resolved in this node."
-      ],
-      "donor_value": 3
-    },
-    {
       "repository": "GlacierEQ/mimo-config-backup",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
       "capability": "MiMo Code Agent config backup - 2026-07-01",
@@ -4816,6 +5063,29 @@
       "scale_relevance": [
         "agent",
         "apex",
+        "apex_cognitive_os"
+      ],
+      "known_defects": [
+        "Catalog-only evidence; implementation maturity is not verified.",
+        "Current repository revision not independently resolved in this node."
+      ],
+      "donor_value": 3
+    },
+    {
+      "repository": "GlacierEQ/MiMo-Config",
+      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
+      "capability": "MiMo Code configuration, skills, and distill assets for APEX operator",
+      "implementation_paths": [],
+      "tests": [],
+      "receipts": [
+        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
+      ],
+      "dependencies": [],
+      "maturity": "prototype",
+      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
+      "scale_relevance": [
+        "apex",
+        "skill",
         "apex_cognitive_os"
       ],
       "known_defects": [
@@ -5252,50 +5522,6 @@
       "donor_value": 3
     },
     {
-      "repository": "GlacierEQ/omni",
-      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "The all-in-one tool to supercharge your productivity ⌨️",
-      "implementation_paths": [],
-      "tests": [],
-      "receipts": [
-        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
-      ],
-      "dependencies": [],
-      "maturity": "prototype",
-      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
-      "scale_relevance": [
-        "apex",
-        "apex_cognitive_os"
-      ],
-      "known_defects": [
-        "Catalog-only evidence; implementation maturity is not verified.",
-        "Current repository revision not independently resolved in this node."
-      ],
-      "donor_value": 2
-    },
-    {
-      "repository": "GlacierEQ/Omni_Engine",
-      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "Big Brain",
-      "implementation_paths": [],
-      "tests": [],
-      "receipts": [
-        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
-      ],
-      "dependencies": [],
-      "maturity": "prototype",
-      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
-      "scale_relevance": [
-        "apex",
-        "apex_cognitive_os"
-      ],
-      "known_defects": [
-        "Catalog-only evidence; implementation maturity is not verified.",
-        "Current repository revision not independently resolved in this node."
-      ],
-      "donor_value": 2
-    },
-    {
       "repository": "GlacierEQ/Omni_Engine_MCP",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
       "capability": "Auto-deployed Supermemory MCP",
@@ -5318,6 +5544,28 @@
         "Current repository revision not independently resolved in this node."
       ],
       "donor_value": 4
+    },
+    {
+      "repository": "GlacierEQ/Omni_Engine",
+      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
+      "capability": "Big Brain",
+      "implementation_paths": [],
+      "tests": [],
+      "receipts": [
+        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
+      ],
+      "dependencies": [],
+      "maturity": "prototype",
+      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
+      "scale_relevance": [
+        "apex",
+        "apex_cognitive_os"
+      ],
+      "known_defects": [
+        "Catalog-only evidence; implementation maturity is not verified.",
+        "Current repository revision not independently resolved in this node."
+      ],
+      "donor_value": 2
     },
     {
       "repository": "GlacierEQ/omni-agent-pro",
@@ -5365,6 +5613,28 @@
       "donor_value": 2
     },
     {
+      "repository": "GlacierEQ/OMNI-ENGINE-SUPREME",
+      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
+      "capability": "🌌 OMNI_ENGINE Overlord: Pillar and Piston Architecture for the 178-Repo Empire.",
+      "implementation_paths": [],
+      "tests": [],
+      "receipts": [
+        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
+      ],
+      "dependencies": [],
+      "maturity": "prototype",
+      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
+      "scale_relevance": [
+        "apex",
+        "apex_cognitive_os"
+      ],
+      "known_defects": [
+        "Catalog-only evidence; implementation maturity is not verified.",
+        "Current repository revision not independently resolved in this node."
+      ],
+      "donor_value": 2
+    },
+    {
       "repository": "GlacierEQ/omni-engine",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
       "capability": "Cataloged apex_cognitive_os repository candidate.",
@@ -5387,9 +5657,9 @@
       "donor_value": 2
     },
     {
-      "repository": "GlacierEQ/OMNI-ENGINE-SUPREME",
+      "repository": "GlacierEQ/omni",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "🌌 OMNI_ENGINE Overlord: Pillar and Piston Architecture for the 178-Repo Empire.",
+      "capability": "The all-in-one tool to supercharge your productivity ⌨️",
       "implementation_paths": [],
       "tests": [],
       "receipts": [
@@ -5744,6 +6014,29 @@
       "donor_value": 8
     },
     {
+      "repository": "GlacierEQ/Pro-apex-fs-commander-omega",
+      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
+      "capability": "Cataloged pro_control_surfaces repository candidate.",
+      "implementation_paths": [],
+      "tests": [],
+      "receipts": [
+        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
+      ],
+      "dependencies": [],
+      "maturity": "prototype",
+      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
+      "scale_relevance": [
+        "apex",
+        "control",
+        "pro_control_surfaces"
+      ],
+      "known_defects": [
+        "Catalog-only evidence; implementation maturity is not verified.",
+        "Current repository revision not independently resolved in this node."
+      ],
+      "donor_value": 2
+    },
+    {
       "repository": "GlacierEQ/Pro-apex-fs-commander",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
       "capability": "Apex FS Commander - Power frontend for MCP orchestration, evidence automation, docket forensics, and file system control for Kekoa Barton Case 1FDV-23-0001009. Integrated with Linear, Notion, GitHub Aspen Grove memory, agent orchestration patterns.",
@@ -5771,29 +6064,6 @@
         "Current repository revision not independently resolved in this node."
       ],
       "donor_value": 8
-    },
-    {
-      "repository": "GlacierEQ/Pro-apex-fs-commander-omega",
-      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "Cataloged pro_control_surfaces repository candidate.",
-      "implementation_paths": [],
-      "tests": [],
-      "receipts": [
-        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
-      ],
-      "dependencies": [],
-      "maturity": "prototype",
-      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
-      "scale_relevance": [
-        "apex",
-        "control",
-        "pro_control_surfaces"
-      ],
-      "known_defects": [
-        "Catalog-only evidence; implementation maturity is not verified.",
-        "Current repository revision not independently resolved in this node."
-      ],
-      "donor_value": 2
     },
     {
       "repository": "GlacierEQ/Pro-CI",
@@ -6190,27 +6460,40 @@
     },
     {
       "repository": "GlacierEQ/Pro-Memory",
-      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "🧠 Pro-tier memory constellation — Aspen Grove 4-tier architecture (Supabase pgvector, Pinecone+Mem0, Neo4j+Supermemory). Sovereign persistent memory organism for GlacierEQ APEX | Case 1FDV-23-0001009",
-      "implementation_paths": [],
-      "tests": [],
-      "receipts": [
-        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
+      "revision": "bb2eb0916abe4566f19e2a8e7d35a050855441db",
+      "capability": "Four-tier Aspen-style memory constellation spanning Supabase pgvector, Pinecone/Mem0, Neo4j/Supermemory, and cold archive providers.",
+      "implementation_paths": [
+        "README.md",
+        "CONNECTORS.md",
+        "SCHEMA.md",
+        "OPS-PLAYBOOK.md",
+        "CONSOLIDATION.md",
+        "api/health.py"
       ],
-      "dependencies": [],
-      "maturity": "prototype",
-      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
+      "tests": [],
+      "receipts": [],
+      "dependencies": [
+        "Supabase pgvector",
+        "Pinecone",
+        "Mem0",
+        "Neo4j",
+        "Supermemory",
+        "Dropbox",
+        "OneDrive"
+      ],
+      "maturity": "working",
+      "verified_state": "CURRENT_HEAD_SOURCE_RECOVERED; architecture and health surface exist, but no repository test directory or exact provider-health receipt was recovered.",
       "scale_relevance": [
-        "memory",
-        "aspen",
-        "apex",
-        "memory_aspen"
+        "memory donor",
+        "cross-session continuity",
+        "semantic recall",
+        "graph memory"
       ],
       "known_defects": [
-        "Catalog-only evidence; implementation maturity is not verified.",
-        "Current repository revision not independently resolved in this node."
+        "No tests/ directory recovered.",
+        "Live provider health and replication were not verified by Agent A."
       ],
-      "donor_value": 4
+      "donor_value": 6
     },
     {
       "repository": "GlacierEQ/Pro-Security",
@@ -6571,6 +6854,40 @@
       "donor_value": 3
     },
     {
+      "repository": "GlacierEQ/scale-ai-label-consensus-fence",
+      "revision": "9aa713b8564b22f0207ba053a71a9988556181e2",
+      "capability": "Provenance-weighted label-consensus fence that quarantines contaminated, correlated, low-calibration, or provenance-insufficient rater consensus and emits deterministic evidence digests.",
+      "implementation_paths": [
+        "src/label_consensus_fence.py",
+        "src/label_consensus_cli.py",
+        "scripts/operate.py",
+        "machine/proof_receipt.json"
+      ],
+      "tests": [
+        "tests/test_label_consensus_fence.py",
+        "tests/test_adversarial.py",
+        "tests/test_impact_assurance.py"
+      ],
+      "receipts": [
+        "machine/proof_receipt.json",
+        "machine/operability_receipt.json"
+      ],
+      "dependencies": [],
+      "maturity": "working",
+      "verified_state": "SOURCE_TEST_AND_REPOSITORY_RECEIPT_RECOVERED; machine/proof_receipt.json records PASS, dual-run runtime proof and adversarial coverage, but binds a content source_sha rather than the current Git commit and explicitly says not production deployed/reference implementation only.",
+      "scale_relevance": [
+        "Scale-specific evaluation donor",
+        "provenance-aware consensus",
+        "contamination defense",
+        "deterministic evaluation receipts"
+      ],
+      "known_defects": [
+        "Proof receipt is not demonstrated as Git-commit-bound to current head.",
+        "Explicitly not production deployed."
+      ],
+      "donor_value": 7
+    },
+    {
       "repository": "GlacierEQ/sigma-glue",
       "revision": "4a1ca8e5c88a62e8a94a43213b2c509af6afcea3",
       "capability": "Durable federation workflow state machine with exact approval binding, idempotency, dispatch ordering, reconciliation and provider ambiguity recovery.",
@@ -6632,6 +6949,37 @@
         "Current repository revision not independently resolved in this node."
       ],
       "donor_value": 4
+    },
+    {
+      "repository": "GlacierEQ/snowball-steamroller",
+      "revision": "e1fde69c1ace8c27faba410e039e94de3c915888",
+      "capability": "Provenance-preserving, contradiction-aware evidence normalization and packaging seed with hashing, attribution, canonical schemas, and synthetic validation paths.",
+      "implementation_paths": [
+        "ARCHITECTURE.md",
+        "BABEL.md",
+        "apps/cli/src/index.ts",
+        "packages/identifiers/src/index.ts",
+        "rust/evidence-hasher/Cargo.toml"
+      ],
+      "tests": [
+        "tests/contract",
+        "tests/provenance"
+      ],
+      "receipts": [],
+      "dependencies": [],
+      "maturity": "prototype",
+      "verified_state": "CURRENT_HEAD_SOURCE_RECOVERED; repository explicitly labels itself Seed and not production-complete.",
+      "scale_relevance": [
+        "evidence provenance donor",
+        "contradiction preservation",
+        "hashing",
+        "artifact packaging"
+      ],
+      "known_defects": [
+        "Repository explicitly not production-complete.",
+        "Synthetic pilot does not establish production behavior."
+      ],
+      "donor_value": 5
     },
     {
       "repository": "GlacierEQ/Solomon-Codex-Quantum-Legal-Intelligence-System",
@@ -6849,29 +7197,6 @@
       "donor_value": 3
     },
     {
-      "repository": "GlacierEQ/supermemory",
-      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
-      "capability": "Build your own second brain with supermemory. It's a ChatGPT for your bookmarks. Import tweets or save websites and content using the chrome extension.",
-      "implementation_paths": [],
-      "tests": [],
-      "receipts": [
-        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
-      ],
-      "dependencies": [],
-      "maturity": "prototype",
-      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
-      "scale_relevance": [
-        "memory",
-        "aspen",
-        "memory_aspen"
-      ],
-      "known_defects": [
-        "Catalog-only evidence; implementation maturity is not verified.",
-        "Current repository revision not independently resolved in this node."
-      ],
-      "donor_value": 3
-    },
-    {
       "repository": "GlacierEQ/supermemory-mcp",
       "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
       "capability": "Your memories are in ChatGPT... But nowhere else. Universal Memory MCP makes your memories available to every single LLM. No logins or paywall. One command to set it up.",
@@ -6894,6 +7219,29 @@
         "Current repository revision not independently resolved in this node."
       ],
       "donor_value": 4
+    },
+    {
+      "repository": "GlacierEQ/supermemory",
+      "revision": "catalog-snapshot:GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928",
+      "capability": "Build your own second brain with supermemory. It's a ChatGPT for your bookmarks. Import tweets or save websites and content using the chrome extension.",
+      "implementation_paths": [],
+      "tests": [],
+      "receipts": [
+        "GlacierEQ/monolith@2751283b3ecf9f4fd18481f5e7335455ea70c356:catalog/library.json#c4a1e8786bbc81e245f8ccc884ef9b6eed925928"
+      ],
+      "dependencies": [],
+      "maturity": "prototype",
+      "verified_state": "CATALOG_ONLY: repository is present in the Monolith snapshot; implementation, current head, tests and receipts were not directly inspected by Agent A.",
+      "scale_relevance": [
+        "memory",
+        "aspen",
+        "memory_aspen"
+      ],
+      "known_defects": [
+        "Catalog-only evidence; implementation maturity is not verified.",
+        "Current repository revision not independently resolved in this node."
+      ],
+      "donor_value": 3
     },
     {
       "repository": "GlacierEQ/swarm",
@@ -8016,5 +8364,60 @@
       ],
       "donor_value": 2
     }
-  ]
+  ],
+  "prior_gatling_benchmark": {
+    "task": "resolve latest commit for identical six-repository set",
+    "repositories": [
+      "GlacierEQ/aspen-grove-core",
+      "GlacierEQ/apex-boot-core",
+      "GlacierEQ/Genius-Mastery",
+      "GlacierEQ/mega-skills",
+      "GlacierEQ/sigma-glue",
+      "GlacierEQ/computer-user"
+    ],
+    "serial": {
+      "worker_count": 1,
+      "wall_clock_ms": 2162
+    },
+    "parallel": {
+      "worker_count": 6,
+      "wall_clock_ms": 692
+    },
+    "speedup": 3.1242774566473988,
+    "wall_clock_reduction_pct": 67.99259944495837,
+    "deterministic_result_match": true,
+    "duplicate_findings": 0,
+    "parent_context_consumption": {
+      "normalized_aggregator_payload_bytes": 505,
+      "method": "repo+sha only; worker exploration logs not emitted to parent context"
+    }
+  },
+  "executable_aggregator": {
+    "path": "src/fde_powerhouse/gatling_estate.py",
+    "implementation_commit": "de9109b8c9dcc3695c3ed81a1f6ee078907c5d0c",
+    "test_path": "tests/test_gatling_estate.py",
+    "tdd": {
+      "red": "ModuleNotFoundError before implementation",
+      "green": "3 passed in 0.12s",
+      "compileall": "passed",
+      "ruff": "unavailable in local runtime"
+    },
+    "invariants": [
+      "bounded worker count",
+      "input-order result collection before aggregation",
+      "required node contract validation",
+      "donor_value range validation",
+      "exact duplicate collapse",
+      "conflicting duplicate rejection",
+      "deterministic casefold repository/capability sort"
+    ]
+  },
+  "reconciliation": {
+    "strategy": "preserve concurrent graph; replace only directly revalidated catalog-only nodes; append distinct exact-revision capabilities",
+    "preserved_catalog_lineage": true,
+    "current_live_census_added": true,
+    "proof_inflation_removed": [
+      "GlacierEQ/job-app-helix production→hardened pending exact-head independent execution receipt"
+    ]
+  }
 }
