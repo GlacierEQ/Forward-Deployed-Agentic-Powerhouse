@@ -270,6 +270,12 @@ def test_checked_in_fusion_profile_is_valid_and_pins_uploaded_apple_mcp():
     profile = load_fusion(Path("configs/scale_fusion.yaml"))
     validate_fusion(profile)
 
+    assert profile["components"]["computer_user"]["preflight"] == [
+        "python3",
+        "-m",
+        "computer_user.cli",
+        "health",
+    ]
     assert profile["components"]["mega_pipeline"]["includes"] == ["faraway_party"]
     assert profile["components"]["faraway_party"]["via"] == "mega_pipeline"
     assert (
