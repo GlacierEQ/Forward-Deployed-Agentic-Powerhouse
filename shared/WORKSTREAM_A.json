@@ -6,7 +6,7 @@
   "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
   "base_branch": "scale-fde-demo",
   "branch": "scale/estate-intelligence",
-  "state": "HARDENING_IN_PROGRESS",
+  "state": "HARDENING_CI_RERUN_PENDING",
   "exclusive_ownership": [
     "full estate reconnaissance",
     "concurrent bounded read-only workers",
@@ -99,16 +99,23 @@
     "live_name_screen_candidates": 302
   },
   "gatling_tsunami": {
-    "engineering_state": "IMPLEMENTED_AND_EXECUTED_BOUNDED_PARALLEL_READS",
+    "engineering_state": "HARDENED_LOCAL_VERIFIED_CI_RERUN_PENDING",
     "implementation": {
       "path": "src/fde_powerhouse/gatling_estate.py",
-      "implementation_commit": "de9109b8c9dcc3695c3ed81a1f6ee078907c5d0c",
+      "implementation_commit": "eef0d45d53543599839be45c10611de39e83238a",
+      "implementation_sha256": "3f148146b020ad946a9636ec03df75b71a280c47f83d882bf9b4803a69751461",
       "test_path": "tests/test_gatling_estate.py",
-      "test_commit": "796bce888a1fb777eb13124650651ca0e80479dd",
-      "tdd_red": "ModuleNotFoundError before implementation",
-      "tdd_green": "3 passed in 0.12s",
-      "compileall": "PASS",
-      "ruff": "UNAVAILABLE_IN_LOCAL_RUNTIME"
+      "test_commit": "4adb342511857b6ba114bbd84a89c2673f401879",
+      "test_sha256": "7c7e14bb251810b85fbb8d03a40feb64aabf72113d8878ef3ac6729a15b425ec",
+      "workflow_path": ".github/workflows/scale-estate-intelligence.yml",
+      "workflow_commit": "2f2e9eee192f1ab18d9869271487d01b2d229e1f",
+      "workflow_sha256": "238cebcb6b764e5b9fdd2f984c8f20ee8649b048fc5323b062cec8577e0fb83a",
+      "tdd_red": "ImportError for SweepIncompleteError, benchmark_serial_vs_parallel and resume_repositories against the prior implementation",
+      "focused_green": "15/15 focused Agent A tests PASS",
+      "full_regression": "64/64 repository tests PASS locally; exit 0",
+      "compileall": "PASS; exit 0",
+      "targeted_ruff": "PASS for gatling_estate.py and test_gatling_estate.py",
+      "repository_wide_ruff": "11 inherited errors outside Agent A files; not silently repaired by this exclusive workstream"
     },
     "benchmark": {
       "workload": "Fetch README for identical eight-repository load-bearing set.",
@@ -143,29 +150,40 @@
       "required node fields validated",
       "maturity enum validated",
       "donor_value constrained to 0..10",
+      "provenance digests constrained to lowercase sha256:<64 hex>",
       "list fields canonicalized",
-      "exact duplicates collapsed",
+      "case-insensitive repository scope deduplicated",
+      "exact duplicate findings collapsed",
       "same-identity conflicting findings rejected",
-      "output sorted deterministically",
       "worker concurrency bounded",
-      "worker results collected by input index before reduction"
+      "worker outcomes retained by input index before reduction",
+      "successful findings preserved when sibling workers fail",
+      "bounded retry attempts counted explicitly",
+      "checkpoint hash binds scope, completion/failure frontier and semantic digest",
+      "resume rejects checkpoint tampering and scope drift",
+      "semantic digest excludes timing telemetry",
+      "serial/parallel benchmark invalidates performance claims on worker health failure",
+      "serial/parallel benchmark invalidates performance claims on semantic drift",
+      "capability graph uses the same Python canonical tuple ordering as the reducer"
     ]
   },
   "deliverables": {
     "capability_graph": {
       "path": "shared/SCALE_CAPABILITY_GRAPH.json",
-      "latest_reconciliation_commit": "4a2a9b1f62660784100a4025e7f7ac5b448c5f64",
-      "readback_blob_sha": "d37cf7b8355c26a0d27db858d43567b53925eba2",
+      "latest_reconciliation_commit": "728eabb6fe26c2d0cf46cbcdc0d5cd8fedbd1aa1",
+      "readback_blob_sha": "e841910948e5a01af6b8d2f9ac773aa65c0888fa",
       "json_valid": true,
       "node_count": 338,
       "required_node_contract_satisfied": true,
-      "deterministic_sort": "repository+capability+revision+implementation_paths"
+      "deterministic_sort": "Python tuple: repository.casefold()+capability.casefold()+revision+implementation_paths"
     },
     "gatling_engine": {
       "path": "src/fde_powerhouse/gatling_estate.py",
-      "implementation_commit": "de9109b8c9dcc3695c3ed81a1f6ee078907c5d0c",
+      "implementation_commit": "eef0d45d53543599839be45c10611de39e83238a",
       "focused_test_path": "tests/test_gatling_estate.py",
-      "focused_test_commit": "796bce888a1fb777eb13124650651ca0e80479dd"
+      "focused_test_commit": "4adb342511857b6ba114bbd84a89c2673f401879",
+      "workflow_path": ".github/workflows/scale-estate-intelligence.yml",
+      "workflow_commit": "2f2e9eee192f1ab18d9869271487d01b2d229e1f"
     }
   },
   "verified_revisions": {
@@ -232,17 +250,17 @@
       "id": "A-DEFECT-005",
       "severity": "medium",
       "scope": "Agent_A_branch_verification",
-      "state": "OPEN_EVIDENCE_BOUNDARY",
-      "finding": "Focused Gatling tests passed and compileall passed, but the full Forward-Deployed-Agentic-Powerhouse regression suite was not rerun at this branch revision.",
-      "consequence": "Do not claim branch-wide regression proof from the focused suite."
+      "state": "RESOLVED_LOCAL_AND_MATRIX_CODE_GATES",
+      "finding": "Full repository regression suite passes 64/64 locally at the hardened Agent A revision, and GitHub Actions run 37448141761 passed the full regression step on Python 3.11, 3.12 and 3.13.",
+      "consequence": "Branch-wide functional regression proof is now established for the code under test; overall workflow promotion remains gated on repaired machine-artifact validation."
     },
     {
       "id": "A-DEFECT-006",
       "severity": "low",
       "scope": "Agent_A_branch_lint",
-      "state": "OPEN_ENVIRONMENT_BOUNDARY",
-      "finding": "ruff was not installed in the available local execution runtime.",
-      "consequence": "No ruff-clean claim is made for the new files."
+      "state": "RESOLVED_AGENT_A_SCOPE",
+      "finding": "ruff is available on the live execution host and Agent A implementation/test files pass targeted Ruff.",
+      "consequence": "Agent A changed files are lint-clean. Repository-wide lint debt is preserved separately instead of being attributed to this workstream."
     },
     {
       "id": "A-DEFECT-007",
@@ -256,9 +274,17 @@
       "id": "A-DEFECT-008",
       "severity": "medium",
       "scope": "Agent_A_v2_validation",
-      "state": "OPEN_EVIDENCE_BOUNDARY",
-      "finding": "CI run 37446113010 executed head 62b140e8 and failed at Ruff before tests. The exact lint/syntax findings were repaired in commits 53de1095 and a22a07f3; repaired head has not yet produced a completed CI run.",
-      "consequence": "Do not promote provenance/semantic-digest behavior to test_observed until the repaired head completes CI."
+      "state": "REPAIRED_RERUN_PENDING",
+      "finding": "Exact-branch run 37448141761 passed install, Agent A lint, compile and full regression across Python 3.11/3.12/3.13, then failed only because the capability graph was not ordered by the Python reducer's canonical tuple contract.",
+      "consequence": "Graph ordering was repaired in 728eabb6fe26c2d0cf46cbcdc0d5cd8fedbd1aa1. Exact-branch CI must rerun before workstream completion is promoted."
+    },
+    {
+      "id": "A-DEFECT-009",
+      "severity": "low",
+      "scope": "host_repository_lint_baseline",
+      "state": "OPEN_OUTSIDE_AGENT_A_CHANGED_FILES",
+      "finding": "Repository-wide Ruff reports 11 pre-existing errors outside src/fde_powerhouse/gatling_estate.py and tests/test_gatling_estate.py.",
+      "consequence": "Agent A does not cross ownership boundaries to clean unrelated host-repository style debt. Exact Agent A files are lint-clean and full tests pass."
     }
   ],
   "integration_contract": {
@@ -293,7 +319,7 @@
   "terminal_condition": {
     "workstream_a_complete": false,
     "mission_complete": false,
-    "reason": "Agent A v2 hardening is active. Estate census and prior Gatling evidence remain valid, but provenance-aware semantic determinism is pending executable CI proof."
+    "reason": "Agent A implementation, targeted lint, compile and 64-test regression are green locally; GitHub Actions code gates are green on Python 3.11/3.12/3.13. Capability-graph canonical ordering was repaired after CI exposed a reducer/artifact mismatch; exact-branch CI rerun is the remaining Agent A verification gate."
   },
   "hardening_v2": {
     "started_at": "2026-10-05T23:52:00-10:00",
@@ -353,6 +379,101 @@
       "purpose": "CI execution only; no promotion until verification and integration review.",
       "base": "main",
       "head": "scale/estate-intelligence"
+    }
+  },
+  "hardening_research": {
+    "principle": "recover and transplant proven estate mechanisms; do not invent a replacement orchestration framework",
+    "donors": [
+      {
+        "repository": "GlacierEQ/job-app-helix",
+        "paths": [
+          "src/job_app_helix/worker_science.py",
+          "tests/test_worker_science.py"
+        ],
+        "adopted_pattern": "health/performance separation and matched-experiment validity",
+        "adaptation": "serial-vs-parallel speedup is publishable only when both sweeps are healthy and semantic digests match"
+      },
+      {
+        "repository": "GlacierEQ/mega-skills",
+        "paths": [
+          "scripts/faraway_party_candidate_swarm.py",
+          "tests/test_faraway_swarm.py"
+        ],
+        "adopted_pattern": "bounded ThreadPoolExecutor workers with deterministic durable result ordering",
+        "adaptation": "Agent A preserves input-index outcomes before deterministic capability reduction"
+      },
+      {
+        "repository": "GlacierEQ/anthropic-agent-coordinator",
+        "paths": [
+          "src/anthropic_agent_coordinator/continuation.py"
+        ],
+        "adopted_pattern": "hash-bound dependency-closed continuation checkpoints",
+        "adaptation": "Agent A checkpoints bind requested repository scope, completed/failed repositories and semantic result digest"
+      },
+      {
+        "repository": "GlacierEQ/apex-control-plane",
+        "paths": [
+          "src/runtime_dependency_discovery.py",
+          "tests/test_runtime_dependency_discovery.py"
+        ],
+        "adopted_pattern": "preserve unresolved state instead of trusting derivative caller claims",
+        "adaptation": "worker failures remain explicit resumable failures and never become performance-valid benchmark evidence"
+      }
+    ]
+  },
+  "verification": {
+    "local_exact_branch": {
+      "revision": "eef0d45d53543599839be45c10611de39e83238a",
+      "device": "KcBs-MacBook-Air.local",
+      "python": "3.14.7",
+      "targeted_ruff": {
+        "state": "PASS",
+        "paths": [
+          "src/fde_powerhouse/gatling_estate.py",
+          "tests/test_gatling_estate.py"
+        ]
+      },
+      "focused_tests": {
+        "state": "PASS",
+        "passed": 15,
+        "failed": 0
+      },
+      "full_regression": {
+        "state": "PASS",
+        "passed": 64,
+        "failed": 0,
+        "exit_code": 0
+      },
+      "compileall": {
+        "state": "PASS",
+        "exit_code": 0
+      },
+      "repository_wide_ruff": {
+        "state": "INHERITED_DEBT",
+        "exit_code": 1,
+        "error_count": 11,
+        "agent_a_files_clean": true
+      }
+    },
+    "github_actions_attempt": {
+      "run_id": 37448141761,
+      "revision": "2f2e9eee192f1ab18d9869271487d01b2d229e1f",
+      "conclusion": "failure",
+      "matrix": [
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "successful_steps_on_all_matrix_lanes": [
+        "install",
+        "Agent A lint",
+        "compile",
+        "full regression suite"
+      ],
+      "failed_step": "Validate Agent A machine artifacts",
+      "failure_reason": "historical graph ordering used localeCompare semantics rather than Python reducer canonical tuple order",
+      "repair_commit": "728eabb6fe26c2d0cf46cbcdc0d5cd8fedbd1aa1",
+      "disposition": "rerun pending; no overall CI-success claim until repaired artifact passes"
     }
   }
 }
