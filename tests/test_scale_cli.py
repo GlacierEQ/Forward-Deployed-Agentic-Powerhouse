@@ -272,3 +272,99 @@ def test_scale_cli_exact_canonical_command_resolves_shared_mission(
     result = json.loads(capsys.readouterr().out)
     assert result["mission_id"] == "SCALE-FDE-DEMO-001"
     assert result["status"] == "LAUNCH_COMPLETE"
+
+
+
+def _fusion_text() -> str:
+    return """
+schema: glaciereq.scale-fde-fusion.v1
+components:
+  computer_user:
+    role: durable_execution_plane
+    activation: required_live
+    root_env: SCALE_FDE_COMPUTER_USER_ROOT
+    preflight: [python3, -c, "raise SystemExit(0)"]
+  mega_pipeline:
+    role: capability_composition_and_sequencing
+    activation: required_live
+    root_env: SCALE_FDE_MEGA_SKILLS_ROOT
+    includes: [faraway_party]
+    preflight: [python3, -c, "raise SystemExit(0)"]
+  faraway_party:
+    role: long_horizon_continuity
+    activation: composed
+    via: mega_pipeline
+    direct_command: null
+  make_it_heavy:
+    role: conditional_parallel_reasoning
+    activation: opt_in
+    enable_env: SCALE_FDE_ENABLE_HEAVY
+    root_env: SCALE_FDE_MAKE_IT_HEAVY_ROOT
+    preflight: [python3, -c, "raise SystemExit(0)"]
+  apple_mcp:
+    role: macos_native_provider
+    activation: opt_in
+    enable_env: SCALE_FDE_ENABLE_APPLE_MCP
+    file_env: SCALE_FDE_APPLE_MCP_DXT
+    platform: darwin
+    routed_via: workstream_D_sigma_glue
+    expected_sha256: 0000000000000000000000000000000000000000000000000000000000000000
+    required_tools: [contacts, notes, messages, mail, reminders, calendar, maps]
+""".strip() + "\n"
+
+
+def test_scale_cli_auto_fuses_profile_and_writes_faraway_state(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+):
+    mission, _ = _write_inputs(
+        tmp_path,
+        [sys.executable, "-c", "raise SystemExit(0)"],
+    )
+    (tmp_path / "configs" / "scale_fusion.yaml").write_text(
+        _fusion_text(),
+        encoding="utf-8",
+    )
+    state = tmp_path / ".scale-fde" / "orchestrator-state.json"
+    monkeypatch.chdir(tmp_path)
+
+    code = main(["run", str(mission), "--state", str(state)])
+
+    assert code == 0
+    printed = json.loads(capsys.readouterr().out)
+    assert printed["fusion"]["status"] == "READY_WITH_DEFERRED_COMPONENTS"
+    fusion_receipt = tmp_path / ".scale-fde" / "fusion-receipt.json"
+    assert fusion_receipt.exists()
+    receipt = json.loads(fusion_receipt.read_text(encoding="utf-8"))
+    assert receipt["components"]["faraway_party"]["state"] == "composed_via_mega_pipeline"
+
+    faraway = tmp_path / ".scale-fde" / "faraway-party"
+    assert (faraway / "MISSION.md").exists()
+    assert (faraway / "ROADMAP.md").exists()
+    assert (faraway / "CONTEXT.md").exists()
+    assert (faraway / "EVIDENCE.md").exists()
+    assert (faraway / "HANDOFF.md").exists()
+
+
+def test_scale_cli_live_fusion_fails_closed_without_required_roots(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+):
+    mission, _ = _write_inputs(
+        tmp_path,
+        [sys.executable, "-c", "raise SystemExit(0)"],
+    )
+    (tmp_path / "configs" / "scale_fusion.yaml").write_text(
+        _fusion_text(),
+        encoding="utf-8",
+    )
+    monkeypatch.chdir(tmp_path)
+
+    code = main(["run", str(mission), "--live"])
+
+    assert code == 2
+    error = json.loads(capsys.readouterr().err)
+    assert error["status"] == "INVALID_MISSION_OR_STATE"
+    assert "required live fusion component" in error["error"]
