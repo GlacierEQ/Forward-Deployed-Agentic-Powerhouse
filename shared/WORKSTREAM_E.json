@@ -25,13 +25,18 @@
       "claim": "employer-facing proof surface exists",
       "evidence": "docs/SCALE_FDE_PORTFOLIO.md",
       "evidence_state": "SOURCE_BOUND"
+    },
+    {
+      "claim": "canonical receipt index exists and separates source-bound evidence from unresolved proof",
+      "evidence": "shared/RECEIPT_INDEX.json @ blob 9f3f59fa63ce6f6fe9fd2a5295ce28c1a3aef306",
+      "evidence_state": "VERIFIED_WRITE_READBACK"
     }
   ],
   "hidden_harm_repaired": {
-    "detected": "Portfolio and mission contract referenced shared/WORKSTREAM_E.json and REPRODUCE.md while those artifacts were absent from the default branch.",
+    "detected": "Employer-facing portfolio/mission surfaces referenced canonical verification artifacts that were not all present on the default branch.",
     "threatened_dimension": "employer-facing reproducibility and truthfulness of the five-workstream proof surface",
-    "counter_route": "Materialized the missing E contract record without fabricating unfinished evaluation receipts. A reproduction-guide write was attempted but not accepted, so REPRODUCE.md remains unresolved.",
-    "preserved_boundary": "Missing baseline-vs-stack harness and execution/verification/mission receipts remain explicitly unresolved."
+    "counter_route": "Materialized WORKSTREAM_E and the canonical RECEIPT_INDEX without fabricating unfinished evaluation receipts. REPRODUCE.md write remains blocked and is explicitly unresolved.",
+    "preserved_boundary": "Baseline-vs-stack harness, execution/verification/mission receipts, Mission-2 reuse proof, and REPRODUCE.md remain unresolved until independently source-bound."
   },
   "owns": [
     "baseline_vs_stack_harness",
@@ -51,5 +56,5 @@
     "Mission 2 automatic reuse proof must be independently verified before mission completion"
   ],
   "completion_rule": "E may report VERIFIED only for claims bound to reproducible evidence. It must not repair sibling implementations or convert absent receipts into inferred success.",
-  "next_executable_frontier": "Implement and execute the baseline-vs-stack harness, then emit execution/verification/mission receipts from observed runs and update RECEIPT_INDEX.json."
+  "next_executable_frontier": "Execute a real baseline-vs-full-stack evaluation through an available runtime; emit execution/verification/mission receipts only from observed results. REPRODUCE.md remains a separate blocked employer-facing artifact."
 }
