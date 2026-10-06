@@ -6,7 +6,7 @@
   "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
   "base_branch": "scale-fde-demo",
   "branch": "scale/estate-intelligence",
-  "state": "FINAL_VERIFICATION_PENDING",
+  "state": "COMPLETE_WITH_EXPLICIT_EVIDENCE_BOUNDARY",
   "exclusive_ownership": [
     "full estate reconnaissance",
     "concurrent bounded read-only workers",
@@ -243,14 +243,17 @@
   "deliverables": {
     "capability_graph": {
       "path": "shared/SCALE_CAPABILITY_GRAPH.json",
-      "latest_reconciliation_commit": "b843f681e26ac7c1a24ffa395a0ff918748a753a",
-      "readback_blob_sha": "bff2d8faa813d23cb540365fd3c02617bf8e17ac",
+      "latest_reconciliation_commit": "884dec6f104d2d9042c027898da4c36d40e34e8b",
+      "readback_blob_sha": "41db109e348033be7a38deb96225d9731fb94c2a",
       "json_valid": true,
       "node_count": 338,
       "required_node_contract_satisfied": true,
       "deterministic_sort": "Python tuple: repository.casefold()+capability.casefold()+revision+implementation_paths",
-      "exact_branch_ci_run": 37448537231,
-      "exact_branch_ci_state": "PASS"
+      "exact_branch_ci_run": 37500203003,
+      "exact_branch_ci_state": "PASS",
+      "typed_edge_count": 20,
+      "mission_critical_repository_count": 16,
+      "whole_graph_semantic_digest": "sha256:9685d861b156bc15d8a79a8052764f60ac6fb6dda7b1a95b9b0e5059bf1455a7"
     },
     "gatling_engine": {
       "path": "src/fde_powerhouse/gatling_estate.py",
@@ -327,9 +330,9 @@
       "id": "A-DEFECT-005",
       "severity": "low",
       "scope": "Agent_A_branch_verification",
-      "state": "RESOLVED_CODE_AND_COVERAGE_GATES",
-      "finding": "Exact branch run 37498105124 passed Python 3.11/3.12/3.13 lint, compile, 64/64 regression, 70% coverage gate (78.31% measured), machine-artifact validation and 338-node semantic invariance.",
-      "consequence": "Agent A code/regression/coverage proof is established; the newer whole-graph artifact validator remains separately gated until its repaired exact-head run passes."
+      "state": "RESOLVED",
+      "finding": "Exact branch runs culminated in 37500203003 passing Python 3.11/3.12/3.13 targeted lint, compile, 66/66 regression, 70% coverage gate (78.12% measured), and whole-graph machine-artifact validation.",
+      "consequence": "Agent A branch-wide code, coverage, and graph-contract proof is established for the proven graph revision 884dec6f104d2d9042c027898da4c36d40e34e8b."
     },
     {
       "id": "A-DEFECT-006",
@@ -375,9 +378,9 @@
       "id": "A-DEFECT-011",
       "severity": "low",
       "scope": "whole_graph_artifact_validator",
-      "state": "REPAIRED_PENDING_FINAL_CI",
-      "finding": "Run 37499213659 passed lint/compile/66 regression tests/coverage but failed artifact validation because the validator compared a sparse observed evidence-count map against the graph's intentional full five-level count map including execution_observed=0.",
-      "consequence": "Validator was corrected in 921bd0cce61ff7243319d75e40bb6e67e449bab4; no whole-graph PASS claim until the final exact-head run succeeds."
+      "state": "RESOLVED",
+      "finding": "Run 37499213659 exposed a sparse-zero evidence-count validator bug after lint/compile/66 tests/coverage passed. Repair 921bd0cce61ff7243319d75e40bb6e67e449bab4 initialized all declared evidence levels including zero counts. Runs 37500045850 and 37500203003 subsequently passed the complete artifact gate.",
+      "consequence": "Whole-graph artifact validation is now green; the defect remains preserved as regression history."
     }
   ],
   "integration_contract": {
@@ -410,9 +413,9 @@
     "Sibling WORKSTREAM_B-E artifacts, INTEGRATION_QUEUE.json, DEFECT_QUEUE.json and RECEIPT_INDEX.json are not owned by Agent A."
   ],
   "terminal_condition": {
-    "workstream_a_complete": false,
+    "workstream_a_complete": true,
     "mission_complete": false,
-    "reason": "All requested Agent A hardening stages have implementation/evidence except the final post-artifact exact-head CI/readback. Do not close Workstream A until the repaired whole-graph validator and persisted saturation benchmark pass together on the exact branch head."
+    "reason": "Agent A is complete at its evidence boundary: authenticated 1385-repository census; 338-node capability graph; 16-repository mission-critical projection; 20 source-bound typed edges; evidence ladder with current health failures preserved; deterministic node and whole-graph digests; hardened resumable bounded Gatling reducer; 66/66 regression with 78.12% coverage; exact-branch Python 3.11/3.12/3.13 graph validation; and a real GitHub-provider saturation benchmark identifying four workers as the throughput knee. Mission completion remains owned by sibling workstreams/shared integration."
   },
   "hardening_v2": {
     "started_at": "2026-10-05T23:52:00-10:00",
@@ -441,7 +444,7 @@
         "semantic digest invariant across input ordering and worker count",
         "semantic digest changes when capability evidence changes"
       ],
-      "execution_state": "WHOLE_GRAPH_VALIDATOR_REPAIR_COMMITTED_AWAITING_FINAL_EXACT_HEAD_CI",
+      "execution_state": "COMPLETE_EXACT_BRANCH_VERIFIED",
       "first_ci_run": {
         "run_id": 37446113010,
         "tested_head": "62b140e8489f5c68fcfbe7a593ccf2015befe7ad",
@@ -472,7 +475,8 @@
         "validation_run_result": "CODE_GATES_PASS_ARTIFACT_GATE_FAIL",
         "validator_failure": "Sparse observed evidence-count map omitted execution_observed=0 while the graph intentionally records all evidence levels.",
         "validator_repair_commit": "921bd0cce61ff7243319d75e40bb6e67e449bab4",
-        "final_state": "PENDING_FINAL_EXACT_HEAD_CI"
+        "final_state": "PASS",
+        "final_run": 37500203003
       }
     },
     "evidence_levels": {
@@ -632,17 +636,47 @@
       "mission_critical_repositories": 16
     },
     "whole_graph_digest": {
-      "implementation_commit": "0125c7b0d0fbf68b2e96807d1e92b636ac7ea934",
-      "tests_after_implementation": 66,
-      "latest_failed_artifact_run": 37499213659,
-      "code_gates_on_failed_artifact_run": {
-        "lint": "PASS",
+      "run_id": 37500203003,
+      "revision": "884dec6f104d2d9042c027898da4c36d40e34e8b",
+      "conclusion": "SUCCESS",
+      "matrix": {
+        "3.11": "PASS",
+        "3.12": "PASS",
+        "3.13": "PASS"
+      },
+      "gates": {
+        "targeted_lint": "PASS",
         "compile": "PASS",
         "full_regression": "66/66 PASS",
-        "coverage_pct": 78.12
+        "measured_coverage_pct": 78.12,
+        "required_coverage_pct": 70,
+        "machine_artifact_validation": "PASS"
       },
-      "validator_repair_commit": "921bd0cce61ff7243319d75e40bb6e67e449bab4",
-      "final_exact_head_state": "PENDING"
+      "graph": {
+        "nodes": 338,
+        "typed_edges": 20,
+        "mission_critical_repositories": 16,
+        "evidence_counts": {
+          "catalog_only": 311,
+          "source_inspected": 24,
+          "test_observed": 2,
+          "execution_observed": 0,
+          "provider_verified": 1
+        },
+        "node_semantic_digest": "sha256:7cc36f577c1176d77b7fca08e43d4dcfc1c4b0a05a21e74758f70f03d1d19081",
+        "node_forward_reverse_match": true,
+        "whole_graph_semantic_digest": "sha256:9685d861b156bc15d8a79a8052764f60ac6fb6dda7b1a95b9b0e5059bf1455a7",
+        "whole_graph_forward_reverse_match": true
+      },
+      "validator_repair_proof": {
+        "prior_failure_run": 37499213659,
+        "prior_failure": "Sparse observed evidence-count map omitted the intentional zero-count execution_observed level.",
+        "repair_commit": "921bd0cce61ff7243319d75e40bb6e67e449bab4",
+        "repair_run": 37500045850,
+        "repair_run_conclusion": "SUCCESS",
+        "benchmark_artifact_run": 37500203003,
+        "benchmark_artifact_run_conclusion": "SUCCESS"
+      }
     },
     "mission_critical_refresh": {
       "selected_repositories": 16,
@@ -692,5 +726,10 @@
         }
       ]
     }
+  },
+  "final_verification_policy": {
+    "workflow": ".github/workflows/scale-estate-intelligence.yml",
+    "rule": "The completion-record commit itself must pass the exact-branch workflow on Python 3.11/3.12/3.13. The workflow run is the non-self-referential external receipt for this final JSON state.",
+    "merge_state": "NO_MERGE_PERFORMED"
   }
 }
