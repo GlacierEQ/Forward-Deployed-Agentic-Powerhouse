@@ -56,7 +56,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: GlacierEQ/Genius-Mastery
-          ref: 21c7e0b1209d71619b56dbf51549e39e2665fc69
+          ref: 4ab452f7ee08f865f24e61f011b1c803fc9a1c7d
           path: estate/Genius-Mastery
           token: ${{ secrets.ESTATE_CHECKOUT_TOKEN || github.token }}
 
@@ -105,7 +105,7 @@ jobs:
           assert proof["mission2"]["auto_reused_capability_id"] == "cap.provider-readback-reconcile"
           assert proof["mission2"]["automatic_reuse"] is True
           assert proof["donors"]["aspen_grove_memory"]["revision"] == "c5b8bb44016ee9c17e44c58b53f0545bfdc9691f"
-          assert proof["donors"]["genius_mastery"]["revision"] == "21c7e0b1209d71619b56dbf51549e39e2665fc69"
+          assert proof["donors"]["genius_mastery"]["revision"] == "4ab452f7ee08f865f24e61f011b1c803fc9a1c7d"
           print(json.dumps(proof, indent=2, sort_keys=True))
           PY
 
