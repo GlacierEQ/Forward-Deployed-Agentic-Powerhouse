@@ -60,13 +60,13 @@ def _json_digest(payload: Mapping[str, Any]) -> str:
 
 def _normalize_repositories(repositories: Sequence[str]) -> tuple[str, ...]:
     if isinstance(repositories, (str, bytes, bytearray)):
-        raise ValueError("repositories must be an ordered collection of names")
+        raise TypeError("repositories must be an ordered collection of names")
 
     normalized: list[str] = []
     seen: set[str] = set()
     for raw in repositories:
         if not isinstance(raw, str):
-            raise ValueError("repository names must be strings")
+            raise TypeError("repository names must be strings")
         repository = raw.strip()
         if not repository:
             raise ValueError("repository names cannot be empty")
@@ -114,7 +114,7 @@ def _normalize(node: Mapping[str, Any]) -> dict[str, Any]:
         if not isinstance(value, Sequence) or isinstance(
             value, (str, bytes, bytearray)
         ):
-            raise ValueError(f"{field} must be a list-like sequence")
+            raise TypeError(f"{field} must be a list-like sequence")
         normalized[field] = sorted({str(item) for item in value})
     normalized["maturity"] = maturity
     normalized["verified_state"] = str(node["verified_state"])
@@ -131,12 +131,12 @@ def _normalize(node: Mapping[str, Any]) -> dict[str, Any]:
         if not isinstance(evidence, Sequence) or isinstance(
             evidence, (str, bytes, bytearray)
         ):
-            raise ValueError("evidence must be a list-like sequence")
+            raise TypeError("evidence must be a list-like sequence")
         normalized_evidence: list[dict[str, str]] = []
         required_evidence = ("kind", "revision", "path", "claim", "digest")
         for record in evidence:
             if not isinstance(record, Mapping):
-                raise ValueError("evidence records must be mappings")
+                raise TypeError("evidence records must be mappings")
             missing_evidence = [
                 field for field in required_evidence if field not in record
             ]
@@ -214,7 +214,7 @@ def semantic_digest(payload: Mapping[str, Any]) -> str:
     if not isinstance(raw_nodes, Sequence) or isinstance(
         raw_nodes, (str, bytes, bytearray)
     ):
-        raise ValueError("payload nodes must be a list-like sequence")
+        raise TypeError("payload nodes must be a list-like sequence")
     normalized = aggregate_capability_nodes(raw_nodes)["nodes"]
     return _json_digest({"nodes": normalized})
 
