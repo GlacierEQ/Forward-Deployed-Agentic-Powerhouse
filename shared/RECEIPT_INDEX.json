@@ -1,19 +1,90 @@
 {
-  "schema": "glaciereq.scale-fde-receipt-index.v1",
+  "schema": "glaciereq.scale-fde-receipt-index.v2",
   "mission_id": "SCALE-FDE-DEMO-001",
-  "evidence_policy": "Source-bound evidence only; unresolved work is never inferred success.",
+  "evidence_policy": "Source-bound or independently executed evidence only; unresolved work is never inferred success.",
+  "current_verification_snapshot": {
+    "canonical_repo_revision": "501176f65c3e12098319cf369d9c9383a742614b",
+    "created_by": "Workstream E independent verification",
+    "mission_status": "BLOCKED"
+  },
   "source_bound": [
-    {"id":"R2-RED-37278166847","state":"RED","source":"shared/DEFECT_QUEUE.json:R2-DEF-001"},
-    {"id":"R2-REPAIR-3ee3883b","state":"REPAIR","source":"shared/DEFECT_QUEUE.json:R2-DEF-001"},
-    {"id":"R2-GREEN-37278419952","state":"GREEN_RECORDED","source":"shared/DEFECT_QUEUE.json:R2-DEF-001"},
-    {"id":"WS-E-CONTRACT","state":"SOURCE_BOUND","source":"shared/WORKSTREAM_E.json"},
-    {"id":"SCALE-PORTFOLIO","state":"SOURCE_BOUND","source":"docs/SCALE_FDE_PORTFOLIO.md"}
+    {
+      "id": "A-CAPABILITY-GRAPH",
+      "state": "VERIFIED",
+      "source": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse@a1bfb7c15295aa9ee76d7f17154a8531c58c6bfb:shared/WORKSTREAM_A.json",
+      "receipt": "Actions run 37500203003"
+    },
+    {
+      "id": "B-DURABILITY-INDEPENDENT-E",
+      "state": "VERIFIED_BEHAVIOR",
+      "source": "GlacierEQ/computer-user@dd9ea50bce265d5ffc235999909e4ee9b08a4732:tests/test_scale_runtime_durability.py",
+      "receipt": "E isolated execution: 12 passed"
+    },
+    {
+      "id": "B-GITHUB-CI",
+      "state": "FAILED_EXTERNAL_CI",
+      "source": "GitHub Actions run 37500289226"
+    },
+    {
+      "id": "C-CONTINUITY-COMPOUNDING",
+      "state": "VERIFIED_COMPONENT_MECHANICS",
+      "source": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse@7bbafb8d6d6eb156cc2527bdb8df53f3c08f197e:shared/WORKSTREAM_C.json",
+      "receipt": "Actions runs 37498198773,37498198496"
+    },
+    {
+      "id": "D-IMPLEMENTATION",
+      "state": "VERIFIED_CHECKPOINT",
+      "source": "GlacierEQ/sigma-glue@a910c04402d99ea811c19a7700ea879ed9e267e7:shared/WORKSTREAM_D.json",
+      "receipt": "Actions run 37257654701: 144/144"
+    },
+    {
+      "id": "D-HISTORICAL-LIVE-PROVIDER",
+      "state": "VERIFIED_HISTORICAL",
+      "source": "GlacierEQ/sigma-glue@4a1ca8e5c88a62e8a94a43213b2c509af6afcea3",
+      "receipt": "Actions run 31279895312"
+    },
+    {
+      "id": "E-VERIFIER",
+      "state": "VERIFIED_ISOLATED",
+      "source": "GlacierEQ/computer-user@d0550aa93896343c01b4f9aaf80c845b7e4dcf90",
+      "receipt": "Ruff PASS; compileall PASS; 24 tests + 2 subtests PASS"
+    }
   ],
   "unresolved": [
-    "baseline-vs-full-stack executed evaluation",
-    "EXECUTION_RECEIPT.json",
-    "VERIFICATION_RECEIPT.json",
-    "MISSION_RECEIPT.json",
-    "Mission 2 automatic reuse proof"
+    {
+      "id": "D-CURRENT-DEPLOYED-ROUTE",
+      "severity": "critical",
+      "reason": "current Sigma->deployed Colossus broker/transport route lacks live execution/readback proof"
+    },
+    {
+      "id": "BASELINE-RUN",
+      "severity": "critical",
+      "reason": "empirical same-mission single-agent run summary absent"
+    },
+    {
+      "id": "FULL-STACK-RUN",
+      "severity": "critical",
+      "reason": "empirical same-mission GlacierEQ run summary absent"
+    },
+    {
+      "id": "B-COMPLETION-ARTIFACT",
+      "severity": "high",
+      "reason": "B behavior is proven but sibling machine-readable WORKSTREAM_B/receipt is absent"
+    },
+    {
+      "id": "E-EXTERNAL-CI",
+      "severity": "medium",
+      "reason": "no GitHub workflow run exists at E head d0550aa9"
+    },
+    {
+      "id": "MISSION-1-RECEIPT",
+      "severity": "critical",
+      "reason": "cannot exist until the above gates are satisfied"
+    },
+    {
+      "id": "MISSION-2-REAL-REUSE",
+      "severity": "critical",
+      "reason": "C correctly waits for Mission-1 verified reusable capability"
+    }
   ]
 }

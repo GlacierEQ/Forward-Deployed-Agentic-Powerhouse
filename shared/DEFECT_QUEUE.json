@@ -1,6 +1,6 @@
 {
   "schema_version": "scale-fde/defect-queue-v2",
-  "as_of": "2026-10-05T07:33:00Z",
+  "as_of": "2026-10-06",
   "mission_id": "SCALE-FDE-DEMO-001",
   "defects": [
     {
@@ -25,33 +25,44 @@
       "id": "R2-DEF-003",
       "owner": "B",
       "severity": "high",
-      "status": "open",
-      "defect": "Exact running-task process-death lease reclaim and exactly-once continuation remains to be proved on current B branch.",
-      "source_revision": "73fce9a2ef6b439c62bf8ad95cdc039d6930e616"
+      "status": "behavior_verified_completion_artifact_open",
+      "defect": "B exact process-death/lease-reclaim continuation behavior is now independently verified (12/12 durability tests), but B has not emitted its machine-readable WORKSTREAM_B completion artifact/receipt and exact-head GitHub CI run 37500289226 failed before useful job evidence was exposed.",
+      "source_revision": "dd9ea50bce265d5ffc235999909e4ee9b08a4732",
+      "verification": "Agent E isolated execution of tests/test_scale_runtime_durability.py: 12 passed in 1.91s, including process death -> lease expiry -> fresh process -> same mission completion without replaying completed work."
     },
     {
       "id": "R2-DEF-004",
       "owner": "D",
       "severity": "critical",
-      "status": "open",
-      "defect": "No verified sigma-glue transport route to the live deployed Colossus gateway yet.",
-      "source_revision": "a910c04402d99ea811c19a7700ea879ed9e267e7"
+      "status": "open_protocol_auth_adapter_gap",
+      "defect": "Current Sigma Glue production-shaped transport and current deployed Colossus do not yet have a verified compatible live protocol/auth handoff. Sigma expects an opaque-broker credential handle and Sigma dispatch envelope; deployed Colossus c4ab050d is READY and /api/sigma-dispatch is reachable behind operator auth, but deployed source exposes operator-code/tool-key auth and no verified sigma-federation/v1 / colossus-dispatch/v1 parser/readback path.",
+      "source_revision": "a910c04402d99ea811c19a7700ea879ed9e267e7",
+      "provider_readback": {
+        "vercel_project": "prj_fstQXOI5Kgw5omGnHE6Q1sHPndZq",
+        "deployment": "dpl_9Km5JQ5xmdAa6A12JVKbcQfvuFgL",
+        "deployed_revision": "c4ab050dede46341ba3ba29eb0c0f389ef306d2f",
+        "ready_state": "READY",
+        "live_get": "/api/sigma-dispatch -> HTTP 401 OPERATOR_AUTH_REQUIRED",
+        "interpretation": "reachability/auth boundary proven; Sigma request semantics and provider mutation path unverified"
+      }
     },
     {
       "id": "R2-DEF-005",
       "owner": "E",
       "severity": "critical",
-      "status": "open",
-      "defect": "Verification-product branch is still identical to base; no Scale-specific independent verifier artifact exists yet.",
-      "source_revision": "1f0ae18968b4e830f66ee97dd4a2dc4805c6c298"
+      "status": "verifier_fixed_external_ci_open",
+      "defect": "E verifier is implemented and independently green; repository exact-head external CI still has no workflow run. Integration PR #67 targets scale-fde-demo while CI triggers only on PRs to main; CI-only PR #68 plus synchronize commit still produced no workflow run.",
+      "source_revision": "c02b148b0a7b14c6e5d60a0fac9c8aebf781b244",
+      "verification": "E isolated proof: Ruff PASS, compileall PASS, 24 tests + 2 subtests PASS; mission_certification_claimed=false."
     },
     {
       "id": "R2-DEF-006",
       "owner": "A",
       "severity": "medium",
-      "status": "open",
-      "defect": "A focused Gatling proof is strong but branch-wide regression/lint receipts remain open at current artifact revision.",
-      "source_revision": "2245469e89a9cdaf602d8b1e63d3a86fbe7d7111"
+      "status": "resolved",
+      "defect": "A branch-wide regression/lint/exact-branch CI evidence was previously open.",
+      "source_revision": "a1bfb7c15295aa9ee76d7f17154a8531c58c6bfb",
+      "resolution": "A WORKSTREAM_A now records exact branch CI and deterministic capability graph proof; no longer blocks E."
     }
   ]
 }
