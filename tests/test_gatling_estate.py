@@ -3,7 +3,11 @@ import time
 
 import pytest
 
-from fde_powerhouse.gatling_estate import (\n    aggregate_capability_nodes,\n    run_bounded_sweep,\n    semantic_digest,\n)
+from fde_powerhouse.gatling_estate import (
+    aggregate_capability_nodes,
+    run_bounded_sweep,
+    semantic_digest,
+)
 
 
 def node(repo: str, capability: str = "cap") -> dict:
