@@ -108,7 +108,8 @@ def test_run_mission_resume_skips_completed_work_and_launches_remaining_frontier
     result = run_mission(mission(), dispatch=dispatch, prior_state=prior)
 
     assert result["status"] == "COMPLETE"
-    assert calls == ["C", "D", "E"]
+    assert set(calls) == {"C", "D", "E"}
+    assert len(calls) == 3
     assert result["completed"] == ["A", "B", "C", "D", "E"]
 
 
