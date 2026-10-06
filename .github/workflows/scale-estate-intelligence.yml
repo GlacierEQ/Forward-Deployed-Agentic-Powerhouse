@@ -35,7 +35,16 @@ jobs:
 
       - name: Agent A lint
         run: |
-          ruff check src/fde_powerhouse/gatling_estate.py tests/test_gatling_estate.py
+          ruff check \
+            src/fde_powerhouse/gatling_estate.py \
+            src/fde_powerhouse/scale_orchestrator.py \
+            src/fde_powerhouse/scale_cli.py \
+            tests/test_gatling_estate.py \
+            tests/test_scale_orchestrator.py \
+            tests/test_scale_cli.py
+
+      - name: Installed launcher smoke
+        run: scale-fde-demo --help >/dev/null
 
       - name: Compile
         run: python -m compileall -q src tests
