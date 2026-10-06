@@ -117,3 +117,30 @@ def test_materialization_does_not_overwrite_richer_worker_artifact(
     ScaleControlPlane.bootstrap(tmp_path)
 
     assert '"state":"COMPLETE_WITH_EVIDENCE"' in worker_artifact.read_text()
+
+
+def test_materialization_preserves_richer_shared_contracts(
+    tmp_path: Path,
+) -> None:
+    shared = tmp_path / "shared"
+    shared.mkdir()
+    mission = shared / "SCALE_FDE_MISSION.yaml"
+    architecture = shared / "ARCHITECTURE_CONTRACT.json"
+    mission_source = (
+        "schema: glaciereq.scale-fde-mission.v1\n"
+        "revision: 99\n"
+        "principles:\n"
+        "  - preserve_stronger_existing_capability\n"
+        "  - operator_semantic_sovereignty\n"
+    )
+    architecture_source = (
+        '{"schema":"glaciereq.scale-fde-architecture.v99",'
+        '"invariants":["preserve richer source"]}\n'
+    )
+    mission.write_text(mission_source)
+    architecture.write_text(architecture_source)
+
+    ScaleControlPlane.bootstrap(tmp_path)
+
+    assert mission.read_text() == mission_source
+    assert architecture.read_text() == architecture_source
