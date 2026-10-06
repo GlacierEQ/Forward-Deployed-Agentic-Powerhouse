@@ -54,9 +54,9 @@
   },
   "revisions": {
     "aspen_grove_memory": "c5b8bb44016ee9c17e44c58b53f0545bfdc9691f",
-    "genius_mastery": "21c7e0b1209d71619b56dbf51549e39e2665fc69",
+    "genius_mastery": "4ab452f7ee08f865f24e61f011b1c803fc9a1c7d",
     "fde_sidecar_code": "2e3cfe61c7071422589fd4d234b144203a32efbb",
-    "fde_workflow_pin": "24386a79b1d7a0dfaaac86461fba2326c673652d"
+    "fde_workflow_pin": "8cfaaeb1d28657cef9b4733f68fb3176f1bde05f"
   },
   "verification": {
     "red": {
@@ -73,8 +73,8 @@
       },
       {
         "surface": "Genius compounding",
-        "result": "5/5 passed",
-        "revision": "21c7e0b1209d71619b56dbf51549e39e2665fc69"
+        "result": "7/7 passed; Ruff clean; compile clean",
+        "revision": "4ab452f7ee08f865f24e61f011b1c803fc9a1c7d"
       },
       {
         "surface": "FDE Agent-C contract",
@@ -84,11 +84,21 @@
       {
         "surface": "cross-process resurrection + Mission-2 reuse",
         "result": "passed",
-        "proof_sha256": "8125d04659d7a99b751e871aad33d0fed134d99c3eed65833bd17dedca0e2353",
+        "proof_sha256": "6a17eaaf125762dcf66e3d855deb307e0e3b9a057f9dce3a0789137f61efba95",
         "selection_score": 0.675
       }
     ],
-    "proof_truth_boundary": "Synthetic component proof verifies Workstream-C mechanics across exact donor revisions; it does not assert completion of the full five-workstream Scale mission."
+    "proof_truth_boundary": "Synthetic component proof verifies Workstream-C mechanics across exact donor revisions; it does not assert completion of the full five-workstream Scale mission.",
+    "additional_red": [
+      {
+        "revision": "cfc3d6ebadad9dbfbe439c4a1322cf872035bff4",
+        "tests": [
+          "test_extract_reusable_capability_rejects_non_object_contract",
+          "test_register_capability_rejects_invalid_registry_shape"
+        ],
+        "observed": "2/2 failed with ValueError where the typed contract requires TypeError"
+      }
+    ]
   },
   "defects": [
     {
