@@ -40,14 +40,16 @@ jobs:
       - name: Compile
         run: python -m compileall -q src tests
 
-      - name: Full regression suite
-        run: pytest -q
+      - name: Full regression + coverage gate
+        run: pytest --cov=fde_powerhouse --cov-report=term-missing --cov-fail-under=70
 
       - name: Validate Agent A machine artifacts
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
+
+          from fde_powerhouse.gatling_estate import semantic_digest
 
           graph = json.loads(Path("shared/SCALE_CAPABILITY_GRAPH.json").read_text())
           workstream = json.loads(Path("shared/WORKSTREAM_A.json").read_text())
@@ -85,10 +87,16 @@ jobs:
           )
           assert graph["nodes"] == sorted(graph["nodes"], key=sort_key)
 
+          digest_forward = semantic_digest({"nodes": graph["nodes"]})
+          digest_reverse = semantic_digest({"nodes": list(reversed(graph["nodes"]))})
+          assert digest_forward == digest_reverse
+
           print(
               json.dumps(
                   {
                       "nodes": len(graph["nodes"]),
+                      "semantic_digest": digest_forward,
+                      "semantic_reverse_match": True,
                       "workstream_state": workstream["state"],
                   },
                   sort_keys=True,
