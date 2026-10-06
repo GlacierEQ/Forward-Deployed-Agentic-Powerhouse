@@ -437,6 +437,7 @@ def run_mission(
     max_workers: int | None = None,
     checkpoint: Callable[[Mapping[str, Any]], None] | None = None,
     retry_ambiguous: bool = False,
+    retry_failed: bool = False,
 ) -> dict[str, Any]:
     """Launch each dependency-ready frontier and persist progress around each wave."""
     workstreams = _normalize_workstreams(mission)
@@ -449,6 +450,10 @@ def run_mission(
         digest,
         prior_state,
     )
+    if retry_failed:
+        for workstream_id in tuple(failed):
+            receipts.pop(workstream_id, None)
+        failed.clear()
     waves: list[list[str]] = []
 
     ambiguous_unresolved: list[str] = []
