@@ -8,7 +8,7 @@ from typing import ClassVar
 
 import pytest
 
-from fde_powerhouse.scale_compounding import run_compounding_proof
+from fde_powerhouse.scale_compounding import prepare_canonical_frontier, run_compounding_proof
 
 
 class FakeContinuityStore:
@@ -145,4 +145,102 @@ def test_unverified_mission_cannot_be_compounded(tmp_path):
             continuity_cls=FakeContinuityStore,
             compounding_api=_compounding_api(),
             fresh_hydrator=lambda *_args, **_kwargs: {},
+        )
+
+
+def _write_canonical_shared_snapshot(root: Path, *, e_mission_id: str = "SCALE-FDE-DEMO-001"):
+    root.mkdir(parents=True, exist_ok=True)
+    (root / "SCALE_FDE_MISSION.yaml").write_text(
+        "schema: glaciereq.scale-fde-mission.v1\n"
+        "id: SCALE-FDE-DEMO-001\n"
+        "revision: 2\n"
+        "objective: Prove the real desired state and compound verified capability reuse.\n",
+        encoding="utf-8",
+    )
+    (root / "SCALE_CAPABILITY_GRAPH.json").write_text(
+        json.dumps(
+            {
+                "schema": "glaciereq.scale-fde.capability-graph.v1",
+                "mission": "Scale FDE demonstration",
+                "workstream": "A",
+                "nodes": [
+                    {"repository": "GlacierEQ/aspen-grove-memory", "donor_value": 10},
+                    {"repository": "GlacierEQ/Genius-Mastery", "donor_value": 10},
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    (root / "WORKSTREAM_E.json").write_text(
+        json.dumps(
+            {
+                "schema": "glaciereq.scale-fde-workstream.v1",
+                "mission_id": e_mission_id,
+                "workstream": "E",
+                "status": "PARTIAL",
+                "unresolved_dependencies": ["MISSION_RECEIPT.json is not source-bound"],
+            }
+        ),
+        encoding="utf-8",
+    )
+    (root / "RECEIPT_INDEX.json").write_text(
+        json.dumps(
+            {
+                "schema": "glaciereq.scale-fde-receipt-index.v1",
+                "mission_id": "SCALE-FDE-DEMO-001",
+                "unresolved": ["MISSION_RECEIPT.json", "Mission 2 automatic reuse proof"],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+
+def test_canonical_frontier_fails_closed_without_verified_mission_receipt(tmp_path):
+    FakeContinuityStore.records.clear()
+    shared = tmp_path / "shared"
+    db = tmp_path / "continuity.sqlite3"
+    registry = tmp_path / "learned-capabilities.json"
+    _write_canonical_shared_snapshot(shared)
+
+    result = prepare_canonical_frontier(
+        shared_root=shared,
+        db_path=db,
+        registry_path=registry,
+        continuity_cls=FakeContinuityStore,
+    )
+
+    assert result["status"] == "blocked_external_dependency"
+    assert result["mission_id"] == "SCALE-FDE-DEMO-001"
+    assert result["mission_receipt"]["present"] is False
+    assert result["capability_registry_mutated"] is False
+    assert not registry.exists()
+    assert result["continuation"]["current_frontier"] == [
+        "await:shared/MISSION_RECEIPT.json"
+    ]
+    assert "MISSION_RECEIPT.json" in result["continuation"]["unresolved_dependencies"][0]
+    assert set(result["source_snapshot"]) == {
+        "SCALE_FDE_MISSION.yaml",
+        "SCALE_CAPABILITY_GRAPH.json",
+        "WORKSTREAM_E.json",
+        "RECEIPT_INDEX.json",
+    }
+    assert all(item["sha256"] for item in result["source_snapshot"].values())
+
+    records = FakeContinuityStore.records[str(db)]
+    continuation = [payload for kind, payload in records if kind == "continuation"]
+    assert continuation
+    assert continuation[-1]["frontier"] == ["await:shared/MISSION_RECEIPT.json"]
+
+
+def test_canonical_frontier_rejects_cross_mission_shared_artifacts(tmp_path):
+    FakeContinuityStore.records.clear()
+    shared = tmp_path / "shared"
+    _write_canonical_shared_snapshot(shared, e_mission_id="OTHER-MISSION")
+
+    with pytest.raises(ValueError, match="mission_id"):
+        prepare_canonical_frontier(
+            shared_root=shared,
+            db_path=tmp_path / "continuity.sqlite3",
+            registry_path=tmp_path / "learned-capabilities.json",
+            continuity_cls=FakeContinuityStore,
         )
