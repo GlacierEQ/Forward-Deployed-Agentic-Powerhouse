@@ -1,60 +1,146 @@
 {
-  "schema": "glaciereq.scale-fde-workstream.v1",
+  "schema": "glaciereq.scale-fde-workstream.v2",
   "mission_id": "SCALE-FDE-DEMO-001",
   "workstream": "E",
   "role": "Verification / Scale Product / Evidence",
   "authority": "independent_verification",
-  "status": "PARTIAL",
-  "verified_now": [
-    {
-      "claim": "canonical Scale mission contract exists under shared/",
-      "evidence": "shared/SCALE_FDE_MISSION.yaml",
-      "evidence_state": "SOURCE_BOUND"
+  "status": "VERIFIER_IMPLEMENTED_MISSION_BLOCKED_ON_CURRENT_EXTERNAL_EVIDENCE",
+  "verifier_implementation": {
+    "repository": "GlacierEQ/computer-user",
+    "branch": "scale/verification-product",
+    "revision": "d0550aa93896343c01b4f9aaf80c845b7e4dcf90",
+    "pull_request": 67,
+    "owned_surfaces": [
+      "computer_user/scale_evidence.py",
+      "computer_user/scale_evaluation.py",
+      "computer_user/scale_verification.py",
+      "scripts/scale_fde_verify.py",
+      "scripts/ci/scale_agent_e_verify.sh",
+      "scripts/ci/verify_scale_fde_agent_e.py"
+    ],
+    "isolated_verification": {
+      "ruff": "PASS",
+      "compileall": "PASS",
+      "tests": "24 passed, 2 subtests passed",
+      "mission_certification_claimed": false
     },
-    {
-      "claim": "architecture contract defines five isolated workstreams and E verification ownership",
-      "evidence": "shared/ARCHITECTURE_CONTRACT.json",
-      "evidence_state": "SOURCE_BOUND"
-    },
-    {
-      "claim": "red-to-green convergence defect is preserved",
-      "evidence": "shared/DEFECT_QUEUE.json: R2-DEF-001; RED run 37278166847; repair 3ee3883b541def3179aeeb30cdacfaa8671fb8c5; GREEN run 37278419952",
-      "evidence_state": "SOURCE_BOUND_EXISTING_RECORD"
-    },
-    {
-      "claim": "employer-facing proof surface exists",
-      "evidence": "docs/SCALE_FDE_PORTFOLIO.md",
-      "evidence_state": "SOURCE_BOUND"
-    },
-    {
-      "claim": "canonical receipt index exists and separates source-bound evidence from unresolved proof",
-      "evidence": "shared/RECEIPT_INDEX.json @ blob 9f3f59fa63ce6f6fe9fd2a5295ce28c1a3aef306",
-      "evidence_state": "VERIFIED_WRITE_READBACK"
+    "external_ci": {
+      "github_workflow_runs_at_head": 0,
+      "state": "UNVERIFIED_EXTERNAL_CI"
     }
-  ],
-  "hidden_harm_repaired": {
-    "detected": "Employer-facing portfolio/mission surfaces referenced canonical verification artifacts that were not all present on the default branch.",
-    "threatened_dimension": "employer-facing reproducibility and truthfulness of the five-workstream proof surface",
-    "counter_route": "Materialized WORKSTREAM_E and the canonical RECEIPT_INDEX without fabricating unfinished evaluation receipts. REPRODUCE.md write remains blocked and is explicitly unresolved.",
-    "preserved_boundary": "Baseline-vs-stack harness, execution/verification/mission receipts, Mission-2 reuse proof, and REPRODUCE.md remain unresolved until independently source-bound."
   },
-  "owns": [
-    "baseline_vs_stack_harness",
-    "execution_verification_mission_receipts",
-    "evidence_graph",
-    "architecture_exhibit",
-    "REPRODUCE.md",
-    "metrics",
-    "RECEIPT_INDEX.json"
-  ],
-  "unresolved_dependencies": [
-    "REPRODUCE.md is not source-bound on default branch; write attempt was not accepted",
-    "baseline-vs-full-stack evaluation harness is not source-bound on default branch",
-    "EXECUTION_RECEIPT.json is not source-bound on default branch",
-    "VERIFICATION_RECEIPT.json is not source-bound on default branch",
-    "MISSION_RECEIPT.json is not source-bound on default branch",
-    "Mission 2 automatic reuse proof must be independently verified before mission completion"
-  ],
-  "completion_rule": "E may report VERIFIED only for claims bound to reproducible evidence. It must not repair sibling implementations or convert absent receipts into inferred success.",
-  "next_executable_frontier": "Execute a real baseline-vs-full-stack evaluation through an available runtime; emit execution/verification/mission receipts only from observed results. REPRODUCE.md remains a separate blocked employer-facing artifact."
+  "consumed_current_evidence": {
+    "A": {
+      "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+      "branch": "scale/estate-intelligence",
+      "revision": "a1bfb7c15295aa9ee76d7f17154a8531c58c6bfb",
+      "state": "COMPLETE_WITH_EXPLICIT_EVIDENCE_BOUNDARY",
+      "exact_branch_ci_run": 37500203003,
+      "capability_graph_nodes": 338
+    },
+    "B": {
+      "repository": "GlacierEQ/computer-user",
+      "branch": "scale/runtime-swarm",
+      "revision": "dd9ea50bce265d5ffc235999909e4ee9b08a4732",
+      "pull_request": 65,
+      "state": "BEHAVIOR_INDEPENDENTLY_VERIFIED_ARTIFACT_INCOMPLETE",
+      "independent_E_execution": {
+        "suite": "tests/test_scale_runtime_durability.py",
+        "result": "12 passed",
+        "proof_scope": [
+          "lease fencing",
+          "heartbeat duplicate prevention",
+          "process death and fresh-process continuation",
+          "no replay of completed work",
+          "reconcile-on-ambiguous-mutation",
+          "bounded retry",
+          "deferred continuation",
+          "parallel DAG frontier"
+        ]
+      },
+      "github_actions": {
+        "run_id": 37500289226,
+        "conclusion": "failure",
+        "observation": "workflow completed immediately; job details unavailable through current connector"
+      },
+      "missing": [
+        "shared/WORKSTREAM_B.json",
+        "machine-readable B completion receipt"
+      ]
+    },
+    "C": {
+      "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+      "branch": "scale/memory-composition",
+      "revision": "7bbafb8d6d6eb156cc2527bdb8df53f3c08f197e",
+      "state": "CANONICAL_FRONTIER_HYDRATED_AWAITING_E_MISSION_RECEIPT",
+      "workflow_runs": [
+        {
+          "id": 37498198773,
+          "name": "Scale Workstream C",
+          "conclusion": "success"
+        },
+        {
+          "id": 37498198496,
+          "name": "CI",
+          "conclusion": "success"
+        }
+      ],
+      "mission2_mechanics": {
+        "cross_process_resurrection": "passed",
+        "automatic_reuse": "passed",
+        "selection_score": 0.675,
+        "boundary": "component mechanics proof; real Mission-2 reuse waits on verified Mission-1 receipt"
+      }
+    },
+    "D": {
+      "repository": "GlacierEQ/sigma-glue",
+      "branch": "scale/integration-mcp",
+      "revision": "a910c04402d99ea811c19a7700ea879ed9e267e7",
+      "pull_request": 15,
+      "state": "CHECKPOINT_VERIFIED_CURRENT_LIVE_DEPLOYED_ROUTE_UNVERIFIED",
+      "green_ci": {
+        "run_id": 37257654701,
+        "tests_passed": 144,
+        "tests_failed": 0
+      },
+      "historical_provider_live_proof": {
+        "run_id": 31279895312,
+        "revision": "4a1ca8e5c88a62e8a94a43213b2c509af6afcea3",
+        "conclusion": "success",
+        "proof": "GitHub Contents confirmed write plus simulated lost-response recovery and replay fence"
+      },
+      "current_blocker": "No current verified Sigma Glue -> deployed Colossus Gateway transport/broker route. Historical live provider proof does not prove the current deployed route."
+    }
+  },
+  "empirical_evaluation": {
+    "required": "same canonical mission executed as a single-agent baseline and full GlacierEQ stack",
+    "current_state": "NOT_EXECUTED",
+    "evaluator": "GlacierEQ/computer-user@d0550aa93896343c01b4f9aaf80c845b7e4dcf90:computer_user/scale_evaluation.py",
+    "synthetic_control_plane_evaluation": "NOT_ACCEPTED_AS_EMPIRICAL_BASELINE"
+  },
+  "certification_gate": {
+    "state": "BLOCKED",
+    "blockers": [
+      "current D live Sigma->deployed-Colossus provider route/readback proof absent",
+      "empirical single-agent baseline run for canonical mission absent",
+      "empirical full-stack run summary for identical canonical mission absent",
+      "B machine-readable completion artifact absent",
+      "E exact-head external CI receipt absent"
+    ],
+    "not_blockers": [
+      "A estate intelligence implementation",
+      "B core crash/lease continuation behavior",
+      "C continuity/reuse mechanics",
+      "E verifier implementation"
+    ]
+  },
+  "completion_rule": "Emit MISSION_RECEIPT.json only after the empirical evaluation establishes FULL_STACK_BETTER and all claim/readback/falsification/postcondition gates are independently verified.",
+  "next_executable_frontier": [
+    "obtain current D routed provider proof without direct connector bypass",
+    "obtain/repair B machine-readable workstream completion receipt and external CI signal",
+    "execute same canonical mission baseline and full-stack runs",
+    "feed exact receipts into E verifier",
+    "if certified, emit Mission-1 receipt then let C perform real capability registration and Mission-2 automatic reuse",
+    "re-run Mission 2 and issue final comparative receipt"
+  ]
 }
