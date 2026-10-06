@@ -1,0 +1,147 @@
+schema: glaciereq.scale-fde-fusion.v1
+policy:
+  no_sixth_framework: true
+  mission_truth_authority: ScaleControlPlane + Workstream E
+  launcher_authority: scale-fde-demo
+  external_mutation_authority: Workstream D + provider readback
+  live_required_core:
+    - computer_user
+    - mega_pipeline
+  note: >-
+    This profile composes existing GlacierEQ capabilities around the canonical
+    Scale mission. It does not transfer sibling ownership or duplicate runtimes.
+
+components:
+  computer_user:
+    role: durable_execution_plane
+    activation: required_live
+    source_repository: GlacierEQ/computer-user
+    source_revision: dd9ea50bce265d5ffc235999909e4ee9b08a4732
+    root_env: SCALE_FDE_COMPUTER_USER_ROOT
+    preflight_timeout_seconds: 120
+    preflight:
+      - python3
+      - -m
+      - computer_user.cli
+      - health
+    responsibilities:
+      - durable_task_queue
+      - idempotency
+      - dependency_aware_missions
+      - governed_connector_execution
+      - verification_receipts
+      - continuation_records
+    non_role:
+      - top_level_scale_mission_truth
+      - replacement_for_sigma_glue
+
+  mega_pipeline:
+    role: capability_composition_and_sequencing
+    activation: required_live
+    source_repository: GlacierEQ/mega-skills
+    source_revision: 7dee0c0a98468e29d364ee18a9c0bcd57f05b91f
+    root_env: SCALE_FDE_MEGA_SKILLS_ROOT
+    pipeline: control-plane
+    includes:
+      - faraway_party
+    preflight_timeout_seconds: 180
+    preflight:
+      - python3
+      - scripts/run_deep_work_pipeline.py
+      - --pipeline
+      - control-plane
+      - --validate-only
+    execute:
+      - python3
+      - scripts/run_deep_work_pipeline.py
+      - --pipeline
+      - control-plane
+      - --resume
+    deploy_mode: approval_packet_only
+    responsibilities:
+      - recover
+      - readiness
+      - recon
+      - compose
+      - execute
+      - verify
+      - handoff
+      - evolve
+
+  faraway_party:
+    role: long_horizon_continuity
+    activation: composed
+    source_repository: GlacierEQ/mega-skills
+    source_revision: 7dee0c0a98468e29d364ee18a9c0bcd57f05b91f
+    source_path: mega-skills/far-away-party/MEGA.md
+    via: mega_pipeline
+    direct_command: null
+    durable_state:
+      - MISSION.md
+      - ROADMAP.md
+      - CONTEXT.md
+      - EVIDENCE.md
+      - HANDOFF.md
+    responsibilities:
+      - context_drift_resistance
+      - phase_gating
+      - safe_resume
+      - source_preservation
+      - explicit_handoff
+
+  make_it_heavy:
+    role: conditional_parallel_reasoning
+    activation: opt_in
+    source_repository: GlacierEQ/make-it-heavy-private
+    source_revision: 85b4b247cb4e1767d32bc47b34b9969bafec3227
+    enable_env: SCALE_FDE_ENABLE_HEAVY
+    root_env: SCALE_FDE_MAKE_IT_HEAVY_ROOT
+    preflight_timeout_seconds: 60
+    preflight:
+      - python3
+      - -c
+      - import orchestrator; print("make-it-heavy-ready")
+    responsibilities:
+      - bounded_parallel_analysis
+      - independent_worker_lanes
+      - contradiction_preservation
+      - synthesis
+      - heavy_verification
+    activation_rule: >-
+      Enable only when the mission has a genuinely parallelizable heavy-analysis
+      frontier. Do not use it merely to increase agent count.
+
+  apple_mcp:
+    role: macos_native_provider
+    activation: opt_in
+    source_kind: uploaded_dxt
+    source_name: apple-mcp.dxt
+    version: 1.0.0
+    expected_sha256: 5e2b97363f3b6ad9d62f0c82d32d6af94ffbab83c8e39e0922766025b59dead5
+    enable_env: SCALE_FDE_ENABLE_APPLE_MCP
+    file_env: SCALE_FDE_APPLE_MCP_DXT
+    platform: darwin
+    routed_via: workstream_D_sigma_glue
+    server:
+      type: node
+      entry_point: dist/index.js
+    required_tools:
+      - contacts
+      - notes
+      - messages
+      - mail
+      - reminders
+      - calendar
+      - maps
+    responsibilities:
+      - native_contacts
+      - native_notes
+      - native_messages
+      - native_mail
+      - native_reminders
+      - native_calendar
+      - native_maps
+    trust_boundary: >-
+      Apple MCP never bypasses Workstream D provider ambiguity, idempotency,
+      authority, reconciliation, and readback rules. Consequential sends or writes
+      require the same scoped authority as every other provider mutation.
