@@ -3,7 +3,7 @@ import time
 
 import pytest
 
-from fde_powerhouse.gatling_estate import aggregate_capability_nodes, run_bounded_sweep
+from fde_powerhouse.gatling_estate import (\n    aggregate_capability_nodes,\n    run_bounded_sweep,\n    semantic_digest,\n)
 
 
 def node(repo: str, capability: str = "cap") -> dict:
@@ -66,3 +66,44 @@ def test_aggregator_rejects_invalid_donor_value():
 
     with pytest.raises(ValueError, match="donor_value"):
         aggregate_capability_nodes([bad])
+
+
+def test_aggregator_preserves_and_validates_evidence_provenance():
+    item = node("repo-evidence")
+    item["evidence_level"] = "source_inspected"
+    item["evidence"] = [
+        {
+            "kind": "implementation",
+            "revision": "a" * 40,
+            "path": "src/core.py",
+            "claim": "bounded discovery implementation recovered",
+            "digest": "sha256:" + "b" * 64,
+        }
+    ]
+
+    result = aggregate_capability_nodes([item])
+    recovered = result["nodes"][0]
+
+    assert recovered["evidence_level"] == "source_inspected"
+    assert recovered["evidence"] == item["evidence"]
+
+    invalid = dict(item)
+    invalid["evidence_level"] = "confidence_guess"
+    with pytest.raises(ValueError, match="evidence_level"):
+        aggregate_capability_nodes([invalid])
+
+
+def test_semantic_digest_is_order_independent_and_ignores_metrics():
+    left = run_bounded_sweep(["repo-b", "repo-a"], lambda repo: [node(repo)], workers=1)
+    right = run_bounded_sweep(["repo-a", "repo-b"], lambda repo: [node(repo)], workers=2)
+
+    assert semantic_digest(left) == semantic_digest(right)
+    assert semantic_digest(left).startswith("sha256:")
+
+
+def test_semantic_digest_changes_when_capability_evidence_changes():
+    first = node("repo-a")
+    second = node("repo-a")
+    second["verified_state"] = "stronger source evidence recovered"
+
+    assert semantic_digest({"nodes": [first]}) != semantic_digest({"nodes": [second]})
