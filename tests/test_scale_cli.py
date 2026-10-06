@@ -244,3 +244,31 @@ def test_scale_cli_blocked_launch_returns_nonzero_without_claiming_mission_failu
     result = json.loads(capsys.readouterr().out)
     assert result["status"] == "LAUNCH_BLOCKED"
     assert result["mission_complete"] is False
+
+
+
+def test_scale_cli_exact_canonical_command_resolves_shared_mission(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+):
+    _write_inputs(
+        tmp_path,
+        [sys.executable, "-c", "raise SystemExit(0)"],
+    )
+    monkeypatch.chdir(tmp_path)
+    state = tmp_path / ".scale-fde" / "orchestrator-state.json"
+
+    code = main(
+        [
+            "run",
+            "SCALE_FDE_MISSION.yaml",
+            "--state",
+            str(state),
+        ]
+    )
+
+    assert code == 0
+    result = json.loads(capsys.readouterr().out)
+    assert result["mission_id"] == "SCALE-FDE-DEMO-001"
+    assert result["status"] == "LAUNCH_COMPLETE"
