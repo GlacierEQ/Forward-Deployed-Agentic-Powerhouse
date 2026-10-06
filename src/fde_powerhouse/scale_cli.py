@@ -1,4 +1,4 @@
-"""Terminal entrypoint for the Scale FDE fire-and-forget mission launcher."""
+"""Terminal entrypoint for the Scale FDE workstream launcher."""
 
 from __future__ import annotations
 
@@ -10,6 +10,7 @@ from pathlib import Path
 from .scale_orchestrator import (
     DEFAULT_MAX_WORKERS,
     MissionOrchestrationError,
+    load_launchers,
     load_mission,
     load_state,
     run_mission,
@@ -18,8 +19,24 @@ from .scale_orchestrator import (
 )
 
 
+def _default_launchers_path(mission_path: Path) -> Path:
+    resolved = mission_path.resolve()
+    if resolved.parent.name == "shared":
+        candidate = resolved.parent.parent / "configs" / "scale_launchers.yaml"
+        if candidate.exists():
+            return candidate
+    return Path("configs/scale_launchers.yaml")
+
+
 def _run(args: argparse.Namespace) -> int:
-    mission = load_mission(args.mission)
+    mission_path = Path(args.mission)
+    mission = load_mission(mission_path)
+    launchers_path = (
+        Path(args.launchers)
+        if args.launchers is not None
+        else _default_launchers_path(mission_path)
+    )
+    launchers = load_launchers(launchers_path)
     state_path = Path(args.state)
     prior_state = None if args.fresh else load_state(state_path)
 
@@ -28,6 +45,7 @@ def _run(args: argparse.Namespace) -> int:
 
     result = run_mission(
         mission,
+        launchers,
         dispatch=subprocess_dispatch,
         prior_state=prior_state,
         max_workers=args.max_workers,
@@ -37,7 +55,7 @@ def _run(args: argparse.Namespace) -> int:
     )
     write_state(state_path, result)
     print(json.dumps(result, indent=2, sort_keys=True))
-    return 0 if result["status"] == "COMPLETE" else 1
+    return 0 if result["status"] == "LAUNCH_COMPLETE" else 1
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -46,40 +64,52 @@ def build_parser() -> argparse.ArgumentParser:
 
     run = sub.add_parser(
         "run",
-        help="Launch the dependency-ready Scale workstream frontier and resume by default.",
+        help=(
+            "Launch the dependency-ready Scale workstream frontier from the "
+            "canonical mission plus a separate local launcher-binding contract."
+        ),
     )
-    run.add_argument("mission", help="Path to SCALE_FDE_MISSION.yaml")
+    run.add_argument("mission", help="Path to canonical SCALE_FDE_MISSION.yaml")
+    run.add_argument(
+        "--launchers",
+        default=None,
+        help=(
+            "Path to glaciereq.scale-fde-launchers.v1 bindings. Defaults to "
+            "configs/scale_launchers.yaml beside the repository containing shared/."
+        ),
+    )
     run.add_argument(
         "--state",
         default=".scale-fde/orchestrator-state.json",
-        help="Durable orchestrator checkpoint path.",
+        help="Durable launcher checkpoint path.",
     )
     run.add_argument(
         "--max-workers",
         type=int,
         default=None,
         help=(
-            "Override mission orchestrator.max_workers. "
-            f"Measured Agent-A provider knee is {DEFAULT_MAX_WORKERS}."
+            "Override launcher max_workers. "
+            f"Agent-A's measured provider-bound knee is {DEFAULT_MAX_WORKERS}; "
+            "this is a launch bound, not a sibling-runtime throughput claim."
         ),
     )
     run.add_argument(
         "--fresh",
         action="store_true",
-        help="Ignore an existing checkpoint and execute the mission from its initial frontier.",
+        help="Ignore an existing launcher checkpoint and start at the initial frontier.",
     )
     run.add_argument(
         "--retry-ambiguous",
         action="store_true",
         help=(
-            "Explicitly replay workstreams left in-flight when terminal artifact "
-            "readback cannot prove they completed."
+            "Explicitly replay a launcher left in-flight when terminal-artifact "
+            "readback cannot prove whether it completed."
         ),
     )
     run.add_argument(
         "--retry-failed",
         action="store_true",
-        help="Explicitly replay workstreams recorded as failed in the durable checkpoint.",
+        help="Explicitly replay launcher work units recorded as failed.",
     )
     run.set_defaults(func=_run)
     return parser
@@ -94,7 +124,7 @@ def main(argv: list[str] | None = None) -> int:
         print(
             json.dumps(
                 {
-                    "schema": "glaciereq.scale-fde.orchestrator-error.v1",
+                    "schema": "glaciereq.scale-fde.launcher-error.v1",
                     "status": "INVALID_MISSION_OR_STATE",
                     "error": str(exc),
                 },
