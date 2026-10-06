@@ -23,7 +23,7 @@ components:
       - python3
       - -m
       - computer_user.cli
-      - doctor
+      - health
     responsibilities:
       - durable_task_queue
       - idempotency
