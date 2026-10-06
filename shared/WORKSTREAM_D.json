@@ -1,6 +1,6 @@
 {
   "schema_version": "scale-fde/workstream-v1",
-  "as_of": "2026-10-05T03:01:28Z",
+  "as_of": "2026-10-06T20:08:00Z",
   "workstream": "D",
   "role": "Integration / MCP / sigma-glue",
   "repository": "GlacierEQ/sigma-glue",
@@ -9,7 +9,7 @@
   "base_revision": "4a1ca8e5c88a62e8a94a43213b2c509af6afcea3",
   "implementation_revision_before_receipts": "1687afced055a9a3648aa502bb42a61032893c4b",
   "pull_request": 15,
-  "status": "checkpoint_verified_blocked_on_cross_workstream_and_provider_dependencies",
+  "status": "checkpoint_verified_cross_workstream_contracts_recovered_blocked_on_live_colossus_route",
   "exclusive_ownership": [
     "sigma-glue workflow state machine",
     "MCP tool selection and argument/dependency contracts",
@@ -203,11 +203,27 @@
     "rule": "Direct connector mutation is forbidden as a substitute for Colossus-routed proof."
   },
   "unresolved_dependencies": [
-    "SCALE_FDE_MISSION.yaml not found in the GlacierEQ GitHub index",
-    "ARCHITECTURE_CONTRACT.json not found in the GlacierEQ GitHub index",
-    "SCALE_CAPABILITY_GRAPH.json not found in the GlacierEQ GitHub index",
     "No verified live sigma-glue -> deployed colossus-gateway transport route recovered",
     "Provider-specific database/filesystem/external-API/deployment ambiguity semantics remain required before live mutation proof"
   ],
-  "next_frontier": "Consume shared mission/architecture/capability contracts, bind a verified deployed Colossus route, then execute provider-specific live ambiguity/readback proofs without direct connector bypass."
+  "next_frontier": "Consume the recovered shared mission/architecture/capability contracts into Workstream D, bind a verified live sigma-glue -> deployed colossus-gateway transport route, then execute provider-specific live ambiguity/readback proofs without direct connector bypass.",
+  "shared_contract_readback": {
+    "verification": "provider_native_readback",
+    "verified_at": "2026-10-06T20:08:00Z",
+    "files": [
+      {
+        "path": "shared/SCALE_FDE_MISSION.yaml",
+        "blob_sha": "b33aa00528fc3a26723233a4e350755199a57233"
+      },
+      {
+        "path": "shared/ARCHITECTURE_CONTRACT.json",
+        "blob_sha": "b23699ce066131ab18bc8fe937a718601d7a54b4"
+      },
+      {
+        "path": "shared/SCALE_CAPABILITY_GRAPH.json",
+        "blob_sha": "d37cf7b8355c26a0d27db858d43567b53925eba2"
+      }
+    ],
+    "hidden_harm_prevented": "Removed stale 'not found' blockers after provider-native GitHub readback; missing-index metadata no longer demotes present source contracts."
+  }
 }
