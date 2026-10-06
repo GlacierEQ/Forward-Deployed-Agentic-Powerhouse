@@ -7,6 +7,7 @@ from fde_powerhouse.gatling_estate import (
     SweepIncompleteError,
     aggregate_capability_nodes,
     benchmark_serial_vs_parallel,
+    graph_semantic_digest,
     resume_repositories,
     run_bounded_sweep,
     semantic_digest,
@@ -286,3 +287,84 @@ def test_type_contracts_fail_with_type_error_not_value_error():
     invalid["tests"] = "tests/test_core.py"
     with pytest.raises(TypeError, match="tests"):
         aggregate_capability_nodes([invalid])
+
+
+def test_graph_semantic_digest_is_order_independent_for_nodes_edges_and_scope():
+    edge_a = {
+        "source": "repo-a",
+        "target": "repo-b",
+        "relation": "DEPENDS_ON",
+        "evidence": [
+            {
+                "repository": "repo-a",
+                "revision": "a" * 40,
+                "path": "README.md",
+                "blob_sha": "1" * 40,
+                "line_start": 10,
+                "line_end": 12,
+                "claim": "repo-a depends on repo-b",
+            }
+        ],
+    }
+    edge_b = {
+        "source": "repo-b",
+        "target": "repo-a",
+        "relation": "DONOR_TO",
+        "evidence": [
+            {
+                "repository": "repo-b",
+                "revision": "b" * 40,
+                "path": "README.md",
+                "blob_sha": "2" * 40,
+                "line_start": None,
+                "line_end": None,
+                "claim": "repo-b contributes a donor pattern",
+            }
+        ],
+    }
+    left = {
+        "nodes": [node("repo-b"), node("repo-a")],
+        "edges": [edge_b, edge_a],
+        "mission_critical_subgraph": {"repositories": ["repo-b", "repo-a"]},
+        "verification": {"wall_clock_ms": 999},
+    }
+    right = {
+        "nodes": [node("repo-a"), node("repo-b")],
+        "edges": [edge_a, edge_b],
+        "mission_critical_subgraph": {"repositories": ["repo-a", "repo-b"]},
+        "verification": {"wall_clock_ms": 1},
+    }
+
+    assert graph_semantic_digest(left) == graph_semantic_digest(right)
+    assert graph_semantic_digest(left).startswith("sha256:")
+
+
+def test_graph_semantic_digest_changes_when_typed_edge_changes():
+    base = {
+        "nodes": [node("repo-a"), node("repo-b")],
+        "edges": [
+            {
+                "source": "repo-a",
+                "target": "repo-b",
+                "relation": "DEPENDS_ON",
+                "evidence": [
+                    {
+                        "repository": "repo-a",
+                        "revision": "a" * 40,
+                        "path": "README.md",
+                        "blob_sha": "1" * 40,
+                        "line_start": 10,
+                        "line_end": 12,
+                        "claim": "repo-a depends on repo-b",
+                    }
+                ],
+            }
+        ],
+        "mission_critical_subgraph": {"repositories": ["repo-a", "repo-b"]},
+    }
+    changed = {
+        **base,
+        "edges": [{**base["edges"][0], "relation": "COMPOSES_WITH"}],
+    }
+
+    assert graph_semantic_digest(base) != graph_semantic_digest(changed)
