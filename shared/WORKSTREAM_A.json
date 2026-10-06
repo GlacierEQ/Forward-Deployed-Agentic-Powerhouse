@@ -257,8 +257,8 @@
       "severity": "medium",
       "scope": "Agent_A_v2_validation",
       "state": "OPEN_EVIDENCE_BOUNDARY",
-      "finding": "The v2 provenance/semantic-digest tests and implementation are committed, but the repository CI is configured only for main pushes and pull requests to main. Draft PR #5 was opened to obtain the intended CI surface; no workflow run was observable at the last readback.",
-      "consequence": "Do not promote evidence-level or semantic-digest behavior to test_observed until CI or another executable private-branch runtime actually runs the tests."
+      "finding": "CI run 37446113010 executed head 62b140e8 and failed at Ruff before tests. The exact lint/syntax findings were repaired in commits 53de1095 and a22a07f3; repaired head has not yet produced a completed CI run.",
+      "consequence": "Do not promote provenance/semantic-digest behavior to test_observed until the repaired head completes CI."
     }
   ],
   "integration_contract": {
@@ -322,7 +322,22 @@
         "semantic digest invariant across input ordering and worker count",
         "semantic digest changes when capability evidence changes"
       ],
-      "execution_state": "PENDING_CI_EXECUTION"
+      "execution_state": "REPAIR_COMMITTED_AWAITING_NEW_HEAD_CI",
+      "first_ci_run": {
+        "run_id": 37446113010,
+        "tested_head": "62b140e8489f5c68fcfbe7a593ccf2015befe7ad",
+        "result": "FAILED_AT_RUFF_BEFORE_TESTS",
+        "findings": [
+          "tests/test_gatling_estate.py contained literal escaped newline tokens in the import block",
+          "gatling_estate.py used typing ABC imports rejected by Ruff UP035",
+          "invalid-type guards raised ValueError where Ruff TRY004 requires TypeError"
+        ],
+        "repair_commits": [
+          "53de1095d1d7ab7599eb5b08f47ca5aa2c1d2c39",
+          "a22a07f3f47c4d034dca29f887eb80c73d363def"
+        ],
+        "promotion_state": "UNVERIFIED_AFTER_REPAIR"
+      }
     },
     "evidence_levels": {
       "catalog_only": 311,
