@@ -276,3 +276,13 @@ def test_evidence_digest_must_be_sha256():
 
     with pytest.raises(ValueError, match="evidence digest"):
         aggregate_capability_nodes([item])
+
+
+def test_type_contracts_fail_with_type_error_not_value_error():
+    with pytest.raises(TypeError, match="repositories"):
+        run_bounded_sweep("repo-a", lambda repo: [node(repo)])
+
+    invalid = node("repo-a")
+    invalid["tests"] = "tests/test_core.py"
+    with pytest.raises(TypeError, match="tests"):
+        aggregate_capability_nodes([invalid])
