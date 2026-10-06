@@ -2,12 +2,20 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any, Callable, Iterable, Mapping, Sequence
 
 MATURITY = {"prototype", "working", "hardened", "production"}
+EVIDENCE_LEVELS = {
+    "catalog_only",
+    "source_inspected",
+    "test_observed",
+    "execution_observed",
+    "provider_verified",
+}
 LIST_FIELDS = (
     "implementation_paths",
     "tests",
@@ -57,6 +65,37 @@ def _normalize(node: Mapping[str, Any]) -> dict[str, Any]:
     normalized["maturity"] = maturity
     normalized["verified_state"] = str(node["verified_state"])
     normalized["donor_value"] = donor_value
+
+    if "evidence_level" in node:
+        evidence_level = str(node["evidence_level"])
+        if evidence_level not in EVIDENCE_LEVELS:
+            raise ValueError(f"invalid evidence_level: {evidence_level!r}")
+        normalized["evidence_level"] = evidence_level
+
+    if "evidence" in node:
+        evidence = node["evidence"]
+        if not isinstance(evidence, Sequence) or isinstance(
+            evidence, (str, bytes, bytearray)
+        ):
+            raise ValueError("evidence must be a list-like sequence")
+        normalized_evidence: list[dict[str, str]] = []
+        required_evidence = ("kind", "revision", "path", "claim", "digest")
+        for record in evidence:
+            if not isinstance(record, Mapping):
+                raise ValueError("evidence records must be mappings")
+            missing_evidence = [field for field in required_evidence if field not in record]
+            if missing_evidence:
+                raise ValueError(
+                    "evidence record missing required fields: "
+                    + ", ".join(missing_evidence)
+                )
+            normalized_evidence.append(
+                {field: str(record[field]) for field in required_evidence}
+            )
+        normalized["evidence"] = sorted(
+            normalized_evidence,
+            key=lambda record: tuple(record[field] for field in required_evidence),
+        )
     return normalized
 
 
@@ -98,6 +137,23 @@ def aggregate_capability_nodes(nodes: Iterable[Mapping[str, Any]]) -> dict[str, 
         ),
     )
     return {"nodes": ordered, "duplicate_findings": duplicates}
+
+
+def semantic_digest(payload: Mapping[str, Any]) -> str:
+    """Return a stable digest of semantic capability content, excluding run telemetry."""
+    raw_nodes = payload.get("nodes", [])
+    if not isinstance(raw_nodes, Sequence) or isinstance(
+        raw_nodes, (str, bytes, bytearray)
+    ):
+        raise ValueError("payload nodes must be a list-like sequence")
+    normalized = aggregate_capability_nodes(raw_nodes)["nodes"]
+    encoded = json.dumps(
+        {"nodes": normalized},
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+    ).encode("utf-8")
+    return "sha256:" + hashlib.sha256(encoded).hexdigest()
 
 
 def run_bounded_sweep(
