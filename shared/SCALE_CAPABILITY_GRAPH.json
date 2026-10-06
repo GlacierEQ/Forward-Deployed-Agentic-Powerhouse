@@ -568,7 +568,7 @@
         "GlacierEQ/computer-user"
       ],
       "maturity": "hardened",
-      "verified_state": "SOURCE_VERIFIED_CURRENT_HEAD: current head includes continuation-frontier completion hardening; execution/provider claims remain receipt-scoped.",
+      "verified_state": "SOURCE_VERIFIED_CURRENT_HEAD_WITH_FAILED_CI: continuation-frontier completion hardening is present, but exact-head APEX Semantics Verification/Nervous System/Security workflows failed; no test-observed promotion is made.",
       "scale_relevance": [
         "mission hydration",
         "runtime initialization",
@@ -577,6 +577,7 @@
         "executor handoff"
       ],
       "known_defects": [
+        "Exact-head APEX Semantics Verification run 37228419963 failed; Nervous System Contract 37228419952 and Security scan 37228419961 also failed on the same head. Failure logs were unavailable through the connector.",
         "Runtime selection is explicitly revisable; provider-dependent readiness requires live receipts."
       ],
       "donor_value": 10,
@@ -688,15 +689,16 @@
     },
     {
       "repository": "GlacierEQ/apex-control-plane",
-      "revision": "134abd020485d440fc657e1171671824b05a276f",
+      "revision": "480131e2b1f7d919ebb80be7d0760ec431135a20",
       "capability": "Fail-closed control plane for continuity, proof-bound execution state, operator fidelity, mission-outcome fidelity, connector retries and audit receipts.",
       "implementation_paths": [
-        "src/control_plane.py",
+        "config/model_attractor_defense_policy.json",
         "src/apex_enforced_startup.py",
+        "src/control_plane.py",
+        "src/control_plane_runtime.py",
         "src/notion_continuity_gate.py",
-        "src/prime_directive_boot.py",
         "src/outcome_fidelity_runtime.py",
-        "src/control_plane_runtime.py"
+        "src/prime_directive_boot.py"
       ],
       "tests": [
         "tests/test_apex_enforced_startup.py",
@@ -709,14 +711,15 @@
         "tests/test_audit_hardening.py"
       ],
       "receipts": [
-        "provider-backed startup receipts",
-        "audit receipts"
+        "GitHub Actions exact-head observations @ 480131e2b1f7d919ebb80be7d0760ec431135a20: CodeQL 37456577693 PASS; Estate History Continuity 37426394821 PASS; Daily Connector Audit 37423499044 PASS; Secret Leakage Scanner 37423145021 PASS; CASEBRAIN Pro-Code Gates 37423145053 FAIL",
+        "audit receipts",
+        "provider-backed startup receipts"
       ],
       "dependencies": [
         "GlacierEQ/AKOS"
       ],
       "maturity": "hardened",
-      "verified_state": "SOURCE_VERIFIED_CURRENT_HEAD: current head strengthens effect-check trust semantics; provider-backed proof required before execution-state promotion.",
+      "verified_state": "SOURCE_VERIFIED_CURRENT_HEAD_WITH_MIXED_CI: current head strengthens model-attractor/correction binding; several exact-head workflows pass, but CASEBRAIN Pro-Code Gates run 37423145053 fails, so no test-observed promotion is made.",
       "scale_relevance": [
         "control plane",
         "continuity gates",
@@ -724,6 +727,7 @@
         "proof-bound state"
       ],
       "known_defects": [
+        "Exact-head CASEBRAIN Pro-Code Gates run 37423145053 failed; successful adjacent workflows do not establish full control-plane regression proof.",
         "Strict mode depends on complete provider-backed proof and exits 78 otherwise."
       ],
       "donor_value": 9,
@@ -1384,7 +1388,7 @@
         "GlacierEQ/AKOS"
       ],
       "maturity": "hardened",
-      "verified_state": "SOURCE_VERIFIED_CURRENT_HEAD: health-gated routing/failover tests and provider-native receipt semantics are present at the recovered revision.",
+      "verified_state": "SOURCE_VERIFIED_CURRENT_HEAD_WITH_FAILED_HEALTH_RUN: health-gated routing/failover implementation and tests are present, but latest observed exact-head scheduled health run 37465329752 failed; live connector health is unresolved.",
       "scale_relevance": [
         "MCP discovery",
         "provider health",
@@ -1393,7 +1397,8 @@
         "capability routing"
       ],
       "known_defects": [
-        "A registry entry alone is not active-provider proof; provider liveness must be re-read at execution time."
+        "A registry entry alone is not active-provider proof; provider liveness must be re-read at execution time.",
+        "Latest observed exact-head scheduled health run 37465329752 on 2026-10-06 concluded failure; connector returned no job details, so current connector health is unresolved."
       ],
       "donor_value": 10,
       "evidence_level": "source_inspected"
@@ -1519,7 +1524,7 @@
         "GlacierEQ/apex-boot-core"
       ],
       "maturity": "hardened",
-      "verified_state": "CURRENT_HEAD_SOURCE_TEST_AND_LOCAL_RECEIPT_SURFACES_RECOVERED; live external Tier 2/3/4 provider health was not re-executed by Agent A.",
+      "verified_state": "SOURCE_VERIFIED_CURRENT_HEAD_WITH_FAILED_HEALTH_RUN: source/test/receipt surfaces are present, but latest observed exact-head scheduled health run 37464498989 failed; provider health remains unresolved.",
       "scale_relevance": [
         "context resurrection",
         "continuity",
@@ -1527,6 +1532,7 @@
         "cross-session recovery"
       ],
       "known_defects": [
+        "Latest observed exact-head scheduled health run 37464498989 on 2026-10-06 concluded failure; connector returned no job details, so cause is unresolved and current live-provider health is not promoted.",
         "Provider-backed Tier 2/3/4 liveness remains outside this read-only sweep."
       ],
       "donor_value": 10,
@@ -1576,7 +1582,7 @@
         "GlacierEQ/AKOS"
       ],
       "maturity": "working",
-      "verified_state": "SOURCE_VERIFIED_CURRENT_HEAD: orchestration contract and bounded/adversarial routing are present; current runtime concurrency capacity was not measured here.",
+      "verified_state": "SOURCE_VERIFIED_CURRENT_HEAD_WITH_FAILED_HEALTH_RUN: orchestration contract and bounded/adversarial routing are present, but latest observed exact-head scheduled health run 37466265749 failed and runtime health is unresolved.",
       "scale_relevance": [
         "swarm decomposition",
         "bounded workers",
@@ -1584,6 +1590,7 @@
         "dependency-aware routing"
       ],
       "known_defects": [
+        "Latest observed exact-head scheduled health run 37466265749 on 2026-10-06 concluded failure; connector returned no job details, so current runtime health is unresolved.",
         "No current-head execution benchmark was recovered for this node during Agent A sweep."
       ],
       "donor_value": 9,
@@ -2893,7 +2900,7 @@
     },
     {
       "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
-      "revision": "eef0d45d53543599839be45c10611de39e83238a",
+      "revision": "9b71dc7b50c0ee4cd8632c3572e6d7a3ed7a6536",
       "capability": "Agent A Gatling Tsunami: bounded concurrent estate discovery with deterministic conflict-aware aggregation, failure-preserving retries, tamper-evident resumable checkpoints, provenance validation, and health-gated matched serial/parallel benchmarking.",
       "implementation_paths": [
         ".github/workflows/scale-estate-intelligence.yml",
@@ -2903,8 +2910,10 @@
         "tests/test_gatling_estate.py"
       ],
       "receipts": [
-        "GitHub Actions run 37448537231 @ fa62ccaab422cdb96e2ce2a3a65fd9c46d135826: Python 3.11/3.12/3.13 install+Agent A lint+compile+64-test full regression+machine-artifact validation all PASS",
+        "GitHub Actions Scale Estate Intelligence run 37498105124 @ 9b71dc7b50c0ee4cd8632c3572e6d7a3ed7a6536: Python 3.11/3.12/3.13 lint+compile+64/64 regression+70% coverage gate+machine artifact validation PASS; measured total coverage 78.31%",
         "GitHub Actions run 37448420168 @ 728eabb6fe26c2d0cf46cbcdc0d5cd8fedbd1aa1: canonical graph-order repair PASS",
+        "GitHub Actions run 37448537231 @ fa62ccaab422cdb96e2ce2a3a65fd9c46d135826: Python 3.11/3.12/3.13 install+Agent A lint+compile+64-test full regression+machine-artifact validation all PASS",
+        "Run 37498105124 semantic graph proof: 338-node forward/reverse normalized digest match sha256:a82044210b8e00ff1b2097134de52fff62314088901d1882147e5b5dc49a95fc",
         "local exact-branch verification @ eef0d45d53543599839be45c10611de39e83238a: targeted Ruff PASS; focused 15 tests PASS; full 64-test suite exit 0; compileall exit 0",
         "shared/WORKSTREAM_A.json"
       ],
@@ -2913,7 +2922,7 @@
         "src/fde_powerhouse/estate_leverage.py"
       ],
       "maturity": "hardened",
-      "verified_state": "TEST_OBSERVED_AND_CI_VERIFIED: Agent A implementation/test files are Ruff-clean; 15 focused durability tests and the full 64-test repository suite pass locally; exact-branch GitHub Actions run 37448537231 passed install, targeted lint, compile, full regression, and machine-artifact validation across Python 3.11/3.12/3.13.",
+      "verified_state": "TEST_OBSERVED_EXACT_HEAD: run 37498105124 passed Python 3.11/3.12/3.13 targeted lint, compile, 64/64 regression, 70% coverage gate (78.31% measured), machine-artifact validation, and 338-node forward/reverse semantic-digest equality.",
       "scale_relevance": [
         "bounded concurrency",
         "checkpoint integrity",
@@ -3094,25 +3103,28 @@
     },
     {
       "repository": "GlacierEQ/Genius-Mastery",
-      "revision": "10aa50c09f37bfd0fd313b5fb8d5e80a021d6fbf",
+      "revision": "f58d0cf521a68d57f2648c20872e580334b331e3",
       "capability": "Teacher-forge, family kernel and entity compiler with evidence-aware capability modeling, composition, challenge, verification and teaching.",
       "implementation_paths": [
-        "src/genius/representation.py",
         "capabilities/EPISTEMIC_ENGINEERING.yaml",
+        "schemas/capability.schema.json",
         "sources/EPISTEMIC_SOURCES.yaml",
-        "schemas/capability.schema.json"
+        "src/genius/compounding.py",
+        "src/genius/representation.py"
       ],
       "tests": [
-        "tests/"
+        "tests/",
+        "tests/test_compounding.py"
       ],
       "receipts": [
+        "GitHub Actions validate-contract run 37281797389 @ f58d0cf521a68d57f2648c20872e580334b331e3: compile + Mastery contract validation + regression suite + forge/mission intelligence + family analyzer + descendant independence + completion mechanisms PASS",
         "genius compose --output <composition-receipt.json>"
       ],
       "dependencies": [
         "GlacierEQ/mega-skills"
       ],
       "maturity": "hardened",
-      "verified_state": "SOURCE_VERIFIED_CURRENT_HEAD: executable CLI and representation/composition contracts recovered; generated capability is explicitly not auto-promoted to mastery.",
+      "verified_state": "TEST_OBSERVED_CURRENT_HEAD: exact-head validate-contract run 37281797389 passed compile, contract validation, regression, forge/mission intelligence, family analysis, descendant-independence and completion-mechanism steps; compounding.py + tests/test_compounding.py are present at this head.",
       "scale_relevance": [
         "capability composition",
         "scoring",
@@ -3124,7 +3136,7 @@
         "Generated/mapped capabilities require independent execution evidence before promotion."
       ],
       "donor_value": 10,
-      "evidence_level": "source_inspected"
+      "evidence_level": "test_observed"
     },
     {
       "repository": "GlacierEQ/github-agent-orchestrator",
@@ -7213,6 +7225,8 @@
         "scripts/github-provider-live-proof.mjs"
       ],
       "receipts": [
+        "GitHub Actions github-provider-live-proof run 31279895312 @ 4a1ca8e5c88a62e8a94a43213b2c509af6afcea3: live GitHub Contents recovery proof PASS",
+        "GitHub Actions verify run 31279895318 @ 4a1ca8e5c88a62e8a94a43213b2c509af6afcea3: npm test PASS",
         "ProviderRecoveryRecord durable evidence",
         "provider confirmation/reconciliation records"
       ],
@@ -7220,7 +7234,7 @@
         "GlacierEQ/colossus-gateway"
       ],
       "maturity": "hardened",
-      "verified_state": "SOURCE_VERIFIED_CURRENT_HEAD: live GitHub provider ambiguity canary and restart-readable recovery contract are documented as verified; remaining production gates are explicit.",
+      "verified_state": "PROVIDER_VERIFIED_CURRENT_HEAD: exact-head core tests passed in run 31279895318 and live GitHub Contents provider ambiguity/recovery proof passed in run 31279895312; remaining production/platform gates stay explicit.",
       "scale_relevance": [
         "workflow state machine",
         "idempotency",
@@ -7234,7 +7248,7 @@
         "Complete-federation safe-disablement proof incomplete."
       ],
       "donor_value": 10,
-      "evidence_level": "source_inspected"
+      "evidence_level": "provider_verified"
     },
     {
       "repository": "GlacierEQ/smithery-mcp-ultimate-v2",
@@ -8829,7 +8843,10 @@
     ],
     "current_counts": {
       "catalog_only": 311,
-      "source_inspected": 27
+      "source_inspected": 24,
+      "test_observed": 2,
+      "execution_observed": 0,
+      "provider_verified": 1
     }
   },
   "verification": {
@@ -8886,6 +8903,412 @@
           "conclusion": "success",
           "value": "proved canonical-order repair before final workstream reconciliation"
         }
+      ]
+    },
+    "coverage_and_semantic_gate": {
+      "run_id": 37498105124,
+      "revision": "9b71dc7b50c0ee4cd8632c3572e6d7a3ed7a6536",
+      "matrix": [
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "full_regression": "64 passed",
+      "measured_coverage_pct": 78.31,
+      "required_coverage_pct": 70,
+      "semantic_nodes": 338,
+      "semantic_digest": "sha256:a82044210b8e00ff1b2097134de52fff62314088901d1882147e5b5dc49a95fc",
+      "forward_reverse_match": true,
+      "state": "PASS"
+    },
+    "mission_critical_refresh": {
+      "state": "COMPLETE_FOR_SELECTED_SUBGRAPH",
+      "exact_head_ci_observed": true,
+      "stale_revisions_repaired": [
+        "GlacierEQ/Genius-Mastery",
+        "GlacierEQ/apex-control-plane"
+      ],
+      "current_health_failures_preserved": [
+        "GlacierEQ/aspen-grove-memory",
+        "GlacierEQ/aspen-grove-swarm",
+        "GlacierEQ/aspen-grove-connectors",
+        "GlacierEQ/apex-boot-core"
+      ],
+      "evidence_promotions": {
+        "GlacierEQ/Genius-Mastery": "test_observed",
+        "GlacierEQ/sigma-glue": "provider_verified"
+      }
+    }
+  },
+  "edge_contract": {
+    "schema": "glaciereq.scale-fde.capability-edge.v1",
+    "relations": [
+      "ROUTES_TO",
+      "DEPENDS_ON",
+      "COMPOSES_WITH",
+      "DELEGATES_EXECUTION_TO",
+      "USES_GATEWAY",
+      "DONOR_TO"
+    ],
+    "rule": "Every edge is directional, evidence-bound, and describes an observed repository or Agent-A adoption relationship. Edges do not transfer ownership or prove runtime health."
+  },
+  "edges": [
+    {
+      "source": "GlacierEQ/anthropic-agent-coordinator",
+      "target": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+      "relation": "DONOR_TO",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+          "revision": "95d44e50b3e13a60bc8ab4af409f5c10f47ff3c9",
+          "path": "shared/WORKSTREAM_A.json",
+          "blob_sha": "a7ca4ad95bfcef62259da30a5504f021fe3ccd89",
+          "line_start": null,
+          "line_end": null,
+          "claim": "Agent A hardening_research records src/anthropic_agent_coordinator/continuation.py: hash-bound continuation checkpoint pattern adopted into Agent A."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/apex-boot-core",
+      "target": "GlacierEQ/aspen-grove-core",
+      "relation": "COMPOSES_WITH",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/apex-boot-core",
+          "revision": "d81d579c73d859bdfa5ef25c14a2800d5586f985",
+          "path": "README.md",
+          "blob_sha": "c79728f9cde7cc0149cf6692df91544b927a9ab8",
+          "line_start": 61,
+          "line_end": 61,
+          "claim": "Apex Boot lists Aspen Grove Core as its durable memory/lineage/context recovery surface."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/apex-boot-core",
+      "target": "GlacierEQ/Genius-Mastery",
+      "relation": "COMPOSES_WITH",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/apex-boot-core",
+          "revision": "d81d579c73d859bdfa5ef25c14a2800d5586f985",
+          "path": "README.md",
+          "blob_sha": "c79728f9cde7cc0149cf6692df91544b927a9ab8",
+          "line_start": 67,
+          "line_end": 67,
+          "claim": "Apex Boot lists Genius-Mastery as teacher-forge/family kernel/entity compiler in the runtime family."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/apex-boot-core",
+      "target": "GlacierEQ/computer-user",
+      "relation": "DELEGATES_EXECUTION_TO",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/apex-boot-core",
+          "revision": "d81d579c73d859bdfa5ef25c14a2800d5586f985",
+          "path": "README.md",
+          "blob_sha": "c79728f9cde7cc0149cf6692df91544b927a9ab8",
+          "line_start": 66,
+          "line_end": 66,
+          "claim": "Apex Boot lists computer-user for durable provider/computer execution, readback, task state and terminal receipts."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/apex-control-plane",
+      "target": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+      "relation": "DONOR_TO",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+          "revision": "95d44e50b3e13a60bc8ab4af409f5c10f47ff3c9",
+          "path": "shared/WORKSTREAM_A.json",
+          "blob_sha": "a7ca4ad95bfcef62259da30a5504f021fe3ccd89",
+          "line_start": null,
+          "line_end": null,
+          "claim": "Agent A hardening_research records src/runtime_dependency_discovery.py: unresolved-state preservation pattern adopted into Agent A."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/aspen-grove-connectors",
+      "target": "GlacierEQ/apex-boot-core",
+      "relation": "DEPENDS_ON",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/aspen-grove-connectors",
+          "revision": "fd37faa07b8f05cd287163af92747970a2a4061e",
+          "path": "README.md",
+          "blob_sha": "a0ab24e5119d51e6cd21d44b8dab255c663cdfe3",
+          "line_start": 59,
+          "line_end": 59,
+          "claim": "Connectors states it depends on Apex Boot for activation."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/aspen-grove-connectors",
+      "target": "GlacierEQ/aspen-grove-core",
+      "relation": "DEPENDS_ON",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/aspen-grove-connectors",
+          "revision": "fd37faa07b8f05cd287163af92747970a2a4061e",
+          "path": "README.md",
+          "blob_sha": "a0ab24e5119d51e6cd21d44b8dab255c663cdfe3",
+          "line_start": 59,
+          "line_end": 59,
+          "claim": "Connectors states it depends on Core for context and routing identity."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/aspen-grove-connectors",
+      "target": "GlacierEQ/aspen-grove-memory",
+      "relation": "DEPENDS_ON",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/aspen-grove-connectors",
+          "revision": "fd37faa07b8f05cd287163af92747970a2a4061e",
+          "path": "README.md",
+          "blob_sha": "a0ab24e5119d51e6cd21d44b8dab255c663cdfe3",
+          "line_start": 59,
+          "line_end": 59,
+          "claim": "Connectors states it depends on Memory for prior connector decisions."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/aspen-grove-core",
+      "target": "GlacierEQ/apex-boot-core",
+      "relation": "COMPOSES_WITH",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/aspen-grove-core",
+          "revision": "27f67c64ccc5ce3eb4521d458fbdfb73d1830ae0",
+          "path": "README.md",
+          "blob_sha": "1c56697b8f07eeea1754861a4c87042a92d07f8e",
+          "line_start": 133,
+          "line_end": 138,
+          "claim": "Core explicitly says Aspen composes with complementary peers and lists Apex Boot Core for runtime initialization."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/aspen-grove-core",
+      "target": "GlacierEQ/aspen-grove-connectors",
+      "relation": "ROUTES_TO",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/aspen-grove-core",
+          "revision": "27f67c64ccc5ce3eb4521d458fbdfb73d1830ae0",
+          "path": "README.md",
+          "blob_sha": "1c56697b8f07eeea1754861a4c87042a92d07f8e",
+          "line_start": 23,
+          "line_end": 23,
+          "claim": "Core routing tree maps Connectors to aspen-grove-connectors."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/aspen-grove-core",
+      "target": "GlacierEQ/aspen-grove-memory",
+      "relation": "ROUTES_TO",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/aspen-grove-core",
+          "revision": "27f67c64ccc5ce3eb4521d458fbdfb73d1830ae0",
+          "path": "README.md",
+          "blob_sha": "1c56697b8f07eeea1754861a4c87042a92d07f8e",
+          "line_start": 22,
+          "line_end": 22,
+          "claim": "Core routing tree maps Memory to aspen-grove-memory."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/aspen-grove-core",
+      "target": "GlacierEQ/aspen-grove-swarm",
+      "relation": "ROUTES_TO",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/aspen-grove-core",
+          "revision": "27f67c64ccc5ce3eb4521d458fbdfb73d1830ae0",
+          "path": "README.md",
+          "blob_sha": "1c56697b8f07eeea1754861a4c87042a92d07f8e",
+          "line_start": 25,
+          "line_end": 25,
+          "claim": "Core routing tree maps Swarm to aspen-grove-swarm."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/aspen-grove-memory",
+      "target": "GlacierEQ/aspen-grove-connectors",
+      "relation": "DEPENDS_ON",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/aspen-grove-memory",
+          "revision": "fa47e191a4e0c4f23cd98705c9467b6ceb2aed3f",
+          "path": "README.md",
+          "blob_sha": "ec422d3acedd6a25e79638f55a3114ab5161c2bf",
+          "line_start": 82,
+          "line_end": 82,
+          "claim": "Memory states it depends on Connectors for authorized access."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/aspen-grove-memory",
+      "target": "GlacierEQ/aspen-grove-core",
+      "relation": "DEPENDS_ON",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/aspen-grove-memory",
+          "revision": "fa47e191a4e0c4f23cd98705c9467b6ceb2aed3f",
+          "path": "README.md",
+          "blob_sha": "ec422d3acedd6a25e79638f55a3114ab5161c2bf",
+          "line_start": 82,
+          "line_end": 82,
+          "claim": "Memory states it depends on Core for constellation context."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+      "target": "GlacierEQ/Genius-Mastery",
+      "relation": "COMPOSES_WITH",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+          "revision": "9b71dc7b50c0ee4cd8632c3572e6d7a3ed7a6536",
+          "path": "README.md",
+          "blob_sha": "85972d491bc3a9636009bc40b144d4180c15609f",
+          "line_start": 24,
+          "line_end": 38,
+          "claim": "FDE exposes Genius synthesis and an explicit FDE_PATH_GENIUS_MASTERY integration path."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+      "target": "GlacierEQ/mega-skills",
+      "relation": "COMPOSES_WITH",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+          "revision": "9b71dc7b50c0ee4cd8632c3572e6d7a3ed7a6536",
+          "path": "README.md",
+          "blob_sha": "85972d491bc3a9636009bc40b144d4180c15609f",
+          "line_start": 24,
+          "line_end": 38,
+          "claim": "FDE exposes live mega-skills invocation and an explicit FDE_PATH_MEGA_SKILLS integration path."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/Genius-Mastery",
+      "target": "GlacierEQ/mega-skills",
+      "relation": "COMPOSES_WITH",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/Genius-Mastery",
+          "revision": "f58d0cf521a68d57f2648c20872e580334b331e3",
+          "path": "README.md",
+          "blob_sha": "47e30ca857500878a9fd4d6cafda5dcf3c6bad89",
+          "line_start": 153,
+          "line_end": 153,
+          "claim": "Genius CLI accepts an explicit mega-skills root for composition."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/job-app-helix",
+      "target": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+      "relation": "DONOR_TO",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+          "revision": "95d44e50b3e13a60bc8ab4af409f5c10f47ff3c9",
+          "path": "shared/WORKSTREAM_A.json",
+          "blob_sha": "a7ca4ad95bfcef62259da30a5504f021fe3ccd89",
+          "line_start": null,
+          "line_end": null,
+          "claim": "Agent A hardening_research records src/job_app_helix/worker_science.py: health/performance separation and matched-experiment validity adopted into Agent A."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/mega-skills",
+      "target": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+      "relation": "DONOR_TO",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+          "revision": "95d44e50b3e13a60bc8ab4af409f5c10f47ff3c9",
+          "path": "shared/WORKSTREAM_A.json",
+          "blob_sha": "a7ca4ad95bfcef62259da30a5504f021fe3ccd89",
+          "line_start": null,
+          "line_end": null,
+          "claim": "Agent A hardening_research records scripts/faraway_party_candidate_swarm.py: bounded worker + deterministic durable ordering pattern adopted into Agent A."
+        }
+      ]
+    },
+    {
+      "source": "GlacierEQ/sigma-glue",
+      "target": "GlacierEQ/colossus-gateway",
+      "relation": "USES_GATEWAY",
+      "evidence": [
+        {
+          "repository": "GlacierEQ/sigma-glue",
+          "revision": "4a1ca8e5c88a62e8a94a43213b2c509af6afcea3",
+          "path": "README.md",
+          "blob_sha": "d87b2fe717e03bfdd184b9d1b85e0ac60cf7c17d",
+          "line_start": 38,
+          "line_end": 72,
+          "claim": "Sigma Glue routes through Colossus Gateway and states Colossus remains the single routing foundation."
+        }
+      ]
+    }
+  ],
+  "mission_critical_subgraph": {
+    "schema": "glaciereq.scale-fde.mission-critical-subgraph.v1",
+    "role": "Evidence-backed projection for sibling workstreams; not an ownership transfer or runtime architecture decision.",
+    "selection_rule": "Repositories directly supporting Scale mission recovery, discovery/composition, bounded orchestration, durable execution, trustworthy provider mutation, or verification/evidence, plus donors actually adopted by Agent A.",
+    "repositories": [
+      "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+      "GlacierEQ/Genius-Mastery",
+      "GlacierEQ/anthropic-agent-coordinator",
+      "GlacierEQ/apex-boot-core",
+      "GlacierEQ/apex-control-plane",
+      "GlacierEQ/aspen-grove-connectors",
+      "GlacierEQ/aspen-grove-core",
+      "GlacierEQ/aspen-grove-memory",
+      "GlacierEQ/aspen-grove-swarm",
+      "GlacierEQ/colossus-gateway",
+      "GlacierEQ/computer-user",
+      "GlacierEQ/job-app-helix",
+      "GlacierEQ/make-it-heavy-private",
+      "GlacierEQ/mega-skills",
+      "GlacierEQ/monolith",
+      "GlacierEQ/sigma-glue"
+    ],
+    "current_refresh": {
+      "observed_at": "2026-10-06",
+      "refreshed_revisions": {
+        "GlacierEQ/Genius-Mastery": "f58d0cf521a68d57f2648c20872e580334b331e3",
+        "GlacierEQ/apex-control-plane": "480131e2b1f7d919ebb80be7d0760ec431135a20"
+      },
+      "live_health_boundaries": [
+        "GlacierEQ/aspen-grove-memory exact-head scheduled health run 37464498989: FAILURE",
+        "GlacierEQ/aspen-grove-swarm exact-head scheduled health run 37466265749: FAILURE",
+        "GlacierEQ/aspen-grove-connectors exact-head scheduled health run 37465329752: FAILURE",
+        "GlacierEQ/apex-boot-core exact-head APEX Semantics Verification 37228419963: FAILURE",
+        "GlacierEQ/sigma-glue exact-head live provider proof 31279895312: SUCCESS",
+        "GlacierEQ/Genius-Mastery exact-head validate-contract 37281797389: SUCCESS"
       ]
     }
   }
