@@ -354,3 +354,55 @@ def test_ambiguous_in_flight_resolves_from_terminal_artifact_before_replay(
     assert "A" not in calls
     assert result["receipts"]["A"]["source"] == "ambiguous_readback_recovery"
     assert result["status"] == "COMPLETE"
+
+
+
+def test_failed_workstream_is_not_replayed_without_explicit_retry():
+    m = mission()
+    prior = {
+        "mission_digest": mission_digest(m),
+        "completed": [],
+        "failed": ["A"],
+        "in_flight": [],
+        "receipts": {"A": {"status": "failed", "returncode": 9}},
+    }
+    calls: list[str] = []
+
+    result = run_mission(
+        m,
+        dispatch=lambda spec: (
+            calls.append(spec["id"])
+            or {"status": "success", "returncode": 0}
+        ),
+        prior_state=prior,
+    )
+
+    assert calls == []
+    assert result["status"] == "BLOCKED"
+    assert result["failed"] == ["A"]
+
+
+def test_retry_failed_requires_explicit_opt_in():
+    m = mission()
+    prior = {
+        "mission_digest": mission_digest(m),
+        "completed": [],
+        "failed": ["A"],
+        "in_flight": [],
+        "receipts": {"A": {"status": "failed", "returncode": 9}},
+    }
+    calls: list[str] = []
+
+    result = run_mission(
+        m,
+        dispatch=lambda spec: (
+            calls.append(spec["id"])
+            or {"status": "success", "returncode": 0}
+        ),
+        prior_state=prior,
+        retry_failed=True,
+    )
+
+    assert result["status"] == "COMPLETE"
+    assert calls[0] == "A"
+    assert result["failed"] == []
