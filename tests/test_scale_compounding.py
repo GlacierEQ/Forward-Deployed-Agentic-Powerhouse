@@ -8,7 +8,10 @@ from typing import ClassVar
 
 import pytest
 
-from fde_powerhouse.scale_compounding import prepare_canonical_frontier, run_compounding_proof
+from fde_powerhouse.scale_compounding import (
+    prepare_canonical_frontier,
+    run_compounding_proof,
+)
 
 
 class FakeContinuityStore:
