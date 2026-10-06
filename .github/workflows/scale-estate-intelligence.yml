@@ -1,0 +1,97 @@
+name: Scale Estate Intelligence
+
+on:
+  push:
+    branches:
+      - scale/estate-intelligence
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scale-estate-intelligence-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Agent A lint
+        run: |
+          ruff check src/fde_powerhouse/gatling_estate.py tests/test_gatling_estate.py
+
+      - name: Compile
+        run: python -m compileall -q src tests
+
+      - name: Full regression suite
+        run: pytest -q
+
+      - name: Validate Agent A machine artifacts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          graph = json.loads(Path("shared/SCALE_CAPABILITY_GRAPH.json").read_text())
+          workstream = json.loads(Path("shared/WORKSTREAM_A.json").read_text())
+          required = {
+              "repository",
+              "revision",
+              "capability",
+              "implementation_paths",
+              "tests",
+              "receipts",
+              "dependencies",
+              "maturity",
+              "verified_state",
+              "scale_relevance",
+              "known_defects",
+              "donor_value",
+          }
+          maturities = {"prototype", "working", "hardened", "production"}
+
+          assert graph["workstream"] == "A"
+          assert workstream["workstream"] == "A"
+          assert graph["nodes"]
+          for node in graph["nodes"]:
+              missing = required - set(node)
+              assert not missing, (node.get("repository"), sorted(missing))
+              assert node["maturity"] in maturities
+              assert not isinstance(node["donor_value"], bool)
+              assert 0 <= node["donor_value"] <= 10
+
+          sort_key = lambda node: (
+              node["repository"].casefold(),
+              node["capability"].casefold(),
+              node["revision"],
+              tuple(node["implementation_paths"]),
+          )
+          assert graph["nodes"] == sorted(graph["nodes"], key=sort_key)
+
+          print(
+              json.dumps(
+                  {
+                      "nodes": len(graph["nodes"]),
+                      "workstream_state": workstream["state"],
+                  },
+                  sort_keys=True,
+              )
+          )
+          PY
