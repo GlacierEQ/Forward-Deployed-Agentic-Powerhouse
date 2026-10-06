@@ -6,7 +6,7 @@
   "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
   "base_branch": "scale-fde-demo",
   "branch": "scale/estate-intelligence",
-  "state": "COMPLETE_WITH_EXPLICIT_EVIDENCE_BOUNDARY",
+  "state": "HARDENING_IN_PROGRESS",
   "exclusive_ownership": [
     "full estate reconnaissance",
     "concurrent bounded read-only workers",
@@ -251,6 +251,14 @@
       "state": "OPEN_EVIDENCE_BOUNDARY",
       "finding": "Available GitHub exact-head combined-status/workflow probes returned no Actions status for most deeply inspected repositories; Mastermind returned a Vercel success only.",
       "consequence": "README test counts and historical promotion receipts are preserved but not silently promoted into exact-current-head CI proof."
+    },
+    {
+      "id": "A-DEFECT-008",
+      "severity": "medium",
+      "scope": "Agent_A_v2_validation",
+      "state": "OPEN_EVIDENCE_BOUNDARY",
+      "finding": "The v2 provenance/semantic-digest tests and implementation are committed, but the repository CI is configured only for main pushes and pull requests to main. Draft PR #5 was opened to obtain the intended CI surface; no workflow run was observable at the last readback.",
+      "consequence": "Do not promote evidence-level or semantic-digest behavior to test_observed until CI or another executable private-branch runtime actually runs the tests."
     }
   ],
   "integration_contract": {
@@ -283,8 +291,53 @@
     "Sibling WORKSTREAM_B-E artifacts, INTEGRATION_QUEUE.json, DEFECT_QUEUE.json and RECEIPT_INDEX.json are not owned by Agent A."
   ],
   "terminal_condition": {
-    "workstream_a_complete": true,
+    "workstream_a_complete": false,
     "mission_complete": false,
-    "reason": "Authenticated estate census, deterministic semantic/candidate graph, exact-revision deep probes, executable bounded Gatling worker/reducer, serial-vs-parallel benchmark, and durable Agent A artifacts are present. Remaining mission completion belongs to sibling workstreams/shared mission integration."
+    "reason": "Agent A v2 hardening is active. Estate census and prior Gatling evidence remain valid, but provenance-aware semantic determinism is pending executable CI proof."
+  },
+  "hardening_v2": {
+    "started_at": "2026-10-05T23:52:00-10:00",
+    "research_before_code": true,
+    "standards_studied": [
+      "W3C PROV-DM / PROV Primer",
+      "SLSA v1.2 provenance and build provenance requirements"
+    ],
+    "estate_donors_studied": [
+      "GlacierEQ/make-it-heavy-private@85b4b247cb4e1767d32bc47b34b9969bafec3227:orchestrator.py",
+      "GlacierEQ/aspen-grove-swarm@58bdaddfd43c544abe6c6a4223f62ab5c1590da5:README.md",
+      "GlacierEQ/Forward-Deployed-Agentic-Powerhouse:src/fde_powerhouse/gatling_estate.py"
+    ],
+    "design_decisions": [
+      "Keep Agent A Gatling code as a narrow read-only deterministic estate reducer/adapter, not a competing swarm/runtime framework.",
+      "Add explicit evidence levels without promoting source inspection to test or execution proof.",
+      "Add semantic digests that exclude run telemetry so serial and parallel sweeps can prove equivalent semantic output.",
+      "Preserve the existing capability graph node contract and add fields backward-compatibly."
+    ],
+    "tdd": {
+      "red_spec_commit": "26dd2340655a8554ab20862e5aa7b58bc8cf8412",
+      "implementation_commit": "62b140e8489f5c68fcfbe7a593ccf2015befe7ad",
+      "graph_evidence_level_commit": "3e2e1c543fa1f43c659211df18809b581e4726f5",
+      "tests_added": [
+        "provenance evidence preservation and evidence_level validation",
+        "semantic digest invariant across input ordering and worker count",
+        "semantic digest changes when capability evidence changes"
+      ],
+      "execution_state": "PENDING_CI_EXECUTION"
+    },
+    "evidence_levels": {
+      "catalog_only": 311,
+      "source_inspected": 27,
+      "test_observed": 0,
+      "execution_observed": 0,
+      "provider_verified": 0
+    },
+    "validation_pr": {
+      "number": 5,
+      "state": "draft",
+      "merged": false,
+      "purpose": "CI execution only; no promotion until verification and integration review.",
+      "base": "main",
+      "head": "scale/estate-intelligence"
+    }
   }
 }
