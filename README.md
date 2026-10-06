@@ -8,6 +8,10 @@ DISCOVER → FRAME → BUILD → INTEGRATE → EVALUATE → PROVE → DEPLOY
 
 The repository is designed to demonstrate the engineering loop behind field-deployed AI systems rather than an application-specific workflow. The core invariant is **power with verifiable boundaries**: execution produces receipts and deployment remains `approval_packet_only` unless a human explicitly authorizes the next step.
 
+## Design note
+
+This repository is deliberately built to merge with established enterprise delivery epistemology — specifically the "Simplifying AI" operating model: experimentation-to-production discipline, Say:Do accountability, and measurable business outcomes. The lifecycle stages, evidence receipts, and approval-gated deployment mirror the consulting delivery motion (discovery → build → eval → handoff) so the system plugs into existing enterprise motions instead of inventing new ones. Every gate and receipt in this repo exists because enterprise engagements fail without them. Nothing here is theoretical.
+
 ## What this proves
 
 - **Problem framing:** converts a target and operating mode into a structured execution plan.
