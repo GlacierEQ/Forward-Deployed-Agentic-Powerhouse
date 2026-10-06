@@ -220,6 +220,115 @@ def semantic_digest(payload: Mapping[str, Any]) -> str:
     return _json_digest({"nodes": normalized})
 
 
+
+EDGE_REQUIRED_FIELDS = ("source", "target", "relation", "evidence")
+EDGE_EVIDENCE_REQUIRED_FIELDS = (
+    "repository",
+    "revision",
+    "path",
+    "blob_sha",
+    "claim",
+)
+
+
+def _normalize_edge(edge: Mapping[str, Any]) -> dict[str, Any]:
+    missing = [field for field in EDGE_REQUIRED_FIELDS if field not in edge]
+    if missing:
+        raise ValueError(
+            "capability edge missing required fields: " + ", ".join(missing)
+        )
+
+    normalized = {}
+    for field in ("source", "target", "relation"):
+        value = str(edge[field]).strip()
+        if not value:
+            raise ValueError(f"capability edge {field} cannot be empty")
+        normalized[field] = value
+
+    evidence = edge["evidence"]
+    if not isinstance(evidence, Sequence) or isinstance(
+        evidence, (str, bytes, bytearray)
+    ):
+        raise TypeError("edge evidence must be a list-like sequence")
+    normalized_evidence: list[dict[str, Any]] = []
+    for record in evidence:
+        if not isinstance(record, Mapping):
+            raise TypeError("edge evidence records must be mappings")
+        missing_evidence = [
+            field for field in EDGE_EVIDENCE_REQUIRED_FIELDS if field not in record
+        ]
+        if missing_evidence:
+            raise ValueError(
+                "edge evidence record missing required fields: "
+                + ", ".join(missing_evidence)
+            )
+        item: dict[str, Any] = {
+            field: str(record[field]) for field in EDGE_EVIDENCE_REQUIRED_FIELDS
+        }
+        item["line_start"] = record.get("line_start")
+        item["line_end"] = record.get("line_end")
+        normalized_evidence.append(item)
+
+    normalized["evidence"] = sorted(
+        normalized_evidence,
+        key=lambda record: (
+            record["repository"].casefold(),
+            record["revision"],
+            record["path"],
+            -1 if record["line_start"] is None else int(record["line_start"]),
+            -1 if record["line_end"] is None else int(record["line_end"]),
+            record["claim"],
+        ),
+    )
+    return normalized
+
+
+def graph_semantic_digest(payload: Mapping[str, Any]) -> str:
+    """Stable digest of nodes, typed edges, and mission-critical membership."""
+    raw_nodes = payload.get("nodes", [])
+    if not isinstance(raw_nodes, Sequence) or isinstance(
+        raw_nodes, (str, bytes, bytearray)
+    ):
+        raise TypeError("payload nodes must be a list-like sequence")
+    nodes = aggregate_capability_nodes(raw_nodes)["nodes"]
+
+    raw_edges = payload.get("edges", [])
+    if not isinstance(raw_edges, Sequence) or isinstance(
+        raw_edges, (str, bytes, bytearray)
+    ):
+        raise TypeError("payload edges must be a list-like sequence")
+    edges = sorted(
+        (_normalize_edge(edge) for edge in raw_edges),
+        key=lambda edge: (
+            edge["source"].casefold(),
+            edge["relation"],
+            edge["target"].casefold(),
+            json.dumps(edge["evidence"], sort_keys=True, separators=(",", ":")),
+        ),
+    )
+
+    critical = payload.get("mission_critical_subgraph") or {}
+    if not isinstance(critical, Mapping):
+        raise TypeError("mission_critical_subgraph must be a mapping")
+    repositories = critical.get("repositories", [])
+    if not isinstance(repositories, Sequence) or isinstance(
+        repositories, (str, bytes, bytearray)
+    ):
+        raise TypeError("mission-critical repositories must be a list-like sequence")
+    mission_critical_repositories = sorted(
+        {str(repository).strip() for repository in repositories if str(repository).strip()},
+        key=lambda value: (value.casefold(), value),
+    )
+
+    return _json_digest(
+        {
+            "nodes": nodes,
+            "edges": edges,
+            "mission_critical_repositories": mission_critical_repositories,
+        }
+    )
+
+
 def _build_checkpoint(
     scope: Sequence[str],
     *,
