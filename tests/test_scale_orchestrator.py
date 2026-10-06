@@ -200,3 +200,157 @@ def test_result_is_json_serializable_and_contains_launch_receipts():
     rendered = json.dumps(result, sort_keys=True)
     assert '"status": "COMPLETE"' in rendered
     assert set(result["receipts"]) == {"A", "B", "C", "D", "E"}
+
+
+
+def test_completion_artifact_recovery_skips_already_complete_workstream(tmp_path: Path):
+    artifact = tmp_path / "WORKSTREAM_A.json"
+    artifact.write_text(
+        json.dumps({"terminal_condition": {"workstream_a_complete": True}}),
+        encoding="utf-8",
+    )
+    m = mission()
+    m["workstreams"][0]["completion"] = {
+        "artifact": str(artifact),
+        "pointer": "terminal_condition.workstream_a_complete",
+        "equals": True,
+    }
+    calls: list[str] = []
+
+    result = run_mission(
+        m,
+        dispatch=lambda spec: (
+            calls.append(spec["id"])
+            or {"status": "success", "returncode": 0}
+        ),
+    )
+
+    assert "A" not in calls
+    assert set(calls) == {"B", "C", "D", "E"}
+    assert result["completed"] == ["A", "B", "C", "D", "E"]
+    assert result["receipts"]["A"]["source"] == "completion_artifact_recovery"
+
+
+def test_subprocess_success_is_not_completion_when_terminal_artifact_is_false(
+    tmp_path: Path,
+):
+    artifact = tmp_path / "WORKSTREAM_A.json"
+    artifact.write_text(
+        json.dumps({"terminal_condition": {"workstream_a_complete": False}}),
+        encoding="utf-8",
+    )
+    spec = {
+        "id": "A",
+        "deps": [],
+        "command": [sys.executable, "-c", "raise SystemExit(0)"],
+        "completion": {
+            "artifact": str(artifact),
+            "pointer": "terminal_condition.workstream_a_complete",
+            "equals": True,
+        },
+    }
+
+    result = subprocess_dispatch(spec)
+
+    assert result["returncode"] == 0
+    assert result["status"] == "failed"
+    assert result["completion_check"]["satisfied"] is False
+    assert result["completion_check"]["observed"] is False
+
+
+def test_checkpoint_marks_wave_in_flight_before_dispatch():
+    checkpoints: list[dict] = []
+
+    result = run_mission(
+        mission(),
+        dispatch=lambda spec: {"status": "success", "returncode": 0},
+        checkpoint=lambda state: checkpoints.append(dict(state)),
+    )
+
+    assert result["status"] == "COMPLETE"
+    assert checkpoints[0]["in_flight"] == ["A"]
+    assert any(
+        set(state["in_flight"]) == {"B", "C", "D", "E"}
+        for state in checkpoints
+    )
+    assert checkpoints[-1]["in_flight"] == []
+
+
+def test_resume_with_ambiguous_in_flight_fails_closed_without_readback():
+    m = mission()
+    prior = {
+        "mission_digest": mission_digest(m),
+        "completed": [],
+        "failed": [],
+        "in_flight": ["A"],
+        "receipts": {},
+    }
+
+    with pytest.raises(MissionOrchestrationError, match="ambiguous in-flight"):
+        run_mission(
+            m,
+            dispatch=lambda spec: {"status": "success", "returncode": 0},
+            prior_state=prior,
+        )
+
+
+def test_retry_ambiguous_requires_explicit_opt_in():
+    m = mission()
+    prior = {
+        "mission_digest": mission_digest(m),
+        "completed": [],
+        "failed": [],
+        "in_flight": ["A"],
+        "receipts": {},
+    }
+    calls: list[str] = []
+
+    result = run_mission(
+        m,
+        dispatch=lambda spec: (
+            calls.append(spec["id"])
+            or {"status": "success", "returncode": 0}
+        ),
+        prior_state=prior,
+        retry_ambiguous=True,
+    )
+
+    assert result["status"] == "COMPLETE"
+    assert calls[0] == "A"
+
+
+def test_ambiguous_in_flight_resolves_from_terminal_artifact_before_replay(
+    tmp_path: Path,
+):
+    artifact = tmp_path / "WORKSTREAM_A.json"
+    artifact.write_text(
+        json.dumps({"terminal_condition": {"workstream_a_complete": True}}),
+        encoding="utf-8",
+    )
+    m = mission()
+    m["workstreams"][0]["completion"] = {
+        "artifact": str(artifact),
+        "pointer": "terminal_condition.workstream_a_complete",
+        "equals": True,
+    }
+    prior = {
+        "mission_digest": mission_digest(m),
+        "completed": [],
+        "failed": [],
+        "in_flight": ["A"],
+        "receipts": {},
+    }
+    calls: list[str] = []
+
+    result = run_mission(
+        m,
+        dispatch=lambda spec: (
+            calls.append(spec["id"])
+            or {"status": "success", "returncode": 0}
+        ),
+        prior_state=prior,
+    )
+
+    assert "A" not in calls
+    assert result["receipts"]["A"]["source"] == "ambiguous_readback_recovery"
+    assert result["status"] == "COMPLETE"
