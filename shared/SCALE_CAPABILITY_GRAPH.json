@@ -2900,7 +2900,7 @@
     },
     {
       "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
-      "revision": "9b71dc7b50c0ee4cd8632c3572e6d7a3ed7a6536",
+      "revision": "0125c7b0d0fbf68b2e96807d1e92b636ac7ea934",
       "capability": "Agent A Gatling Tsunami: bounded concurrent estate discovery with deterministic conflict-aware aggregation, failure-preserving retries, tamper-evident resumable checkpoints, provenance validation, and health-gated matched serial/parallel benchmarking.",
       "implementation_paths": [
         ".github/workflows/scale-estate-intelligence.yml",
@@ -2922,7 +2922,7 @@
         "src/fde_powerhouse/estate_leverage.py"
       ],
       "maturity": "hardened",
-      "verified_state": "TEST_OBSERVED_EXACT_HEAD: run 37498105124 passed Python 3.11/3.12/3.13 targeted lint, compile, 64/64 regression, 70% coverage gate (78.31% measured), machine-artifact validation, and 338-node forward/reverse semantic-digest equality.",
+      "verified_state": "TEST_OBSERVED_IMPLEMENTATION_REVISION: Agent A bounded/retry/checkpoint/node-digest/whole-graph-digest implementation is present at 0125c7b0d0fbf68b2e96807d1e92b636ac7ea934; exact-head workflow validation after subsequent artifact/workflow-only commits is tracked in graph.verification.",
       "scale_relevance": [
         "bounded concurrency",
         "checkpoint integrity",
@@ -8938,6 +8938,21 @@
         "GlacierEQ/Genius-Mastery": "test_observed",
         "GlacierEQ/sigma-glue": "provider_verified"
       }
+    },
+    "gatling_saturation": {
+      "state": "PASS",
+      "mission_critical_repositories": 16,
+      "widths": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ],
+      "all_runs_healthy": true,
+      "all_semantic_matches": true,
+      "recommended_workers": 4,
+      "best_observed_throughput_repos_per_sec": 4.663
     }
   },
   "edge_contract": {
@@ -9311,5 +9326,190 @@
         "GlacierEQ/Genius-Mastery exact-head validate-contract 37281797389: SUCCESS"
       ]
     }
+  },
+  "gatling_saturation_benchmark": {
+    "schema": "glaciereq.scale-fde.gatling-saturation.v1",
+    "workload": "Exact-revision README fetch across the 16-repository mission-critical subgraph through the authenticated GitHub connector.",
+    "semantic_identity": "ordered repository + pinned revision + README blob SHA + character length",
+    "pinned_repositories": [
+      {
+        "repository": "GlacierEQ/monolith",
+        "revision": "2751283b3ecf9f4fd18481f5e7335455ea70c356",
+        "blob_sha": "9b9c0013521e884ec980f5c308f1a630efe4cc64",
+        "characters": 36644
+      },
+      {
+        "repository": "GlacierEQ/aspen-grove-core",
+        "revision": "27f67c64ccc5ce3eb4521d458fbdfb73d1830ae0",
+        "blob_sha": "1c56697b8f07eeea1754861a4c87042a92d07f8e",
+        "characters": 13124
+      },
+      {
+        "repository": "GlacierEQ/aspen-grove-memory",
+        "revision": "fa47e191a4e0c4f23cd98705c9467b6ceb2aed3f",
+        "blob_sha": "ec422d3acedd6a25e79638f55a3114ab5161c2bf",
+        "characters": 8682
+      },
+      {
+        "repository": "GlacierEQ/aspen-grove-swarm",
+        "revision": "58bdaddfd43c544abe6c6a4223f62ab5c1590da5",
+        "blob_sha": "231f6058e2f4fb48e25a172fee40fa20a65b21dc",
+        "characters": 6323
+      },
+      {
+        "repository": "GlacierEQ/aspen-grove-connectors",
+        "revision": "fd37faa07b8f05cd287163af92747970a2a4061e",
+        "blob_sha": "a0ab24e5119d51e6cd21d44b8dab255c663cdfe3",
+        "characters": 6591
+      },
+      {
+        "repository": "GlacierEQ/apex-boot-core",
+        "revision": "d81d579c73d859bdfa5ef25c14a2800d5586f985",
+        "blob_sha": "c79728f9cde7cc0149cf6692df91544b927a9ab8",
+        "characters": 18296
+      },
+      {
+        "repository": "GlacierEQ/Genius-Mastery",
+        "revision": "f58d0cf521a68d57f2648c20872e580334b331e3",
+        "blob_sha": "47e30ca857500878a9fd4d6cafda5dcf3c6bad89",
+        "characters": 7754
+      },
+      {
+        "repository": "GlacierEQ/mega-skills",
+        "revision": "7dee0c0a98468e29d364ee18a9c0bcd57f05b91f",
+        "blob_sha": "d751692cb83829151c1f39512dbc0e8aa6945348",
+        "characters": 4283
+      },
+      {
+        "repository": "GlacierEQ/computer-user",
+        "revision": "1f0ae18968b4e830f66ee97dd4a2dc4805c6c298",
+        "blob_sha": "bcf3b93e0c08feccf2e20d5c60d42b611c2bd099",
+        "characters": 7580
+      },
+      {
+        "repository": "GlacierEQ/sigma-glue",
+        "revision": "4a1ca8e5c88a62e8a94a43213b2c509af6afcea3",
+        "blob_sha": "d87b2fe717e03bfdd184b9d1b85e0ac60cf7c17d",
+        "characters": 9291
+      },
+      {
+        "repository": "GlacierEQ/colossus-gateway",
+        "revision": "851f50ae67a8a333b480ef8106a5bcbd579c6a76",
+        "blob_sha": "a579e2046a158c3e062aba49f735de8f7c4451d8",
+        "characters": 413
+      },
+      {
+        "repository": "GlacierEQ/job-app-helix",
+        "revision": "e369764107921b25cb67d398aed0bf54fb521ca7",
+        "blob_sha": "242e896c3d771930bfd7d3ff2c79a8217272971e",
+        "characters": 19071
+      },
+      {
+        "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+        "revision": "39b5f7cabf86dd22c4006f467eb0c26d368c5160",
+        "blob_sha": "85972d491bc3a9636009bc40b144d4180c15609f",
+        "characters": 1864
+      },
+      {
+        "repository": "GlacierEQ/make-it-heavy-private",
+        "revision": "85b4b247cb4e1767d32bc47b34b9969bafec3227",
+        "blob_sha": "7b73510969798cd318b4dd66df1f2152cda5571f",
+        "characters": 9542
+      },
+      {
+        "repository": "GlacierEQ/anthropic-agent-coordinator",
+        "revision": "4ef98097e729af125459188a071048112552bad0",
+        "blob_sha": "fd832474ce8bfc72b8b0fa1623a6eea2cb33387f",
+        "characters": 14857
+      },
+      {
+        "repository": "GlacierEQ/apex-control-plane",
+        "revision": "480131e2b1f7d919ebb80be7d0760ec431135a20",
+        "blob_sha": "25a00a86fef1e24a7392d29f1b2931e5d90164ec",
+        "characters": 10104
+      }
+    ],
+    "trials": [
+      {
+        "workers": 1,
+        "wall_clock_ms": 8306,
+        "throughput_repos_per_sec": 1.926,
+        "speedup_vs_serial": 1,
+        "wall_clock_reduction_pct": 0,
+        "repositories_succeeded": 16,
+        "repositories_failed": 0,
+        "semantic_match": true
+      },
+      {
+        "workers": 2,
+        "wall_clock_ms": 5115,
+        "throughput_repos_per_sec": 3.128,
+        "speedup_vs_serial": 1.6238514174,
+        "wall_clock_reduction_pct": 38.4180110763,
+        "repositories_succeeded": 16,
+        "repositories_failed": 0,
+        "semantic_match": true
+      },
+      {
+        "workers": 4,
+        "wall_clock_ms": 3431,
+        "throughput_repos_per_sec": 4.663,
+        "speedup_vs_serial": 2.4208685514,
+        "wall_clock_reduction_pct": 58.6925114375,
+        "repositories_succeeded": 16,
+        "repositories_failed": 0,
+        "semantic_match": true
+      },
+      {
+        "workers": 8,
+        "wall_clock_ms": 3553,
+        "throughput_repos_per_sec": 4.503,
+        "speedup_vs_serial": 2.3377427526,
+        "wall_clock_reduction_pct": 57.2236937154,
+        "repositories_succeeded": 16,
+        "repositories_failed": 0,
+        "semantic_match": true
+      },
+      {
+        "workers": 16,
+        "wall_clock_ms": 3738,
+        "throughput_repos_per_sec": 4.28,
+        "speedup_vs_serial": 2.2220438737,
+        "wall_clock_reduction_pct": 54.9963881531,
+        "repositories_succeeded": 16,
+        "repositories_failed": 0,
+        "semantic_match": true
+      }
+    ],
+    "marginal_throughput_gain_pct": [
+      {
+        "from_workers": 1,
+        "to_workers": 2,
+        "gain_pct": 62.409
+      },
+      {
+        "from_workers": 2,
+        "to_workers": 4,
+        "gain_pct": 49.073
+      },
+      {
+        "from_workers": 4,
+        "to_workers": 8,
+        "gain_pct": -3.431
+      },
+      {
+        "from_workers": 8,
+        "to_workers": 16,
+        "gain_pct": -4.953
+      }
+    ],
+    "observed_max_throughput_repos_per_sec": 4.663,
+    "saturation_rule": "Smallest healthy worker width reaching at least 95% of the maximum observed throughput.",
+    "recommended_workers": 4,
+    "all_runs_healthy": true,
+    "all_semantic_matches": true,
+    "interpretation": "The provider-bound workload saturates at four workers; widening to eight or sixteen adds concurrency but reduces measured throughput.",
+    "execution_boundary": "Measurements are authenticated connector wall-clock observations, not synthetic sleeps or a model-estimated speedup.",
+    "tool_budget_note": "The first combined multi-width harness exceeded the per-execution connector tool-call ceiling and produced no accepted benchmark result. Each reported width was then executed as a separate bounded trial over the identical pinned scope."
   }
 }
