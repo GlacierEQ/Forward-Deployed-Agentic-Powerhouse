@@ -1,0 +1,133 @@
+{
+  "schema": "glaciereq.scale-fde.workstream/v1",
+  "workstream": "C",
+  "name": "Memory / Composition / Compounding",
+  "status": "component_verified_ready_for_integration",
+  "ownership": [
+    "Aspen Grove structured mission continuity",
+    "Genius Mastery deterministic capability composition",
+    "cross-process mission resurrection",
+    "verified capability extraction and registration",
+    "Mission-2 automatic reuse of Mission-1 capability"
+  ],
+  "non_ownership": [
+    "runtime/swarm scheduling",
+    "MCP/provider reconciliation execution",
+    "mission-wide verification receipts",
+    "Scale-facing product/UI"
+  ],
+  "continuity_contract": {
+    "authority": "Aspen Grove CaseBrain",
+    "schema": "glaciereq.scale-fde-continuity/v1",
+    "required_collections": [
+      "scale-mission",
+      "scale-capabilities",
+      "scale-decisions",
+      "scale-executions",
+      "scale-failures",
+      "scale-receipts",
+      "scale-continuations"
+    ],
+    "raw_transcript_continuity": "prohibited",
+    "resurrection_fields": [
+      "objective",
+      "constraints",
+      "decisions",
+      "completed_tasks",
+      "receipts",
+      "capabilities",
+      "unresolved_dependencies",
+      "current_frontier",
+      "collection_counts"
+    ]
+  },
+  "compounding_contract": {
+    "extraction_gate": [
+      "verified",
+      "operationally_verified"
+    ],
+    "requires_explicit_reusable_capability": true,
+    "registry_write": "atomic temp-file + fsync + os.replace + directory fsync where supported",
+    "selection": "deterministic mission-fit + maturity + evidence scoring",
+    "minimum_reuse_score": 0.35,
+    "runtime_success_inference": "prohibited"
+  },
+  "revisions": {
+    "aspen_grove_memory": "c5b8bb44016ee9c17e44c58b53f0545bfdc9691f",
+    "genius_mastery": "21c7e0b1209d71619b56dbf51549e39e2665fc69",
+    "fde_sidecar_code": "2e3cfe61c7071422589fd4d234b144203a32efbb",
+    "fde_workflow_pin": "24386a79b1d7a0dfaaac86461fba2326c673652d"
+  },
+  "verification": {
+    "red": {
+      "genius_pre_fix_revision": "f84412fc03b7b8d94ef7767e94a5d3d5cfc092ef",
+      "test": "test_register_capability_preserves_previous_registry_on_interrupted_write",
+      "observed": "failed; interrupted direct write left registry as literal '{'",
+      "execution_plane": "authorized macOS estate verifier"
+    },
+    "green": [
+      {
+        "surface": "Aspen Grove continuity",
+        "result": "2/2 passed",
+        "revision": "c5b8bb44016ee9c17e44c58b53f0545bfdc9691f"
+      },
+      {
+        "surface": "Genius compounding",
+        "result": "5/5 passed",
+        "revision": "21c7e0b1209d71619b56dbf51549e39e2665fc69"
+      },
+      {
+        "surface": "FDE Agent-C contract",
+        "result": "2/2 passed",
+        "revision": "2e3cfe61c7071422589fd4d234b144203a32efbb"
+      },
+      {
+        "surface": "cross-process resurrection + Mission-2 reuse",
+        "result": "passed",
+        "proof_sha256": "8125d04659d7a99b751e871aad33d0fed134d99c3eed65833bd17dedca0e2353",
+        "selection_score": 0.675
+      }
+    ],
+    "proof_truth_boundary": "Synthetic component proof verifies Workstream-C mechanics across exact donor revisions; it does not assert completion of the full five-workstream Scale mission."
+  },
+  "defects": [
+    {
+      "id": "C-DEFECT-001",
+      "status": "external_dependency",
+      "summary": "Automatic GitHub-hosted real-donor proof cannot read private donor repositories with the FDE repository github.token.",
+      "containment": "real-donor proof is workflow_dispatch-only and exact-revision local estate proof is preserved; configure ESTATE_CHECKOUT_TOKEN to run it in GitHub Actions."
+    },
+    {
+      "id": "C-DEFECT-002",
+      "status": "recovered",
+      "summary": "Local verification workspace exhausted disk during checkout.",
+      "containment": "removed only disposable Agent-C verification artifacts; persistent proof rerun succeeded with exact revisions."
+    },
+    {
+      "id": "C-DEFECT-003",
+      "status": "external_dependency",
+      "summary": "Aspen native GitHub Actions runner previously accepted jobs with runner_id 0 and executed no test steps.",
+      "containment": "exact Aspen donor tests were executed on the authorized macOS estate verifier; runner repair remains outside Workstream C."
+    }
+  ],
+  "integration_contract": {
+    "consumes": [
+      "shared/SCALE_FDE_MISSION.yaml",
+      "shared/SCALE_CAPABILITY_GRAPH.json",
+      "verified mission receipt with explicit reusable_capability"
+    ],
+    "emits": [
+      "structured Aspen continuity state",
+      "verified reusable capability registry entry",
+      "Mission-2 reuse decision",
+      "this WORKSTREAM_C.json"
+    ],
+    "sibling_boundary": "No sibling workstream implementation is modified or treated as verified by this workstream."
+  },
+  "next_frontier": [
+    "consume canonical SCALE_FDE_MISSION.yaml when published on integration branch",
+    "run the same mechanism against the real Mission-1 verification receipt produced by Workstream E",
+    "prove Mission-2 reuse against that real extracted capability",
+    "hand exact receipts and unresolved external dependencies to integration without blind merge"
+  ]
+}
