@@ -1,0 +1,54 @@
+{
+  "schema": "glaciereq.scale-fde-workstream.v1",
+  "mission_id": "SCALE-FDE-DEMO-001",
+  "workstream": "E",
+  "role": "Verification / Scale Product / Evidence",
+  "authority": "independent_verification",
+  "status": "PARTIAL",
+  "verified_now": [
+    {
+      "claim": "canonical Scale mission contract exists under shared/",
+      "evidence": "shared/SCALE_FDE_MISSION.yaml",
+      "evidence_state": "SOURCE_BOUND"
+    },
+    {
+      "claim": "architecture contract defines five isolated workstreams and E verification ownership",
+      "evidence": "shared/ARCHITECTURE_CONTRACT.json",
+      "evidence_state": "SOURCE_BOUND"
+    },
+    {
+      "claim": "red-to-green convergence defect is preserved",
+      "evidence": "shared/DEFECT_QUEUE.json: R2-DEF-001; RED run 37278166847; repair 3ee3883b541def3179aeeb30cdacfaa8671fb8c5; GREEN run 37278419952",
+      "evidence_state": "SOURCE_BOUND_EXISTING_RECORD"
+    },
+    {
+      "claim": "employer-facing proof surface exists",
+      "evidence": "docs/SCALE_FDE_PORTFOLIO.md",
+      "evidence_state": "SOURCE_BOUND"
+    }
+  ],
+  "hidden_harm_repaired": {
+    "detected": "Portfolio and mission contract referenced shared/WORKSTREAM_E.json and REPRODUCE.md while those artifacts were absent from the default branch.",
+    "threatened_dimension": "employer-facing reproducibility and truthfulness of the five-workstream proof surface",
+    "counter_route": "materialize the missing E contract record and reproduction guide without fabricating unfinished evaluation receipts",
+    "preserved_boundary": "Missing baseline-vs-stack harness and execution/verification/mission receipts remain explicitly unresolved."
+  },
+  "owns": [
+    "baseline_vs_stack_harness",
+    "execution_verification_mission_receipts",
+    "evidence_graph",
+    "architecture_exhibit",
+    "REPRODUCE.md",
+    "metrics",
+    "RECEIPT_INDEX.json"
+  ],
+  "unresolved_dependencies": [
+    "baseline-vs-full-stack evaluation harness is not source-bound on default branch",
+    "EXECUTION_RECEIPT.json is not source-bound on default branch",
+    "VERIFICATION_RECEIPT.json is not source-bound on default branch",
+    "MISSION_RECEIPT.json is not source-bound on default branch",
+    "Mission 2 automatic reuse proof must be independently verified before mission completion"
+  ],
+  "completion_rule": "E may report VERIFIED only for claims bound to reproducible evidence. It must not repair sibling implementations or convert absent receipts into inferred success.",
+  "next_executable_frontier": "Implement and execute the baseline-vs-stack harness, then emit execution/verification/mission receipts from observed runs and update RECEIPT_INDEX.json."
+}
