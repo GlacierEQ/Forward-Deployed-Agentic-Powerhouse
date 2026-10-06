@@ -384,6 +384,12 @@
           "a22a07f3f47c4d034dca29f887eb80c73d363def"
         ],
         "promotion_state": "UNVERIFIED_AFTER_REPAIR"
+      },
+      "latest_head_before_retrigger": "d4d597e7aa4f30ca273500fa4cdc553cf15783f9",
+      "ci_retrigger": {
+        "reason": "Prior pull_request run completed against pre-repair head; record current repaired head to force a synchronize event and obtain exact-head CI.",
+        "prior_run_id": 37446113010,
+        "prior_run_head": "62b140e8489f5c68fcfbe7a593ccf2015befe7ad"
       }
     },
     "evidence_levels": {
