@@ -6,8 +6,8 @@ import zipfile
 from pathlib import Path
 
 import pytest
-from fde_powerhouse.scale_fusion import (
 
+from fde_powerhouse.scale_fusion import (
     FusionContractError,
     fusion_digest,
     load_fusion,
