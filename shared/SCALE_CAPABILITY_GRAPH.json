@@ -2903,7 +2903,8 @@
         "tests/test_gatling_estate.py"
       ],
       "receipts": [
-        "GitHub Actions run 37448141761 @ 2f2e9eee192f1ab18d9869271487d01b2d229e1f: lint+compile+full-regression steps succeeded on Python 3.11/3.12/3.13; artifact-order gate exposed canonical-sort defect",
+        "GitHub Actions run 37448537231 @ fa62ccaab422cdb96e2ce2a3a65fd9c46d135826: Python 3.11/3.12/3.13 install+Agent A lint+compile+64-test full regression+machine-artifact validation all PASS",
+        "GitHub Actions run 37448420168 @ 728eabb6fe26c2d0cf46cbcdc0d5cd8fedbd1aa1: canonical graph-order repair PASS",
         "local exact-branch verification @ eef0d45d53543599839be45c10611de39e83238a: targeted Ruff PASS; focused 15 tests PASS; full 64-test suite exit 0; compileall exit 0",
         "shared/WORKSTREAM_A.json"
       ],
@@ -2912,7 +2913,7 @@
         "src/fde_powerhouse/estate_leverage.py"
       ],
       "maturity": "hardened",
-      "verified_state": "TEST_OBSERVED: Agent A files are Ruff-clean; focused durability suite passes 15 tests; the complete repository suite passes 64 tests locally; GitHub Actions independently passed lint, compile and full regression steps on Python 3.11/3.12/3.13. The first exact-branch CI run failed only at the graph canonical-order assertion, which is being repaired by sorting this artifact with the reducer's Python tuple contract.",
+      "verified_state": "TEST_OBSERVED_AND_CI_VERIFIED: Agent A implementation/test files are Ruff-clean; 15 focused durability tests and the full 64-test repository suite pass locally; exact-branch GitHub Actions run 37448537231 passed install, targeted lint, compile, full regression, and machine-artifact validation across Python 3.11/3.12/3.13.",
       "scale_relevance": [
         "bounded concurrency",
         "checkpoint integrity",
@@ -2927,8 +2928,8 @@
         "retry recovery"
       ],
       "known_defects": [
-        "Exact-branch CI run 37448141761 failed at the machine-artifact canonical-order assertion after all code gates passed; this graph revision repairs that ordering defect.",
-        "Repository-wide Ruff still reports 11 inherited errors outside the Agent A files; Agent A's changed Python/test files pass targeted Ruff."
+        "Repository-wide Ruff reports 11 inherited errors outside Agent A changed files; targeted Agent A lint passes and full regression is green.",
+        "311 long-tail capability nodes remain catalog-only by design and are not promoted into execution proof."
       ],
       "donor_value": 10,
       "evidence_level": "test_observed",
@@ -8774,7 +8775,7 @@
       "green": "15 focused tests passed; full repository suite 64 tests passed locally",
       "compileall": "passed",
       "ruff": "Agent A implementation and tests pass targeted Ruff",
-      "github_matrix": "run 37448141761 passed lint, compile and full regression on Python 3.11/3.12/3.13; artifact-order assertion failed and triggered canonical-sort repair"
+      "github_matrix": "run 37448537231 PASS across Python 3.11/3.12/3.13: targeted lint, compile, 64-test full regression, and machine-artifact validation"
     },
     "invariants": [
       "bounded worker count",
@@ -8802,7 +8803,10 @@
       "Agent A CI overall success withheld until machine-artifact gate passes after sort repair"
     ],
     "canonical_sort": "Python tuple ordering: repository.casefold(), capability.casefold(), revision, implementation_paths tuple",
-    "canonical_sort_repair_reason": "CI run 37448141761 exposed divergence between historical JS localeCompare ordering and the Python reducer contract."
+    "canonical_sort_repair_reason": "CI run 37448141761 exposed divergence between historical JS localeCompare ordering and the Python reducer contract.",
+    "final_ci_run": 37448537231,
+    "final_ci_revision": "fa62ccaab422cdb96e2ce2a3a65fd9c46d135826",
+    "final_ci_state": "PASS"
   },
   "evidence_model": {
     "schema": "glaciereq.scale-fde.evidence-levels.v1",
@@ -8852,31 +8856,37 @@
       }
     },
     "github_actions": {
-      "run_id": 37448141761,
-      "revision": "2f2e9eee192f1ab18d9869271487d01b2d229e1f",
-      "conclusion": "failure",
-      "code_gates": {
-        "3.11": [
-          "install:success",
-          "lint:success",
-          "compile:success",
-          "full_regression:success"
-        ],
-        "3.12": [
-          "install:success",
-          "lint:success",
-          "compile:success",
-          "full_regression:success"
-        ],
-        "3.13": [
-          "install:success",
-          "lint:success",
-          "compile:success",
-          "full_regression:success"
-        ]
-      },
-      "failed_gate": "machine_artifact_canonical_order",
-      "disposition": "repair committed in graph ordering; rerun required before exact-branch CI promotion"
+      "run_id": 37448537231,
+      "revision": "fa62ccaab422cdb96e2ce2a3a65fd9c46d135826",
+      "conclusion": "success",
+      "matrix": [
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "passed_steps_on_all_matrix_lanes": [
+        "install",
+        "Agent A lint",
+        "compile",
+        "full regression suite",
+        "Validate Agent A machine artifacts"
+      ],
+      "full_regression_tests": 64,
+      "artifact_nodes": 338,
+      "prior_runs": [
+        {
+          "run_id": 37448141761,
+          "revision": "2f2e9eee192f1ab18d9869271487d01b2d229e1f",
+          "conclusion": "failure",
+          "value": "exposed graph canonical-order divergence after all code gates passed"
+        },
+        {
+          "run_id": 37448420168,
+          "revision": "728eabb6fe26c2d0cf46cbcdc0d5cd8fedbd1aa1",
+          "conclusion": "success",
+          "value": "proved canonical-order repair before final workstream reconciliation"
+        }
+      ]
     }
   }
 }
