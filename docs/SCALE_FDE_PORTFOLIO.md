@@ -45,6 +45,25 @@ See `shared/DEFECT_QUEUE.json` for the preserved defect record.
 
 This matters because the repository does not present “tests pass” as the whole story. It preserves the failure, the exact repair, and the verification evidence.
 
+## Direct fit to the live Scale Public Sector FDE role
+
+This demonstration is intentionally legible against the work Scale currently describes for its Honolulu Public Sector forward-deployed engineers, without claiming Scale affiliation or government deployment:
+
+| Scale role surface | Reproducible evidence in this repository |
+|---|---|
+| Turn ambiguous customer missions into working software | `shared/SCALE_FDE_MISSION.yaml` + independently scoped workstreams |
+| Own delivery from prototype through stable production behavior | runtime durability, failure recovery, verification, and readback loop |
+| Build robust backend/data integrations | Integration / MCP workstream with dependency ordering, idempotency, reconciliation, and provider readback |
+| Feed field patterns back into reusable platform capability | Memory / compounding workstream and Mission 1 → Mission 2 reuse contract |
+| Operate agentic systems safely | explicit guardrails, evidence states, receipts, defect preservation, and independent verification |
+| Orchestrate asynchronous agent work | five bounded workstreams coordinated through machine-readable shared contracts rather than hidden chat state |
+
+Scale's adjacent Public Sector engineering roles also describe multi-layer agent guardrails, optimized retrieval, fleets of asynchronous agents, deviation alerts, and explainability. Those are evaluation targets for this proof surface—not claims of equivalence or production use inside Scale.
+
+### Evidence boundary
+
+This is an independent GlacierEQ engineering demonstration. It does **not** imply employment by Scale, access to Scale systems, government customer deployment, a security clearance, or completion of any unfinished workstream. The useful claim is narrower and reproducible: the repository exposes mechanisms for the same *class* of forward-deployed agentic problems and gives a reviewer concrete artifacts and commands to inspect them.
+
 ## Five-minute reproduction
 
 ```bash
