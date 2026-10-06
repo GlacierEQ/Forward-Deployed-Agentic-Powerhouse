@@ -111,3 +111,165 @@ def test_semantic_digest_changes_when_capability_evidence_changes():
     second["verified_state"] = "stronger source evidence recovered"
 
     assert semantic_digest({"nodes": [first]}) != semantic_digest({"nodes": [second]})
+
+
+def test_partial_failure_preserves_successes_and_builds_resumable_checkpoint():
+    def inspect(repo: str):
+        if repo == "repo-b":
+            raise TimeoutError("provider timed out")
+        return [node(repo)]
+
+    result = run_bounded_sweep(
+        ["repo-a", "repo-b", "repo-c"],
+        inspect,
+        workers=2,
+        strict=False,
+    )
+
+    assert result["health_class"] == "PARTIAL_FAILURE"
+    assert result["performance_valid"] is False
+    assert [item["repository"] for item in result["nodes"]] == ["repo-a", "repo-c"]
+    assert result["failures"] == [
+        {
+            "repository": "repo-b",
+            "attempts": 1,
+            "error_type": "TimeoutError",
+            "error": "provider timed out",
+        }
+    ]
+    assert result["checkpoint"]["completed_repositories"] == ["repo-a", "repo-c"]
+    assert resume_repositories(
+        ["repo-a", "repo-b", "repo-c"],
+        result["checkpoint"],
+    ) == ["repo-b"]
+
+
+def test_strict_failure_raises_with_partial_result_instead_of_erasing_progress():
+    def inspect(repo: str):
+        if repo == "repo-b":
+            raise RuntimeError("boom")
+        return [node(repo)]
+
+    with pytest.raises(SweepIncompleteError) as caught:
+        run_bounded_sweep(["repo-a", "repo-b", "repo-c"], inspect, workers=3)
+
+    result = caught.value.result
+    assert [item["repository"] for item in result["nodes"]] == ["repo-a", "repo-c"]
+    assert result["checkpoint"]["failed_repositories"] == ["repo-b"]
+
+
+def test_transient_worker_failure_retries_and_recovers_without_duplicate_findings():
+    attempts = {"repo-a": 0, "repo-b": 0}
+
+    def inspect(repo: str):
+        attempts[repo] += 1
+        if repo == "repo-b" and attempts[repo] == 1:
+            raise ConnectionError("transient")
+        return [node(repo)]
+
+    result = run_bounded_sweep(
+        ["repo-a", "repo-b"],
+        inspect,
+        workers=2,
+        retries=1,
+    )
+
+    assert result["health_class"] == "HEALTHY"
+    assert result["performance_valid"] is True
+    assert result["failures"] == []
+    assert result["metrics"]["retry_attempts"] == 1
+    assert attempts == {"repo-a": 1, "repo-b": 2}
+    assert result["metrics"]["duplicate_findings"] == 0
+
+
+def test_resume_rejects_scope_drift_and_checkpoint_tampering():
+    result = run_bounded_sweep(["repo-a"], lambda repo: [node(repo)], workers=1)
+    checkpoint = result["checkpoint"]
+
+    with pytest.raises(ValueError, match="scope"):
+        resume_repositories(["repo-a", "repo-b"], checkpoint)
+
+    tampered = dict(checkpoint)
+    tampered["completed_repositories"] = []
+    with pytest.raises(ValueError, match="checkpoint"):
+        resume_repositories(["repo-a"], tampered)
+
+
+def test_duplicate_repository_inputs_are_inspected_once():
+    calls = []
+
+    def inspect(repo: str):
+        calls.append(repo)
+        return [node(repo)]
+
+    result = run_bounded_sweep(
+        ["repo-a", "repo-a", " repo-b ", "repo-b"],
+        inspect,
+        workers=4,
+    )
+
+    assert calls.count("repo-a") == 1
+    assert calls.count("repo-b") == 1
+    assert result["metrics"]["repos_inspected"] == 2
+    assert result["checkpoint"]["scope_repositories"] == ["repo-a", "repo-b"]
+
+
+def test_matched_serial_parallel_benchmark_requires_healthy_identical_semantics():
+    def inspect(repo: str):
+        time.sleep(0.01)
+        return [node(repo)]
+
+    result = benchmark_serial_vs_parallel(
+        ["repo-a", "repo-b", "repo-c"],
+        inspect,
+        parallel_workers=3,
+    )
+
+    assert result["health_class"] == "HEALTHY"
+    assert result["performance_valid"] is True
+    assert result["deterministic_result_match"] is True
+    assert result["serial"]["workers"] == 1
+    assert result["parallel"]["workers"] == 3
+    assert result["speedup"] is not None
+
+
+def test_matched_benchmark_rejects_semantic_drift_between_serial_and_parallel_runs():
+    calls = 0
+    lock = threading.Lock()
+
+    def inspect(repo: str):
+        nonlocal calls
+        with lock:
+            calls += 1
+            phase = "serial" if calls <= 2 else "parallel"
+        item = node(repo)
+        item["verified_state"] = phase
+        return [item]
+
+    result = benchmark_serial_vs_parallel(
+        ["repo-a", "repo-b"],
+        inspect,
+        parallel_workers=2,
+    )
+
+    assert result["health_class"] == "INVALID"
+    assert result["performance_valid"] is False
+    assert result["deterministic_result_match"] is False
+    assert result["speedup"] is None
+
+
+def test_evidence_digest_must_be_sha256():
+    item = node("repo-evidence")
+    item["evidence_level"] = "source_inspected"
+    item["evidence"] = [
+        {
+            "kind": "implementation",
+            "revision": "a" * 40,
+            "path": "src/core.py",
+            "claim": "implementation recovered",
+            "digest": "not-a-sha256",
+        }
+    ]
+
+    with pytest.raises(ValueError, match="evidence digest"):
+        aggregate_capability_nodes([item])
