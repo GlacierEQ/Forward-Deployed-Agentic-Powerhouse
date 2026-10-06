@@ -5,6 +5,7 @@ import sys
 from pathlib import Path
 
 from fde_powerhouse.scale_cli import main
+from fde_powerhouse.scale_orchestrator import load_mission, mission_digest
 
 
 def _mission_text(command: list[str]) -> str:
@@ -116,3 +117,94 @@ workstreams:
     assert result["status"] == "BLOCKED"
     assert result["failed"] == ["A"]
     assert result["blocked"] == ["B"]
+
+
+
+def test_scale_cli_retry_ambiguous_is_explicit(tmp_path: Path):
+    marker = tmp_path / "marker.txt"
+    state = tmp_path / "state.json"
+    mission = tmp_path / "mission.yaml"
+    mission.write_text(
+        _mission_text(
+            [
+                sys.executable,
+                "-c",
+                f"from pathlib import Path; Path({str(marker)!r}).write_text('x')",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    loaded = load_mission(mission)
+    state.write_text(
+        json.dumps(
+            {
+                "mission_digest": mission_digest(loaded),
+                "completed": [],
+                "failed": [],
+                "in_flight": ["A"],
+                "receipts": {},
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    assert main(["run", str(mission), "--state", str(state)]) == 2
+    assert not marker.exists()
+    assert (
+        main(
+            [
+                "run",
+                str(mission),
+                "--state",
+                str(state),
+                "--retry-ambiguous",
+            ]
+        )
+        == 0
+    )
+    assert marker.read_text(encoding="utf-8") == "x"
+
+
+def test_scale_cli_retry_failed_is_explicit(tmp_path: Path):
+    marker = tmp_path / "marker.txt"
+    state = tmp_path / "state.json"
+    mission = tmp_path / "mission.yaml"
+    mission.write_text(
+        _mission_text(
+            [
+                sys.executable,
+                "-c",
+                f"from pathlib import Path; Path({str(marker)!r}).write_text('x')",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    loaded = load_mission(mission)
+    state.write_text(
+        json.dumps(
+            {
+                "mission_digest": mission_digest(loaded),
+                "completed": [],
+                "failed": ["A"],
+                "in_flight": [],
+                "receipts": {"A": {"status": "failed", "returncode": 9}},
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    assert main(["run", str(mission), "--state", str(state)]) == 1
+    assert not marker.exists()
+    assert (
+        main(
+            [
+                "run",
+                str(mission),
+                "--state",
+                str(state),
+                "--retry-failed",
+            ]
+        )
+        == 0
+    )
+    assert marker.read_text(encoding="utf-8") == "x"
