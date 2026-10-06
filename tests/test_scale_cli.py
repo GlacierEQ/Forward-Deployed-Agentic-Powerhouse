@@ -89,7 +89,7 @@ def test_scale_cli_explicit_launchers_path_and_resume_skip_completed_work(
         (
             "from pathlib import Path; "
             f"p=Path({str(marker)!r}); "
-            "p.write_text(p.read_text() + 'x' if p.exists() else 'x')"
+            "h=p.open('a', encoding='utf-8'); h.write('x'); h.close()"
         ),
     ]
     mission, launchers = _write_inputs(tmp_path, command)
@@ -137,7 +137,7 @@ def test_scale_cli_fresh_reruns_launch_frontier(tmp_path: Path, capsys):
         (
             "from pathlib import Path; "
             f"p=Path({str(marker)!r}); "
-            "p.write_text(p.read_text() + 'x' if p.exists() else 'x')"
+            "h=p.open('a', encoding='utf-8'); h.write('x'); h.close()"
         ),
     ]
     mission, launchers = _write_inputs(tmp_path, command)
