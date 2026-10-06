@@ -49,7 +49,10 @@ jobs:
           import json
           from pathlib import Path
 
-          from fde_powerhouse.gatling_estate import semantic_digest
+          from fde_powerhouse.gatling_estate import (
+              graph_semantic_digest,
+              semantic_digest,
+          )
 
           graph = json.loads(Path("shared/SCALE_CAPABILITY_GRAPH.json").read_text())
           workstream = json.loads(Path("shared/WORKSTREAM_A.json").read_text())
@@ -91,12 +94,54 @@ jobs:
           digest_reverse = semantic_digest({"nodes": list(reversed(graph["nodes"]))})
           assert digest_forward == digest_reverse
 
+          known_repositories = {node["repository"] for node in graph["nodes"]}
+          allowed_relations = set(graph["edge_contract"]["relations"])
+          edges = graph["edges"]
+          assert edges
+          for edge in edges:
+              assert edge["source"] in known_repositories
+              assert edge["target"] in known_repositories
+              assert edge["relation"] in allowed_relations
+              assert isinstance(edge["evidence"], list) and edge["evidence"]
+              for evidence in edge["evidence"]:
+                  for field in ("repository", "revision", "path", "blob_sha", "claim"):
+                      assert evidence.get(field) not in (None, "")
+
+          critical = graph["mission_critical_subgraph"]["repositories"]
+          assert critical
+          assert set(critical).issubset(known_repositories)
+
+          graph_digest_forward = graph_semantic_digest(graph)
+          graph_reversed = {
+              **graph,
+              "nodes": list(reversed(graph["nodes"])),
+              "edges": list(reversed(graph["edges"])),
+              "mission_critical_subgraph": {
+                  **graph["mission_critical_subgraph"],
+                  "repositories": list(reversed(critical)),
+              },
+          }
+          graph_digest_reverse = graph_semantic_digest(graph_reversed)
+          assert graph_digest_forward == graph_digest_reverse
+
+          observed_counts = {}
+          for node in graph["nodes"]:
+              observed_counts[node["evidence_level"]] = (
+                  observed_counts.get(node["evidence_level"], 0) + 1
+              )
+          assert observed_counts == graph["evidence_model"]["current_counts"]
+
           print(
               json.dumps(
                   {
                       "nodes": len(graph["nodes"]),
+                      "edges": len(edges),
+                      "mission_critical_repositories": len(critical),
                       "semantic_digest": digest_forward,
                       "semantic_reverse_match": True,
+                      "graph_semantic_digest": graph_digest_forward,
+                      "graph_semantic_reverse_match": True,
+                      "evidence_counts": observed_counts,
                       "workstream_state": workstream["state"],
                   },
                   sort_keys=True,
