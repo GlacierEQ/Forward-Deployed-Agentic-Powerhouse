@@ -51,7 +51,7 @@ def test_completion_rejects_receipt_without_provider_readback(
     receipt = _verified_receipt("VERIFICATION_RECEIPT.json")
     receipt.pop("readback")
 
-    with pytest.raises(ValueError, match="readback"):
+    with pytest.raises(TypeError, match="readback"):
         cp.complete("E", "verify", receipt=receipt)
 
 
@@ -62,7 +62,7 @@ def test_completion_rejects_unverified_test_label(tmp_path: Path) -> None:
     receipt = _verified_receipt("VERIFICATION_RECEIPT.json")
     receipt["tests"] = ["pytest"]
 
-    with pytest.raises(ValueError, match="tests"):
+    with pytest.raises(TypeError, match="tests"):
         cp.complete("E", "verify", receipt=receipt)
 
 

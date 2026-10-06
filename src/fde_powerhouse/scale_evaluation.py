@@ -117,7 +117,7 @@ def _stack(scenario: str) -> dict[str, Any]:
             cp.claim("E", "eval")
             try:
                 cp.complete("E", "eval", receipt={})
-            except ValueError as exc:
+            except (TypeError, ValueError) as exc:
                 return {"accepted": False, "reason": str(exc)}
             return {"accepted": True, "reason": "receipt accepted"}
 
@@ -128,7 +128,7 @@ def _stack(scenario: str) -> dict[str, Any]:
             receipt["tests"] = ["scale-eval"]
             try:
                 cp.complete("E", "eval", receipt=receipt)
-            except ValueError as exc:
+            except (TypeError, ValueError) as exc:
                 return {"accepted": False, "reason": str(exc)}
             return {"accepted": True, "reason": "test label accepted"}
 
@@ -139,7 +139,7 @@ def _stack(scenario: str) -> dict[str, Any]:
             receipt.pop("readback")
             try:
                 cp.complete("E", "eval", receipt=receipt)
-            except ValueError as exc:
+            except (TypeError, ValueError) as exc:
                 return {"accepted": False, "reason": str(exc)}
             return {"accepted": True, "reason": "readback-free receipt accepted"}
 
@@ -150,7 +150,7 @@ def _stack(scenario: str) -> dict[str, Any]:
             receipt["outputs"] = []
             try:
                 cp.complete("E", "eval", receipt=receipt)
-            except ValueError as exc:
+            except (TypeError, ValueError) as exc:
                 return {"accepted": False, "reason": str(exc)}
             return {"accepted": True, "reason": "output-free receipt accepted"}
 

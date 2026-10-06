@@ -211,21 +211,23 @@ class ScaleControlPlane:
             raise ValueError("completion requires a receipt revision")
 
         tests = receipt.get("tests")
-        if not isinstance(tests, list) or not tests:
+        if not isinstance(tests, list):
+            raise TypeError("tests must contain evidence objects")
+        if not tests:
             raise ValueError("completion requires verified test evidence")
         for test in tests:
             if not isinstance(test, dict):
-                raise ValueError("tests must contain evidence objects")
+                raise TypeError("tests must contain evidence objects")
             if test.get("state") != "passed" or not test.get("source"):
                 raise ValueError("tests require passed state and source")
 
         output_proofs = receipt.get("outputs")
         if not isinstance(output_proofs, list):
-            raise ValueError("completion requires outputs evidence")
+            raise TypeError("completion requires outputs evidence")
         verified_outputs = set()
         for proof in output_proofs:
             if not isinstance(proof, dict):
-                raise ValueError("outputs must contain evidence objects")
+                raise TypeError("outputs must contain evidence objects")
             if proof.get("state") != "verified" or not proof.get("source"):
                 raise ValueError("outputs require verified state and source")
             if proof.get("path"):
@@ -242,7 +244,7 @@ class ScaleControlPlane:
     @staticmethod
     def _validate_readback(readback: Any) -> None:
         if not isinstance(readback, dict):
-            raise ValueError("provider readback is required")
+            raise TypeError("provider readback is required")
         if readback.get("state") != "verified" or not readback.get("source"):
             raise ValueError(
                 "provider readback requires verified state and source"
