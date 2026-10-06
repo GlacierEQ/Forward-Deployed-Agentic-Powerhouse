@@ -30,7 +30,7 @@
   "hidden_harm_repaired": {
     "detected": "Portfolio and mission contract referenced shared/WORKSTREAM_E.json and REPRODUCE.md while those artifacts were absent from the default branch.",
     "threatened_dimension": "employer-facing reproducibility and truthfulness of the five-workstream proof surface",
-    "counter_route": "materialize the missing E contract record and reproduction guide without fabricating unfinished evaluation receipts",
+    "counter_route": "Materialized the missing E contract record without fabricating unfinished evaluation receipts. A reproduction-guide write was attempted but not accepted, so REPRODUCE.md remains unresolved.",
     "preserved_boundary": "Missing baseline-vs-stack harness and execution/verification/mission receipts remain explicitly unresolved."
   },
   "owns": [
@@ -43,6 +43,7 @@
     "RECEIPT_INDEX.json"
   ],
   "unresolved_dependencies": [
+    "REPRODUCE.md is not source-bound on default branch; write attempt was not accepted",
     "baseline-vs-full-stack evaluation harness is not source-bound on default branch",
     "EXECUTION_RECEIPT.json is not source-bound on default branch",
     "VERIFICATION_RECEIPT.json is not source-bound on default branch",
