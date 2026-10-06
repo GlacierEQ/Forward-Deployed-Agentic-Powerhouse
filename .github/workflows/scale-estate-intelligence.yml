@@ -124,11 +124,11 @@ jobs:
           graph_digest_reverse = graph_semantic_digest(graph_reversed)
           assert graph_digest_forward == graph_digest_reverse
 
-          observed_counts = {}
+          evidence_levels = graph["evidence_model"]["ordering"]
+          observed_counts = {level: 0 for level in evidence_levels}
           for node in graph["nodes"]:
-              observed_counts[node["evidence_level"]] = (
-                  observed_counts.get(node["evidence_level"], 0) + 1
-              )
+              assert node["evidence_level"] in observed_counts
+              observed_counts[node["evidence_level"]] += 1
           assert observed_counts == graph["evidence_model"]["current_counts"]
 
           print(
