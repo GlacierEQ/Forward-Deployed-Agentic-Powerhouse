@@ -4,7 +4,10 @@ import time
 import pytest
 
 from fde_powerhouse.gatling_estate import (
+    SweepIncompleteError,
     aggregate_capability_nodes,
+    benchmark_serial_vs_parallel,
+    resume_repositories,
     run_bounded_sweep,
     semantic_digest,
 )
