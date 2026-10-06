@@ -123,7 +123,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/activepieces",
@@ -147,7 +148,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/advancedresearch",
@@ -170,7 +172,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/AEON-777",
@@ -193,7 +196,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/AEON-BRAIN-777",
@@ -216,7 +220,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/agentscope-runtime",
@@ -239,7 +244,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/agno",
@@ -262,7 +268,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/ai-cognitive-nexus-mcp",
@@ -286,7 +293,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/AKOS",
@@ -309,7 +317,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Alex_MCPSuperAssistant",
@@ -332,7 +341,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/anthropic-agent-coordinator",
@@ -371,7 +381,8 @@
         "No fresh exact-current-head runtime/test receipt was returned during Agent A reconnaissance.",
         "Historical exact-revision proof must not be transferred to current head without rerun."
       ],
-      "donor_value": 9
+      "donor_value": 9,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/anthropic-safety-monitor",
@@ -402,7 +413,8 @@
         "Canonical promotion revision differs from current head.",
         "No exact-current-head CI status was returned by the available commit-status/workflow probes."
       ],
-      "donor_value": 8
+      "donor_value": 8,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/antigravity-awesome-skills",
@@ -426,7 +438,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/antigravity-sdk-python",
@@ -449,7 +462,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/ANTIGRAVITY-STACK",
@@ -471,7 +485,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/anything-llm",
@@ -495,7 +510,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/APEX_BOOTUP",
@@ -518,7 +534,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-alpha",
@@ -542,7 +559,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-boot-core",
@@ -585,7 +603,8 @@
       "known_defects": [
         "Runtime selection is explicitly revisable; provider-dependent readiness requires live receipts."
       ],
-      "donor_value": 10
+      "donor_value": 10,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/apex-bootup-core",
@@ -618,7 +637,8 @@
         "Host-specific scripts can have effects the coordinator cannot infer or undo.",
         "Sequential step execution is intentional and not a Gatling implementation."
       ],
-      "donor_value": 8
+      "donor_value": 8,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/apex-browser-ops",
@@ -641,7 +661,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Apex-claude-code",
@@ -663,7 +684,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-cli",
@@ -685,7 +707,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-control-plane",
@@ -727,7 +750,8 @@
       "known_defects": [
         "Strict mode depends on complete provider-backed proof and exits 78 otherwise."
       ],
-      "donor_value": 9
+      "donor_value": 9,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/Apex-EYE",
@@ -749,7 +773,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-files-android",
@@ -771,7 +796,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-fs-commander-unified",
@@ -793,7 +819,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Apex-Gemma4",
@@ -815,7 +842,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-gemma",
@@ -838,7 +866,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-github-worker",
@@ -862,7 +891,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/APEX-HIGH-COUNCIL",
@@ -888,7 +918,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-holographic-memory",
@@ -912,7 +943,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-home-base",
@@ -934,7 +966,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-integrations",
@@ -956,7 +989,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-ish-mobile-nexus",
@@ -978,7 +1012,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-law-library",
@@ -1000,7 +1035,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-legal-case",
@@ -1022,7 +1058,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-legal-ops-dashboard",
@@ -1044,7 +1081,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-memory-bridge",
@@ -1068,7 +1106,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-omega",
@@ -1094,7 +1133,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 6
+      "donor_value": 6,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-os",
@@ -1116,7 +1156,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-sigma-files-android",
@@ -1139,7 +1180,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-singularity-head",
@@ -1166,7 +1208,8 @@
         "Doctrine is not execution proof.",
         "Referenced local file:// paths are not portable estate contracts."
       ],
-      "donor_value": 8
+      "donor_value": 8,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/apex-singularity-matrix",
@@ -1188,7 +1231,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-stack",
@@ -1211,7 +1255,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/APEX-STEAMROLLER-1FDV-23-0001009",
@@ -1235,7 +1280,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/apex-workers-runtime",
@@ -1258,7 +1304,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/arkhon_memory",
@@ -1282,7 +1329,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/aspen-grove-apex-unified-v9",
@@ -1307,7 +1355,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/aspen-grove-connectors",
@@ -1346,7 +1395,8 @@
       "known_defects": [
         "A registry entry alone is not active-provider proof; provider liveness must be re-read at execution time."
       ],
-      "donor_value": 10
+      "donor_value": 10,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/aspen-grove-core",
@@ -1387,7 +1437,8 @@
         "Live provider health was not re-executed in Agent A reconnaissance.",
         "README machine manifest still classifies this node as migration-residue/unresolved-primary-home."
       ],
-      "donor_value": 10
+      "donor_value": 10,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/aspen-grove-evidence",
@@ -1412,7 +1463,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/aspen-grove-legal",
@@ -1436,7 +1488,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/aspen-grove-memory",
@@ -1476,7 +1529,8 @@
       "known_defects": [
         "Provider-backed Tier 2/3/4 liveness remains outside this read-only sweep."
       ],
-      "donor_value": 10
+      "donor_value": 10,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/aspen-grove-supabase",
@@ -1500,7 +1554,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/aspen-grove-swarm",
@@ -1531,7 +1586,8 @@
       "known_defects": [
         "No current-head execution benchmark was recovered for this node during Agent A sweep."
       ],
-      "donor_value": 9
+      "donor_value": 9,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/AspenGrove-KEKOA-1FDV-23-0001009",
@@ -1555,7 +1611,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/AthenaOS",
@@ -1578,7 +1635,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/automation-hub",
@@ -1601,7 +1659,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/automation-powerhouse",
@@ -1625,7 +1684,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/awesome-cli-coding-agents",
@@ -1648,7 +1708,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/awesome-codex",
@@ -1670,7 +1731,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/awesome-devops-mcp-servers",
@@ -1693,7 +1755,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/awesome-mcp-clients",
@@ -1716,7 +1779,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/awesome-mcp-servers",
@@ -1739,7 +1803,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/axiomengine",
@@ -1762,7 +1827,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/azure-mcp",
@@ -1786,7 +1852,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Casebuilder4000",
@@ -1823,7 +1890,8 @@
       "known_defects": [
         "Domain-specific legal semantics are donor patterns, not Scale mission runtime ownership."
       ],
-      "donor_value": 8
+      "donor_value": 8,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/casey-custom-mcp-constellation",
@@ -1847,7 +1915,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/casey-legal-mcp-server",
@@ -1870,7 +1939,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/casey-mcp-constellation-working",
@@ -1893,7 +1963,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/casey-operator-packs",
@@ -1917,7 +1988,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/casibase",
@@ -1941,7 +2013,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/chrome-devtools-mcp",
@@ -1965,7 +2038,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/claude-code-mcp",
@@ -1989,7 +2063,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/claude-mcp-workspace",
@@ -2013,7 +2088,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/clickup-mcp-server",
@@ -2036,7 +2112,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/cline-mcp-memory-bank",
@@ -2060,7 +2137,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/code-graph-mcp",
@@ -2083,7 +2161,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/codex_py2cpp",
@@ -2105,7 +2184,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/codex-supermemory",
@@ -2128,7 +2208,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/codex-universal",
@@ -2150,7 +2231,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Codex",
@@ -2172,7 +2254,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/CodexDB",
@@ -2194,7 +2277,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/colossal-agent",
@@ -2218,7 +2302,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/colossus-gateway",
@@ -2252,7 +2337,8 @@
         "README/current implementation identity drift.",
         "Idempotency search surfaced only src/tools/computerUser.ts; full gateway idempotency contract remains unresolved in Agent A evidence."
       ],
-      "donor_value": 8
+      "donor_value": 8,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/comet-agent",
@@ -2276,7 +2362,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/comet-memory-integration",
@@ -2302,7 +2389,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/command-center",
@@ -2326,7 +2414,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/computer-user-storage",
@@ -2349,7 +2438,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/computer-user",
@@ -2386,7 +2476,8 @@
         "Legacy skills remain checkout-only and incompletely crystallized.",
         "Persistent production host requires environment-specific live proof."
       ],
-      "donor_value": 10
+      "donor_value": 10,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/constellation-memory-engine",
@@ -2409,7 +2500,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/context7",
@@ -2432,7 +2524,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/core",
@@ -2455,7 +2548,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/crawl4ai-rag-mcp",
@@ -2479,7 +2573,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/crewAI",
@@ -2502,7 +2597,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/deadline-tracker-mcp",
@@ -2525,7 +2621,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/deep-research",
@@ -2548,7 +2645,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/diffmem",
@@ -2571,7 +2669,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/ECHO",
@@ -2594,7 +2693,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/elysium-hub",
@@ -2618,7 +2718,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/everything-claude-code",
@@ -2642,7 +2743,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/everything-mcp-server",
@@ -2666,7 +2768,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/excel-mcp-server",
@@ -2689,7 +2792,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/FILEBOSS-HyperIntelligence-Framework",
@@ -2713,7 +2817,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/filesystem-mcp-server",
@@ -2736,7 +2841,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/firecrawl-mcp-server",
@@ -2759,7 +2865,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/FirstRepoWithCodex2",
@@ -2781,7 +2888,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
@@ -2813,7 +2921,8 @@
         "Full repository regression suite not yet executed for this branch revision.",
         "Local runtime did not have ruff installed."
       ],
-      "donor_value": 10
+      "donor_value": 10,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
@@ -2851,7 +2960,8 @@
       "known_defects": [
         "Baseline estate_catalog snapshot was dated 2026-09-20 and required current revalidation."
       ],
-      "donor_value": 10
+      "donor_value": 10,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/gcp-storage-mcp",
@@ -2874,7 +2984,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/gemini-mcp-tool",
@@ -2897,7 +3008,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/genai-toolbox",
@@ -2920,7 +3032,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/genius-fusion",
@@ -2943,7 +3056,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Genius-Mastery",
@@ -2976,7 +3090,8 @@
       "known_defects": [
         "Generated/mapped capabilities require independent execution evidence before promotion."
       ],
-      "donor_value": 10
+      "donor_value": 10,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/github-agent-orchestrator",
@@ -2999,7 +3114,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/GlacierEQ_Swarm",
@@ -3022,7 +3138,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/glaciereq-excellence-core",
@@ -3044,7 +3161,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/glaciereq-mcp-stack",
@@ -3067,7 +3185,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/glaciereq-memory-consolidation-project",
@@ -3092,7 +3211,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/glaciereq-memory-master",
@@ -3118,7 +3238,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 7
+      "donor_value": 7,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/GlacierEQ",
@@ -3141,7 +3262,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/gmail-mcp-server",
@@ -3164,7 +3286,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/godmind-colossus-gateway",
@@ -3189,7 +3312,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/GODMIND-quantum-intelligence-matrix",
@@ -3213,7 +3337,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/google-drive-mcp",
@@ -3238,7 +3363,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/goose-evolve",
@@ -3262,7 +3388,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/grokodile",
@@ -3284,7 +3411,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/hi-class-platform",
@@ -3306,7 +3434,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/HydraPersonalDefense",
@@ -3328,7 +3457,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/hyper-intelligent-mcp-hub",
@@ -3352,7 +3482,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/iceberg-mcp",
@@ -3375,7 +3506,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/infinity-gauntlet-mcp-stack",
@@ -3398,7 +3530,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/install-mcp",
@@ -3421,7 +3554,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/ish-install",
@@ -3443,7 +3577,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/job_app_helix",
@@ -3466,7 +3601,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/job-app-helix",
@@ -3510,7 +3646,8 @@
         "Public control plane intentionally excludes private application execution.",
         "README test/workflow counts were not independently rerun by Agent A at this exact head."
       ],
-      "donor_value": 10
+      "donor_value": 10,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/job-app",
@@ -3532,7 +3669,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/job-application",
@@ -3556,7 +3694,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/jupyter-mcp-server",
@@ -3579,7 +3718,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/jupyterlab-codex",
@@ -3601,7 +3741,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/lambda-stealth-team",
@@ -3623,7 +3764,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/langchain-mcp-adapters",
@@ -3646,7 +3788,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/langchain4j-aideepin",
@@ -3669,7 +3812,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/langgraph-mcp-agents",
@@ -3693,7 +3837,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/make-it-heavy-private",
@@ -3726,7 +3871,8 @@
         "Base profile intentionally disables privileged Smithery MCP.",
         "External mutations require deployment-specific opt-in."
       ],
-      "donor_value": 10
+      "donor_value": 10,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/make-it-heavy",
@@ -3749,7 +3895,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/master-memory-nexus",
@@ -3775,7 +3922,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 6
+      "donor_value": 6,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/MasterMemory",
@@ -3798,7 +3946,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mastermind-law",
@@ -3821,7 +3970,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mastermind",
@@ -3859,7 +4009,8 @@
       "known_defects": [
         "Vercel success does not establish all runtime/test claims."
       ],
-      "donor_value": 8
+      "donor_value": 8,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/MCP-Bridge",
@@ -3882,7 +4033,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-chrome",
@@ -3906,7 +4058,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-connector-awareness-engine",
@@ -3930,7 +4083,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-containers",
@@ -3953,7 +4107,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-context-forge",
@@ -3977,7 +4132,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-developer-subagent",
@@ -4001,7 +4157,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-ecosystem-platform",
@@ -4026,7 +4183,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-filesystem-server",
@@ -4049,7 +4207,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-gateway",
@@ -4073,7 +4232,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-go",
@@ -4096,7 +4256,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-iceberg-mansion",
@@ -4121,7 +4282,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-installer",
@@ -4144,7 +4306,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/MCP-MASTER-OMNI-GRID",
@@ -4168,7 +4331,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-master-server",
@@ -4191,7 +4355,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-memory-service",
@@ -4215,7 +4380,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-neo4j",
@@ -4238,7 +4404,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/MCP-OMNI-PLATFORM",
@@ -4263,7 +4430,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-playwright",
@@ -4287,7 +4455,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/MCP-QUANTUM-SECURITY-MATRIX",
@@ -4311,7 +4480,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-server-browserbase",
@@ -4336,7 +4506,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-server-contextstream",
@@ -4360,7 +4531,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-server-infranodus",
@@ -4383,7 +4555,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-server-ios",
@@ -4406,7 +4579,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-server-qdrant",
@@ -4429,7 +4603,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-server",
@@ -4452,7 +4627,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/MCP-SOVEREIGN-DEPLOYMENT-COMPLETE",
@@ -4478,7 +4654,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 6
+      "donor_value": 6,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/MCP-SuperAssistant",
@@ -4501,7 +4678,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-tool-belt",
@@ -4526,7 +4704,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-use",
@@ -4550,7 +4729,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp-websocket-bridge",
@@ -4574,7 +4754,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp.run-servlets",
@@ -4597,7 +4778,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcp",
@@ -4620,7 +4802,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcpdoc",
@@ -4643,7 +4826,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mcpm.sh",
@@ -4666,7 +4850,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mega-mcp",
@@ -4693,7 +4878,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 6
+      "donor_value": 6,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mega-pipeline-production",
@@ -4724,7 +4910,8 @@
       "known_defects": [
         "No exact-current-head execution receipt recovered in this read-only sweep."
       ],
-      "donor_value": 8
+      "donor_value": 8,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/mega-skills",
@@ -4760,7 +4947,8 @@
       "known_defects": [
         "Pipelines do not autonomously deploy or merge; deployment is intentionally approval-packet-only."
       ],
-      "donor_value": 10
+      "donor_value": 10,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/mega-skills",
@@ -4789,7 +4977,8 @@
       "known_defects": [
         "Current-head runtime benchmark for Faraway Party was not recovered."
       ],
-      "donor_value": 9
+      "donor_value": 9,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/mem-agent-mcp",
@@ -4813,7 +5002,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mem0-mcp-integration",
@@ -4838,7 +5028,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mem0-powerhouse",
@@ -4862,7 +5053,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mem0",
@@ -4887,7 +5079,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/memory-tool-build",
@@ -4910,7 +5103,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/memory",
@@ -4933,7 +5127,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/MemoryOS",
@@ -4957,7 +5152,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/MemoryPack",
@@ -4980,7 +5176,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mermicorn-token-saver",
@@ -5002,7 +5199,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mgm-omni",
@@ -5024,7 +5222,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/MiMo-Code",
@@ -5046,7 +5245,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mimo-config-backup",
@@ -5069,7 +5269,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/MiMo-Config",
@@ -5092,7 +5293,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mindsdb",
@@ -5115,7 +5317,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/MiniMax-MCP",
@@ -5138,7 +5341,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mirorl",
@@ -5162,7 +5366,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mobile-mcp",
@@ -5185,7 +5390,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/modelcontextprotocol",
@@ -5208,7 +5414,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mongodb-mcp-server",
@@ -5231,7 +5438,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/mongodb-memory-server",
@@ -5254,7 +5462,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/monolith",
@@ -5286,7 +5495,8 @@
         "Full private universe may exceed gh list page; forks may not all appear in repo list; do not treat library.json as complete GH mirror.",
         "Catalog presence is not runtime proof."
       ],
-      "donor_value": 10
+      "donor_value": 10,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/morpheus-dashboard",
@@ -5309,7 +5519,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/multiagent-optimization",
@@ -5332,7 +5543,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/n8n-mcp-server",
@@ -5355,7 +5567,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/n8n-nodes-mcp",
@@ -5378,7 +5591,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/n8n-smart-deploy-e2b-integration",
@@ -5401,7 +5615,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/neural-link-protocol",
@@ -5426,7 +5641,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/nexus-api",
@@ -5450,7 +5666,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/nexus-legal-grid",
@@ -5473,7 +5690,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Office-Word-MCP-Server",
@@ -5496,7 +5714,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/ollama-mcp-bridge",
@@ -5519,7 +5738,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Omni_Engine_MCP",
@@ -5543,7 +5763,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Omni_Engine",
@@ -5565,7 +5786,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/omni-agent-pro",
@@ -5588,7 +5810,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/omni-crawl-juggernaut",
@@ -5610,7 +5833,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/OMNI-ENGINE-SUPREME",
@@ -5632,7 +5856,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/omni-engine",
@@ -5654,7 +5879,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/omni",
@@ -5676,7 +5902,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/open-codex",
@@ -5698,7 +5925,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/oracle-sovereign-data-boundary-gate",
@@ -5720,7 +5948,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/orion-extension-intelligence-engine",
@@ -5744,7 +5973,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/overleaf-mcp",
@@ -5767,7 +5997,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/perplexity-app-connector-bridge",
@@ -5790,7 +6021,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/perplexity-enhancement-mcp",
@@ -5814,7 +6046,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/perplexity-goose-integration",
@@ -5838,7 +6071,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/perplexity-voice-integration",
@@ -5862,7 +6096,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/persistent-ai-memory",
@@ -5885,7 +6120,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/pixelle-mcp",
@@ -5908,7 +6144,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/PRIMORDIAL-MESH-TITAN",
@@ -5930,7 +6167,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro_Code",
@@ -5955,7 +6193,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-AEON-777",
@@ -5983,7 +6222,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 8
+      "donor_value": 8,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-AEON-BRAIN",
@@ -6011,7 +6251,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 8
+      "donor_value": 8,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-apex-fs-commander-omega",
@@ -6034,7 +6275,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-apex-fs-commander",
@@ -6063,7 +6305,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 8
+      "donor_value": 8,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-CI",
@@ -6086,7 +6329,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/pro-code",
@@ -6109,7 +6353,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-Colossus",
@@ -6132,7 +6377,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-Connectors",
@@ -6159,7 +6405,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 6
+      "donor_value": 6,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-DOCTOR-STRANGE",
@@ -6182,7 +6429,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-Evidence",
@@ -6206,7 +6454,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-Forensics",
@@ -6230,7 +6479,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-Gateway",
@@ -6255,7 +6505,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-Gemma",
@@ -6279,7 +6530,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-God-Mind",
@@ -6308,7 +6560,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 8
+      "donor_value": 8,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-iOS",
@@ -6335,7 +6588,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-Juggernaut",
@@ -6360,7 +6614,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-Kai",
@@ -6383,7 +6638,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-Legal-Docs",
@@ -6406,7 +6662,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-Legal-Warfare",
@@ -6429,7 +6686,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-Mastermind",
@@ -6456,7 +6714,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 6
+      "donor_value": 6,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-Memory",
@@ -6493,7 +6752,8 @@
         "No tests/ directory recovered.",
         "Live provider health and replication were not verified by Agent A."
       ],
-      "donor_value": 6
+      "donor_value": 6,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/Pro-Security",
@@ -6517,7 +6777,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-Swarm",
@@ -6544,7 +6805,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 6
+      "donor_value": 6,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Pro-xAI",
@@ -6569,7 +6831,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/project_openai_codex",
@@ -6591,7 +6854,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/ProxmoxMCP",
@@ -6614,7 +6878,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/qmo-bridge",
@@ -6639,7 +6904,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/QUANTUM-INTELLIGENCE-HUB",
@@ -6663,7 +6929,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/quantum-memory-orchestrator",
@@ -6688,7 +6955,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/QUANTUM-SOVEREIGN-PLATFORM",
@@ -6711,7 +6979,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/railway-mcp-remote",
@@ -6735,7 +7004,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/remote-mcp-servers",
@@ -6758,7 +7028,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/render-mcp-server",
@@ -6781,7 +7052,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/repo-fleet-controller",
@@ -6805,7 +7077,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/roo-code-memory-bank",
@@ -6828,7 +7101,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Rube",
@@ -6851,7 +7125,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/scale-ai-label-consensus-fence",
@@ -6885,7 +7160,8 @@
         "Proof receipt is not demonstrated as Git-commit-bound to current head.",
         "Explicitly not production deployed."
       ],
-      "donor_value": 7
+      "donor_value": 7,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/sigma-glue",
@@ -6924,7 +7200,8 @@
         "Production key management, backup/restore and multi-host coordination incomplete.",
         "Complete-federation safe-disablement proof incomplete."
       ],
-      "donor_value": 10
+      "donor_value": 10,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/smithery-mcp-ultimate-v2",
@@ -6948,7 +7225,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/snowball-steamroller",
@@ -6979,7 +7257,8 @@
         "Repository explicitly not production-complete.",
         "Synthetic pilot does not establish production behavior."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "source_inspected"
     },
     {
       "repository": "GlacierEQ/Solomon-Codex-Quantum-Legal-Intelligence-System",
@@ -7001,7 +7280,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/sourcegraph-mcp",
@@ -7024,7 +7304,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/SOVEREIGN-ASCENSION-PROTOCOL",
@@ -7050,7 +7331,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 6
+      "donor_value": 6,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/SOVEREIGNASCENSIONPROTOCOL-QUANTUM-DEPLOYMENT",
@@ -7075,7 +7357,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/spec-workflow-mcp",
@@ -7098,7 +7381,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/spiral-engine",
@@ -7124,7 +7408,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 7
+      "donor_value": 7,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Stealth-Claw",
@@ -7146,7 +7431,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/stealth-swarm-orchestrator",
@@ -7171,7 +7457,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/supabase-mcp",
@@ -7194,7 +7481,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/supermemory-mcp",
@@ -7218,7 +7506,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/supermemory",
@@ -7241,7 +7530,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/swarm",
@@ -7266,7 +7556,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 5
+      "donor_value": 5,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Taskade-mcp",
@@ -7290,7 +7581,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/tavily-mcp",
@@ -7313,7 +7605,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/THE-BEAST",
@@ -7335,7 +7628,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/token_saver",
@@ -7357,7 +7651,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/unified-browser-automation",
@@ -7384,7 +7679,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 7
+      "donor_value": 7,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/unified-credential-mcp",
@@ -7407,7 +7703,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/unified-memory-mcp",
@@ -7431,7 +7728,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/unified-visual-mcp",
@@ -7454,7 +7752,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/unity-mcp",
@@ -7477,7 +7776,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/vim_codex",
@@ -7499,7 +7799,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/vulcan-file-ops",
@@ -7523,7 +7824,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Windows-MCP",
@@ -7547,7 +7849,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-community-alpha",
@@ -7570,7 +7873,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-community-omega",
@@ -7593,7 +7897,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-cooling-alpha",
@@ -7616,7 +7921,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-cooling-omega",
@@ -7639,7 +7945,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-energy-alpha",
@@ -7662,7 +7969,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-energy-omega",
@@ -7685,7 +7993,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-justice-alpha",
@@ -7708,7 +8017,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-justice-omega",
@@ -7731,7 +8041,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-microcode-alpha",
@@ -7754,7 +8065,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-microcode-omega",
@@ -7777,7 +8089,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-nanosphere-alpha",
@@ -7800,7 +8113,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-nanosphere-omega",
@@ -7823,7 +8137,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-nexus-alpha",
@@ -7846,7 +8161,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-nexus-omega",
@@ -7869,7 +8185,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-security-alpha",
@@ -7892,7 +8209,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-security-omega",
@@ -7915,7 +8233,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-servers-alpha",
@@ -7938,7 +8257,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-servers-omega",
@@ -7961,7 +8281,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-waterplant-alpha",
@@ -7984,7 +8305,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-aeon777-waterplant-omega",
@@ -8007,7 +8329,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/xai-legal-intelligence",
@@ -8030,7 +8353,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Z-BACKUP-apex-ci-guardian",
@@ -8052,7 +8376,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Z-BACKUP-apex-command-center",
@@ -8078,7 +8403,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 7
+      "donor_value": 7,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Z-BACKUP-apex-gateway",
@@ -8102,7 +8428,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Z-BACKUP-APEX-LEGAL-WARFARE-ORCHESTRATOR",
@@ -8128,7 +8455,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 6
+      "donor_value": 6,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Z-BACKUP-APEX-NEXUS-AUTOMATION",
@@ -8152,7 +8480,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Z-BACKUP-apex-vault",
@@ -8174,7 +8503,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Z-BACKUP-aspen-grove-omni-bridge",
@@ -8197,7 +8527,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Z-BACKUP-aspen-grove-unified",
@@ -8222,7 +8553,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 6
+      "donor_value": 6,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Z-BACKUP-DesktopCommanderMCP",
@@ -8246,7 +8578,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Z-BACKUP-FEDERAL-FORENSIC-REPAIR-OMNIBUS",
@@ -8269,7 +8602,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Z-BACKUP-ios-forensics-mcp",
@@ -8292,7 +8626,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/Z-BACKUP-mastermind-colossus",
@@ -8317,7 +8652,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 4
+      "donor_value": 4,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/zen-mcp-server",
@@ -8340,7 +8676,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 3
+      "donor_value": 3,
+      "evidence_level": "catalog_only"
     },
     {
       "repository": "GlacierEQ/zsh_codex",
@@ -8362,7 +8699,8 @@
         "Catalog-only evidence; implementation maturity is not verified.",
         "Current repository revision not independently resolved in this node."
       ],
-      "donor_value": 2
+      "donor_value": 2,
+      "evidence_level": "catalog_only"
     }
   ],
   "prior_gatling_benchmark": {
@@ -8419,5 +8757,29 @@
     "proof_inflation_removed": [
       "GlacierEQ/job-app-helix production→hardened pending exact-head independent execution receipt"
     ]
+  },
+  "evidence_model": {
+    "schema": "glaciereq.scale-fde.evidence-levels.v1",
+    "ordering": [
+      "catalog_only",
+      "source_inspected",
+      "test_observed",
+      "execution_observed",
+      "provider_verified"
+    ],
+    "rule": "Levels describe the strongest evidence directly observed by Agent A for this node. Presence of test paths or historical receipts alone does not promote a node to test_observed or execution_observed.",
+    "provenance_principles": [
+      "Evidence must identify source revision and producing/observing activity strongly enough for downstream verification.",
+      "Telemetry and timestamps are excluded from semantic identity.",
+      "Catalog assertions never become runtime truth through repetition."
+    ],
+    "standards_studied": [
+      "W3C PROV-DM / PROV Primer: entity, activity, derivation and responsibility provenance model.",
+      "SLSA v1.2 provenance: verifiable origin/process information with completeness, authenticity and accuracy concerns."
+    ],
+    "current_counts": {
+      "catalog_only": 311,
+      "source_inspected": 27
+    }
   }
 }
