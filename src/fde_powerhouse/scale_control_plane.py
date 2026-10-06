@@ -283,11 +283,12 @@ class ScaleControlPlane:
             self.root / "ARCHITECTURE_CONTRACT.json",
             architecture,
         )
-        (shared / "SCALE_FDE_MISSION.yaml").write_text(mission)
-        self._write_json(
-            shared / "ARCHITECTURE_CONTRACT.json",
-            architecture,
-        )
+        shared_mission = shared / "SCALE_FDE_MISSION.yaml"
+        if not shared_mission.exists():
+            shared_mission.write_text(mission)
+        shared_architecture = shared / "ARCHITECTURE_CONTRACT.json"
+        if not shared_architecture.exists():
+            self._write_json(shared_architecture, architecture)
 
         for worker in WORKSTREAMS:
             runtime_projection = state["workstreams"][worker]
