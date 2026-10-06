@@ -5,8 +5,9 @@ from __future__ import annotations
 import hashlib
 import json
 import time
+from collections.abc import Callable, Iterable, Mapping, Sequence
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import Any, Callable, Iterable, Mapping, Sequence
+from typing import Any
 
 MATURITY = {"prototype", "working", "hardened", "production"}
 EVIDENCE_LEVELS = {
@@ -60,7 +61,7 @@ def _normalize(node: Mapping[str, Any]) -> dict[str, Any]:
     for field in LIST_FIELDS:
         value = node[field]
         if not isinstance(value, Sequence) or isinstance(value, (str, bytes, bytearray)):
-            raise ValueError(f"{field} must be a list-like sequence")
+            raise TypeError(f"{field} must be a list-like sequence")
         normalized[field] = sorted({str(item) for item in value})
     normalized["maturity"] = maturity
     normalized["verified_state"] = str(node["verified_state"])
@@ -82,7 +83,7 @@ def _normalize(node: Mapping[str, Any]) -> dict[str, Any]:
         required_evidence = ("kind", "revision", "path", "claim", "digest")
         for record in evidence:
             if not isinstance(record, Mapping):
-                raise ValueError("evidence records must be mappings")
+                raise TypeError("evidence records must be mappings")
             missing_evidence = [field for field in required_evidence if field not in record]
             if missing_evidence:
                 raise ValueError(
@@ -145,7 +146,7 @@ def semantic_digest(payload: Mapping[str, Any]) -> str:
     if not isinstance(raw_nodes, Sequence) or isinstance(
         raw_nodes, (str, bytes, bytearray)
     ):
-        raise ValueError("payload nodes must be a list-like sequence")
+        raise TypeError("payload nodes must be a list-like sequence")
     normalized = aggregate_capability_nodes(raw_nodes)["nodes"]
     encoded = json.dumps(
         {"nodes": normalized},
