@@ -5,9 +5,8 @@ import json
 import zipfile
 from pathlib import Path
 
-import pytest
-
 from fde_powerhouse.scale_fusion import (
+
     FusionContractError,
     fusion_digest,
     load_fusion,
@@ -15,6 +14,8 @@ from fde_powerhouse.scale_fusion import (
     validate_fusion,
     write_faraway_projection,
 )
+
+import pytest
 
 
 def fusion_profile() -> dict:
