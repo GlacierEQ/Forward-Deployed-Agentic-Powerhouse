@@ -19,6 +19,16 @@ from .scale_orchestrator import (
 )
 
 
+def _resolve_mission_path(mission_path: Path) -> Path:
+    if mission_path.exists():
+        return mission_path
+    if mission_path.name == "SCALE_FDE_MISSION.yaml" and mission_path.parent == Path("."):
+        shared = Path("shared") / mission_path.name
+        if shared.exists():
+            return shared
+    return mission_path
+
+
 def _default_launchers_path(mission_path: Path) -> Path:
     resolved = mission_path.resolve()
     if resolved.parent.name == "shared":
@@ -29,7 +39,7 @@ def _default_launchers_path(mission_path: Path) -> Path:
 
 
 def _run(args: argparse.Namespace) -> int:
-    mission_path = Path(args.mission)
+    mission_path = _resolve_mission_path(Path(args.mission))
     mission = load_mission(mission_path)
     launchers_path = (
         Path(args.launchers)
