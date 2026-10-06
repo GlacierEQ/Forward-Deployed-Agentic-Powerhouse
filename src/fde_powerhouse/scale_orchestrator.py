@@ -580,7 +580,7 @@ def run_mission(
                             "dispatch receipt must be a mapping"
                         )
                     outcomes[workstream_id] = dict(receipt)
-                except Exception as exc:
+                except Exception as exc:  # noqa: BLE001 - worker boundary
                     outcomes[workstream_id] = {
                         "status": "failed",
                         "error_type": type(exc).__name__,
