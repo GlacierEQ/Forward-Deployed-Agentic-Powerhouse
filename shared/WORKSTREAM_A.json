@@ -6,7 +6,7 @@
   "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
   "base_branch": "scale-fde-demo",
   "branch": "scale/estate-intelligence",
-  "state": "COMPLETE_WITH_EXPLICIT_EVIDENCE_BOUNDARY",
+  "state": "FINAL_VERIFICATION_PENDING",
   "exclusive_ownership": [
     "full estate reconnaissance",
     "concurrent bounded read-only workers",
@@ -181,8 +181,64 @@
       "semantic digest excludes timing telemetry",
       "serial/parallel benchmark invalidates performance claims on worker health failure",
       "serial/parallel benchmark invalidates performance claims on semantic drift",
-      "capability graph uses the same Python canonical tuple ordering as the reducer"
-    ]
+      "capability graph uses the same Python canonical tuple ordering as the reducer",
+      "whole-graph semantic digest canonicalizes nodes, typed edges and mission-critical membership",
+      "typed edge evidence is source/revision/path/blob/claim bound",
+      "mission-critical projection cannot reference repositories absent from the capability graph",
+      "evidence-level counts include explicit zero-count states"
+    ],
+    "saturation_benchmark": {
+      "workload": "Exact-revision README fetch across the 16-repository mission-critical subgraph through the authenticated GitHub connector.",
+      "widths": [
+        {
+          "workers": 1,
+          "wall_clock_ms": 8306,
+          "throughput_repos_per_sec": 1.926,
+          "speedup_vs_serial": 1,
+          "semantic_match": true,
+          "failures": 0
+        },
+        {
+          "workers": 2,
+          "wall_clock_ms": 5115,
+          "throughput_repos_per_sec": 3.128,
+          "speedup_vs_serial": 1.6238514174,
+          "semantic_match": true,
+          "failures": 0
+        },
+        {
+          "workers": 4,
+          "wall_clock_ms": 3431,
+          "throughput_repos_per_sec": 4.663,
+          "speedup_vs_serial": 2.4208685514,
+          "semantic_match": true,
+          "failures": 0
+        },
+        {
+          "workers": 8,
+          "wall_clock_ms": 3553,
+          "throughput_repos_per_sec": 4.503,
+          "speedup_vs_serial": 2.3377427526,
+          "semantic_match": true,
+          "failures": 0
+        },
+        {
+          "workers": 16,
+          "wall_clock_ms": 3738,
+          "throughput_repos_per_sec": 4.28,
+          "speedup_vs_serial": 2.2220438737,
+          "semantic_match": true,
+          "failures": 0
+        }
+      ],
+      "saturation_rule": "Smallest healthy worker width reaching at least 95% of maximum observed throughput.",
+      "recommended_workers": 4,
+      "observed_max_throughput_repos_per_sec": 4.663,
+      "all_runs_healthy": true,
+      "all_semantic_matches": true,
+      "semantic_identity": "repository + pinned revision + README blob SHA + character length",
+      "execution_boundary": "Authenticated GitHub connector measurements. The rejected combined harness exceeded the per-execution connector call ceiling and is not counted as benchmark evidence."
+    }
   },
   "deliverables": {
     "capability_graph": {
@@ -214,13 +270,13 @@
     "GlacierEQ/aspen-grove-connectors": "fd37faa07b8f05cd287163af92747970a2a4061e",
     "GlacierEQ/apex-boot-core": "d81d579c73d859bdfa5ef25c14a2800d5586f985",
     "GlacierEQ/apex-bootup-core": "8ccb37e18d20539db53c9dc67963c05e32a4cfbc",
-    "GlacierEQ/Genius-Mastery": "10aa50c09f37bfd0fd313b5fb8d5e80a021d6fbf",
+    "GlacierEQ/Genius-Mastery": "f58d0cf521a68d57f2648c20872e580334b331e3",
     "GlacierEQ/mega-skills": "7dee0c0a98468e29d364ee18a9c0bcd57f05b91f",
     "GlacierEQ/job-app-helix": "e369764107921b25cb67d398aed0bf54fb521ca7",
     "GlacierEQ/sigma-glue": "4a1ca8e5c88a62e8a94a43213b2c509af6afcea3",
     "GlacierEQ/computer-user": "1f0ae18968b4e830f66ee97dd4a2dc4805c6c298",
     "GlacierEQ/colossus-gateway": "851f50ae67a8a333b480ef8106a5bcbd579c6a76",
-    "GlacierEQ/apex-control-plane": "134abd020485d440fc657e1171671824b05a276f",
+    "GlacierEQ/apex-control-plane": "480131e2b1f7d919ebb80be7d0760ec431135a20",
     "GlacierEQ/make-it-heavy-private": "85b4b247cb4e1767d32bc47b34b9969bafec3227",
     "GlacierEQ/Forward-Deployed-Agentic-Powerhouse": "824cd7edc41ed8fa0da2ef491a27c079fd62d1a6",
     "GlacierEQ/apex-singularity-head": "38aec8da1e29f8365e54abf6bdaf5dfcf96a75d0",
@@ -269,11 +325,11 @@
     },
     {
       "id": "A-DEFECT-005",
-      "severity": "medium",
+      "severity": "low",
       "scope": "Agent_A_branch_verification",
-      "state": "RESOLVED_LOCAL_AND_MATRIX_CODE_GATES",
-      "finding": "Full repository regression suite passes 64/64 locally at the hardened Agent A revision, and GitHub Actions run 37448141761 passed the full regression step on Python 3.11, 3.12 and 3.13.",
-      "consequence": "Branch-wide functional regression proof is now established for the code under test; overall workflow promotion remains gated on repaired machine-artifact validation."
+      "state": "RESOLVED_CODE_AND_COVERAGE_GATES",
+      "finding": "Exact branch run 37498105124 passed Python 3.11/3.12/3.13 lint, compile, 64/64 regression, 70% coverage gate (78.31% measured), machine-artifact validation and 338-node semantic invariance.",
+      "consequence": "Agent A code/regression/coverage proof is established; the newer whole-graph artifact validator remains separately gated until its repaired exact-head run passes."
     },
     {
       "id": "A-DEFECT-006",
@@ -306,6 +362,22 @@
       "state": "ACCEPTED_BASELINE_DEBT_OUTSIDE_AGENT_A_CHANGED_FILES",
       "finding": "Repository-wide Ruff reports 11 pre-existing errors outside src/fde_powerhouse/gatling_estate.py and tests/test_gatling_estate.py.",
       "consequence": "Agent A does not cross ownership boundaries to clean unrelated host-repository style debt. Exact Agent A files are lint-clean and full tests pass."
+    },
+    {
+      "id": "A-DEFECT-010",
+      "severity": "high",
+      "scope": "mission_critical_live_health",
+      "state": "OPEN_PRESERVED_NOT_BLOCKING_AGENT_A_MAPPING",
+      "finding": "Latest observed exact-head health/semantics workflows fail for aspen-grove-memory (37464498989), aspen-grove-swarm (37466265749), aspen-grove-connectors (37465329752), and apex-boot-core APEX Semantics Verification (37228419963).",
+      "consequence": "These components remain valid source-level architecture donors but must not be represented as currently healthy/provider-verified. Owning workstreams must resolve or route around their runtime health before relying on them."
+    },
+    {
+      "id": "A-DEFECT-011",
+      "severity": "low",
+      "scope": "whole_graph_artifact_validator",
+      "state": "REPAIRED_PENDING_FINAL_CI",
+      "finding": "Run 37499213659 passed lint/compile/66 regression tests/coverage but failed artifact validation because the validator compared a sparse observed evidence-count map against the graph's intentional full five-level count map including execution_observed=0.",
+      "consequence": "Validator was corrected in 921bd0cce61ff7243319d75e40bb6e67e449bab4; no whole-graph PASS claim until the final exact-head run succeeds."
     }
   ],
   "integration_contract": {
@@ -338,9 +410,9 @@
     "Sibling WORKSTREAM_B-E artifacts, INTEGRATION_QUEUE.json, DEFECT_QUEUE.json and RECEIPT_INDEX.json are not owned by Agent A."
   ],
   "terminal_condition": {
-    "workstream_a_complete": true,
+    "workstream_a_complete": false,
     "mission_complete": false,
-    "reason": "Agent A's authenticated 1385-repository census, 338-node deterministic capability graph, exact-revision deep probes, hardened bounded Gatling worker/reducer, resumable tamper-evident checkpoints, provenance validation, matched serial-vs-parallel benchmark semantics, local 64-test regression, and exact-branch Python 3.11/3.12/3.13 CI are verified. Remaining mission completion belongs to sibling workstreams and shared integration."
+    "reason": "All requested Agent A hardening stages have implementation/evidence except the final post-artifact exact-head CI/readback. Do not close Workstream A until the repaired whole-graph validator and persisted saturation benchmark pass together on the exact branch head."
   },
   "hardening_v2": {
     "started_at": "2026-10-05T23:52:00-10:00",
@@ -369,7 +441,7 @@
         "semantic digest invariant across input ordering and worker count",
         "semantic digest changes when capability evidence changes"
       ],
-      "execution_state": "REPAIR_COMMITTED_AWAITING_NEW_HEAD_CI",
+      "execution_state": "WHOLE_GRAPH_VALIDATOR_REPAIR_COMMITTED_AWAITING_FINAL_EXACT_HEAD_CI",
       "first_ci_run": {
         "run_id": 37446113010,
         "tested_head": "62b140e8489f5c68fcfbe7a593ccf2015befe7ad",
@@ -390,20 +462,31 @@
         "reason": "Prior pull_request run completed against pre-repair head; record current repaired head to force a synchronize event and obtain exact-head CI.",
         "prior_run_id": 37446113010,
         "prior_run_head": "62b140e8489f5c68fcfbe7a593ccf2015befe7ad"
+      },
+      "whole_graph_digest": {
+        "red_test_commit": "2eac8e07f7cd312e3de3fee7361785215a2cb61a",
+        "red_run": 37499120418,
+        "implementation_commit": "0125c7b0d0fbf68b2e96807d1e92b636ac7ea934",
+        "validation_commit": "39b5f7cabf86dd22c4006f467eb0c26d368c5160",
+        "validation_run": 37499213659,
+        "validation_run_result": "CODE_GATES_PASS_ARTIFACT_GATE_FAIL",
+        "validator_failure": "Sparse observed evidence-count map omitted execution_observed=0 while the graph intentionally records all evidence levels.",
+        "validator_repair_commit": "921bd0cce61ff7243319d75e40bb6e67e449bab4",
+        "final_state": "PENDING_FINAL_EXACT_HEAD_CI"
       }
     },
     "evidence_levels": {
       "catalog_only": 311,
-      "source_inspected": 27,
-      "test_observed": 0,
+      "source_inspected": 24,
+      "test_observed": 2,
       "execution_observed": 0,
-      "provider_verified": 0
+      "provider_verified": 1
     },
     "validation_pr": {
-      "number": 5,
+      "number": 7,
       "state": "draft",
       "merged": false,
-      "purpose": "CI execution only; no promotion until verification and integration review.",
+      "purpose": "Validation-only surface; dedicated branch workflow is authoritative for exact branch pushes. No merge performed.",
       "base": "main",
       "head": "scale/estate-intelligence"
     }
@@ -524,6 +607,90 @@
         "repair_run": 37448420168,
         "repair_run_conclusion": "SUCCESS"
       }
+    },
+    "coverage_and_node_semantics": {
+      "run_id": 37498105124,
+      "revision": "9b71dc7b50c0ee4cd8632c3572e6d7a3ed7a6536",
+      "conclusion": "SUCCESS",
+      "matrix": {
+        "3.11": "PASS",
+        "3.12": "PASS",
+        "3.13": "PASS"
+      },
+      "full_regression": "64/64 PASS",
+      "measured_coverage_pct": 78.31,
+      "required_coverage_pct": 70,
+      "capability_nodes": 338,
+      "node_semantic_digest": "sha256:a82044210b8e00ff1b2097134de52fff62314088901d1882147e5b5dc49a95fc",
+      "forward_reverse_match": true
+    },
+    "typed_graph_pre_digest": {
+      "graph_commit": "f724b5df5d66bc0f5fdb5360bae222815a1d03b6",
+      "run_id": 37499013720,
+      "conclusion": "SUCCESS",
+      "typed_edges": 20,
+      "mission_critical_repositories": 16
+    },
+    "whole_graph_digest": {
+      "implementation_commit": "0125c7b0d0fbf68b2e96807d1e92b636ac7ea934",
+      "tests_after_implementation": 66,
+      "latest_failed_artifact_run": 37499213659,
+      "code_gates_on_failed_artifact_run": {
+        "lint": "PASS",
+        "compile": "PASS",
+        "full_regression": "66/66 PASS",
+        "coverage_pct": 78.12
+      },
+      "validator_repair_commit": "921bd0cce61ff7243319d75e40bb6e67e449bab4",
+      "final_exact_head_state": "PENDING"
+    },
+    "mission_critical_refresh": {
+      "selected_repositories": 16,
+      "typed_edges": 20,
+      "evidence_promotions": {
+        "GlacierEQ/Genius-Mastery": "test_observed",
+        "GlacierEQ/sigma-glue": "provider_verified"
+      },
+      "refreshed_revisions": {
+        "GlacierEQ/Genius-Mastery": "f58d0cf521a68d57f2648c20872e580334b331e3",
+        "GlacierEQ/apex-control-plane": "480131e2b1f7d919ebb80be7d0760ec431135a20"
+      },
+      "live_health_boundaries": [
+        {
+          "repository": "GlacierEQ/aspen-grove-memory",
+          "run_id": 37464498989,
+          "result": "FAILURE",
+          "cause": "unavailable from connector"
+        },
+        {
+          "repository": "GlacierEQ/aspen-grove-swarm",
+          "run_id": 37466265749,
+          "result": "FAILURE",
+          "cause": "unavailable from connector"
+        },
+        {
+          "repository": "GlacierEQ/aspen-grove-connectors",
+          "run_id": 37465329752,
+          "result": "FAILURE",
+          "cause": "unavailable from connector"
+        },
+        {
+          "repository": "GlacierEQ/apex-boot-core",
+          "run_id": 37228419963,
+          "result": "FAILURE",
+          "cause": "job log unavailable from connector"
+        },
+        {
+          "repository": "GlacierEQ/Genius-Mastery",
+          "run_id": 37281797389,
+          "result": "SUCCESS"
+        },
+        {
+          "repository": "GlacierEQ/sigma-glue",
+          "run_id": 31279895312,
+          "result": "SUCCESS_PROVIDER_PROOF"
+        }
+      ]
     }
   }
 }
