@@ -2,7 +2,7 @@
   "schema": "glaciereq.scale-fde.workstream/v1",
   "workstream": "C",
   "name": "Memory / Composition / Compounding",
-  "status": "component_verified_ready_for_integration",
+  "status": "canonical_frontier_hydrated_awaiting_E_mission_receipt",
   "ownership": [
     "Aspen Grove structured mission continuity",
     "Genius Mastery deterministic capability composition",
@@ -56,7 +56,8 @@
     "aspen_grove_memory": "c5b8bb44016ee9c17e44c58b53f0545bfdc9691f",
     "genius_mastery": "4ab452f7ee08f865f24e61f011b1c803fc9a1c7d",
     "fde_sidecar_code": "2e3cfe61c7071422589fd4d234b144203a32efbb",
-    "fde_workflow_pin": "8cfaaeb1d28657cef9b4733f68fb3176f1bde05f"
+    "fde_workflow_pin": "8cfaaeb1d28657cef9b4733f68fb3176f1bde05f",
+    "fde_canonical_frontier": "84cf73675d8f14e601b661522d79ed35a422fe14"
   },
   "verification": {
     "red": {
@@ -98,7 +99,28 @@
         ],
         "observed": "2/2 failed with ValueError where the typed contract requires TypeError"
       }
-    ]
+    ],
+    "canonical_frontier": {
+      "red": {
+        "revision": "665f848e0285809a3af067ae112b52a6b49f1cf0",
+        "workflow_run": 37497754456,
+        "result": "failed at pytest import because prepare_canonical_frontier did not exist; lint passed"
+      },
+      "green": {
+        "revision": "84cf73675d8f14e601b661522d79ed35a422fe14",
+        "focused_workflow_run": 37497964584,
+        "full_ci_run": 37497964137,
+        "result": "focused Agent C contract passed; repository CI passed"
+      },
+      "guarantees": [
+        "canonical mission, Agent-A capability graph, Workstream-E contract and receipt index are loaded as one coherent snapshot",
+        "mission identity must match across canonical mission, Workstream E and receipt index",
+        "Agent-A graph must contain Aspen Grove Memory and Genius-Mastery donors",
+        "all canonical inputs are content-digested before continuity persistence",
+        "missing MISSION_RECEIPT.json is preserved as an external dependency",
+        "capability registry is not mutated while independent mission verification is absent"
+      ]
+    }
   },
   "defects": [
     {
@@ -118,6 +140,12 @@
       "status": "external_dependency",
       "summary": "Aspen native GitHub Actions runner previously accepted jobs with runner_id 0 and executed no test steps.",
       "containment": "exact Aspen donor tests were executed on the authorized macOS estate verifier; runner repair remains outside Workstream C."
+    },
+    {
+      "id": "C-DEFECT-004",
+      "status": "external_dependency",
+      "summary": "Workstream E has not emitted source-bound shared/MISSION_RECEIPT.json; its own contract and receipt index explicitly preserve this as unresolved.",
+      "containment": "Agent C hydrates and preserves the canonical mission frontier, fails closed, and resumes only after an independently verified receipt becomes present."
     }
   ],
   "integration_contract": {
@@ -135,9 +163,34 @@
     "sibling_boundary": "No sibling workstream implementation is modified or treated as verified by this workstream."
   },
   "next_frontier": [
-    "consume canonical SCALE_FDE_MISSION.yaml when published on integration branch",
-    "run the same mechanism against the real Mission-1 verification receipt produced by Workstream E",
-    "prove Mission-2 reuse against that real extracted capability",
-    "hand exact receipts and unresolved external dependencies to integration without blind merge"
-  ]
+    "resume automatically when shared/MISSION_RECEIPT.json is source-bound by Workstream E",
+    "validate the receipt mission_id and verification_status against the preserved canonical snapshot",
+    "perform C-owned explicit reusable-capability extraction from verified mission evidence without inferring success from prose",
+    "register the capability atomically and prove Mission 2 automatic reuse against the real verified mission",
+    "hand exact receipts to integration without blind merge"
+  ],
+  "canonical_shared_snapshot": {
+    "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+    "main_revision": "0e623a771c5eaae79e8b1954228cdcd1e3c5a050",
+    "artifacts": {
+      "SCALE_FDE_MISSION.yaml": {
+        "git_blob_sha": "b33aa00528fc3a26723233a4e350755199a57233"
+      },
+      "SCALE_CAPABILITY_GRAPH.json": {
+        "git_blob_sha": "d37cf7b8355c26a0d27db858d43567b53925eba2"
+      },
+      "WORKSTREAM_E.json": {
+        "git_blob_sha": "ca0ed10cea431ad957eb8ed7a714907f7bfa083b"
+      },
+      "RECEIPT_INDEX.json": {
+        "git_blob_sha": "9f3f59fa63ce6f6fe9fd2a5295ce28c1a3aef306"
+      }
+    },
+    "observed_state": {
+      "mission_id": "SCALE-FDE-DEMO-001",
+      "workstream_e_status": "PARTIAL",
+      "mission_receipt_present": false,
+      "receipt_index_marks_mission_receipt_unresolved": true
+    }
+  }
 }
