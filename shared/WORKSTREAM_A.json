@@ -331,16 +331,24 @@
       "severity": "low",
       "scope": "Agent_A_branch_verification",
       "state": "RESOLVED",
-      "finding": "Exact branch runs culminated in 37500203003 passing Python 3.11/3.12/3.13 targeted lint, compile, 66/66 regression, 70% coverage gate (78.12% measured), and whole-graph machine-artifact validation.",
-      "consequence": "Agent A branch-wide code, coverage, and graph-contract proof is established for the proven graph revision 884dec6f104d2d9042c027898da4c36d40e34e8b."
+      "finding": "Full branch regression and coverage gate now pass on Python 3.11-3.13 with the canonical launcher implementation.",
+      "consequence": "Closed by workflow run 37509688308.",
+      "verification": {
+        "workflow_run_id": 37509688308,
+        "result": "success"
+      }
     },
     {
       "id": "A-DEFECT-006",
       "severity": "low",
       "scope": "Agent_A_branch_lint",
-      "state": "RESOLVED_AGENT_A_SCOPE",
-      "finding": "ruff is available on the live execution host and Agent A implementation/test files pass targeted Ruff.",
-      "consequence": "Agent A changed files are lint-clean. Repository-wide lint debt is preserved separately instead of being attributed to this workstream."
+      "state": "RESOLVED",
+      "finding": "Ruff is installed and enforced in the dedicated Agent A workflow for Gatling plus launcher surfaces.",
+      "consequence": "Closed by workflow run 37509688308.",
+      "verification": {
+        "workflow_run_id": 37509688308,
+        "result": "success"
+      }
     },
     {
       "id": "A-DEFECT-007",
@@ -386,7 +394,8 @@
   "integration_contract": {
     "publishes": [
       "shared/SCALE_CAPABILITY_GRAPH.json",
-      "shared/WORKSTREAM_A.json"
+      "shared/WORKSTREAM_A.json",
+      "configs/scale_launchers.yaml"
     ],
     "consumes": [
       "shared/SCALE_FDE_MISSION.yaml when supplied by mission owner",
@@ -402,7 +411,15 @@
       "donor_repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
       "paths": [
         "src/fde_powerhouse/gatling_estate.py",
-        "tests/test_gatling_estate.py"
+        "tests/test_gatling_estate.py",
+        "src/fde_powerhouse/scale_orchestrator.py",
+        "src/fde_powerhouse/scale_cli.py",
+        "src/fde_powerhouse/scale_control_plane.py",
+        "configs/scale_launchers.yaml",
+        "tests/test_scale_orchestrator.py",
+        "tests/test_scale_cli.py",
+        "tests/test_scale_launcher_config.py",
+        "tests/test_scale_control_plane.py"
       ],
       "condition": "Transcribe/merge only after parent integration review; no sibling workstream ownership changes."
     }
@@ -731,5 +748,107 @@
     "workflow": ".github/workflows/scale-estate-intelligence.yml",
     "rule": "The completion-record commit itself must pass the exact-branch workflow on Python 3.11/3.12/3.13. The workflow run is the non-self-referential external receipt for this final JSON state.",
     "merge_state": "NO_MERGE_PERFORMED"
+  },
+  "mission_launcher": {
+    "state": "IMPLEMENTED_CANONICAL_CONTROL_PLANE_ADAPTER",
+    "authority_boundary": {
+      "canonical_mission": "shared/SCALE_FDE_MISSION.yaml",
+      "canonical_control_plane": "src/fde_powerhouse/scale_control_plane.py",
+      "mission_completion_authority": "ScaleControlPlane + Workstream E",
+      "launcher_claim": "launch success is never promoted to mission completion",
+      "no_sixth_framework": true
+    },
+    "implementation": {
+      "orchestrator_path": "src/fde_powerhouse/scale_orchestrator.py",
+      "cli_path": "src/fde_powerhouse/scale_cli.py",
+      "launcher_binding_path": "configs/scale_launchers.yaml",
+      "entrypoint": "scale-fde-demo",
+      "command": "scale-fde-demo run shared/SCALE_FDE_MISSION.yaml",
+      "durable_state_default": ".scale-fde/orchestrator-state.json",
+      "shell": false,
+      "checkpoint_before_dispatch": true,
+      "resume_default": true,
+      "ambiguous_replay": "fail_closed_unless_terminal_readback_or_explicit_--retry-ambiguous",
+      "failed_replay": "explicit_--retry-failed_only",
+      "mission_and_launcher_digests_both_bound_to_resume_state": true,
+      "max_workers": 4
+    },
+    "workstream_bindings": {
+      "A": {
+        "source_repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+        "source_branch": "scale/estate-intelligence",
+        "strategy": "terminal_artifact_readback",
+        "artifact": "shared/WORKSTREAM_A.json",
+        "pointer": "terminal_condition.workstream_a_complete"
+      },
+      "B": {
+        "source_repository": "GlacierEQ/computer-user",
+        "source_branch": "scale/runtime-swarm",
+        "source_revision": "dd9ea50bce265d5ffc235999909e4ee9b08a4732",
+        "executable_surface": "python3 -m pytest -q tests/test_scale_runtime_durability.py",
+        "evidence_boundary": "launches the recovered durability proof surface; does not certify B mission completion"
+      },
+      "C": {
+        "source_repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+        "source_branch": "scale/memory-composition",
+        "source_revision": "7bbafb8d6d6eb156cc2527bdb8df53f3c08f197e",
+        "executable_surface": "python3 -m fde_powerhouse.scale_compounding prove --workdir .verification-artifacts/scale-c",
+        "evidence_boundary": "real Aspen/Genius proof surface; canonical capability registration remains E-receipt gated"
+      },
+      "D": {
+        "source_repository": "GlacierEQ/sigma-glue",
+        "source_branch": "scale/integration-mcp",
+        "source_revision": "a910c04402d99ea811c19a7700ea879ed9e267e7",
+        "executable_surface": "node --test tests/scale-multi-provider-integration.test.mjs tests/provider-boundary-proof.test.mjs",
+        "evidence_boundary": "does not claim the still-required live Sigma-to-deployed-Colossus routed proof"
+      },
+      "E": {
+        "source_repository": "GlacierEQ/computer-user",
+        "source_branch": "scale/verification-product",
+        "source_revision": "d0550aa93896343c01b4f9aaf80c845b7e4dcf90",
+        "executable_surface": "bash scripts/ci/scale_agent_e_verify.sh",
+        "evidence_boundary": "verifier implementation proof only; E still refuses mission certification without canonical empirical/readback inputs"
+      }
+    },
+    "verification": {
+      "tdd_red_commits": [
+        "4c97c6ba61fe02bd9e39744e5e27c465057dbbf5",
+        "285fc36c7e4ba1369d8b89168a8ce7175e14f2a0",
+        "c5119239dd6c1916750999ad49c8a00ea13d8d14",
+        "5951146aa57af50c51b96f1f7e15a37650620ab2",
+        "fbdc539e1dcedfe20f6fbee3862a1fa051f0a409"
+      ],
+      "canonical_reconciliation_green_commit": "a251c3f440d1995c16268c27b8d7803ff688f893",
+      "launcher_binding_commit": "2e1ca21e9b03490ad49207ebec9d8f2e94e28266",
+      "workflow_run_id": 37509688308,
+      "python_matrix": [
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "result": "PASS",
+      "gates": [
+        "ruff",
+        "installed scale-fde-demo smoke",
+        "compile",
+        "full regression + coverage >=70%",
+        "Agent A artifact validation",
+        "checked-in real launcher binding contract"
+      ],
+      "tests_observed_before_binding": "92 passed",
+      "launcher_binding_test": "PASS"
+    },
+    "hidden_harms_removed": [
+      "removed invented alternate mission schema and rebound launcher to recovered canonical glaciereq.scale-fde-mission.v1 contract",
+      "separated mission truth from local launch mechanics so command bindings can change without mutating mission semantics",
+      "bound resume state to both mission digest and launcher digest to prevent stale-command continuation",
+      "refused to equate subprocess exit code with mission completion",
+      "pre-dispatch in_flight checkpoint prevents silent duplicate replay after launcher death",
+      "terminal artifact readback can resolve ambiguous prior launches before replay",
+      "shell execution forbidden",
+      "failed and ambiguous replays require explicit operator switches",
+      "A is read back instead of pointlessly rerun when already complete",
+      "B/C/D/E bindings preserve their own evidence ceilings rather than manufacturing completion"
+    ]
   }
 }
