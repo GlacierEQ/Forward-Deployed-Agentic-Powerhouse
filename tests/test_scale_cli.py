@@ -308,7 +308,7 @@ components:
     file_env: SCALE_FDE_APPLE_MCP_DXT
     platform: darwin
     routed_via: workstream_D_sigma_glue
-    expected_sha256: 0000000000000000000000000000000000000000000000000000000000000000
+    expected_sha256: "0000000000000000000000000000000000000000000000000000000000000000"
     required_tools: [contacts, notes, messages, mail, reminders, calendar, maps]
 """.strip() + "\n"
 
