@@ -32,6 +32,8 @@ def _run(args: argparse.Namespace) -> int:
         prior_state=prior_state,
         max_workers=args.max_workers,
         checkpoint=checkpoint,
+        retry_ambiguous=args.retry_ambiguous,
+        retry_failed=args.retry_failed,
     )
     write_state(state_path, result)
     print(json.dumps(result, indent=2, sort_keys=True))
@@ -65,6 +67,19 @@ def build_parser() -> argparse.ArgumentParser:
         "--fresh",
         action="store_true",
         help="Ignore an existing checkpoint and execute the mission from its initial frontier.",
+    )
+    run.add_argument(
+        "--retry-ambiguous",
+        action="store_true",
+        help=(
+            "Explicitly replay workstreams left in-flight when terminal artifact "
+            "readback cannot prove they completed."
+        ),
+    )
+    run.add_argument(
+        "--retry-failed",
+        action="store_true",
+        help="Explicitly replay workstreams recorded as failed in the durable checkpoint.",
     )
     run.set_defaults(func=_run)
     return parser
