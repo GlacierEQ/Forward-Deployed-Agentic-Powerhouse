@@ -38,6 +38,7 @@ jobs:
 
   real-donor-proof:
     name: Aspen + Genius real-donor proof
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout FDE sidecar
@@ -55,7 +56,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: GlacierEQ/Genius-Mastery
-          ref: e59602ee620b4b0e79af37b7f515c17ee3de4b99
+          ref: 21c7e0b1209d71619b56dbf51549e39e2665fc69
           path: estate/Genius-Mastery
           token: ${{ secrets.ESTATE_CHECKOUT_TOKEN || github.token }}
 
@@ -104,7 +105,7 @@ jobs:
           assert proof["mission2"]["auto_reused_capability_id"] == "cap.provider-readback-reconcile"
           assert proof["mission2"]["automatic_reuse"] is True
           assert proof["donors"]["aspen_grove_memory"]["revision"] == "c5b8bb44016ee9c17e44c58b53f0545bfdc9691f"
-          assert proof["donors"]["genius_mastery"]["revision"] == "e59602ee620b4b0e79af37b7f515c17ee3de4b99"
+          assert proof["donors"]["genius_mastery"]["revision"] == "21c7e0b1209d71619b56dbf51549e39e2665fc69"
           print(json.dumps(proof, indent=2, sort_keys=True))
           PY
 
