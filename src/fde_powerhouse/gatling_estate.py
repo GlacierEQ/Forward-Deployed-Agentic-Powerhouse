@@ -6,8 +6,9 @@ import hashlib
 import json
 import re
 import time
+from collections.abc import Callable, Iterable, Mapping, Sequence
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import Any, Callable, Iterable, Mapping, Sequence
+from typing import Any
 
 MATURITY = {"prototype", "working", "hardened", "production"}
 EVIDENCE_LEVELS = {
