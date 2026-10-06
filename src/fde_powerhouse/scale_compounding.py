@@ -7,6 +7,7 @@ capability-scoring framework.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import importlib
 import json
 import os
@@ -15,6 +16,8 @@ import sys
 from collections.abc import Callable
 from pathlib import Path
 from typing import Any
+
+import yaml
 
 from .estate import load_estate, resolve_repo
 
@@ -97,6 +100,210 @@ def _fresh_process_hydrate(db_path: Path, mission_id: str) -> dict[str, Any]:
     if not isinstance(recovered, dict):
         raise TypeError("fresh-process resurrection did not return an object")
     return recovered
+
+
+_CANONICAL_SHARED_INPUTS = (
+    "SCALE_FDE_MISSION.yaml",
+    "SCALE_CAPABILITY_GRAPH.json",
+    "WORKSTREAM_E.json",
+    "RECEIPT_INDEX.json",
+)
+
+_VERIFIED_RECEIPT_STATES = {"verified", "operationally_verified"}
+
+
+def _load_mapping(path: Path) -> dict[str, Any]:
+    if not path.is_file():
+        raise FileNotFoundError(path)
+    text = path.read_text(encoding="utf-8")
+    if path.suffix in {".yaml", ".yml"}:
+        value = yaml.safe_load(text)
+    else:
+        value = json.loads(text)
+    if not isinstance(value, dict):
+        raise TypeError(f"{path.name} must contain an object")
+    return value
+
+
+def _artifact_descriptor(path: Path) -> dict[str, Any]:
+    content = path.read_bytes()
+    return {
+        "path": f"shared/{path.name}",
+        "sha256": hashlib.sha256(content).hexdigest(),
+        "size_bytes": len(content),
+    }
+
+
+def _contains_unresolved(items: Any, filename: str) -> bool:
+    return any(filename in str(item) for item in (items or []))
+
+
+def prepare_canonical_frontier(
+    *,
+    shared_root: Path,
+    db_path: Path,
+    registry_path: Path,
+    continuity_cls=None,
+) -> dict[str, Any]:
+    """Hydrate the real shared mission and stop exactly at E's verification gate.
+
+    This function deliberately does not synthesize a mission receipt or infer a
+    reusable capability from partial workstream evidence.
+    """
+    shared_root = Path(shared_root)
+    paths = {name: shared_root / name for name in _CANONICAL_SHARED_INPUTS}
+    documents = {name: _load_mapping(path) for name, path in paths.items()}
+    source_snapshot = {
+        name: _artifact_descriptor(path) for name, path in paths.items()
+    }
+
+    mission = documents["SCALE_FDE_MISSION.yaml"]
+    graph = documents["SCALE_CAPABILITY_GRAPH.json"]
+    workstream_e = documents["WORKSTREAM_E.json"]
+    receipt_index = documents["RECEIPT_INDEX.json"]
+
+    mission_id = str(mission.get("id") or "").strip()
+    if not mission_id:
+        raise ValueError("SCALE_FDE_MISSION.yaml requires id")
+    for label, document in (
+        ("WORKSTREAM_E.json", workstream_e),
+        ("RECEIPT_INDEX.json", receipt_index),
+    ):
+        observed = str(document.get("mission_id") or "").strip()
+        if observed != mission_id:
+            raise ValueError(
+                f"{label} mission_id {observed!r} does not match {mission_id!r}"
+            )
+
+    if str(graph.get("workstream") or "") != "A":
+        raise ValueError("SCALE_CAPABILITY_GRAPH.json must be owned by Workstream A")
+    repositories = {
+        str(node.get("repository") or "")
+        for node in (graph.get("nodes") or [])
+        if isinstance(node, dict)
+    }
+    required_donors = {
+        "GlacierEQ/aspen-grove-memory",
+        "GlacierEQ/Genius-Mastery",
+    }
+    missing_donors = sorted(required_donors - repositories)
+    if missing_donors:
+        raise ValueError(
+            "canonical capability graph is missing Agent C donors: "
+            + ", ".join(missing_donors)
+        )
+
+    continuity = continuity_cls or _load_continuity()
+    source_refs = [
+        f"artifact://{item['path']}#sha256={item['sha256']}"
+        for item in source_snapshot.values()
+    ]
+    objective = str(mission.get("objective") or "").strip()
+    principles = [str(value) for value in (mission.get("principles") or [])]
+
+    store = continuity(db_path)
+    try:
+        store.record_mission(
+            mission_id,
+            objective=objective,
+            constraints=principles,
+            source_refs=source_refs,
+        )
+        receipt_path = shared_root / "MISSION_RECEIPT.json"
+        if not receipt_path.is_file():
+            if not _contains_unresolved(
+                receipt_index.get("unresolved"), "MISSION_RECEIPT.json"
+            ):
+                raise ValueError(
+                    "MISSION_RECEIPT.json is absent but RECEIPT_INDEX.json "
+                    "does not preserve it as unresolved"
+                )
+            if not _contains_unresolved(
+                workstream_e.get("unresolved_dependencies"),
+                "MISSION_RECEIPT.json",
+            ):
+                raise ValueError(
+                    "MISSION_RECEIPT.json is absent but WORKSTREAM_E.json "
+                    "does not preserve it as unresolved"
+                )
+
+            dependency = (
+                "Workstream E verified shared/MISSION_RECEIPT.json is required "
+                "before reusable capability extraction"
+            )
+            frontier = ["await:shared/MISSION_RECEIPT.json"]
+            store.record_decision(
+                mission_id,
+                decision_id="fail-closed-await-independent-verification",
+                summary="Do not compound partial workstream evidence.",
+                rationale=(
+                    "Workstream E owns independent mission verification; "
+                    "an absent receipt cannot be inferred from implementation."
+                ),
+                source_refs=source_refs,
+            )
+            store.record_continuation(
+                mission_id,
+                frontier=frontier,
+                unresolved_dependencies=[dependency],
+                source_refs=source_refs,
+            )
+            return {
+                "schema": "glaciereq.scale-fde.workstream-c-frontier/v1",
+                "status": "blocked_external_dependency",
+                "mission_id": mission_id,
+                "source_snapshot": source_snapshot,
+                "mission_receipt": {
+                    "path": "shared/MISSION_RECEIPT.json",
+                    "present": False,
+                    "required_verification_states": sorted(
+                        _VERIFIED_RECEIPT_STATES
+                    ),
+                },
+                "continuation": {
+                    "current_frontier": frontier,
+                    "unresolved_dependencies": [dependency],
+                },
+                "capability_registry": str(Path(registry_path)),
+                "capability_registry_mutated": False,
+                "truth_boundary": (
+                    "Canonical mission state is hydrated and preserved. "
+                    "No reusable capability is extracted until Workstream E "
+                    "emits an independently verified mission receipt."
+                ),
+            }
+    finally:
+        store.close()
+
+    receipt = _load_mapping(shared_root / "MISSION_RECEIPT.json")
+    observed_mission_id = str(receipt.get("mission_id") or "").strip()
+    if observed_mission_id != mission_id:
+        raise ValueError(
+            "MISSION_RECEIPT.json mission_id "
+            f"{observed_mission_id!r} does not match {mission_id!r}"
+        )
+    verification = str(receipt.get("verification_status") or "").casefold()
+    if verification not in _VERIFIED_RECEIPT_STATES:
+        raise ValueError(
+            "MISSION_RECEIPT.json is present but not independently verified"
+        )
+    return {
+        "schema": "glaciereq.scale-fde.workstream-c-frontier/v1",
+        "status": "ready_for_verified_compounding",
+        "mission_id": mission_id,
+        "source_snapshot": source_snapshot,
+        "mission_receipt": {
+            "path": "shared/MISSION_RECEIPT.json",
+            "present": True,
+            "verification_status": verification,
+        },
+        "capability_registry": str(Path(registry_path)),
+        "capability_registry_mutated": False,
+        "truth_boundary": (
+            "Independent mission verification is present. Capability extraction "
+            "is now eligible, but remains a separate C-owned execution step."
+        ),
+    }
 
 
 def run_compounding_proof(
