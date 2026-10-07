@@ -1,6 +1,6 @@
 {
-  "schema_version": "scale-fde/integration-queue-v2",
-  "as_of": "2026-10-05T07:33:00Z",
+  "schema_version": "scale-fde/integration-queue-v3",
+  "as_of": "2026-10-07T17:55:00Z",
   "mission_id": "SCALE-FDE-DEMO-001",
   "entries": [
     {
@@ -9,7 +9,7 @@
       "id": "R2-A-001",
       "created_at": "2026-10-05T07:33:00Z",
       "contract_revision": "3ee3883b541def3179aeeb30cdacfaa8671fb8c5",
-      "status": "ready",
+      "status": "superseded_by_verified_main",
       "payload": {
         "source_repo": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
         "source_branch": "scale/estate-intelligence",
@@ -23,7 +23,7 @@
       "id": "R2-B-001",
       "created_at": "2026-10-05T07:33:00Z",
       "contract_revision": "3ee3883b541def3179aeeb30cdacfaa8671fb8c5",
-      "status": "ready",
+      "status": "superseded_by_R3_B_001",
       "payload": {
         "source_repo": "GlacierEQ/computer-user",
         "source_branch": "scale/runtime-swarm",
@@ -37,7 +37,7 @@
       "id": "R2-C-001",
       "created_at": "2026-10-05T07:33:00Z",
       "contract_revision": "3ee3883b541def3179aeeb30cdacfaa8671fb8c5",
-      "status": "ready",
+      "status": "superseded_by_R3_C_001",
       "payload": {
         "source_repo": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
         "source_branch": "scale/memory-composition",
@@ -51,7 +51,7 @@
       "id": "R2-D-001",
       "created_at": "2026-10-05T07:33:00Z",
       "contract_revision": "3ee3883b541def3179aeeb30cdacfaa8671fb8c5",
-      "status": "ready",
+      "status": "superseded_by_R3_D_001",
       "payload": {
         "source_repo": "GlacierEQ/sigma-glue",
         "source_branch": "scale/integration-mcp",
@@ -65,7 +65,7 @@
       "id": "R2-E-001",
       "created_at": "2026-10-05T07:33:00Z",
       "contract_revision": "3ee3883b541def3179aeeb30cdacfaa8671fb8c5",
-      "status": "ready",
+      "status": "superseded_by_R3_E_001",
       "payload": {
         "source_repo": "GlacierEQ/computer-user",
         "source_branch": "scale/verification-product",
@@ -79,7 +79,7 @@
       "id": "D-IQ-004",
       "created_at": "2026-10-05T03:01:28Z",
       "contract_revision": "a910c04402d99ea811c19a7700ea879ed9e267e7",
-      "status": "blocked_cross_workstream",
+      "status": "superseded_by_R3_B_D_convergence",
       "payload": {
         "artifact": "verified Colossus runtime endpoint/transport contract",
         "reason": "D must not bypass Colossus; live provider mutations need B's durable path or another already-verified deployed Colossus route."
@@ -95,6 +95,113 @@
       "payload": {
         "artifact": "CI and PR evidence",
         "reason": "Ingest RED run 37257539385/job 111597735615 and GREEN run 37257654701/job 111598075584 plus sigma-glue PR #15."
+      }
+    },
+    {
+      "producer": "control-plane",
+      "target_workstream": "B",
+      "id": "R3-B-001",
+      "created_at": "2026-10-07T17:55:00Z",
+      "contract_revision": "d2e7835084de8a109e1f25ff06ffa141ce1d1963",
+      "status": "dispatched",
+      "payload": {
+        "source_repo": "GlacierEQ/computer-user",
+        "source_branch": "scale/runtime-swarm",
+        "source_revision": "dd9ea50bce265d5ffc235999909e4ee9b08a4732",
+        "pull_request": 65,
+        "objective": "Preserve the verified runtime durability implementation; materialize shared/WORKSTREAM_B.json with exact process-death -> lease recovery -> fresh-process hydration -> exactly-once completion/no-replay receipts; prove persistent Computer User kernel readiness; run focused and full applicable CI; hand the source-bound B receipt to E.",
+        "completion_artifacts": [
+          "shared/WORKSTREAM_B.json",
+          "machine-readable runtime/checkpoint receipts"
+        ],
+        "hard_boundary": "B owns runtime state only; no C/D/E redesign and no mission-completion claim."
+      }
+    },
+    {
+      "producer": "control-plane",
+      "target_workstream": "D",
+      "id": "R3-D-001",
+      "created_at": "2026-10-07T17:55:00Z",
+      "contract_revision": "d2e7835084de8a109e1f25ff06ffa141ce1d1963",
+      "status": "dispatched",
+      "payload": {
+        "source_repo": "GlacierEQ/sigma-glue",
+        "source_branch": "scale/integration-mcp",
+        "source_revision": "a910c04402d99ea811c19a7700ea879ed9e267e7",
+        "pull_request": 15,
+        "objective": "Close the live Sigma -> deployed Colossus protocol/auth/transport route using current canonical contracts; execute bounded routed mutation/readback and ambiguity reconciliation with no direct provider bypass; update shared/WORKSTREAM_D.json and hand exact ExternalMutationReceipt evidence to E.",
+        "completion_artifacts": [
+          "shared/WORKSTREAM_D.json",
+          "ExternalMutationReceipt",
+          "provider-native readback/reconciliation receipt"
+        ],
+        "hard_boundary": "Preserve Gatekeeper, credential safety, idempotency, reconciliation, and no-Colossus-bypass invariants."
+      }
+    },
+    {
+      "producer": "control-plane",
+      "target_workstream": "E",
+      "id": "R3-E-001",
+      "created_at": "2026-10-07T17:55:00Z",
+      "contract_revision": "d2e7835084de8a109e1f25ff06ffa141ce1d1963",
+      "status": "running_preparation_waiting_on_B_D",
+      "payload": {
+        "source_repo": "GlacierEQ/computer-user",
+        "source_branch": "scale/verification-product",
+        "source_revision": "6b3dfbd152d7f7da7a2464890d653f335b9693c7",
+        "pull_request": 67,
+        "objective": "Rebind the independent verifier to current central main; prepare the same-mission empirical baseline/full-stack evaluation now; once B and D source-bound receipts exist, execute both runs, verify identical desired-state postconditions, emit EXECUTION_RECEIPT.json and VERIFICATION_RECEIPT.json, and emit MISSION_RECEIPT.json only if the full mission contract is actually satisfied.",
+        "waits_on": [
+          "R3-B-001",
+          "R3-D-001"
+        ],
+        "completion_artifacts": [
+          "EXECUTION_RECEIPT.json",
+          "VERIFICATION_RECEIPT.json",
+          "MISSION_RECEIPT.json",
+          "REPRODUCE.md",
+          "updated RECEIPT_INDEX.json"
+        ],
+        "hard_boundary": "E verifies; it must not repair sibling implementation or infer absent proof."
+      }
+    },
+    {
+      "producer": "control-plane",
+      "target_workstream": "C",
+      "id": "R3-C-001",
+      "created_at": "2026-10-07T17:55:00Z",
+      "contract_revision": "d2e7835084de8a109e1f25ff06ffa141ce1d1963",
+      "status": "waiting_on_E_verified_mission_receipt",
+      "payload": {
+        "source_repo": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+        "source_branch": "scale/memory-composition",
+        "source_revision": "7bbafb8d6d6eb156cc2527bdb8df53f3c08f197e",
+        "pull_request": 2,
+        "objective": "Remain fail-closed until E emits a source-bound verified Mission-1 receipt. Then validate the reusable-capability payload, atomically register it through existing Genius/Aspen compounding, start a fresh Mission-2 process, prove automatic discovery/selection/reuse, and return exact reuse receipts to E.",
+        "waits_on": [
+          "R3-E-001:MISSION_RECEIPT.json"
+        ],
+        "completion_artifacts": [
+          "shared/WORKSTREAM_C.json",
+          "reusable capability registry revision",
+          "Mission-2 automatic reuse receipt"
+        ],
+        "hard_boundary": "No transcript-as-memory, no duplicate Faraway runtime, no capability inference from prose."
+      }
+    },
+    {
+      "producer": "control-plane",
+      "target_workstream": "E",
+      "id": "R3-E-002",
+      "created_at": "2026-10-07T17:55:00Z",
+      "contract_revision": "d2e7835084de8a109e1f25ff06ffa141ce1d1963",
+      "status": "waiting_on_C_mission2_reuse",
+      "payload": {
+        "objective": "After C returns the real Mission-2 automatic-reuse proof, independently verify the reuse evidence, update MISSION_RECEIPT/VERIFICATION_RECEIPT/RECEIPT_INDEX as required, and certify the terminal mission only if every canonical terminal condition is source-bound.",
+        "waits_on": [
+          "R3-C-001"
+        ],
+        "hard_boundary": "Final certification authority remains E."
       }
     }
   ]
