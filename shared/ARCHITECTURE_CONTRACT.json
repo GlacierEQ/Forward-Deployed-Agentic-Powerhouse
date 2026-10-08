@@ -72,7 +72,9 @@
     "MutationIntent",
     "ExternalMutationReceipt",
     "VerificationDecision",
-    "ReusableCapabilityRegistration"
+    "ReusableCapabilityRegistration",
+    "Mission1CapabilityVerification",
+    "Mission2ReuseReceipt"
   ],
   "invariants": [
     "A capability scoring confers no project authority",
@@ -82,7 +84,13 @@
     "E verifies independently and does not repair sibling implementation",
     "shared queues are append-only, revision-aware, and source-attributed",
     "raw credentials are never stored in shared artifacts",
-    "worker completion is not mission completion"
+    "worker completion is not mission completion",
+    "D requires verified Colossus-mediated provider execution evidence",
+    "E verifies Mission 1 capability before C proves Mission 2 reuse",
+    "E certifies final mission only after C's real reuse proof",
+    "Workstream task completion is not terminal mission certification",
+    "E's pre-terminal capability verification is not E's final mission certification"
   ],
-  "canonical_shared_root": "shared/"
+  "canonical_shared_root": "shared/",
+  "capability_handoff_contract": "shared/MISSION1_CAPABILITY_CONTRACT.json"
 }
