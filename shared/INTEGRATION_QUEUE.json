@@ -1,6 +1,6 @@
 {
   "schema_version": "scale-fde/integration-queue-v3",
-  "as_of": "2026-10-08T07:09:37Z",
+  "as_of": "2026-10-08",
   "mission_id": "SCALE-FDE-DEMO-001",
   "entries": [
     {
@@ -114,7 +114,14 @@
           "shared/WORKSTREAM_B.json",
           "machine-readable runtime/checkpoint receipts"
         ],
-        "hard_boundary": "B owns runtime state only; no C/D/E redesign and no mission-completion claim."
+        "hard_boundary": "B owns runtime state only; no C/D/E redesign and no mission-completion claim.",
+        "engineering_allowed": true,
+        "promotion_waits_on": [],
+        "next_executable_actions": [
+          "Run source-pinned orchestrator process-death, lease-expiry/reclaim, new-process hydration and no-replay tests on the B-owned branch.",
+          "Repair full CI and publish shared/WORKSTREAM_B.json plus machine-readable runtime receipts with exact test and commit revisions."
+        ],
+        "blocked_scope": "None; continue executable work immediately."
       }
     },
     {
@@ -135,7 +142,14 @@
           "ExternalMutationReceipt",
           "provider-native readback/reconciliation receipt"
         ],
-        "hard_boundary": "Preserve Gatekeeper, credential safety, idempotency, reconciliation, and no-Colossus-bypass invariants."
+        "hard_boundary": "Preserve Gatekeeper, credential safety, idempotency, reconciliation, and no-Colossus-bypass invariants.",
+        "engineering_allowed": true,
+        "promotion_waits_on": [],
+        "next_executable_actions": [
+          "Bind Sigma to deployed Colossus /v1/dispatch receiver with authenticated read-only canary and recorded protocol/auth/transport observations.",
+          "Implement and exercise Colossus-authorized mutation, ambiguity resolution and provider-native readback; never substitute a direct connector write."
+        ],
+        "blocked_scope": "None; continue executable work immediately."
       }
     },
     {
@@ -144,7 +158,7 @@
       "id": "R3-E-001",
       "created_at": "2026-10-07T17:55:00Z",
       "contract_revision": "d2e7835084de8a109e1f25ff06ffa141ce1d1963",
-      "status": "waiting_on_B_D_for_preterminal_independent_capability_verification",
+      "status": "engineering_active_empirical_promotion_waits_on_B_D",
       "payload": {
         "source_repo": "GlacierEQ/computer-user",
         "source_branch": "scale/verification-product",
@@ -162,7 +176,17 @@
           "REPRODUCE.md"
         ],
         "hard_boundary": "E verifies; it must not repair sibling implementation or infer absent proof.",
-        "handoff_contract": "shared/MISSION1_CAPABILITY_CONTRACT.json"
+        "handoff_contract": "shared/MISSION1_CAPABILITY_CONTRACT.json",
+        "engineering_allowed": true,
+        "promotion_waits_on": [
+          "R3-B-001",
+          "R3-D-001"
+        ],
+        "next_executable_actions": [
+          "Build and test independent Mission-1 capability receipt producer, same-mission baseline/full-stack harness, and negative/falsification cases now.",
+          "Prepare reproducible verification and CI against real upstream contract shapes; only promote observed empirical results after B/D source-bound receipts land."
+        ],
+        "blocked_scope": "Only promotion of this dependency-bound evidence; independent engineering and test preparation continue."
       }
     },
     {
@@ -171,7 +195,7 @@
       "id": "R3-C-001",
       "created_at": "2026-10-07T17:55:00Z",
       "contract_revision": "d2e7835084de8a109e1f25ff06ffa141ce1d1963",
-      "status": "waiting_on_E_preterminal_capability_verification",
+      "status": "engineering_active_capability_promotion_waits_on_E",
       "payload": {
         "source_repo": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
         "source_branch": "scale/memory-composition",
@@ -187,7 +211,16 @@
           "Mission-2 automatic reuse receipt"
         ],
         "hard_boundary": "No transcript-as-memory, no duplicate Faraway runtime, no capability inference from prose.",
-        "handoff_contract": "shared/MISSION1_CAPABILITY_CONTRACT.json"
+        "handoff_contract": "shared/MISSION1_CAPABILITY_CONTRACT.json",
+        "engineering_allowed": true,
+        "promotion_waits_on": [
+          "R3-E-001:MISSION1_CAPABILITY_RECEIPT.json"
+        ],
+        "next_executable_actions": [
+          "Implement preterminal MISSION1_CAPABILITY_RECEIPT.json consumption and rejection tests on C-owned PR #2 now.",
+          "Prepare Aspen/Genius atomic capability extraction, fresh-process Mission-2 selection/reuse, and real receipt ingestion without pretending fixture proof is live proof."
+        ],
+        "blocked_scope": "Only promotion of this dependency-bound evidence; independent engineering and test preparation continue."
       }
     },
     {
@@ -196,7 +229,7 @@
       "id": "R3-E-002",
       "created_at": "2026-10-07T17:55:00Z",
       "contract_revision": "d2e7835084de8a109e1f25ff06ffa141ce1d1963",
-      "status": "waiting_on_C_mission2_reuse",
+      "status": "final_verifier_engineering_active_certification_waits_on_C",
       "payload": {
         "objective": "Only after source-bound C real Mission-2 automatic reuse, independently verify all mission postconditions, provider readback, baseline/full-stack results, falsification tests and receipt integrity; E alone may emit terminal MISSION_RECEIPT.json.",
         "waits_on": [
@@ -207,8 +240,18 @@
           "VERIFICATION_RECEIPT.json",
           "MISSION_RECEIPT.json",
           "updated RECEIPT_INDEX.json"
-        ]
+        ],
+        "engineering_allowed": true,
+        "promotion_waits_on": [
+          "R3-C-001"
+        ],
+        "next_executable_actions": [
+          "Implement final evidence authentication, provider readback reconciliation, falsification, and Mission-2 reuse validation now.",
+          "Issue terminal MISSION_RECEIPT.json only after independently verifying real C Mission-2 evidence and all canonical postconditions."
+        ],
+        "blocked_scope": "Only promotion of this dependency-bound evidence; independent engineering and test preparation continue."
       }
     }
-  ]
+  ],
+  "dependency_semantics": "Predecessors gate evidence promotion or terminal certification, not implementation, preparation, tests, independent reconnaissance, or later work on other ready frontier nodes."
 }
