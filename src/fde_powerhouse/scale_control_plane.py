@@ -220,7 +220,8 @@ class ScaleControlPlane:
             second.get("automatic_reuse") is True
             and first.get("extracted_capability_id")
             and first["extracted_capability_id"] == second.get("auto_reused_capability_id")
-            and verification.get("postconditions")
+            and any(p.get("name") == "mission2_automatic_reuse" and p.get("verified") is True
+                    for p in verification.get("postconditions", []) if isinstance(p, dict))
         )
 
     def record_terminal_evidence(self, evidence: dict[str, Any]) -> None:
