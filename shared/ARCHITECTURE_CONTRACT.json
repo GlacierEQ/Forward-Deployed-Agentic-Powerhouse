@@ -88,7 +88,8 @@
     "D requires verified Colossus-mediated provider execution evidence",
     "E verifies Mission 1 capability before C proves Mission 2 reuse",
     "E certifies final mission only after C's real reuse proof",
-    "Workstream task completion is not terminal mission certification"
+    "Workstream task completion is not terminal mission certification",
+    "E's pre-terminal capability verification is not E's final mission certification"
   ],
   "canonical_shared_root": "shared/",
   "capability_handoff_contract": "shared/MISSION1_CAPABILITY_CONTRACT.json"
