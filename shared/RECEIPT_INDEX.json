@@ -62,6 +62,11 @@
       "id": "E-VERIFIER-6b3dfbd1",
       "state": "IMPLEMENTED_WAITING_ON_B_D_EMPIRICAL_RUNS",
       "source": "GlacierEQ/computer-user scale/verification-product@6b3dfbd152d7f7da7a2464890d653f335b9693c7"
+    },
+    {
+      "id": "MISSION1_CAPABILITY_CONTRACT",
+      "state": "CONTRACT_DEFINED_NOT_EVIDENCE",
+      "source": "shared/MISSION1_CAPABILITY_CONTRACT.json"
     }
   ],
   "unresolved": [
@@ -74,7 +79,9 @@
     "VERIFICATION_RECEIPT.json",
     "MISSION_RECEIPT.json",
     "real Mission-2 automatic reuse proof from E-verified Mission-1 capability",
-    "final E certification of every canonical terminal condition"
+    "final E certification of every canonical terminal condition",
+    "shared/MISSION1_CAPABILITY_RECEIPT.json",
+    "Mission2ReuseReceipt"
   ],
-  "as_of": "2026-10-07T17:57:00Z"
+  "as_of": "2026-10-08T07:09:37Z"
 }

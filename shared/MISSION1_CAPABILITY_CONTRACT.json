@@ -1,0 +1,26 @@
+{
+  "schema": "glaciereq.scale-fde.mission1-capability-handoff.v1",
+  "mission_id": "SCALE-FDE-DEMO-001",
+  "producer": "E",
+  "consumer": "C",
+  "artifact": "shared/MISSION1_CAPABILITY_RECEIPT.json",
+  "required_fields": [
+    "mission_id",
+    "verification_status",
+    "reusable_capability",
+    "source_revision",
+    "receipt_refs",
+    "verifier_id",
+    "mission_contract_sha256",
+    "upstream_receipt_hashes"
+  ],
+  "allowed_verification_status": [
+    "verified"
+  ],
+  "terminal_mission_certification": false,
+  "upstream_sources_required": [
+    "B",
+    "D"
+  ],
+  "provider_native_readback_required": true
+}
