@@ -1,6 +1,6 @@
 {
   "schema_version": "scale-fde/defect-queue-v3",
-  "as_of": "2026-10-08T07:09:37Z",
+  "as_of": "2026-10-08",
   "mission_id": "SCALE-FDE-DEMO-001",
   "defects": [
     {
@@ -79,38 +79,75 @@
       "id": "R3-DEF-003",
       "owner": "E",
       "severity": "critical",
-      "status": "blocked_on_B_D",
+      "status": "verification_implementation_active_empirical_input_waits_on_B_D",
       "defect": "Empirical same-mission single-agent baseline and full fused-stack evaluation have not yet been executed from source-bound B/D inputs; mission receipts therefore cannot truthfully be emitted.",
       "source_revision": "6b3dfbd152d7f7da7a2464890d653f335b9693c7",
-      "dispatch": "R3-E-001"
+      "dispatch": "R3-E-001",
+      "resolution_progress": "E implementation, harness preparation and negative tests proceed; only promotion of empirical Mission-1 proof waits on source-bound B/D observations."
     },
     {
       "id": "R3-DEF-004",
       "owner": "C",
       "severity": "high",
-      "status": "waiting_on_E_preterminal_capability",
+      "status": "C_implementation_active_promotion_waits_on_E",
       "defect": "C's real Mission-2 reuse requires independently verified preterminal Mission-1 capability evidence, not E's terminal mission certificate.",
       "source_revision": "7bbafb8d6d6eb156cc2527bdb8df53f3c08f197e",
       "dispatch": "R3-C-001",
-      "resolution_progress": "Canonical handoff now specified in shared/MISSION1_CAPABILITY_CONTRACT.json; C-owned code still expects terminal MISSION_RECEIPT.json and must be reconciled by C owner."
+      "resolution_progress": "C can implement and test preterminal capability receipt consumer immediately; only real verified capability registry mutation and Mission-2 proof wait on E's independent Mission-1 evidence."
     },
     {
       "id": "R3-DEF-005",
       "owner": "control-plane",
       "severity": "critical",
-      "status": "contract_repaired_implementation_pending",
+      "status": "contract_repaired_owner_implementation_pending",
       "defect": "The canonical queue previously made C depend on E's terminal certificate, while E terminal certification depends on C's real Mission-2 reuse.",
-      "resolution_progress": "Preterminal E-to-C contract and acyclic queue topology specified on integration PR #11; E and C source implementations require owner changes and proof.",
+      "resolution_progress": "Acyclic contract and queue corrected on integration branch; owner E/C producers and consumers still need implementation, runtime verification and source-bound receipts. No global freeze.",
       "source_revision": "c83ba419b8b39150449653b4fc4506f6549da553"
     },
     {
       "id": "R3-DEF-006",
       "owner": "control-plane",
       "severity": "critical",
-      "status": "regression_reproduced_fix_pending",
+      "status": "local_counter_false_certification_repaired_external_auth_pending",
       "defect": "Local verified workstream counters could mark the mission verified without E's terminal independent certification.",
-      "resolution_progress": "Regression test added on integration PR #11; control-plane classification repair pending.",
+      "resolution_progress": "Central runtime no longer promotes workstream task counters alone to verified mission; exact CI run 37810697362 passed at 557a736fde9b569e16d7d18b934c93f12df494c8. Provider-authentic source verification is separate unresolved issue R3-DEF-008.",
       "source_revision": "c83ba419b8b39150449653b4fc4506f6549da553"
+    },
+    {
+      "id": "R3-DEF-007",
+      "owner": "control-plane",
+      "severity": "critical",
+      "status": "engineering_unfrozen_on_integration_branch",
+      "defect": "Promotion prerequisites were incorrectly projected onto the entire workstream, creating a governance freeze where E/C engineering was described as waiting for receipts that the engineering must produce.",
+      "root_cause": "R3 Round-3 dependency statuses conflated executable preparation with certification gates; introduced on canonical main c83ba419b8b39150449653b4fc4506f6549da553 and reinforced by C/E receipt interface mismatch.",
+      "repair_revision": "2ac16c927b095237f2e844ed2aa972041a4c92c5",
+      "verification_state": "source_update_pending_ci",
+      "preserved_invariants": [
+        "No self-certified provider readback",
+        "No bypass of Colossus for D mutations",
+        "No promotion without independent E evidence",
+        "Exclusive workstream ownership"
+      ],
+      "remaining_actions": [
+        "Verify PR #11 CI after regression test and queue repair",
+        "Advance owner PRs B/D/E/C independently",
+        "Merge only after exact head checks pass"
+      ]
+    },
+    {
+      "id": "R3-DEF-008",
+      "owner": "control-plane",
+      "severity": "critical",
+      "status": "engineering_active_terminal_authenticity_unverified",
+      "defect": "PR #11 terminal evidence predicate recomputes hashes of caller-provided data and accepts caller-provided assertions; without external provider-authenticated source observations a forged internally-consistent package could satisfy final certification.",
+      "source_revision": "557a736fde9b569e16d7d18b934c93f12df494c8",
+      "repair_scope": "Bind final evidence acceptance to provider-native source/readback without preventing construction or evaluation of independent workstreams.",
+      "never_gate": [
+        "engineering",
+        "fixture tests",
+        "nonterminal integration",
+        "harness preparation"
+      ]
     }
   ]
 }
