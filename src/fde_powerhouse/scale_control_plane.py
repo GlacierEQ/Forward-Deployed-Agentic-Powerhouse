@@ -160,6 +160,10 @@ class ScaleControlPlane:
             f"unknown integration: {worker}:{artifact}:{receipt_ref}"
         )
 
+    @staticmethod
+    def _terminal_evidence_valid(evidence: Any) -> bool:
+        return isinstance(evidence, dict) and evidence.get("decision") == "CERTIFIED"
+
     def _persist(self, state: dict[str, Any]) -> None:
         tasks = [
             task
