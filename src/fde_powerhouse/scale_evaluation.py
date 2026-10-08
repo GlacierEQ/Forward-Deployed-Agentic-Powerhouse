@@ -114,6 +114,47 @@ def _seal(body: dict[str, Any]) -> dict[str, Any]:
     return receipt
 
 
+def _terminal_fixture(cp: ScaleControlPlane) -> dict[str, Any]:
+    mission_hash = hashlib.sha256(
+        (cp.root / "shared" / "SCALE_FDE_MISSION.yaml").read_bytes()
+    ).hexdigest()
+    base = {"mission_id": "SCALE-FDE-DEMO-001",
+            "mission_contract_sha256": mission_hash}
+    execution = _seal({**base, "status": "completed", "executor_id": "agent-b"})
+    evaluation = _seal({
+        **base, "baseline_status": "completed",
+        "full_stack_status": "completed", "verdict": "FULL_STACK_BETTER",
+    })
+    verification = _seal({
+        **base, "decision": "CERTIFIED", "verifier_id": "agent-e",
+        "execution_receipt_sha256": execution["receipt_sha256"],
+        "evaluation_receipt_sha256": evaluation["receipt_sha256"],
+        "validated_claims": [{"claim_id": "synthetic-claim"}],
+        "readback_assertions": [{"match_status": "VERIFIED"}],
+        "falsification_tests": [{"falsified": False}],
+        "postconditions": [{"name": "mission2_automatic_reuse", "verified": True}],
+    })
+    mission = _seal({
+        **base, "status": "VERIFIED_SUCCESS",
+        "execution_receipt_sha256": execution["receipt_sha256"],
+        "evaluation_receipt_sha256": evaluation["receipt_sha256"],
+        "verification_receipt_sha256": verification["receipt_sha256"],
+    })
+    return {
+        "execution": execution, "evaluation": evaluation,
+        "verification": verification, "mission": mission,
+        "source_revisions": {key: key.lower() * 40 for key in "BCDE"},
+        "mission2_reuse": {
+            "mission1": {"extracted_capability_id": "capability-fixture"},
+            "mission2": {
+                "mission_id": "mission-2-fixture",
+                "automatic_reuse": True,
+                "auto_reused_capability_id": "capability-fixture",
+            },
+        },
+    }
+
+
 def _baseline(case: dict[str, Any]) -> dict[str, Any]:
     accepted = bool(case["completion_claimed"])
     return {
