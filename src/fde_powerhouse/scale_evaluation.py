@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import tempfile
 import time
@@ -57,7 +56,7 @@ SCENARIOS = (
         "completion_claimed": True,
     },
     {
-        "name": "terminal_evidence_positive_control",
+        "name": "valid_workstream_receipt_positive_control",
         "expected_accept": True,
         "completion_claimed": True,
     },
@@ -104,55 +103,6 @@ def _complete_all(cp: ScaleControlPlane) -> None:
         cp.enqueue(worker, task, outputs=[output])
         cp.claim(worker, task)
         cp.complete(worker, task, receipt=_receipt(output, worker))
-
-
-def _seal(body: dict[str, Any]) -> dict[str, Any]:
-    receipt = dict(body)
-    receipt["receipt_sha256"] = hashlib.sha256(json.dumps(
-        receipt, sort_keys=True, separators=(",", ":"), ensure_ascii=False
-    ).encode("utf-8")).hexdigest()
-    return receipt
-
-
-def _terminal_fixture(cp: ScaleControlPlane) -> dict[str, Any]:
-    mission_hash = hashlib.sha256(
-        (cp.root / "shared" / "SCALE_FDE_MISSION.yaml").read_bytes()
-    ).hexdigest()
-    base = {"mission_id": "SCALE-FDE-DEMO-001",
-            "mission_contract_sha256": mission_hash}
-    execution = _seal({**base, "status": "completed", "executor_id": "agent-b"})
-    evaluation = _seal({
-        **base, "baseline_status": "completed",
-        "full_stack_status": "completed", "verdict": "FULL_STACK_BETTER",
-    })
-    verification = _seal({
-        **base, "decision": "CERTIFIED", "verifier_id": "agent-e",
-        "execution_receipt_sha256": execution["receipt_sha256"],
-        "evaluation_receipt_sha256": evaluation["receipt_sha256"],
-        "validated_claims": [{"claim_id": "synthetic-claim"}],
-        "readback_assertions": [{"match_status": "VERIFIED"}],
-        "falsification_tests": [{"falsified": False}],
-        "postconditions": [{"name": "mission2_automatic_reuse", "verified": True}],
-    })
-    mission = _seal({
-        **base, "status": "VERIFIED_SUCCESS",
-        "execution_receipt_sha256": execution["receipt_sha256"],
-        "evaluation_receipt_sha256": evaluation["receipt_sha256"],
-        "verification_receipt_sha256": verification["receipt_sha256"],
-    })
-    return {
-        "execution": execution, "evaluation": evaluation,
-        "verification": verification, "mission": mission,
-        "source_revisions": {key: key.lower() * 40 for key in "BCDE"},
-        "mission2_reuse": {
-            "mission1": {"extracted_capability_id": "capability-fixture"},
-            "mission2": {
-                "mission_id": "mission-2-fixture",
-                "automatic_reuse": True,
-                "auto_reused_capability_id": "capability-fixture",
-            },
-        },
-    }
 
 
 def _baseline(case: dict[str, Any]) -> dict[str, Any]:
@@ -269,6 +219,26 @@ def _stack(scenario: str) -> dict[str, Any]:
             )
             verified = cp.snapshot()["mission"]["status"] == "verified"
             return {"accepted": verified, "reason": "mission status"}
+
+        if scenario == "valid_workstream_receipt_positive_control":
+            # Positive control for a valid local receipt, not terminal certification.
+            cp.enqueue("E", "eval", outputs=["VERIFICATION_RECEIPT.json"])
+            cp.claim("E", "eval")
+            cp.complete(
+                "E", "eval",
+                receipt=_receipt("VERIFICATION_RECEIPT.json", "positive"),
+            )
+            state = cp.snapshot()
+            task = state["workstreams"]["E"]["tasks"]["eval"]
+            accepted = (
+                task["status"] == "verified"
+                and state["mission"]["status"] != "verified"
+                and state["mission"]["frontier_exhausted"] is False
+            )
+            return {
+                "accepted": accepted,
+                "reason": "valid local receipt; terminal mission remains unverified",
+            }
 
         if scenario == "active_running_task":
             cp.enqueue("E", "eval", outputs=["VERIFICATION_RECEIPT.json"])
