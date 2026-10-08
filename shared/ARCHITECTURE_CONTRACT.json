@@ -72,7 +72,9 @@
     "MutationIntent",
     "ExternalMutationReceipt",
     "VerificationDecision",
-    "ReusableCapabilityRegistration"
+    "ReusableCapabilityRegistration",
+    "Mission1CapabilityVerification",
+    "Mission2ReuseReceipt"
   ],
   "invariants": [
     "A capability scoring confers no project authority",
