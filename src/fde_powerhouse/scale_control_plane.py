@@ -193,10 +193,20 @@ class ScaleControlPlane:
             "defects_resolved": defects_resolved,
             "receipts_indexed": receipts_indexed,
         }
-        exhausted = bool(gates) and all(gates.values())
+        workstream_exhausted = bool(gates) and all(gates.values())
+        terminal_certified = bool(
+            state["mission"].get("independent_terminal_certification") is True
+        )
+        gates["independent_terminal_certification"] = terminal_certified
+        exhausted = workstream_exhausted and terminal_certified
         state["mission"]["verification_gates"] = gates
+        state["mission"]["workstream_frontier_exhausted"] = workstream_exhausted
         state["mission"]["frontier_exhausted"] = exhausted
-        state["mission"]["status"] = "verified" if exhausted else "active"
+        state["mission"]["status"] = (
+            "verified" if exhausted
+            else "awaiting_independent_certification" if workstream_exhausted
+            else "active"
+        )
         self._write_json(self._state_path, state)
         self._materialize_contracts(state)
 
