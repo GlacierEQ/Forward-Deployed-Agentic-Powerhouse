@@ -209,36 +209,22 @@ def prepare_canonical_frontier(
             constraints=principles,
             source_refs=source_refs,
         )
-        receipt_path = shared_root / "MISSION_RECEIPT.json"
+        receipt_path = shared_root / "MISSION1_CAPABILITY_RECEIPT.json"
         if not receipt_path.is_file():
-            if not _contains_unresolved(
-                receipt_index.get("unresolved"), "MISSION_RECEIPT.json"
-            ):
-                raise ValueError(
-                    "MISSION_RECEIPT.json is absent but RECEIPT_INDEX.json "
-                    "does not preserve it as unresolved"
-                )
-            if not _contains_unresolved(
-                workstream_e.get("unresolved_dependencies"),
-                "MISSION_RECEIPT.json",
-            ):
-                raise ValueError(
-                    "MISSION_RECEIPT.json is absent but WORKSTREAM_E.json "
-                    "does not preserve it as unresolved"
-                )
-
             dependency = (
-                "Workstream E verified shared/MISSION_RECEIPT.json is required "
-                "before reusable capability extraction"
+                "Workstream E preterminal Mission-1 capability evidence is "
+                "required before actual capability registration; preparation "
+                "and tests remain executable."
             )
-            frontier = ["await:shared/MISSION_RECEIPT.json"]
+            frontier = ["await:shared/MISSION1_CAPABILITY_RECEIPT.json"]
             store.record_decision(
                 mission_id,
-                decision_id="fail-closed-await-independent-verification",
-                summary="Do not compound partial workstream evidence.",
+                decision_id="prepare-preterminal-capability-consumer",
+                summary="Advance C implementation independently of E terminal certification.",
                 rationale=(
-                    "Workstream E owns independent mission verification; "
-                    "an absent receipt cannot be inferred from implementation."
+                    "Final mission certification follows Mission-2 reuse, so "
+                    "it cannot be the prerequisite for reusable capability "
+                    "consumption."
                 ),
                 source_refs=source_refs,
             )
@@ -249,59 +235,106 @@ def prepare_canonical_frontier(
                 source_refs=source_refs,
             )
             return {
-                "schema": "glaciereq.scale-fde.workstream-c-frontier/v1",
-                "status": "blocked_external_dependency",
+                "schema": "glaciereq.scale-fde.workstream-c-frontier/v2",
+                "status": "preparing_awaiting_verified_capability",
                 "mission_id": mission_id,
                 "source_snapshot": source_snapshot,
-                "mission_receipt": {
-                    "path": "shared/MISSION_RECEIPT.json",
+                "capability_receipt": {
+                    "path": "shared/MISSION1_CAPABILITY_RECEIPT.json",
                     "present": False,
-                    "required_verification_states": sorted(
-                        _VERIFIED_RECEIPT_STATES
-                    ),
+                    "required_verification_states": ["verified"],
                 },
                 "continuation": {
                     "current_frontier": frontier,
                     "unresolved_dependencies": [dependency],
+                    "engineering_ready": True,
                 },
                 "capability_registry": str(Path(registry_path)),
                 "capability_registry_mutated": False,
                 "truth_boundary": (
-                    "Canonical mission state is hydrated and preserved. "
-                    "No reusable capability is extracted until Workstream E "
-                    "emits an independently verified mission receipt."
+                    "Canonical mission state is hydrated. C can implement "
+                    "and test the consumer now. Actual capability registration "
+                    "requires independently verified E preterminal evidence."
                 ),
             }
     finally:
         store.close()
 
-    receipt = _load_mapping(shared_root / "MISSION_RECEIPT.json")
-    observed_mission_id = str(receipt.get("mission_id") or "").strip()
-    if observed_mission_id != mission_id:
-        raise ValueError(
-            "MISSION_RECEIPT.json mission_id "
-            f"{observed_mission_id!r} does not match {mission_id!r}"
-        )
-    verification = str(receipt.get("verification_status") or "").casefold()
-    if verification not in _VERIFIED_RECEIPT_STATES:
-        raise ValueError(
-            "MISSION_RECEIPT.json is present but not independently verified"
-        )
+    receipt = _load_mapping(receipt_path)
+    label = "MISSION1_CAPABILITY_RECEIPT.json"
+    if str(receipt.get("mission_id") or "") != mission_id:
+        raise ValueError(f"{label} mission_id differs from canonical mission")
+    if str(receipt.get("verification_status") or "").casefold() != "verified":
+        raise ValueError(f"{label} requires verified preterminal capability")
+    source_revision = receipt.get("source_revision")
+    if (
+        not isinstance(source_revision, str)
+        or len(source_revision) != 40
+        or any(ch not in "0123456789abcdef" for ch in source_revision)
+    ):
+        raise ValueError(f"{label} needs an exact 40-character source revision")
+    expected_hash = hashlib.sha256(paths["SCALE_FDE_MISSION.yaml"].read_bytes())
+    if receipt.get("mission_contract_sha256") != expected_hash.hexdigest():
+        raise ValueError(f"{label} mission contract digest mismatch")
+    verifier_id = receipt.get("verifier_id")
+    if (
+        not isinstance(verifier_id, str)
+        or not verifier_id.strip()
+        or verifier_id == receipt.get("executor_id")
+    ):
+        raise ValueError(f"{label} requires an independent verifier")
+    refs = receipt.get("receipt_refs")
+    if (
+        not isinstance(refs, list)
+        or not refs
+        or any(not isinstance(ref, str) or not ref.strip() for ref in refs)
+    ):
+        raise ValueError(f"{label} requires source-bound receipt references")
+    upstream = receipt.get("upstream_receipt_hashes")
+    if not isinstance(upstream, dict) or any(
+        not isinstance(upstream.get(worker), str)
+        or len(upstream[worker]) != 64
+        or any(ch not in "0123456789abcdef" for ch in upstream[worker])
+        for worker in ("B", "D")
+    ):
+        raise ValueError(f"{label} requires exact B/D upstream receipt hashes")
+    provider = receipt.get("provider_readback")
+    if (
+        not isinstance(provider, dict)
+        or provider.get("verification_method") != "provider_native_readback"
+        or provider.get("state") != "verified"
+        or not isinstance(provider.get("source_ref"), str)
+        or not provider["source_ref"].strip()
+    ):
+        raise ValueError(f"{label} requires source-attributed provider readback")
+    capability = receipt.get("reusable_capability")
+    if not isinstance(capability, dict) or any(
+        not isinstance(capability.get(k), (str if k in {"id", "description"} else dict))
+        or not capability[k]
+        for k in ("id", "description", "input_contract", "output_contract")
+    ):
+        raise ValueError(f"{label} needs an explicit reusable capability contract")
+
+    source_snapshot[label] = _artifact_descriptor(receipt_path)
     return {
-        "schema": "glaciereq.scale-fde.workstream-c-frontier/v1",
-        "status": "ready_for_verified_compounding",
+        "schema": "glaciereq.scale-fde.workstream-c-frontier/v2",
+        "status": "ready_for_external_provenance_confirmation",
         "mission_id": mission_id,
         "source_snapshot": source_snapshot,
-        "mission_receipt": {
-            "path": "shared/MISSION_RECEIPT.json",
+        "capability_receipt": {
+            "path": "shared/MISSION1_CAPABILITY_RECEIPT.json",
             "present": True,
-            "verification_status": verification,
+            "verification_status": "verified",
+            "reusable_capability_id": capability["id"],
+            "source_revision": source_revision,
         },
         "capability_registry": str(Path(registry_path)),
         "capability_registry_mutated": False,
         "truth_boundary": (
-            "Independent mission verification is present. Capability extraction "
-            "is now eligible, but remains a separate C-owned execution step."
+            "Typed E Mission-1 preterminal evidence is structurally accepted. "
+            "Provider authenticity must be independently confirmed before "
+            "C registers a real verified capability; this is not final mission "
+            "certification."
         ),
     }
 
