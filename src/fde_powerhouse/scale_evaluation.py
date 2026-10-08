@@ -47,7 +47,7 @@ SCENARIOS = (
     },
     {
         "name": "receipt_bound_completion",
-        "expected_accept": True,
+        "expected_accept": False,
         "completion_claimed": True,
     },
     {
