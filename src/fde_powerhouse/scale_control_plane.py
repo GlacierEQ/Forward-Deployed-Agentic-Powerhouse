@@ -161,9 +161,51 @@ class ScaleControlPlane:
             f"unknown integration: {worker}:{artifact}:{receipt_ref}"
         )
 
-    @staticmethod
-    def _terminal_evidence_valid(evidence: Any) -> bool:
-        return isinstance(evidence, dict) and evidence.get("decision") == "CERTIFIED"
+    def _terminal_evidence_valid(self, evidence: Any) -> bool:
+        """Require E's sealed final receipts and C's actual reuse evidence."""
+        if not isinstance(evidence, dict):
+            return False
+        receipts = {}
+        for name in ("execution", "evaluation", "verification", "mission"):
+            receipt = evidence.get(name)
+            if not isinstance(receipt, dict):
+                return False
+            digest = receipt.get("receipt_sha256")
+            body = {k: v for k, v in receipt.items() if k != "receipt_sha256"}
+            observed = hashlib.sha256(json.dumps(
+                body, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+            ).encode("utf-8")).hexdigest()
+            if digest != observed:
+                return False
+            receipts[name] = receipt
+        mission_path = self.root / "shared" / "SCALE_FDE_MISSION.yaml"
+        if not mission_path.exists():
+            return False
+        contract_hash = hashlib.sha256(mission_path.read_bytes()).hexdigest()
+        if any(r.get("mission_contract_sha256") != contract_hash
+               or r.get("mission_id") != "SCALE-FDE-DEMO-001"
+               for r in receipts.values()):
+            return False
+        execution, evaluation = receipts["execution"], receipts["evaluation"]
+        verification, mission = receipts["verification"], receipts["mission"]
+        if (execution.get("status") != "completed"
+                or evaluation.get("verdict") != "FULL_STACK_BETTER"
+                or evaluation.get("baseline_status") != "completed"
+                or evaluation.get("full_stack_status") != "completed"
+                or verification.get("decision") != "CERTIFIED"
+                or mission.get("status") != "VERIFIED_SUCCESS"):
+            return False
+        if not verification.get("verifier_id") or (
+            verification.get("verifier_id") == execution.get("executor_id")
+        ):
+            return False
+        if any(mission.get(f"{name}_receipt_sha256") != receipts[name]["receipt_sha256"]
+               for name in ("execution", "evaluation", "verification")):
+            return False
+        if (verification.get("execution_receipt_sha256") != execution["receipt_sha256"]
+                or verification.get("evaluation_receipt_sha256") != evaluation["receipt_sha256"]):
+            return False
+        return self._verified_mission2_reuse(evidence, verification)
 
     def _persist(self, state: dict[str, Any]) -> None:
         tasks = [
