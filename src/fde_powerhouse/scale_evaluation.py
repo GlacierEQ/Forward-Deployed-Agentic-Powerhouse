@@ -47,11 +47,16 @@ SCENARIOS = (
     },
     {
         "name": "receipt_bound_completion",
-        "expected_accept": True,
+        "expected_accept": False,
         "completion_claimed": True,
     },
     {
         "name": "resolved_integration_and_defect",
+        "expected_accept": False,
+        "completion_claimed": True,
+    },
+    {
+        "name": "valid_workstream_receipt_positive_control",
         "expected_accept": True,
         "completion_claimed": True,
     },
@@ -214,6 +219,26 @@ def _stack(scenario: str) -> dict[str, Any]:
             )
             verified = cp.snapshot()["mission"]["status"] == "verified"
             return {"accepted": verified, "reason": "mission status"}
+
+        if scenario == "valid_workstream_receipt_positive_control":
+            # Positive control for a valid local receipt, not terminal certification.
+            cp.enqueue("E", "eval", outputs=["VERIFICATION_RECEIPT.json"])
+            cp.claim("E", "eval")
+            cp.complete(
+                "E", "eval",
+                receipt=_receipt("VERIFICATION_RECEIPT.json", "positive"),
+            )
+            state = cp.snapshot()
+            task = state["workstreams"]["E"]["tasks"]["eval"]
+            accepted = (
+                task["status"] == "verified"
+                and state["mission"]["status"] != "verified"
+                and state["mission"]["frontier_exhausted"] is False
+            )
+            return {
+                "accepted": accepted,
+                "reason": "valid local receipt; terminal mission remains unverified",
+            }
 
         if scenario == "active_running_task":
             cp.enqueue("E", "eval", outputs=["VERIFICATION_RECEIPT.json"])
