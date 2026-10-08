@@ -1,6 +1,7 @@
 """Workstream C integration contract tests: RED before implementation."""
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 from types import SimpleNamespace
@@ -191,14 +192,14 @@ def _write_canonical_shared_snapshot(root: Path, *, e_mission_id: str = "SCALE-F
             {
                 "schema": "glaciereq.scale-fde-receipt-index.v1",
                 "mission_id": "SCALE-FDE-DEMO-001",
-                "unresolved": ["MISSION_RECEIPT.json", "Mission 2 automatic reuse proof"],
+                "unresolved": ["MISSION_RECEIPT.json", "MISSION1_CAPABILITY_RECEIPT.json", "Mission 2 automatic reuse proof"],
             }
         ),
         encoding="utf-8",
     )
 
 
-def test_canonical_frontier_fails_closed_without_verified_mission_receipt(tmp_path):
+def test_canonical_frontier_prepares_with_missing_preterminal_capability_receipt(tmp_path):
     FakeContinuityStore.records.clear()
     shared = tmp_path / "shared"
     db = tmp_path / "continuity.sqlite3"
@@ -212,15 +213,16 @@ def test_canonical_frontier_fails_closed_without_verified_mission_receipt(tmp_pa
         continuity_cls=FakeContinuityStore,
     )
 
-    assert result["status"] == "blocked_external_dependency"
+    assert result["status"] == "preparing_awaiting_verified_capability"
     assert result["mission_id"] == "SCALE-FDE-DEMO-001"
-    assert result["mission_receipt"]["present"] is False
+    assert result["capability_receipt"]["present"] is False
     assert result["capability_registry_mutated"] is False
     assert not registry.exists()
     assert result["continuation"]["current_frontier"] == [
-        "await:shared/MISSION_RECEIPT.json"
+        "await:shared/MISSION1_CAPABILITY_RECEIPT.json"
     ]
-    assert "MISSION_RECEIPT.json" in result["continuation"]["unresolved_dependencies"][0]
+    assert "MISSION1_CAPABILITY_RECEIPT.json" in result["continuation"]["unresolved_dependencies"][0]
+    assert result["continuation"]["engineering_ready"] is True
     assert set(result["source_snapshot"]) == {
         "SCALE_FDE_MISSION.yaml",
         "SCALE_CAPABILITY_GRAPH.json",
@@ -232,7 +234,7 @@ def test_canonical_frontier_fails_closed_without_verified_mission_receipt(tmp_pa
     records = FakeContinuityStore.records[str(db)]
     continuation = [payload for kind, payload in records if kind == "continuation"]
     assert continuation
-    assert continuation[-1]["frontier"] == ["await:shared/MISSION_RECEIPT.json"]
+    assert continuation[-1]["frontier"] == ["await:shared/MISSION1_CAPABILITY_RECEIPT.json"]
 
 
 def test_canonical_frontier_rejects_cross_mission_shared_artifacts(tmp_path):
@@ -247,3 +249,78 @@ def test_canonical_frontier_rejects_cross_mission_shared_artifacts(tmp_path):
             registry_path=tmp_path / "learned-capabilities.json",
             continuity_cls=FakeContinuityStore,
         )
+
+
+def _preterminal_capability_receipt(shared: Path) -> dict:
+    mission_digest = hashlib.sha256((shared / "SCALE_FDE_MISSION.yaml").read_bytes()).hexdigest()
+    return {
+        "mission_id": "SCALE-FDE-DEMO-001",
+        "verification_status": "verified",
+        "mission_contract_sha256": mission_digest,
+        "verifier_id": "independent-E",
+        "executor_id": "runtime-B",
+        "source_revision": "a" * 40,
+        "receipt_refs": ["github://GlacierEQ/computer-user@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"],
+        "upstream_receipt_hashes": {"B": "b" * 64, "D": "d" * 64},
+        "provider_readback": {
+            "state": "verified",
+            "verification_method": "provider_native_readback",
+            "source_ref": "github://GlacierEQ/sigma-glue@dddddddddddddddddddddddddddddddddddddddd",
+        },
+        "reusable_capability": {
+            "id": "cap.provider-readback-reconcile",
+            "description": "Provider readback and reconciliation",
+            "tags": ["provider", "readback"],
+            "input_contract": {"requires": ["provider identity"]},
+            "output_contract": {"emits": ["reconciliation decision"]},
+        },
+    }
+
+
+def test_canonical_frontier_prepares_valid_preterminal_receipt_without_claiming_completion(tmp_path):
+    FakeContinuityStore.records.clear()
+    shared = tmp_path / "shared"
+    _write_canonical_shared_snapshot(shared)
+    receipt = _preterminal_capability_receipt(shared)
+    (shared / "MISSION1_CAPABILITY_RECEIPT.json").write_text(json.dumps(receipt))
+    registry = tmp_path / "registry.json"
+    result = prepare_canonical_frontier(
+        shared_root=shared,
+        db_path=tmp_path / "continuity.sqlite3",
+        registry_path=registry,
+        continuity_cls=FakeContinuityStore,
+    )
+    assert result["status"] == "ready_for_external_provenance_confirmation"
+    assert result["capability_receipt"]["present"] is True
+    assert result["capability_receipt"]["reusable_capability_id"] == "cap.provider-readback-reconcile"
+    assert result["capability_registry_mutated"] is False
+    assert not registry.exists()
+
+
+@pytest.mark.parametrize("field,value", [
+    ("mission_id", "WRONG-MISSION"),
+    ("verification_status", "executed"),
+    ("mission_contract_sha256", "0" * 64),
+    ("source_revision", "not-a-git-revision"),
+    ("verifier_id", "runtime-B"),
+    ("receipt_refs", []),
+    ("upstream_receipt_hashes", {}),
+    ("reusable_capability", {}),
+    ("provider_readback", {}),
+])
+def test_canonical_frontier_rejects_invalid_preterminal_capability(tmp_path, field, value):
+    FakeContinuityStore.records.clear()
+    shared = tmp_path / "shared"
+    _write_canonical_shared_snapshot(shared)
+    receipt = _preterminal_capability_receipt(shared)
+    receipt[field] = value
+    (shared / "MISSION1_CAPABILITY_RECEIPT.json").write_text(json.dumps(receipt))
+    registry = tmp_path / "registry.json"
+    with pytest.raises((ValueError, TypeError), match="capability|receipt|mission|verifier|readback|revision|contract"):
+        prepare_canonical_frontier(
+            shared_root=shared,
+            db_path=tmp_path / "continuity.sqlite3",
+            registry_path=registry,
+            continuity_cls=FakeContinuityStore,
+        )
+    assert not registry.exists()
