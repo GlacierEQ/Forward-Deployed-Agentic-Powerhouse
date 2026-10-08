@@ -106,6 +106,14 @@ def _complete_all(cp: ScaleControlPlane) -> None:
         cp.complete(worker, task, receipt=_receipt(output, worker))
 
 
+def _seal(body: dict[str, Any]) -> dict[str, Any]:
+    receipt = dict(body)
+    receipt["receipt_sha256"] = hashlib.sha256(json.dumps(
+        receipt, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+    ).encode("utf-8")).hexdigest()
+    return receipt
+
+
 def _baseline(case: dict[str, Any]) -> dict[str, Any]:
     accepted = bool(case["completion_claimed"])
     return {
