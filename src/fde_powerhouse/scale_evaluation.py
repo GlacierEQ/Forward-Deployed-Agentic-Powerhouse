@@ -56,6 +56,11 @@ SCENARIOS = (
         "completion_claimed": True,
     },
     {
+        "name": "terminal_evidence_positive_control",
+        "expected_accept": True,
+        "completion_claimed": True,
+    },
+    {
         "name": "active_running_task",
         "expected_accept": False,
         "completion_claimed": False,
