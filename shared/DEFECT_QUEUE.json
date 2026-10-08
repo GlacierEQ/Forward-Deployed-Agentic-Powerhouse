@@ -1,6 +1,6 @@
 {
   "schema_version": "scale-fde/defect-queue-v3",
-  "as_of": "2026-10-07T17:56:00Z",
+  "as_of": "2026-10-08T07:09:37Z",
   "mission_id": "SCALE-FDE-DEMO-001",
   "defects": [
     {
@@ -88,10 +88,29 @@
       "id": "R3-DEF-004",
       "owner": "C",
       "severity": "high",
-      "status": "blocked_on_E",
-      "defect": "Real Mission-2 automatic reuse proof cannot run until E emits a verified Mission-1 receipt with an explicit reusable capability contract.",
+      "status": "waiting_on_E_preterminal_capability",
+      "defect": "C's real Mission-2 reuse requires independently verified preterminal Mission-1 capability evidence, not E's terminal mission certificate.",
       "source_revision": "7bbafb8d6d6eb156cc2527bdb8df53f3c08f197e",
-      "dispatch": "R3-C-001"
+      "dispatch": "R3-C-001",
+      "resolution_progress": "Canonical handoff now specified in shared/MISSION1_CAPABILITY_CONTRACT.json; C-owned code still expects terminal MISSION_RECEIPT.json and must be reconciled by C owner."
+    },
+    {
+      "id": "R3-DEF-005",
+      "owner": "control-plane",
+      "severity": "critical",
+      "status": "contract_repaired_implementation_pending",
+      "defect": "The canonical queue previously made C depend on E's terminal certificate, while E terminal certification depends on C's real Mission-2 reuse.",
+      "resolution_progress": "Preterminal E-to-C contract and acyclic queue topology specified on integration PR #11; E and C source implementations require owner changes and proof.",
+      "source_revision": "c83ba419b8b39150449653b4fc4506f6549da553"
+    },
+    {
+      "id": "R3-DEF-006",
+      "owner": "control-plane",
+      "severity": "critical",
+      "status": "regression_reproduced_fix_pending",
+      "defect": "Local verified workstream counters could mark the mission verified without E's terminal independent certification.",
+      "resolution_progress": "Regression test added on integration PR #11; control-plane classification repair pending.",
+      "source_revision": "c83ba419b8b39150449653b4fc4506f6549da553"
     }
   ]
 }
