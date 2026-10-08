@@ -212,7 +212,7 @@ def prepare_canonical_frontier(
         receipt_path = shared_root / "MISSION1_CAPABILITY_RECEIPT.json"
         if not receipt_path.is_file():
             dependency = (
-                "Workstream E preterminal Mission-1 capability evidence is "
+                "Workstream E preterminal MISSION1_CAPABILITY_RECEIPT.json evidence is "
                 "required before actual capability registration; preparation "
                 "and tests remain executable."
             )
