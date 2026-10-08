@@ -1,6 +1,6 @@
 {
   "schema_version": "scale-fde/integration-queue-v3",
-  "as_of": "2026-10-07T17:55:00Z",
+  "as_of": "2026-10-08T07:09:37Z",
   "mission_id": "SCALE-FDE-DEMO-001",
   "entries": [
     {
@@ -144,25 +144,25 @@
       "id": "R3-E-001",
       "created_at": "2026-10-07T17:55:00Z",
       "contract_revision": "d2e7835084de8a109e1f25ff06ffa141ce1d1963",
-      "status": "running_preparation_waiting_on_B_D",
+      "status": "waiting_on_B_D_for_preterminal_independent_capability_verification",
       "payload": {
         "source_repo": "GlacierEQ/computer-user",
         "source_branch": "scale/verification-product",
         "source_revision": "6b3dfbd152d7f7da7a2464890d653f335b9693c7",
         "pull_request": 67,
-        "objective": "Rebind the independent verifier to current central main; prepare the same-mission empirical baseline/full-stack evaluation now; once B and D source-bound receipts exist, execute both runs, verify identical desired-state postconditions, emit EXECUTION_RECEIPT.json and VERIFICATION_RECEIPT.json, and emit MISSION_RECEIPT.json only if the full mission contract is actually satisfied.",
+        "objective": "After source-bound B/D evidence, E independently executes and evaluates the same canonical Mission-1 baseline and full-stack runs, validates provider-native readback and reusable capability, and emits MISSION1_CAPABILITY_RECEIPT.json. This is not terminal mission certification.",
         "waits_on": [
           "R3-B-001",
           "R3-D-001"
         ],
         "completion_artifacts": [
           "EXECUTION_RECEIPT.json",
-          "VERIFICATION_RECEIPT.json",
-          "MISSION_RECEIPT.json",
-          "REPRODUCE.md",
-          "updated RECEIPT_INDEX.json"
+          "EVALUATION_RECEIPT.json",
+          "MISSION1_CAPABILITY_RECEIPT.json",
+          "REPRODUCE.md"
         ],
-        "hard_boundary": "E verifies; it must not repair sibling implementation or infer absent proof."
+        "hard_boundary": "E verifies; it must not repair sibling implementation or infer absent proof.",
+        "handoff_contract": "shared/MISSION1_CAPABILITY_CONTRACT.json"
       }
     },
     {
@@ -171,22 +171,23 @@
       "id": "R3-C-001",
       "created_at": "2026-10-07T17:55:00Z",
       "contract_revision": "d2e7835084de8a109e1f25ff06ffa141ce1d1963",
-      "status": "waiting_on_E_verified_mission_receipt",
+      "status": "waiting_on_E_preterminal_capability_verification",
       "payload": {
         "source_repo": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
         "source_branch": "scale/memory-composition",
         "source_revision": "7bbafb8d6d6eb156cc2527bdb8df53f3c08f197e",
         "pull_request": 2,
-        "objective": "Remain fail-closed until E emits a source-bound verified Mission-1 receipt. Then validate the reusable-capability payload, atomically register it through existing Genius/Aspen compounding, start a fresh Mission-2 process, prove automatic discovery/selection/reuse, and return exact reuse receipts to E.",
+        "objective": "Validate E's source-bound independently verified preterminal Mission-1 capability receipt against the current canonical contract, then register via existing Aspen/Genius primitives and execute fresh-process Mission-2 automatic reuse. Return machine-readable Mission2ReuseReceipt to E. Terminal mission certification is not a prerequisite for C.",
         "waits_on": [
-          "R3-E-001:MISSION_RECEIPT.json"
+          "R3-E-001:MISSION1_CAPABILITY_RECEIPT.json"
         ],
         "completion_artifacts": [
           "shared/WORKSTREAM_C.json",
           "reusable capability registry revision",
           "Mission-2 automatic reuse receipt"
         ],
-        "hard_boundary": "No transcript-as-memory, no duplicate Faraway runtime, no capability inference from prose."
+        "hard_boundary": "No transcript-as-memory, no duplicate Faraway runtime, no capability inference from prose.",
+        "handoff_contract": "shared/MISSION1_CAPABILITY_CONTRACT.json"
       }
     },
     {
@@ -197,11 +198,16 @@
       "contract_revision": "d2e7835084de8a109e1f25ff06ffa141ce1d1963",
       "status": "waiting_on_C_mission2_reuse",
       "payload": {
-        "objective": "After C returns the real Mission-2 automatic-reuse proof, independently verify the reuse evidence, update MISSION_RECEIPT/VERIFICATION_RECEIPT/RECEIPT_INDEX as required, and certify the terminal mission only if every canonical terminal condition is source-bound.",
+        "objective": "Only after source-bound C real Mission-2 automatic reuse, independently verify all mission postconditions, provider readback, baseline/full-stack results, falsification tests and receipt integrity; E alone may emit terminal MISSION_RECEIPT.json.",
         "waits_on": [
           "R3-C-001"
         ],
-        "hard_boundary": "Final certification authority remains E."
+        "hard_boundary": "Final certification authority remains E.",
+        "completion_artifacts": [
+          "VERIFICATION_RECEIPT.json",
+          "MISSION_RECEIPT.json",
+          "updated RECEIPT_INDEX.json"
+        ]
       }
     }
   ]
