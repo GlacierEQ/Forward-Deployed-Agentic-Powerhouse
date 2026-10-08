@@ -207,6 +207,22 @@ class ScaleControlPlane:
             return False
         return self._verified_mission2_reuse(evidence, verification)
 
+    @staticmethod
+    def _verified_mission2_reuse(evidence: dict[str, Any],
+                                 verification: dict[str, Any]) -> bool:
+        proof = evidence.get("mission2_reuse")
+        if not isinstance(proof, dict):
+            return False
+        first, second = proof.get("mission1"), proof.get("mission2")
+        if not isinstance(first, dict) or not isinstance(second, dict):
+            return False
+        return bool(
+            second.get("automatic_reuse") is True
+            and first.get("extracted_capability_id")
+            and first["extracted_capability_id"] == second.get("auto_reused_capability_id")
+            and verification.get("postconditions")
+        )
+
     def _persist(self, state: dict[str, Any]) -> None:
         tasks = [
             task
