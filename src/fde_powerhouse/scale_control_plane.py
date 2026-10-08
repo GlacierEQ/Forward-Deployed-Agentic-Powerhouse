@@ -259,6 +259,7 @@ class ScaleControlPlane:
         workstream_exhausted = bool(gates) and all(gates.values())
         terminal_certified = bool(
             state["mission"].get("independent_terminal_certification") is True
+            and self._terminal_evidence_valid(state["mission"].get("terminal_evidence"))
         )
         gates["independent_terminal_certification"] = terminal_certified
         exhausted = workstream_exhausted and terminal_certified
