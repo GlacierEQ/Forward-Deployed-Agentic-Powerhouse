@@ -147,8 +147,9 @@ def test_resolved_integration_and_defect_restore_verification(
     )
     state = cp.snapshot()
 
-    assert state["mission"]["frontier_exhausted"] is True
-    assert state["mission"]["status"] == "verified"
+    assert state["mission"]["workstream_frontier_exhausted"] is True
+    assert state["mission"]["frontier_exhausted"] is False
+    assert state["mission"]["status"] == "awaiting_independent_certification"
 
 
 def test_evaluation_is_adversarial_and_reports_full_confusion_matrix() -> None:
