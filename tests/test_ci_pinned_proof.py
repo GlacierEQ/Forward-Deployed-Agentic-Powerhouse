@@ -1,8 +1,7 @@
 """Regression: an unavailable pinned integration must not be reported green."""
 
-from pathlib import Path
 import re
-
+from pathlib import Path
 
 WORKFLOW = Path(__file__).resolve().parents[1] / ".github" / "workflows" / "ci.yml"
 
