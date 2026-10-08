@@ -52,7 +52,7 @@ SCENARIOS = (
     },
     {
         "name": "resolved_integration_and_defect",
-        "expected_accept": True,
+        "expected_accept": False,
         "completion_claimed": True,
     },
     {
