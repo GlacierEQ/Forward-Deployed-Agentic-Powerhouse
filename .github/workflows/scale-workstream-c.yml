@@ -1,0 +1,117 @@
+name: Scale Workstream C
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/fde_powerhouse/scale_compounding.py"
+      - "tests/test_scale_compounding.py"
+      - ".github/workflows/scale-workstream-c.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    name: Agent C contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Lint Agent C surface
+        run: |
+          ruff check src/fde_powerhouse/scale_compounding.py
+          ruff check tests/test_scale_compounding.py
+
+      - name: Run Agent C contract
+        run: pytest -q tests/test_scale_compounding.py
+
+  real-donor-proof:
+    name: Aspen + Genius real-donor proof
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout FDE sidecar
+        uses: actions/checkout@v4
+
+      - name: Checkout Aspen Grove exact implementation
+        uses: actions/checkout@v4
+        with:
+          repository: GlacierEQ/aspen-grove-memory
+          ref: c5b8bb44016ee9c17e44c58b53f0545bfdc9691f
+          path: estate/aspen-grove-memory
+          token: ${{ secrets.ESTATE_CHECKOUT_TOKEN || github.token }}
+
+      - name: Checkout Genius-Mastery exact implementation
+        uses: actions/checkout@v4
+        with:
+          repository: GlacierEQ/Genius-Mastery
+          ref: 4ab452f7ee08f865f24e61f011b1c803fc9a1c7d
+          path: estate/Genius-Mastery
+          token: ${{ secrets.ESTATE_CHECKOUT_TOKEN || github.token }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install FDE sidecar
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Verify Aspen continuity donor
+        working-directory: estate/aspen-grove-memory
+        run: |
+          python -m compileall -q src tests
+          python tests/test_scale_continuity.py -v
+
+      - name: Verify Genius compounding donor
+        working-directory: estate/Genius-Mastery
+        run: |
+          pip install -e ".[dev]"
+          pytest -q tests/test_compounding.py
+
+      - name: Execute cross-process resurrection and Mission-2 reuse
+        env:
+          FDE_PATH_ASPEN_GROVE_MEMORY: ${{ github.workspace }}/estate/aspen-grove-memory
+          FDE_PATH_GENIUS_MASTERY: ${{ github.workspace }}/estate/Genius-Mastery
+        run: |
+          mkdir -p .verification-artifacts/scale-c
+          python -m fde_powerhouse.scale_compounding prove \
+            --workdir .verification-artifacts/scale-c \
+            > .verification-artifacts/scale-c/WORKSTREAM_C_PROOF.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path(".verification-artifacts/scale-c/WORKSTREAM_C_PROOF.json")
+          proof = json.loads(path.read_text(encoding="utf-8"))
+          assert proof["mission1"]["extracted_capability_id"] == "cap.provider-readback-reconcile"
+          assert proof["resurrection"]["objective"] == "Recover from an ambiguous provider mutation."
+          assert proof["resurrection"]["decisions"]
+          assert proof["resurrection"]["completed_tasks"]
+          assert proof["resurrection"]["receipts"]
+          assert proof["resurrection"]["capabilities"]
+          assert proof["mission2"]["auto_reused_capability_id"] == "cap.provider-readback-reconcile"
+          assert proof["mission2"]["automatic_reuse"] is True
+          assert proof["donors"]["aspen_grove_memory"]["revision"] == "c5b8bb44016ee9c17e44c58b53f0545bfdc9691f"
+          assert proof["donors"]["genius_mastery"]["revision"] == "4ab452f7ee08f865f24e61f011b1c803fc9a1c7d"
+          print(json.dumps(proof, indent=2, sort_keys=True))
+          PY
+
+      - name: Upload Workstream C proof receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: scale-workstream-c-proof
+          path: .verification-artifacts/scale-c/WORKSTREAM_C_PROOF.json
+          if-no-files-found: error
