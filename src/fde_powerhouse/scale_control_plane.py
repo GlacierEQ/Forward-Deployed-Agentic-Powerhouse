@@ -216,6 +216,12 @@ class ScaleControlPlane:
         first, second = proof.get("mission1"), proof.get("mission2")
         if not isinstance(first, dict) or not isinstance(second, dict):
             return False
+        sources = evidence.get("source_revisions")
+        if not isinstance(sources, dict) or not all(
+            isinstance(sources.get(k), str) and len(sources[k]) == 40
+            for k in "BCDE"
+        ):
+            return False
         return bool(
             second.get("automatic_reuse") is True
             and first.get("extracted_capability_id")
