@@ -111,3 +111,38 @@ def test_runtime_local_workstream_counters_cannot_certify_full_mission(tmp_path)
     assert mission["status"] != "verified"
     assert mission["frontier_exhausted"] is False
     assert mission["workstream_frontier_exhausted"] is True
+
+
+def test_unverified_evidence_never_freezes_parallel_engineering():
+    """Only evidence promotion waits on predecessors; independent work proceeds."""
+    queue = _load("INTEGRATION_QUEUE.json")
+    entries = {entry["id"]: entry for entry in queue["entries"]}
+    for worker in ("R3-B-001", "R3-D-001"):
+        entry = entries[worker]
+        assert entry["status"] == "dispatched"
+        assert entry["payload"]["engineering_allowed"] is True
+    for work_id, expected_dependency in (
+        ("R3-E-001", ["R3-B-001", "R3-D-001"]),
+        ("R3-C-001", ["R3-E-001:MISSION1_CAPABILITY_RECEIPT.json"]),
+    ):
+        entry = entries[work_id]
+        assert entry["payload"]["engineering_allowed"] is True
+        assert entry["payload"]["promotion_waits_on"] == expected_dependency
+        assert entry["payload"]["next_executable_actions"]
+        assert not any("no action" in action.lower() for action in entry["payload"]["next_executable_actions"])
+    assert entries["R3-E-002"]["payload"]["promotion_waits_on"] == ["R3-C-001"]
+
+
+def test_unverified_terminal_evidence_does_not_block_runtime_work(tmp_path):
+    """An absent final E certificate must not disable normal task transitions."""
+    cp = ScaleControlPlane.bootstrap(tmp_path)
+    for worker in ("B", "D", "E", "C"):
+        cp.enqueue(worker, "engineering", outputs=[f"WORKSTREAM_{worker}.json"])
+        cp.claim(worker, "engineering")
+    snapshot = cp.snapshot()
+    assert all(
+        snapshot["workstreams"][worker]["tasks"]["engineering"]["status"] == "running"
+        for worker in ("B", "D", "E", "C")
+    )
+    assert snapshot["mission"]["status"] == "active"
+    assert snapshot["mission"]["frontier_exhausted"] is False
