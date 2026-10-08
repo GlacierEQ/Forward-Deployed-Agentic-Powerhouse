@@ -228,6 +228,14 @@ class ScaleControlPlane:
             for r in readbacks
         ):
             return False
+        falsifications = verification.get("falsification_tests")
+        if not isinstance(falsifications, list) or not falsifications or any(
+            not isinstance(t, dict) or t.get("falsified") is not False
+            for t in falsifications
+        ):
+            return False
+        if not verification.get("validated_claims"):
+            return False
         return bool(
             second.get("automatic_reuse") is True
             and first.get("extracted_capability_id")
