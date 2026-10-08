@@ -222,6 +222,12 @@ class ScaleControlPlane:
             for k in "BCDE"
         ):
             return False
+        readbacks = verification.get("readback_assertions")
+        if not isinstance(readbacks, list) or not readbacks or any(
+            not isinstance(r, dict) or r.get("match_status") != "VERIFIED"
+            for r in readbacks
+        ):
+            return False
         return bool(
             second.get("automatic_reuse") is True
             and first.get("extracted_capability_id")
