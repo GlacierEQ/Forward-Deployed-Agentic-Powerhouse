@@ -2,7 +2,7 @@
   "schema": "glaciereq.scale-fde.workstream/v1",
   "workstream": "C",
   "name": "Memory / Composition / Compounding",
-  "status": "canonical_frontier_hydrated_awaiting_E_mission_receipt",
+  "status": "PRETERMINAL_CONSUMER_IMPLEMENTED_CI_PENDING_EXTERNAL_PROOF_OPEN",
   "ownership": [
     "Aspen Grove structured mission continuity",
     "Genius Mastery deterministic capability composition",
@@ -57,7 +57,8 @@
     "genius_mastery": "4ab452f7ee08f865f24e61f011b1c803fc9a1c7d",
     "fde_sidecar_code": "2e3cfe61c7071422589fd4d234b144203a32efbb",
     "fde_workflow_pin": "8cfaaeb1d28657cef9b4733f68fb3176f1bde05f",
-    "fde_canonical_frontier": "84cf73675d8f14e601b661522d79ed35a422fe14"
+    "fde_canonical_frontier": "84cf73675d8f14e601b661522d79ed35a422fe14",
+    "fde_preterminal_capability_consumer": "4fed0c112071baa165760a3ba676a27282c4aa38"
   },
   "verification": {
     "red": {
@@ -120,6 +121,16 @@
         "missing MISSION_RECEIPT.json is preserved as an external dependency",
         "capability registry is not mutated while independent mission verification is absent"
       ]
+    },
+    "preterminal_consumer": {
+      "implementation_head": "4fed0c112071baa165760a3ba676a27282c4aa38",
+      "tests_added_at": "87941e3f995155bd303fdc6588c521cbc8acb78e",
+      "state": "CI_PENDING_NOT_LIVE_PROOF",
+      "claims_excluded": [
+        "live provider execution",
+        "real Mission-2 reuse",
+        "mission-wide certification"
+      ]
     }
   },
   "defects": [
@@ -143,16 +154,16 @@
     },
     {
       "id": "C-DEFECT-004",
-      "status": "external_dependency",
-      "summary": "Workstream E has not emitted source-bound shared/MISSION_RECEIPT.json; its own contract and receipt index explicitly preserve this as unresolved.",
-      "containment": "Agent C hydrates and preserves the canonical mission frontier, fails closed, and resumes only after an independently verified receipt becomes present."
+      "status": "consumer_implementation_updated_empirical_E_receipt_pending",
+      "summary": "C formerly depended on E terminal MISSION_RECEIPT.json; now consumes E preterminal MISSION1_CAPABILITY_RECEIPT.json under source-bound validation.",
+      "containment": "Consumer logic and negative cases updated on C branch; no capability registered or final mission success inferred until actual E evidence and provider readback."
     }
   ],
   "integration_contract": {
     "consumes": [
       "shared/SCALE_FDE_MISSION.yaml",
       "shared/SCALE_CAPABILITY_GRAPH.json",
-      "verified mission receipt with explicit reusable_capability"
+      "E-verified preterminal shared/MISSION1_CAPABILITY_RECEIPT.json with explicit reusable_capability"
     ],
     "emits": [
       "structured Aspen continuity state",
@@ -163,11 +174,10 @@
     "sibling_boundary": "No sibling workstream implementation is modified or treated as verified by this workstream."
   },
   "next_frontier": [
-    "resume automatically when shared/MISSION_RECEIPT.json is source-bound by Workstream E",
-    "validate the receipt mission_id and verification_status against the preserved canonical snapshot",
-    "perform C-owned explicit reusable-capability extraction from verified mission evidence without inferring success from prose",
-    "register the capability atomically and prove Mission 2 automatic reuse against the real verified mission",
-    "hand exact receipts to integration without blind merge"
+    "Continue C consumer tests and reconcile C branch against central integration PR #11 typed preterminal handoff",
+    "Register no capability until independently source-verified E preterminal Mission-1 receipt exists",
+    "On real E evidence, compound through Aspen/Genius, execute fresh-process Mission-2 reuse, and return source-bound proof to E",
+    "Preserve final E terminal MISSION_RECEIPT.json as a post-C output, never a prerequisite of C"
   ],
   "canonical_shared_snapshot": {
     "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
