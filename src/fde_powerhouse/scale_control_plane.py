@@ -223,6 +223,15 @@ class ScaleControlPlane:
             and verification.get("postconditions")
         )
 
+    def record_terminal_evidence(self, evidence: dict[str, Any]) -> None:
+        verified = self._terminal_evidence_valid(evidence)
+        if not verified:
+            raise ValueError("terminal evidence validation failed")
+        state = self.snapshot()
+        state["mission"]["terminal_evidence"] = evidence
+        state["mission"]["independent_terminal_certification"] = verified
+        self._persist(state)
+
     def _persist(self, state: dict[str, Any]) -> None:
         tasks = [
             task
