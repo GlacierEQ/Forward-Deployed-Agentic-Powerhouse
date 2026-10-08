@@ -74,9 +74,10 @@ jobs:
           python -m fde_powerhouse invoke --pipeline control-plane --validate-only
           python -m fde_powerhouse invoke --pipeline inception-to-deployment --validate-only
 
-      - name: Skip note when checkout unavailable
+      - name: Fail when pinned proof is unavailable
         if: steps.mega_checkout.outcome != 'success'
         run: |
-          echo "mega-skills checkout unavailable (private repo token?)."
+          echo "::error::Pinned mega-skills checkout unavailable; the pinned integration was NOT validated."
           echo "Set repository secret ESTATE_CHECKOUT_TOKEN with read access to GlacierEQ/mega-skills."
           echo "Pin remains configs/pins.yaml → c100fbb3b603d5cc3141c3dd8755c2d0f62ac39a"
+          exit 1
