@@ -2,7 +2,7 @@
   "schema": "glaciereq.scale-fde.workstream/v1",
   "workstream": "C",
   "name": "Memory / Composition / Compounding",
-  "status": "PRETERMINAL_CONSUMER_IMPLEMENTED_CI_PENDING_EXTERNAL_PROOF_OPEN",
+  "status": "PRETERMINAL_CONSUMER_CI_VERIFIED_AWAITING_REAL_E_SOURCE_PROOF",
   "ownership": [
     "Aspen Grove structured mission continuity",
     "Genius Mastery deterministic capability composition",
@@ -123,14 +123,19 @@
       ]
     },
     "preterminal_consumer": {
-      "implementation_head": "4fed0c112071baa165760a3ba676a27282c4aa38",
+      "implementation_head": "6110118867dd93580b082282b90b50c7b127f917",
       "tests_added_at": "87941e3f995155bd303fdc6588c521cbc8acb78e",
-      "state": "CI_PENDING_NOT_LIVE_PROOF",
+      "state": "FOCUSED_AND_FULL_CI_GREEN_NOT_LIVE_PROOF",
       "claims_excluded": [
         "live provider execution",
         "real Mission-2 reuse",
         "mission-wide certification"
-      ]
+      ],
+      "focused_run_id": 37836860076,
+      "full_ci_run_id": 37836859797,
+      "ci_source_sha": "6110118867dd93580b082282b90b50c7b127f917",
+      "real_mission1_receipt_present": false,
+      "real_mission2_reuse_verified": false
     }
   },
   "defects": [
@@ -202,5 +207,9 @@
       "mission_receipt_present": false,
       "receipt_index_marks_mission_receipt_unresolved": true
     }
+  },
+  "central_convergence": {
+    "canonical_contract_promoted_main": "032cf6e78478fbca1d56e1a6ab64e8cfbfc783ee",
+    "canonical_contract_pr": 12
   }
 }
