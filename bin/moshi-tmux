@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# APEX Moshi Tmux Session Herder
+# Manages persistent background Moshi + Workbench terminal sessions over SSH/Mosh
+set -e
+
+SESSION_NAME="moshi"
+
+# Check if session already exists
+if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+    echo "[*] Tmux session '$SESSION_NAME' already active."
+    if [ -t 0 ]; then
+        echo "[*] Attaching to existing session..."
+        exec tmux attach-session -t "$SESSION_NAME"
+    else
+        echo "[*] Session is running detached in background."
+        exit 0
+    fi
+fi
+
+echo "[*] Spawning new persistent Moshi tmux session: '$SESSION_NAME'..."
+
+# Create detached session with custom status header
+tmux new-session -d -s "$SESSION_NAME" -n "moshi-core" "bash"
+
+# Configure sleek status bar / header
+tmux set-option -t "$SESSION_NAME" status-style "bg=#090d16,fg=#9ca3af"
+tmux set-option -t "$SESSION_NAME" status-left "#[bg=#10b981,fg=#000000,bold] 🛡️ APEX MOSHI #[default] "
+tmux set-option -t "$SESSION_NAME" status-right "#[fg=#10b981]SSH:8022 #[fg=#60a5fa]UI:8088 #[fg=#f3f4f6]%H:%M #[default]"
+tmux set-option -t "$SESSION_NAME" window-status-current-style "bg=#1f293d,fg=#ffffff,bold"
+
+# Pane 0: Moshi Interactive Terminal
+tmux send-keys -t "$SESSION_NAME:0" "clear && /usr/local/bin/apex-triad status" C-m
+
+# Split horizontally: Pane 1 for Live Workbench Monitor
+tmux split-window -v -t "$SESSION_NAME:0" -p 40 "bash"
+tmux send-keys -t "$SESSION_NAME:0.1" "watch -n 5 'curl -s http://127.0.0.1:8088/api/inventory | python3 -m json.tool | head -n 20'" C-m
+
+# Split vertically for interactive command line
+tmux split-window -h -t "$SESSION_NAME:0.1" -p 50 "bash"
+tmux send-keys -t "$SESSION_NAME:0.2" "clear && echo '[*] Interactive Root Shell Ready' && cd /root" C-m
+
+# Focus on Pane 0
+tmux select-pane -t "$SESSION_NAME:0.0"
+
+echo "[+] Moshi tmux session '$SESSION_NAME' initialized successfully!"
+if [ -t 0 ]; then
+    exec tmux attach-session -t "$SESSION_NAME"
+else
+    echo "[*] Session running detached in background. Attach anytime via: tmux attach -t $SESSION_NAME"
+fi

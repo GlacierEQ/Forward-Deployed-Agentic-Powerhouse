@@ -48,6 +48,7 @@ Thumbs.db
 *.keystore
 .secret
 .secrets
+apex_case_framework/temp_chat_exports/
 *_secret*
 *_credentials*
 *_vault*

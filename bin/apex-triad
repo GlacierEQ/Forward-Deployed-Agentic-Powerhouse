@@ -1,0 +1,98 @@
+#!/usr/bin/env bash
+# APEX Holographic Mesh: SSH + Mosh + Moshi Triad Manager
+# Author: GlacierEQ / Casey Barton
+set -e
+
+COMMAND="${1:-status}"
+
+case "$COMMAND" in
+    status)
+        echo "================================================================="
+        echo "APEX TRIAD STATUS: SSH · MOSH · MOSHI"
+        echo "================================================================="
+        # 1. SSH Check
+        echo -n "[*] SSH Daemon (Port 8022): "
+        if python3 -c "import socket; s=socket.socket(); s.settimeout(1); s.connect(('127.0.0.1', 8022)); s.close()" 2>/dev/null; then
+            echo "ONLINE (Listening on 0.0.0.0:8022)"
+        else
+            echo "OFFLINE"
+        fi
+
+        # 1b. SSH Port 22 Proxy
+        echo -n "[*] SSH Port 22 Proxy:       "
+        if python3 -c "import socket; s=socket.socket(); s.settimeout(1); s.connect(('127.0.0.1', 22)); s.close()" 2>/dev/null; then
+            echo "ONLINE (Port 22 -> 8022 active)"
+        else
+            echo "OFFLINE (run: socat TCP-LISTEN:22,fork TCP:127.0.0.1:8022 &)"
+        fi
+
+        # 2. Mosh Check
+        echo -n "[*] Mosh Server Binary:     "
+        if [ -x "/data/data/com.termux/files/usr/bin/mosh-server" ]; then
+            echo "READY (/data/data/com.termux/files/usr/bin/mosh-server)"
+        else
+            echo "NOT FOUND"
+        fi
+
+        # 3. Moshi & Mimi Check
+        echo -n "[*] Moshi/Mimi Voice Engine: "
+        if python3 -c "import moshi, sphn; print('READY (v0.2.13 + Mimi Codec)')" 2>/dev/null; then
+            :
+        else
+            echo "NOT CONFIGURED"
+        fi
+
+        # 4. Moshi-Hook Daemon & Pairing
+        echo -n "[*] Moshi-Hook (iOS App):   "
+        if command -v moshi-hook >/dev/null 2>&1; then
+            PAIR_STATUS=$(moshi-hook status 2>/dev/null | grep -E "status:|host id:" | tr '\n' ' ' || echo "installed")
+            echo "ACTIVE ($PAIR_STATUS)"
+        else
+            echo "NOT INSTALLED"
+        fi
+
+        # 5. Forensic Workbench UI
+        echo -n "[*] Forensic Workbench UI:  "
+        if python3 -c "import socket; s=socket.socket(); s.settimeout(1); s.connect(('127.0.0.1', 8088)); s.close()" 2>/dev/null; then
+            echo "ONLINE (http://127.0.0.1:8088)"
+        else
+            echo "OFFLINE"
+        fi
+
+        # 6. tmux Session Herder
+        echo -n "[*] tmux Session Herder:    "
+        if tmux has-session -t moshi 2>/dev/null; then
+            echo "ACTIVE (session: moshi)"
+        else
+            echo "DETACHED / NONE"
+        fi
+
+        # 7. Network Info
+        IP=$(python3 -c "import socket; s=socket.socket(socket.AF_INET, socket.SOCK_DGRAM); s.connect(('8.8.8.8', 80)); print(s.getsockname()[0]); s.close()" 2>/dev/null || echo "127.0.0.1")
+        echo "-----------------------------------------------------------------"
+        echo "[>] Device LAN IP:           $IP"
+        echo "[>] Connect via SSH (Port 22): ssh root@$IP"
+        echo "[>] Connect via SSH (8022):    ssh -p 8022 root@$IP"
+        echo "[>] Connect via Mosh:          mosh --ssh=\"ssh -p 8022\" root@$IP"
+        echo "[>] Forensic Web UI:          http://$IP:8088"
+        echo "[>] Moshi-tmux Herder:        moshi-tmux (or tmux attach -t moshi)"
+        echo "================================================================="
+        ;;
+    doctor)
+        moshi-hook doctor
+        ;;
+    colab-recipe)
+        python3 /root/apex_case_framework/apex_moshi_voice_engine.py colab-recipe
+        ;;
+    moshi-test)
+        python3 /root/apex_case_framework/apex_moshi_voice_engine.py test
+        ;;
+    moshi-connect)
+        shift
+        python3 /root/apex_case_framework/apex_moshi_voice_engine.py connect "$@"
+        ;;
+    *)
+        echo "Usage: apex-triad {status|doctor|colab-recipe|moshi-test|moshi-connect [url]}"
+        exit 1
+        ;;
+esac
