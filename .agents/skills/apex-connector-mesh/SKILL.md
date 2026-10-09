@@ -1,6 +1,6 @@
 ---
 name: apex-connector-mesh
-description: Universal Integration Fabric — 32+ MCP servers (GitHub, Google, Notion, Dropbox, Exa, Tavily, Jina, legal), multi-provider LLM routing (MiMo > Groq > OpenRouter), unified memory query (Mem0, Supermemory, Pinecone, Qdrant, Context7), Supabase vault access. Composes smithery-holographic-mesh, ai-gateway, ai-sdk, chat-sdk, vercel-*, memory-unified, unified-memory-connect, memory-connect, supabase_vault_client.
+description: Universal integration fabric: 32+ MCP servers, multi-provider LLM routing, and unified memory query.
 version: 1.0.0
 status: active
 ---

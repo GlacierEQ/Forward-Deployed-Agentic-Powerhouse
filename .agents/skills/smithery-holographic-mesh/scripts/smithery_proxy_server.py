@@ -4,11 +4,21 @@ APEX Smithery Holographic Mesh Proxy & JSON-RPC Gateway v3.0
 Runs on 127.0.0.1:8999 with connection pooling, tool caching, and resilient failover to remote Smithery.
 """
 
-from apex_runtime_security import secure_tls_context, require_env, DEFAULT_RETRY, with_retry, verify_bearer_token, auth_required
+import os
+import sys
+import json
+import time
+import urllib.request
+from pathlib import Path
+from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
+from typing import Any
+
+sys.path.insert(0, "/root/.agents/skills/apex-sovereign-supreme/scripts")
+from apex_runtime_security import secure_tls_context, DEFAULT_RETRY, with_retry, verify_bearer_token, auth_required
 
 ctx = secure_tls_context()
 
-SMITHERY_REMOTE_URL = require_env("SMITHERY_REMOTE_URL")
+SMITHERY_REMOTE_URL = os.environ.get("SMITHERY_REMOTE_URL", "https://mcp.smithery.ai/GlacierEQ?mode=smart")
 CACHE_DIR = Path("/root/.apex/mcp_cache")
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 

@@ -1,6 +1,6 @@
 ---
 name: apex-memory-substrate
-description: Durable Intelligence Layer — Pointer-indexed persistence (Aspen-Grove), verified reasoning chains (Longest-Horizon), hybrid retrieval (Mem0, Supermemory, Pinecone, Qdrant, Context7), token compression, High Council multi-VP adjudication. Composes aspen-grove-core, longest-horizon, memory-unified, unified-memory-connect, token-optimizer.
+description: Durable intelligence layer: pointer-indexed persistence (Aspen-Grove), hybrid retrieval, and multi-VP adjudication.
 version: 1.0.0
 status: active
 ---

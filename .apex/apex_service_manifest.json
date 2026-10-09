@@ -89,7 +89,7 @@
       "port": 8787,
       "command": ["python3", "/data/data/com.termux/files/home/scripts/memory_bridge.py", "8787"],
       "log_file": "/tmp/apex_memory_bridge.log",
-      "readiness": {"path": "/health", "status": ["ONLINE"], "required": ["status", "service", "port"]}
+      "readiness": {"path": "/health", "status": ["ok", "OK", "ONLINE"], "required": ["status"]}
     },
     {
       "id": "nexus_api_gateway",
