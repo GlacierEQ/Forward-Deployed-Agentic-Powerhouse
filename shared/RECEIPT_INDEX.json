@@ -4,8 +4,8 @@
   "evidence_policy": "Source-bound or independently executed evidence only; unresolved work is never inferred success.",
   "current_verification_snapshot": {
     "canonical_repo_revision": "501176f65c3e12098319cf369d9c9383a742614b",
-    "created_by": "Workstream E independent verification",
-    "mission_status": "BLOCKED"
+    "created_by": "Workstream E research-to-execution convergence",
+    "mission_status": "BLOCKED_ON_EMPIRICAL_RUNS_AND_PROVIDER_MUTATION"
   },
   "source_bound": [
     {
@@ -15,46 +15,68 @@
       "receipt": "Actions run 37500203003"
     },
     {
-      "id": "B-DURABILITY-INDEPENDENT-E",
-      "state": "VERIFIED_BEHAVIOR",
-      "source": "GlacierEQ/computer-user@dd9ea50bce265d5ffc235999909e4ee9b08a4732:tests/test_scale_runtime_durability.py",
-      "receipt": "E isolated execution: 12 passed"
-    },
-    {
-      "id": "B-GITHUB-CI",
-      "state": "FAILED_EXTERNAL_CI",
-      "source": "GitHub Actions run 37500289226"
-    },
-    {
       "id": "C-CONTINUITY-COMPOUNDING",
       "state": "VERIFIED_COMPONENT_MECHANICS",
       "source": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse@7bbafb8d6d6eb156cc2527bdb8df53f3c08f197e:shared/WORKSTREAM_C.json",
       "receipt": "Actions runs 37498198773,37498198496"
     },
     {
-      "id": "D-IMPLEMENTATION",
-      "state": "VERIFIED_CHECKPOINT",
-      "source": "GlacierEQ/sigma-glue@a910c04402d99ea811c19a7700ea879ed9e267e7:shared/WORKSTREAM_D.json",
-      "receipt": "Actions run 37257654701: 144/144"
+      "id": "B-DURABILITY-INDEPENDENT-E",
+      "state": "VERIFIED_BEHAVIOR",
+      "source": "GlacierEQ/computer-user@dd9ea50bce265d5ffc235999909e4ee9b08a4732:tests/test_scale_runtime_durability.py",
+      "receipt": "E isolated execution: 12 passed"
+    },
+    {
+      "id": "B-WORKSTREAM-RECEIPT",
+      "state": "MACHINE_READABLE",
+      "source": "GlacierEQ/computer-user@cc73e21fe974931af91e760ada76a6f58c7a5ce2:shared/WORKSTREAM_B.json"
+    },
+    {
+      "id": "B-EXTERNAL-CI",
+      "state": "PRE_EXECUTION_FAILURE",
+      "source": "GitHub Actions 38568894959 / job 115868568707",
+      "receipt": "runner_id=0; 0 steps"
+    },
+    {
+      "id": "D-DEPLOYED-SIGMA-INGRESS",
+      "state": "DEPLOYED_READ_ONLY_CONTRACT",
+      "source": "GlacierEQ/colossus-gateway@a027034f72adee6fb019e8e26edb24928283efce",
+      "receipt": "Vercel dpl_5EUNb2y7EE2SbesKv4SKNetNtHL1 READY; /v1/dispatch bound to fail-closed receiver"
+    },
+    {
+      "id": "D-INTEGRATION-RECONCILIATION",
+      "state": "UPDATED",
+      "source": "GlacierEQ/sigma-glue@e6a8dc9c38b0f1ab87791b9aa04533c3cbdeba41:shared/WORKSTREAM_D.json"
     },
     {
       "id": "D-HISTORICAL-LIVE-PROVIDER",
       "state": "VERIFIED_HISTORICAL",
       "source": "GlacierEQ/sigma-glue@4a1ca8e5c88a62e8a94a43213b2c509af6afcea3",
-      "receipt": "Actions run 31279895312"
+      "receipt": "Actions 31279895312"
     },
     {
-      "id": "E-VERIFIER",
+      "id": "E-VERIFIER-RESEARCH-UPGRADE",
       "state": "VERIFIED_ISOLATED",
-      "source": "GlacierEQ/computer-user@d0550aa93896343c01b4f9aaf80c845b7e4dcf90",
-      "receipt": "Ruff PASS; compileall PASS; 24 tests + 2 subtests PASS"
+      "source": "GlacierEQ/computer-user@7898f2082b84f5fbf155f9334c5f7cb23a637576",
+      "receipt": "25 tests + 2 subtests; compileall PASS; Ruff PASS"
+    },
+    {
+      "id": "E-EXTERNAL-CI",
+      "state": "PRE_EXECUTION_FAILURE",
+      "source": "GitHub Actions 38568209719 + 38568210620",
+      "receipt": "runner_id=0; 0 steps"
     }
   ],
   "unresolved": [
     {
-      "id": "D-CURRENT-DEPLOYED-ROUTE",
+      "id": "D-LIVE-AUTH-READ",
+      "severity": "high",
+      "reason": "authenticated Sigma opaque-broker -> deployed /v1/dispatch read receipt not yet observed live"
+    },
+    {
+      "id": "D-LIVE-MUTATION",
       "severity": "critical",
-      "reason": "current Sigma->deployed Colossus broker/transport route lacks live execution/readback proof"
+      "reason": "deployed receiver intentionally blocks mutation; one bounded provider-backed mutation plus ambiguity/readback reconciliation remains required"
     },
     {
       "id": "BASELINE-RUN",
@@ -67,24 +89,19 @@
       "reason": "empirical same-mission GlacierEQ run summary absent"
     },
     {
-      "id": "B-COMPLETION-ARTIFACT",
-      "severity": "high",
-      "reason": "B behavior is proven but sibling machine-readable WORKSTREAM_B/receipt is absent"
-    },
-    {
-      "id": "E-EXTERNAL-CI",
+      "id": "CI-EXECUTION-PLANE",
       "severity": "medium",
-      "reason": "no GitHub workflow run exists at E head d0550aa9"
+      "reason": "GitHub jobs fail before runner allocation; isolated exact-source evidence retained"
     },
     {
       "id": "MISSION-1-RECEIPT",
       "severity": "critical",
-      "reason": "cannot exist until the above gates are satisfied"
+      "reason": "cannot exist until provider/evaluation gates are satisfied"
     },
     {
       "id": "MISSION-2-REAL-REUSE",
       "severity": "critical",
-      "reason": "C correctly waits for Mission-1 verified reusable capability"
+      "reason": "C correctly waits for verified Mission-1 capability registration"
     }
   ]
 }
