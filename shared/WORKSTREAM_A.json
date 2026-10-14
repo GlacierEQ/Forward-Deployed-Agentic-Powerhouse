@@ -446,7 +446,7 @@
   "terminal_condition": {
     "workstream_a_complete": true,
     "mission_complete": false,
-    "reason": "Agent A is complete and cleanly transcribed onto current canonical main ancestry with exact-head CI proof; promotion remains limited to five A-owned files and does not carry sibling launcher/runtime implementation.",
+    "reason": "Agent A is complete, reviewed, exact-head verified after review repairs, and cleanly isolated to five owned promotion files. Downstream semantic-consumption boundaries are now explicit; final mission execution/certification remains sibling-owned.",
     "promotion_ready": true
   },
   "hardening_v2": {
@@ -766,6 +766,13 @@
       "conclusion": "SUCCESS",
       "local_execution_plane": "UNAVAILABLE_AT_PROMOTION_TIME",
       "local_execution_boundary": "Desktop Commander host offline; exact-head GitHub Actions used as provider-native verification."
+    },
+    "review_repair": {
+      "repaired_revision": "0550fd3812157aad8db4c6fb6e533073e84038c9",
+      "push_ci_run": 38568701070,
+      "pr_ci_run": 38568704740,
+      "both_green": true,
+      "mac_execution_plane": "offline during promotion; no local proof substituted for CI"
     }
   },
   "final_verification_policy": {
@@ -910,6 +917,76 @@
     "changed_file_count": 5,
     "ahead_by": 5,
     "behind_by": 0,
-    "clean_scope_verified": true
+    "clean_scope_verified": true,
+    "review_repair_head": "0550fd3812157aad8db4c6fb6e533073e84038c9",
+    "review_repair_push_ci": {
+      "run_id": 38568701070,
+      "state": "PASS"
+    },
+    "review_repair_pr_ci": {
+      "run_id": 38568704740,
+      "state": "PASS"
+    },
+    "review_findings_closed": [
+      "assert-based retry invariant replaced by explicit runtime guard",
+      "edge evidence line numbers validated and range-checked before sorting",
+      "GitHub actions pinned to immutable verified full SHAs",
+      "workflow lint scope reduced to Agent-A-owned files"
+    ]
+  },
+  "research_and_mastery": {
+    "objective": "End-to-end mastery of Agent A from mission contract recovery through canonical promotion and downstream artifact consumption.",
+    "estate_patterns_studied": [
+      {
+        "donor": "GlacierEQ/job-app-helix",
+        "pattern": "health/performance separation and worker-science validity",
+        "applied_to": "Gatling benchmark health gating"
+      },
+      {
+        "donor": "GlacierEQ/mega-skills",
+        "pattern": "bounded concurrent candidate discovery with deterministic results",
+        "applied_to": "bounded estate worker execution"
+      },
+      {
+        "donor": "GlacierEQ/anthropic-agent-coordinator",
+        "pattern": "hash-bound continuation and dependency-closed state",
+        "applied_to": "tamper-evident resumable checkpoints"
+      },
+      {
+        "donor": "GlacierEQ/spiral-engine",
+        "pattern": "measured before/after progress, critical-regression refusal, receipt chaining, promotion only with explicit evidence",
+        "evidence": "machine/proof_receipt.json + src/revolution_controller.py",
+        "applied_to": "promotion discipline and no-blind-merge policy"
+      },
+      {
+        "donor": "GlacierEQ/mega-mcp",
+        "pattern": "DAG + idempotency + provenance mechanisms exist but repository explicitly self-identifies as v0.1 scaffold",
+        "applied_to": "evidence ceiling discipline; not promoted as production"
+      }
+    ],
+    "external_standards_studied": [
+      {
+        "source": "GitHub Actions secure-use reference",
+        "conclusion": "full-length action commit SHAs are immutable; workflow dependency lockfiles are stronger when adopted",
+        "applied_change": "pinned checkout and setup-python to verified tag-resolved full SHAs"
+      },
+      {
+        "source": "SLSA v1.2 provenance",
+        "conclusion": "provenance quality separates completeness, authenticity and accuracy",
+        "applied_change": "kept catalog/source/test/provider evidence levels distinct and source-bound"
+      },
+      {
+        "source": "Python concurrent.futures ThreadPoolExecutor documentation",
+        "conclusion": "worker count is bounded by max_workers and long-running unbounded task lifetimes should be avoided",
+        "applied_change": "finite repository inspection work units with measured saturation knee"
+      }
+    ],
+    "downstream_consumer_study": {
+      "canonical_control_plane": "artifact-presence enforcement only for SCALE_CAPABILITY_GRAPH.json",
+      "workstream_c": "validates A ownership and presence of Aspen Grove Memory + Genius-Mastery donors",
+      "workstream_d": "pins graph blob as a source artifact",
+      "workstream_e_entry": "no direct field-level graph consumption observed in inspected shell verifier entry",
+      "conclusion": "A now publishes explicit consumer semantics; deeper enforcement remains sibling-owned under ARCHITECTURE_CONTRACT.json."
+    }
   }
 }
