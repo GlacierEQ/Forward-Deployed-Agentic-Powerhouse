@@ -1,0 +1,177 @@
+{
+  "schema": "glaciereq.scale-fde.research-to-execution.v1",
+  "mission_id": "SCALE-FDE-DEMO-001",
+  "objective": "Turn current Scale FDE and agent-systems research into falsifiable execution requirements.",
+  "sources": [
+    {
+      "id": "SCALE-FDE-PS",
+      "url": "https://scale.com/careers/4481921005",
+      "teaches": [
+        "end_to_end_delivery",
+        "customer_embedding",
+        "reusable_field_patterns"
+      ]
+    },
+    {
+      "id": "SCALE-FRONTIER-AGENTS",
+      "url": "https://scale.com/careers/4694861005",
+      "teaches": [
+        "agent_runtime",
+        "evaluation",
+        "observability",
+        "continuous_improvement"
+      ]
+    },
+    {
+      "id": "SPINE-BRANCH",
+      "url": "https://labs.scale.com/papers/spine-branch-coordination",
+      "teaches": [
+        "continuous_spine_state",
+        "parallel_read_only_branches",
+        "no_vm_state_merge"
+      ]
+    },
+    {
+      "id": "READY",
+      "url": "https://labs.scale.com/blog/ready",
+      "teaches": [
+        "reliability_target",
+        "human_oversight",
+        "cost",
+        "held_out_validation"
+      ]
+    },
+    {
+      "id": "HIL-BENCH",
+      "url": "https://labs.scale.com/papers/hil",
+      "teaches": [
+        "selective_escalation",
+        "ambiguity_detection",
+        "ask_f1"
+      ]
+    },
+    {
+      "id": "VERIFIER-DESIGN",
+      "url": "https://labs.scale.com/blog/verifier-design-for-cua",
+      "teaches": [
+        "mutation_test_verifiers",
+        "hard_gates",
+        "anti_reward_hacking"
+      ]
+    },
+    {
+      "id": "SWE-ATLAS",
+      "url": "https://scale.com/blog/swe-atlas-complete",
+      "teaches": [
+        "runtime_investigation",
+        "mutation_sensitive_tests",
+        "engineering_completeness"
+      ]
+    },
+    {
+      "id": "INSIGHTS-GENERATOR",
+      "url": "https://scale.com/blog/insights-generator",
+      "teaches": [
+        "corpus_level_failure_analysis",
+        "trace_grounded_diagnostics"
+      ]
+    },
+    {
+      "id": "VERO",
+      "url": "https://scale.com/blog/vero",
+      "teaches": [
+        "structural_improvements",
+        "versioning",
+        "held_out_generalization"
+      ]
+    },
+    {
+      "id": "MCP-2026-07-28",
+      "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28/",
+      "teaches": [
+        "stateless_core",
+        "explicit_handles",
+        "header_routing",
+        "authorization_hardening"
+      ]
+    },
+    {
+      "id": "MCP-TASKS",
+      "url": "https://tasks.extensions.modelcontextprotocol.io/specification/draft/tasks",
+      "teaches": [
+        "durable_task_state",
+        "pollable_long_running_work"
+      ]
+    }
+  ],
+  "invariants": [
+    {
+      "id": "R2E-001",
+      "requirement": "same mission contract for baseline and full stack",
+      "owner": "E",
+      "gate": "mission_contract_sha256_equal"
+    },
+    {
+      "id": "R2E-002",
+      "requirement": "full stack meets stated reliability target",
+      "owner": "E",
+      "gate": "achieved_reliability_gte_target"
+    },
+    {
+      "id": "R2E-003",
+      "requirement": "human review cost assumption is identical across comparison arms",
+      "owner": "E",
+      "gate": "human_review_cost_per_case_equal"
+    },
+    {
+      "id": "R2E-004",
+      "requirement": "parallel branches never merge mutable VM state into the mission spine",
+      "owner": "B/E",
+      "gate": "branch_state_merge_attempts_eq_0"
+    },
+    {
+      "id": "R2E-005",
+      "requirement": "branch outputs cross typed verified handoffs",
+      "owner": "B/E",
+      "gate": "verified_branch_handoff_rate"
+    },
+    {
+      "id": "R2E-006",
+      "requirement": "decision-critical ambiguity escalates instead of being guessed",
+      "owner": "B/E",
+      "gate": "selective_escalation_f1"
+    },
+    {
+      "id": "R2E-007",
+      "requirement": "mission verifier proves sensitivity to critical corruption",
+      "owner": "E",
+      "gate": "verifier_mutation_tests_all_detected"
+    },
+    {
+      "id": "R2E-008",
+      "requirement": "provider mutation success requires provider-native readback",
+      "owner": "D/E",
+      "gate": "provider_readback_verified"
+    },
+    {
+      "id": "R2E-009",
+      "requirement": "learning promotion requires structural held-out evidence",
+      "owner": "C/E",
+      "gate": "reusable_capability_verified"
+    },
+    {
+      "id": "R2E-010",
+      "requirement": "Mission 2 automatically reuses Mission-1 capability",
+      "owner": "C/E",
+      "gate": "mission2_automatic_reuse_verified"
+    }
+  ],
+  "current_verifier_revision": "7898f2082b84f5fbf155f9334c5f7cb23a637576",
+  "current_verifier_proof": {
+    "tests": "25 passed, 2 subtests passed",
+    "compileall": "PASS",
+    "ruff": "PASS",
+    "execution_plane": "isolated Sprite runtime",
+    "external_ci": "UNVERIFIED_TRIGGER_PATH"
+  }
+}
