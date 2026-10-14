@@ -99,16 +99,40 @@
     "live_name_screen_candidates": 302
   },
   "gatling_tsunami": {
-    "engineering_state": "IMPLEMENTED_AND_EXECUTED_BOUNDED_PARALLEL_READS",
+    "engineering_state": "HARDENED_AND_EXACT_BRANCH_VERIFIED",
     "implementation": {
       "path": "src/fde_powerhouse/gatling_estate.py",
-      "implementation_commit": "de9109b8c9dcc3695c3ed81a1f6ee078907c5d0c",
+      "implementation_commit": "eef0d45d53543599839be45c10611de39e83238a",
+      "implementation_sha256": "3f148146b020ad946a9636ec03df75b71a280c47f83d882bf9b4803a69751461",
       "test_path": "tests/test_gatling_estate.py",
-      "test_commit": "796bce888a1fb777eb13124650651ca0e80479dd",
-      "tdd_red": "ModuleNotFoundError before implementation",
-      "tdd_green": "3 passed in 0.12s",
-      "compileall": "PASS",
-      "ruff": "UNAVAILABLE_IN_LOCAL_RUNTIME"
+      "test_commit": "4adb342511857b6ba114bbd84a89c2673f401879",
+      "test_sha256": "7c7e14bb251810b85fbb8d03a40feb64aabf72113d8878ef3ac6729a15b425ec",
+      "workflow_path": ".github/workflows/scale-estate-intelligence.yml",
+      "workflow_commit": "2f2e9eee192f1ab18d9869271487d01b2d229e1f",
+      "workflow_sha256": "238cebcb6b764e5b9fdd2f984c8f20ee8649b048fc5323b062cec8577e0fb83a",
+      "tdd_red": "ImportError for SweepIncompleteError, benchmark_serial_vs_parallel and resume_repositories against the prior implementation",
+      "focused_green": "15/15 focused Agent A tests PASS",
+      "full_regression": "64/64 repository tests PASS locally; exit 0",
+      "compileall": "PASS; exit 0",
+      "targeted_ruff": "PASS for gatling_estate.py and test_gatling_estate.py",
+      "repository_wide_ruff": "11 inherited errors outside Agent A files; not silently repaired by this exclusive workstream",
+      "github_actions": {
+        "run_id": 37448537231,
+        "revision": "fa62ccaab422cdb96e2ce2a3a65fd9c46d135826",
+        "conclusion": "PASS",
+        "matrix": [
+          "3.11",
+          "3.12",
+          "3.13"
+        ],
+        "gates": [
+          "install",
+          "targeted Ruff",
+          "compileall",
+          "64-test full regression",
+          "machine-artifact validation"
+        ]
+      }
     },
     "benchmark": {
       "workload": "Fetch README for identical eight-repository load-bearing set.",
@@ -143,29 +167,103 @@
       "required node fields validated",
       "maturity enum validated",
       "donor_value constrained to 0..10",
+      "provenance digests constrained to lowercase sha256:<64 hex>",
       "list fields canonicalized",
-      "exact duplicates collapsed",
+      "case-insensitive repository scope deduplicated",
+      "exact duplicate findings collapsed",
       "same-identity conflicting findings rejected",
-      "output sorted deterministically",
       "worker concurrency bounded",
-      "worker results collected by input index before reduction"
-    ]
+      "worker outcomes retained by input index before reduction",
+      "successful findings preserved when sibling workers fail",
+      "bounded retry attempts counted explicitly",
+      "checkpoint hash binds scope, completion/failure frontier and semantic digest",
+      "resume rejects checkpoint tampering and scope drift",
+      "semantic digest excludes timing telemetry",
+      "serial/parallel benchmark invalidates performance claims on worker health failure",
+      "serial/parallel benchmark invalidates performance claims on semantic drift",
+      "capability graph uses the same Python canonical tuple ordering as the reducer",
+      "whole-graph semantic digest canonicalizes nodes, typed edges and mission-critical membership",
+      "typed edge evidence is source/revision/path/blob/claim bound",
+      "mission-critical projection cannot reference repositories absent from the capability graph",
+      "evidence-level counts include explicit zero-count states"
+    ],
+    "saturation_benchmark": {
+      "workload": "Exact-revision README fetch across the 16-repository mission-critical subgraph through the authenticated GitHub connector.",
+      "widths": [
+        {
+          "workers": 1,
+          "wall_clock_ms": 8306,
+          "throughput_repos_per_sec": 1.926,
+          "speedup_vs_serial": 1,
+          "semantic_match": true,
+          "failures": 0
+        },
+        {
+          "workers": 2,
+          "wall_clock_ms": 5115,
+          "throughput_repos_per_sec": 3.128,
+          "speedup_vs_serial": 1.6238514174,
+          "semantic_match": true,
+          "failures": 0
+        },
+        {
+          "workers": 4,
+          "wall_clock_ms": 3431,
+          "throughput_repos_per_sec": 4.663,
+          "speedup_vs_serial": 2.4208685514,
+          "semantic_match": true,
+          "failures": 0
+        },
+        {
+          "workers": 8,
+          "wall_clock_ms": 3553,
+          "throughput_repos_per_sec": 4.503,
+          "speedup_vs_serial": 2.3377427526,
+          "semantic_match": true,
+          "failures": 0
+        },
+        {
+          "workers": 16,
+          "wall_clock_ms": 3738,
+          "throughput_repos_per_sec": 4.28,
+          "speedup_vs_serial": 2.2220438737,
+          "semantic_match": true,
+          "failures": 0
+        }
+      ],
+      "saturation_rule": "Smallest healthy worker width reaching at least 95% of maximum observed throughput.",
+      "recommended_workers": 4,
+      "observed_max_throughput_repos_per_sec": 4.663,
+      "all_runs_healthy": true,
+      "all_semantic_matches": true,
+      "semantic_identity": "repository + pinned revision + README blob SHA + character length",
+      "execution_boundary": "Authenticated GitHub connector measurements. The rejected combined harness exceeded the per-execution connector call ceiling and is not counted as benchmark evidence."
+    }
   },
   "deliverables": {
     "capability_graph": {
       "path": "shared/SCALE_CAPABILITY_GRAPH.json",
-      "latest_reconciliation_commit": "4a2a9b1f62660784100a4025e7f7ac5b448c5f64",
-      "readback_blob_sha": "d37cf7b8355c26a0d27db858d43567b53925eba2",
+      "latest_reconciliation_commit": "884dec6f104d2d9042c027898da4c36d40e34e8b",
+      "readback_blob_sha": "41db109e348033be7a38deb96225d9731fb94c2a",
       "json_valid": true,
       "node_count": 338,
       "required_node_contract_satisfied": true,
-      "deterministic_sort": "repository+capability+revision+implementation_paths"
+      "deterministic_sort": "Python tuple: repository.casefold()+capability.casefold()+revision+implementation_paths",
+      "exact_branch_ci_run": 37500203003,
+      "exact_branch_ci_state": "PASS",
+      "typed_edge_count": 20,
+      "mission_critical_repository_count": 16,
+      "whole_graph_semantic_digest": "sha256:9685d861b156bc15d8a79a8052764f60ac6fb6dda7b1a95b9b0e5059bf1455a7"
     },
     "gatling_engine": {
       "path": "src/fde_powerhouse/gatling_estate.py",
-      "implementation_commit": "de9109b8c9dcc3695c3ed81a1f6ee078907c5d0c",
+      "implementation_commit": "eef0d45d53543599839be45c10611de39e83238a",
       "focused_test_path": "tests/test_gatling_estate.py",
-      "focused_test_commit": "796bce888a1fb777eb13124650651ca0e80479dd"
+      "focused_test_commit": "4adb342511857b6ba114bbd84a89c2673f401879",
+      "workflow_path": ".github/workflows/scale-estate-intelligence.yml",
+      "workflow_commit": "2f2e9eee192f1ab18d9869271487d01b2d229e1f",
+      "exact_branch_ci_run": 37448537231,
+      "exact_branch_ci_state": "PASS"
     }
   },
   "verified_revisions": {
@@ -175,13 +273,13 @@
     "GlacierEQ/aspen-grove-connectors": "fd37faa07b8f05cd287163af92747970a2a4061e",
     "GlacierEQ/apex-boot-core": "d81d579c73d859bdfa5ef25c14a2800d5586f985",
     "GlacierEQ/apex-bootup-core": "8ccb37e18d20539db53c9dc67963c05e32a4cfbc",
-    "GlacierEQ/Genius-Mastery": "10aa50c09f37bfd0fd313b5fb8d5e80a021d6fbf",
+    "GlacierEQ/Genius-Mastery": "f58d0cf521a68d57f2648c20872e580334b331e3",
     "GlacierEQ/mega-skills": "7dee0c0a98468e29d364ee18a9c0bcd57f05b91f",
     "GlacierEQ/job-app-helix": "e369764107921b25cb67d398aed0bf54fb521ca7",
     "GlacierEQ/sigma-glue": "4a1ca8e5c88a62e8a94a43213b2c509af6afcea3",
     "GlacierEQ/computer-user": "1f0ae18968b4e830f66ee97dd4a2dc4805c6c298",
     "GlacierEQ/colossus-gateway": "851f50ae67a8a333b480ef8106a5bcbd579c6a76",
-    "GlacierEQ/apex-control-plane": "134abd020485d440fc657e1171671824b05a276f",
+    "GlacierEQ/apex-control-plane": "480131e2b1f7d919ebb80be7d0760ec431135a20",
     "GlacierEQ/make-it-heavy-private": "85b4b247cb4e1767d32bc47b34b9969bafec3227",
     "GlacierEQ/Forward-Deployed-Agentic-Powerhouse": "824cd7edc41ed8fa0da2ef491a27c079fd62d1a6",
     "GlacierEQ/apex-singularity-head": "38aec8da1e29f8365e54abf6bdaf5dfcf96a75d0",
@@ -230,19 +328,27 @@
     },
     {
       "id": "A-DEFECT-005",
-      "severity": "medium",
+      "severity": "low",
       "scope": "Agent_A_branch_verification",
-      "state": "OPEN_EVIDENCE_BOUNDARY",
-      "finding": "Focused Gatling tests passed and compileall passed, but the full Forward-Deployed-Agentic-Powerhouse regression suite was not rerun at this branch revision.",
-      "consequence": "Do not claim branch-wide regression proof from the focused suite."
+      "state": "RESOLVED",
+      "finding": "Full branch regression and coverage gate now pass on Python 3.11-3.13 with the canonical launcher implementation.",
+      "consequence": "Closed by workflow run 37509688308.",
+      "verification": {
+        "workflow_run_id": 37509688308,
+        "result": "success"
+      }
     },
     {
       "id": "A-DEFECT-006",
       "severity": "low",
       "scope": "Agent_A_branch_lint",
-      "state": "OPEN_ENVIRONMENT_BOUNDARY",
-      "finding": "ruff was not installed in the available local execution runtime.",
-      "consequence": "No ruff-clean claim is made for the new files."
+      "state": "RESOLVED",
+      "finding": "Ruff is installed and enforced in the dedicated Agent A workflow for Gatling plus launcher surfaces.",
+      "consequence": "Closed by workflow run 37509688308.",
+      "verification": {
+        "workflow_run_id": 37509688308,
+        "result": "success"
+      }
     },
     {
       "id": "A-DEFECT-007",
@@ -251,12 +357,45 @@
       "state": "OPEN_EVIDENCE_BOUNDARY",
       "finding": "Available GitHub exact-head combined-status/workflow probes returned no Actions status for most deeply inspected repositories; Mastermind returned a Vercel success only.",
       "consequence": "README test counts and historical promotion receipts are preserved but not silently promoted into exact-current-head CI proof."
+    },
+    {
+      "id": "A-DEFECT-008",
+      "severity": "medium",
+      "scope": "Agent_A_v2_validation",
+      "state": "RESOLVED",
+      "finding": "Exact-branch run 37448141761 exposed a capability-graph canonical-order mismatch after all code gates passed. Graph ordering was aligned to the Python reducer in 728eabb6fe26c2d0cf46cbcdc0d5cd8fedbd1aa1. Runs 37448420168 and 37448537231 subsequently passed.",
+      "consequence": "No remaining Agent A CI blocker from canonical ordering."
+    },
+    {
+      "id": "A-DEFECT-009",
+      "severity": "low",
+      "scope": "host_repository_lint_baseline",
+      "state": "ACCEPTED_BASELINE_DEBT_OUTSIDE_AGENT_A_CHANGED_FILES",
+      "finding": "Repository-wide Ruff reports 11 pre-existing errors outside src/fde_powerhouse/gatling_estate.py and tests/test_gatling_estate.py.",
+      "consequence": "Agent A does not cross ownership boundaries to clean unrelated host-repository style debt. Exact Agent A files are lint-clean and full tests pass."
+    },
+    {
+      "id": "A-DEFECT-010",
+      "severity": "high",
+      "scope": "mission_critical_live_health",
+      "state": "OPEN_PRESERVED_NOT_BLOCKING_AGENT_A_MAPPING",
+      "finding": "Latest observed exact-head health/semantics workflows fail for aspen-grove-memory (37464498989), aspen-grove-swarm (37466265749), aspen-grove-connectors (37465329752), and apex-boot-core APEX Semantics Verification (37228419963).",
+      "consequence": "These components remain valid source-level architecture donors but must not be represented as currently healthy/provider-verified. Owning workstreams must resolve or route around their runtime health before relying on them."
+    },
+    {
+      "id": "A-DEFECT-011",
+      "severity": "low",
+      "scope": "whole_graph_artifact_validator",
+      "state": "RESOLVED",
+      "finding": "Run 37499213659 exposed a sparse-zero evidence-count validator bug after lint/compile/66 tests/coverage passed. Repair 921bd0cce61ff7243319d75e40bb6e67e449bab4 initialized all declared evidence levels including zero counts. Runs 37500045850 and 37500203003 subsequently passed the complete artifact gate.",
+      "consequence": "Whole-graph artifact validation is now green; the defect remains preserved as regression history."
     }
   ],
   "integration_contract": {
     "publishes": [
       "shared/SCALE_CAPABILITY_GRAPH.json",
-      "shared/WORKSTREAM_A.json"
+      "shared/WORKSTREAM_A.json",
+      "configs/scale_launchers.yaml"
     ],
     "consumes": [
       "shared/SCALE_FDE_MISSION.yaml when supplied by mission owner",
@@ -272,19 +411,488 @@
       "donor_repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
       "paths": [
         "src/fde_powerhouse/gatling_estate.py",
-        "tests/test_gatling_estate.py"
+        "tests/test_gatling_estate.py",
+        "src/fde_powerhouse/scale_orchestrator.py",
+        "src/fde_powerhouse/scale_cli.py",
+        "src/fde_powerhouse/scale_control_plane.py",
+        "configs/scale_launchers.yaml",
+        "tests/test_scale_orchestrator.py",
+        "tests/test_scale_cli.py",
+        "tests/test_scale_launcher_config.py",
+        "tests/test_scale_control_plane.py"
       ],
       "condition": "Transcribe/merge only after parent integration review; no sibling workstream ownership changes."
-    }
+    },
+    "canonical_inputs": {
+      "mission": {
+        "path": "shared/SCALE_FDE_MISSION.yaml",
+        "revision": "032cf6e78478fbca1d56e1a6ab64e8cfbfc783ee",
+        "blob_sha": "b33aa00528fc3a26723233a4e350755199a57233",
+        "state": "PRESENT_ON_CANONICAL_MAIN"
+      },
+      "architecture": {
+        "path": "shared/ARCHITECTURE_CONTRACT.json",
+        "revision": "032cf6e78478fbca1d56e1a6ab64e8cfbfc783ee",
+        "blob_sha": "60e28f4d81e1ad3060a433a6b18f3f901585f5ce",
+        "state": "PRESENT_ON_CANONICAL_MAIN"
+      }
+    },
+    "promotion_policy": "Only A-owned verified surfaces are transcribed; sibling artifacts/implementations remain untouched."
   },
   "unresolved_external_dependencies": [
-    "Canonical shared/SCALE_FDE_MISSION.yaml was not present at workstream start and is not owned by Agent A.",
-    "Canonical shared/ARCHITECTURE_CONTRACT.json was not present at workstream start and is not owned by Agent A.",
-    "Sibling WORKSTREAM_B-E artifacts, INTEGRATION_QUEUE.json, DEFECT_QUEUE.json and RECEIPT_INDEX.json are not owned by Agent A."
+    "Sibling WORKSTREAM_B-E artifacts, INTEGRATION_QUEUE.json, DEFECT_QUEUE.json and RECEIPT_INDEX.json are not owned by Agent A.",
+    "Final mission completion remains outside Agent A and is certified only through sibling/shared integration under ARCHITECTURE_CONTRACT.json."
   ],
   "terminal_condition": {
     "workstream_a_complete": true,
     "mission_complete": false,
-    "reason": "Authenticated estate census, deterministic semantic/candidate graph, exact-revision deep probes, executable bounded Gatling worker/reducer, serial-vs-parallel benchmark, and durable Agent A artifacts are present. Remaining mission completion belongs to sibling workstreams/shared mission integration."
+    "reason": "Agent A discovery/graph/Gatling frontier is complete and is being promoted by exact-path verified transcription from the hardened leaf onto current canonical main; sibling mission execution and final certification remain outside A."
+  },
+  "hardening_v2": {
+    "started_at": "2026-10-05T23:52:00-10:00",
+    "research_before_code": true,
+    "standards_studied": [
+      "W3C PROV-DM / PROV Primer",
+      "SLSA v1.2 provenance and build provenance requirements"
+    ],
+    "estate_donors_studied": [
+      "GlacierEQ/make-it-heavy-private@85b4b247cb4e1767d32bc47b34b9969bafec3227:orchestrator.py",
+      "GlacierEQ/aspen-grove-swarm@58bdaddfd43c544abe6c6a4223f62ab5c1590da5:README.md",
+      "GlacierEQ/Forward-Deployed-Agentic-Powerhouse:src/fde_powerhouse/gatling_estate.py"
+    ],
+    "design_decisions": [
+      "Keep Agent A Gatling code as a narrow read-only deterministic estate reducer/adapter, not a competing swarm/runtime framework.",
+      "Add explicit evidence levels without promoting source inspection to test or execution proof.",
+      "Add semantic digests that exclude run telemetry so serial and parallel sweeps can prove equivalent semantic output.",
+      "Preserve the existing capability graph node contract and add fields backward-compatibly."
+    ],
+    "tdd": {
+      "red_spec_commit": "26dd2340655a8554ab20862e5aa7b58bc8cf8412",
+      "implementation_commit": "62b140e8489f5c68fcfbe7a593ccf2015befe7ad",
+      "graph_evidence_level_commit": "3e2e1c543fa1f43c659211df18809b581e4726f5",
+      "tests_added": [
+        "provenance evidence preservation and evidence_level validation",
+        "semantic digest invariant across input ordering and worker count",
+        "semantic digest changes when capability evidence changes"
+      ],
+      "execution_state": "COMPLETE_EXACT_BRANCH_VERIFIED",
+      "first_ci_run": {
+        "run_id": 37446113010,
+        "tested_head": "62b140e8489f5c68fcfbe7a593ccf2015befe7ad",
+        "result": "FAILED_AT_RUFF_BEFORE_TESTS",
+        "findings": [
+          "tests/test_gatling_estate.py contained literal escaped newline tokens in the import block",
+          "gatling_estate.py used typing ABC imports rejected by Ruff UP035",
+          "invalid-type guards raised ValueError where Ruff TRY004 requires TypeError"
+        ],
+        "repair_commits": [
+          "53de1095d1d7ab7599eb5b08f47ca5aa2c1d2c39",
+          "a22a07f3f47c4d034dca29f887eb80c73d363def"
+        ],
+        "promotion_state": "UNVERIFIED_AFTER_REPAIR"
+      },
+      "latest_head_before_retrigger": "d4d597e7aa4f30ca273500fa4cdc553cf15783f9",
+      "ci_retrigger": {
+        "reason": "Prior pull_request run completed against pre-repair head; record current repaired head to force a synchronize event and obtain exact-head CI.",
+        "prior_run_id": 37446113010,
+        "prior_run_head": "62b140e8489f5c68fcfbe7a593ccf2015befe7ad"
+      },
+      "whole_graph_digest": {
+        "red_test_commit": "2eac8e07f7cd312e3de3fee7361785215a2cb61a",
+        "red_run": 37499120418,
+        "implementation_commit": "0125c7b0d0fbf68b2e96807d1e92b636ac7ea934",
+        "validation_commit": "39b5f7cabf86dd22c4006f467eb0c26d368c5160",
+        "validation_run": 37499213659,
+        "validation_run_result": "CODE_GATES_PASS_ARTIFACT_GATE_FAIL",
+        "validator_failure": "Sparse observed evidence-count map omitted execution_observed=0 while the graph intentionally records all evidence levels.",
+        "validator_repair_commit": "921bd0cce61ff7243319d75e40bb6e67e449bab4",
+        "final_state": "PASS",
+        "final_run": 37500203003
+      }
+    },
+    "evidence_levels": {
+      "catalog_only": 311,
+      "source_inspected": 24,
+      "test_observed": 2,
+      "execution_observed": 0,
+      "provider_verified": 1
+    },
+    "validation_pr": {
+      "number": 7,
+      "state": "draft",
+      "merged": false,
+      "purpose": "Validation-only surface; dedicated branch workflow is authoritative for exact branch pushes. No merge performed.",
+      "base": "main",
+      "head": "scale/estate-intelligence"
+    }
+  },
+  "hardening_research": {
+    "principle": "recover and transplant proven estate mechanisms; do not invent a replacement orchestration framework",
+    "donors": [
+      {
+        "repository": "GlacierEQ/job-app-helix",
+        "paths": [
+          "src/job_app_helix/worker_science.py",
+          "tests/test_worker_science.py"
+        ],
+        "adopted_pattern": "health/performance separation and matched-experiment validity",
+        "adaptation": "serial-vs-parallel speedup is publishable only when both sweeps are healthy and semantic digests match"
+      },
+      {
+        "repository": "GlacierEQ/mega-skills",
+        "paths": [
+          "scripts/faraway_party_candidate_swarm.py",
+          "tests/test_faraway_swarm.py"
+        ],
+        "adopted_pattern": "bounded ThreadPoolExecutor workers with deterministic durable result ordering",
+        "adaptation": "Agent A preserves input-index outcomes before deterministic capability reduction"
+      },
+      {
+        "repository": "GlacierEQ/anthropic-agent-coordinator",
+        "paths": [
+          "src/anthropic_agent_coordinator/continuation.py"
+        ],
+        "adopted_pattern": "hash-bound dependency-closed continuation checkpoints",
+        "adaptation": "Agent A checkpoints bind requested repository scope, completed/failed repositories and semantic result digest"
+      },
+      {
+        "repository": "GlacierEQ/apex-control-plane",
+        "paths": [
+          "src/runtime_dependency_discovery.py",
+          "tests/test_runtime_dependency_discovery.py"
+        ],
+        "adopted_pattern": "preserve unresolved state instead of trusting derivative caller claims",
+        "adaptation": "worker failures remain explicit resumable failures and never become performance-valid benchmark evidence"
+      }
+    ]
+  },
+  "verification": {
+    "local_exact_branch": {
+      "revision": "eef0d45d53543599839be45c10611de39e83238a",
+      "device": "KcBs-MacBook-Air.local",
+      "python": "3.14.7",
+      "targeted_ruff": {
+        "state": "PASS",
+        "paths": [
+          "src/fde_powerhouse/gatling_estate.py",
+          "tests/test_gatling_estate.py"
+        ]
+      },
+      "focused_tests": {
+        "state": "PASS",
+        "passed": 15,
+        "failed": 0
+      },
+      "full_regression": {
+        "state": "PASS",
+        "passed": 64,
+        "failed": 0,
+        "exit_code": 0
+      },
+      "compileall": {
+        "state": "PASS",
+        "exit_code": 0
+      },
+      "repository_wide_ruff": {
+        "state": "INHERITED_DEBT",
+        "exit_code": 1,
+        "error_count": 11,
+        "agent_a_files_clean": true
+      }
+    },
+    "github_actions_attempt": {
+      "run_id": 37448141761,
+      "revision": "2f2e9eee192f1ab18d9869271487d01b2d229e1f",
+      "conclusion": "failure",
+      "matrix": [
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "successful_steps_on_all_matrix_lanes": [
+        "install",
+        "Agent A lint",
+        "compile",
+        "full regression suite"
+      ],
+      "failed_step": "Validate Agent A machine artifacts",
+      "failure_reason": "historical graph ordering used localeCompare semantics rather than Python reducer canonical tuple order",
+      "repair_commit": "728eabb6fe26c2d0cf46cbcdc0d5cd8fedbd1aa1",
+      "disposition": "rerun pending; no overall CI-success claim until repaired artifact passes"
+    },
+    "github_actions_final": {
+      "run_id": 37448537231,
+      "revision": "fa62ccaab422cdb96e2ce2a3a65fd9c46d135826",
+      "conclusion": "SUCCESS",
+      "matrix": {
+        "3.11": "PASS",
+        "3.12": "PASS",
+        "3.13": "PASS"
+      },
+      "gates": {
+        "install": "PASS",
+        "agent_a_lint": "PASS",
+        "compile": "PASS",
+        "full_regression_64_tests": "PASS",
+        "machine_artifact_validation": "PASS"
+      },
+      "canonical_order_repair_proof": {
+        "prior_failure_run": 37448141761,
+        "repair_commit": "728eabb6fe26c2d0cf46cbcdc0d5cd8fedbd1aa1",
+        "repair_run": 37448420168,
+        "repair_run_conclusion": "SUCCESS"
+      }
+    },
+    "coverage_and_node_semantics": {
+      "run_id": 37498105124,
+      "revision": "9b71dc7b50c0ee4cd8632c3572e6d7a3ed7a6536",
+      "conclusion": "SUCCESS",
+      "matrix": {
+        "3.11": "PASS",
+        "3.12": "PASS",
+        "3.13": "PASS"
+      },
+      "full_regression": "64/64 PASS",
+      "measured_coverage_pct": 78.31,
+      "required_coverage_pct": 70,
+      "capability_nodes": 338,
+      "node_semantic_digest": "sha256:a82044210b8e00ff1b2097134de52fff62314088901d1882147e5b5dc49a95fc",
+      "forward_reverse_match": true
+    },
+    "typed_graph_pre_digest": {
+      "graph_commit": "f724b5df5d66bc0f5fdb5360bae222815a1d03b6",
+      "run_id": 37499013720,
+      "conclusion": "SUCCESS",
+      "typed_edges": 20,
+      "mission_critical_repositories": 16
+    },
+    "whole_graph_digest": {
+      "run_id": 37500203003,
+      "revision": "884dec6f104d2d9042c027898da4c36d40e34e8b",
+      "conclusion": "SUCCESS",
+      "matrix": {
+        "3.11": "PASS",
+        "3.12": "PASS",
+        "3.13": "PASS"
+      },
+      "gates": {
+        "targeted_lint": "PASS",
+        "compile": "PASS",
+        "full_regression": "66/66 PASS",
+        "measured_coverage_pct": 78.12,
+        "required_coverage_pct": 70,
+        "machine_artifact_validation": "PASS"
+      },
+      "graph": {
+        "nodes": 338,
+        "typed_edges": 20,
+        "mission_critical_repositories": 16,
+        "evidence_counts": {
+          "catalog_only": 311,
+          "source_inspected": 24,
+          "test_observed": 2,
+          "execution_observed": 0,
+          "provider_verified": 1
+        },
+        "node_semantic_digest": "sha256:7cc36f577c1176d77b7fca08e43d4dcfc1c4b0a05a21e74758f70f03d1d19081",
+        "node_forward_reverse_match": true,
+        "whole_graph_semantic_digest": "sha256:9685d861b156bc15d8a79a8052764f60ac6fb6dda7b1a95b9b0e5059bf1455a7",
+        "whole_graph_forward_reverse_match": true
+      },
+      "validator_repair_proof": {
+        "prior_failure_run": 37499213659,
+        "prior_failure": "Sparse observed evidence-count map omitted the intentional zero-count execution_observed level.",
+        "repair_commit": "921bd0cce61ff7243319d75e40bb6e67e449bab4",
+        "repair_run": 37500045850,
+        "repair_run_conclusion": "SUCCESS",
+        "benchmark_artifact_run": 37500203003,
+        "benchmark_artifact_run_conclusion": "SUCCESS"
+      }
+    },
+    "mission_critical_refresh": {
+      "selected_repositories": 16,
+      "typed_edges": 20,
+      "evidence_promotions": {
+        "GlacierEQ/Genius-Mastery": "test_observed",
+        "GlacierEQ/sigma-glue": "provider_verified"
+      },
+      "refreshed_revisions": {
+        "GlacierEQ/Genius-Mastery": "f58d0cf521a68d57f2648c20872e580334b331e3",
+        "GlacierEQ/apex-control-plane": "480131e2b1f7d919ebb80be7d0760ec431135a20"
+      },
+      "live_health_boundaries": [
+        {
+          "repository": "GlacierEQ/aspen-grove-memory",
+          "run_id": 37464498989,
+          "result": "FAILURE",
+          "cause": "unavailable from connector"
+        },
+        {
+          "repository": "GlacierEQ/aspen-grove-swarm",
+          "run_id": 37466265749,
+          "result": "FAILURE",
+          "cause": "unavailable from connector"
+        },
+        {
+          "repository": "GlacierEQ/aspen-grove-connectors",
+          "run_id": 37465329752,
+          "result": "FAILURE",
+          "cause": "unavailable from connector"
+        },
+        {
+          "repository": "GlacierEQ/apex-boot-core",
+          "run_id": 37228419963,
+          "result": "FAILURE",
+          "cause": "job log unavailable from connector"
+        },
+        {
+          "repository": "GlacierEQ/Genius-Mastery",
+          "run_id": 37281797389,
+          "result": "SUCCESS"
+        },
+        {
+          "repository": "GlacierEQ/sigma-glue",
+          "run_id": 31279895312,
+          "result": "SUCCESS_PROVIDER_PROOF"
+        }
+      ]
+    }
+  },
+  "final_verification_policy": {
+    "workflow": ".github/workflows/scale-estate-intelligence.yml",
+    "rule": "The completion-record commit itself must pass the exact-branch workflow on Python 3.11/3.12/3.13. The workflow run is the non-self-referential external receipt for this final JSON state.",
+    "merge_state": "NO_MERGE_PERFORMED"
+  },
+  "mission_launcher": {
+    "state": "IMPLEMENTED_CANONICAL_CONTROL_PLANE_ADAPTER",
+    "authority_boundary": {
+      "canonical_mission": "shared/SCALE_FDE_MISSION.yaml",
+      "canonical_control_plane": "src/fde_powerhouse/scale_control_plane.py",
+      "mission_completion_authority": "ScaleControlPlane + Workstream E",
+      "launcher_claim": "launch success is never promoted to mission completion",
+      "no_sixth_framework": true
+    },
+    "implementation": {
+      "orchestrator_path": "src/fde_powerhouse/scale_orchestrator.py",
+      "cli_path": "src/fde_powerhouse/scale_cli.py",
+      "launcher_binding_path": "configs/scale_launchers.yaml",
+      "entrypoint": "scale-fde-demo",
+      "command": "scale-fde-demo run shared/SCALE_FDE_MISSION.yaml",
+      "durable_state_default": ".scale-fde/orchestrator-state.json",
+      "shell": false,
+      "checkpoint_before_dispatch": true,
+      "resume_default": true,
+      "ambiguous_replay": "fail_closed_unless_terminal_readback_or_explicit_--retry-ambiguous",
+      "failed_replay": "explicit_--retry-failed_only",
+      "mission_and_launcher_digests_both_bound_to_resume_state": true,
+      "max_workers": 4
+    },
+    "workstream_bindings": {
+      "A": {
+        "source_repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+        "source_branch": "scale/estate-intelligence",
+        "strategy": "terminal_artifact_readback",
+        "artifact": "shared/WORKSTREAM_A.json",
+        "pointer": "terminal_condition.workstream_a_complete"
+      },
+      "B": {
+        "source_repository": "GlacierEQ/computer-user",
+        "source_branch": "scale/runtime-swarm",
+        "source_revision": "dd9ea50bce265d5ffc235999909e4ee9b08a4732",
+        "executable_surface": "python3 -m pytest -q tests/test_scale_runtime_durability.py",
+        "evidence_boundary": "launches the recovered durability proof surface; does not certify B mission completion"
+      },
+      "C": {
+        "source_repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+        "source_branch": "scale/memory-composition",
+        "source_revision": "7bbafb8d6d6eb156cc2527bdb8df53f3c08f197e",
+        "executable_surface": "python3 -m fde_powerhouse.scale_compounding prove --workdir .verification-artifacts/scale-c",
+        "evidence_boundary": "real Aspen/Genius proof surface; canonical capability registration remains E-receipt gated"
+      },
+      "D": {
+        "source_repository": "GlacierEQ/sigma-glue",
+        "source_branch": "scale/integration-mcp",
+        "source_revision": "a910c04402d99ea811c19a7700ea879ed9e267e7",
+        "executable_surface": "node --test tests/scale-multi-provider-integration.test.mjs tests/provider-boundary-proof.test.mjs",
+        "evidence_boundary": "does not claim the still-required live Sigma-to-deployed-Colossus routed proof"
+      },
+      "E": {
+        "source_repository": "GlacierEQ/computer-user",
+        "source_branch": "scale/verification-product",
+        "source_revision": "d0550aa93896343c01b4f9aaf80c845b7e4dcf90",
+        "executable_surface": "bash scripts/ci/scale_agent_e_verify.sh",
+        "evidence_boundary": "verifier implementation proof only; E still refuses mission certification without canonical empirical/readback inputs"
+      }
+    },
+    "verification": {
+      "tdd_red_commits": [
+        "4c97c6ba61fe02bd9e39744e5e27c465057dbbf5",
+        "285fc36c7e4ba1369d8b89168a8ce7175e14f2a0",
+        "c5119239dd6c1916750999ad49c8a00ea13d8d14",
+        "5951146aa57af50c51b96f1f7e15a37650620ab2",
+        "fbdc539e1dcedfe20f6fbee3862a1fa051f0a409"
+      ],
+      "canonical_reconciliation_green_commit": "a251c3f440d1995c16268c27b8d7803ff688f893",
+      "launcher_binding_commit": "2e1ca21e9b03490ad49207ebec9d8f2e94e28266",
+      "workflow_run_id": 37509688308,
+      "python_matrix": [
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "result": "PASS",
+      "gates": [
+        "ruff",
+        "installed scale-fde-demo smoke",
+        "compile",
+        "full regression + coverage >=70%",
+        "Agent A artifact validation",
+        "checked-in real launcher binding contract"
+      ],
+      "tests_observed_before_binding": "92 passed",
+      "launcher_binding_test": "PASS"
+    },
+    "hidden_harms_removed": [
+      "removed invented alternate mission schema and rebound launcher to recovered canonical glaciereq.scale-fde-mission.v1 contract",
+      "separated mission truth from local launch mechanics so command bindings can change without mutating mission semantics",
+      "bound resume state to both mission digest and launcher digest to prevent stale-command continuation",
+      "refused to equate subprocess exit code with mission completion",
+      "pre-dispatch in_flight checkpoint prevents silent duplicate replay after launcher death",
+      "terminal artifact readback can resolve ambiguous prior launches before replay",
+      "shell execution forbidden",
+      "failed and ambiguous replays require explicit operator switches",
+      "A is read back instead of pointlessly rerun when already complete",
+      "B/C/D/E bindings preserve their own evidence ceilings rather than manufacturing completion"
+    ]
+  },
+  "promotion": {
+    "strategy": "verified_transcription_not_blind_merge",
+    "source_branch": "scale/estate-intelligence",
+    "source_head": "fecc25a8efb7681f1c5dad14c57d1f3c83f675dd",
+    "source_ci_run": 37510025745,
+    "source_ci_state": "PASS",
+    "target_branch": "scale/estate-intelligence-promote",
+    "target_base": "main",
+    "target_base_revision": "032cf6e78478fbca1d56e1a6ab64e8cfbfc783ee",
+    "transcribed_paths": [
+      "src/fde_powerhouse/gatling_estate.py",
+      "tests/test_gatling_estate.py",
+      ".github/workflows/scale-estate-intelligence.yml",
+      "shared/SCALE_CAPABILITY_GRAPH.json",
+      "shared/WORKSTREAM_A.json"
+    ],
+    "explicitly_excluded_leaf_paths": [
+      "configs/scale_launchers.yaml",
+      "src/fde_powerhouse/scale_cli.py",
+      "src/fde_powerhouse/scale_control_plane.py",
+      "src/fde_powerhouse/scale_orchestrator.py",
+      "tests/test_scale_cli.py",
+      "tests/test_scale_control_plane.py",
+      "tests/test_scale_launcher_config.py",
+      "tests/test_scale_orchestrator.py",
+      "pyproject.toml"
+    ],
+    "reason": "Those excluded surfaces are already canonical on main or cross Agent A's exclusive ownership boundary; they are not carried through the A promotion path.",
+    "terminal_rule": "Promotion branch must pass exact-head Agent A CI before PR readiness or merge."
   }
 }
