@@ -368,3 +368,63 @@ def test_graph_semantic_digest_changes_when_typed_edge_changes():
     }
 
     assert graph_semantic_digest(base) != graph_semantic_digest(changed)
+
+
+def test_graph_edge_line_numbers_are_validated_before_sorting():
+    base = {
+        "nodes": [node("repo-a"), node("repo-b")],
+        "edges": [
+            {
+                "source": "repo-a",
+                "target": "repo-b",
+                "relation": "DEPENDS_ON",
+                "evidence": [
+                    {
+                        "repository": "repo-a",
+                        "revision": "a" * 40,
+                        "path": "README.md",
+                        "blob_sha": "1" * 40,
+                        "line_start": "10-12",
+                        "line_end": 12,
+                        "claim": "repo-a depends on repo-b",
+                    }
+                ],
+            }
+        ],
+        "mission_critical_subgraph": {"repositories": ["repo-a", "repo-b"]},
+    }
+
+    with pytest.raises(TypeError, match="line_start"):
+        graph_semantic_digest(base)
+
+
+def test_graph_edge_line_range_must_be_positive_and_ordered():
+    edge = {
+        "source": "repo-a",
+        "target": "repo-b",
+        "relation": "DEPENDS_ON",
+        "evidence": [
+            {
+                "repository": "repo-a",
+                "revision": "a" * 40,
+                "path": "README.md",
+                "blob_sha": "1" * 40,
+                "line_start": 12,
+                "line_end": 10,
+                "claim": "repo-a depends on repo-b",
+            }
+        ],
+    }
+    base = {
+        "nodes": [node("repo-a"), node("repo-b")],
+        "edges": [edge],
+        "mission_critical_subgraph": {"repositories": ["repo-a", "repo-b"]},
+    }
+
+    with pytest.raises(ValueError, match="line_end"):
+        graph_semantic_digest(base)
+
+    edge["evidence"][0]["line_start"] = 0
+    edge["evidence"][0]["line_end"] = 10
+    with pytest.raises(ValueError, match="line_start"):
+        graph_semantic_digest(base)
