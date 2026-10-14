@@ -8971,6 +8971,13 @@
         "tests/test_gatling_estate.py"
       ],
       "excluded_cross_workstream_changes": true
+    },
+    "canonical_main": {
+      "revision": "58ae491e4618899e3f61cbb7b615cbf7d79920f1",
+      "provider_readback": "PASS",
+      "post_merge_ci_run": 38569153452,
+      "post_merge_ci_state": "PASS",
+      "dedicated_agent_a_main_validation": "enabled by follow-up workflow change; pending follow-up merge"
     }
   },
   "edge_contract": {
@@ -9611,5 +9618,36 @@
       }
     ],
     "integration_risk": "Downstream semantic enforcement is uneven. Agent A supplies explicit evidence semantics; siblings remain responsible for consuming them under ARCHITECTURE_CONTRACT.json."
+  },
+  "canonical_promotion": {
+    "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+    "merge_pr": 14,
+    "merge_method": "squash",
+    "canonical_revision": "58ae491e4618899e3f61cbb7b615cbf7d79920f1",
+    "merged_at_readback_state": "MERGED_AND_READ_BACK",
+    "post_merge_ci": {
+      "run_id": 38569153452,
+      "conclusion": "SUCCESS",
+      "matrix": [
+        "3.11",
+        "3.12",
+        "3.13"
+      ],
+      "gates": [
+        "Ruff",
+        "tests with coverage gate",
+        "doctor",
+        "demo",
+        "pinned mega-skills validate"
+      ]
+    },
+    "canonical_blob_readback": {
+      "src/fde_powerhouse/gatling_estate.py": "2381fc74393ca0a1026cdaf59475d8a01c13d2a6",
+      "tests/test_gatling_estate.py": "bbad826e5815e2460b9b90cda76b8724474e0574",
+      ".github/workflows/scale-estate-intelligence.yml": "0151b63888d6010e4a822295ee7c7bcabb47edde",
+      "shared/SCALE_CAPABILITY_GRAPH.json": "233095d2eb9e8705a7d06f68ecd973fc0931798f",
+      "shared/WORKSTREAM_A.json": "a8f007a15ae6e2474f18925fa9bb8dff98bc2cc3"
+    },
+    "rule": "Canonical promotion is proven by provider-native merge result, direct main-branch blob readback, and post-merge CI; branch/PR success alone is insufficient."
   }
 }
