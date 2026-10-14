@@ -8839,7 +8839,10 @@
     ],
     "standards_studied": [
       "W3C PROV-DM / PROV Primer: entity, activity, derivation and responsibility provenance model.",
-      "SLSA v1.2 provenance: verifiable origin/process information with completeness, authenticity and accuracy concerns."
+      "SLSA v1.2 provenance: verifiable origin/process information with completeness, authenticity and accuracy concerns.",
+      "GitHub Actions secure-use guidance: immutable full-length action SHAs (or workflow dependency lockfiles) for stronger dependency integrity.",
+      "Python concurrent.futures guidance: ThreadPoolExecutor is bounded by max_workers and is unsuitable for uncontrolled long-running task lifetimes; Agent A uses finite repository inspection work units.",
+      "SLSA v1.2 provenance: verifiable origin/process information with completeness, authenticity and accuracy as distinct properties."
     ],
     "current_counts": {
       "catalog_only": 311,
@@ -9537,6 +9540,76 @@
     "promotion_ci_run": 38568025302,
     "promotion_ci_revision": "55f8b12229a70040ee58ec552d687616b49d11ef",
     "promotion_ci_state": "PASS",
-    "promotion_diff": "5 Agent-A-owned files; 5 commits ahead; 0 behind current main at branch creation"
+    "promotion_diff": "5 Agent-A-owned files; 5 commits ahead; 0 behind current main at branch creation",
+    "review_repair_head": "0550fd3812157aad8db4c6fb6e533073e84038c9",
+    "review_repair_push_ci": 38568701070,
+    "review_repair_pr_ci": 38568704740,
+    "review_repair_state": "PASS",
+    "review_findings_repaired": [
+      {
+        "finding": "retry invariant used assert, which disappears under python -O",
+        "repair_commit": "c1f1a627bd04fabd92763a206efc9282462f85fe",
+        "state": "REPAIRED"
+      },
+      {
+        "finding": "typed-edge line_start/line_end were not validated before canonical sorting",
+        "repair_commit": "c1f1a627bd04fabd92763a206efc9282462f85fe",
+        "test_commit": "db54fc770513bc2b3005ee1b8fcffa9918fc7ec3",
+        "state": "REPAIRED"
+      },
+      {
+        "finding": "GitHub Actions dependencies used mutable major-version tags",
+        "repair_commit": "0550fd3812157aad8db4c6fb6e533073e84038c9",
+        "immutable_refs": {
+          "actions/checkout": "11d5960a326750d5838078e36cf38b85af677262",
+          "actions/setup-python": "a26af69be951a213d495a4c3e4e4022e16d87065"
+        },
+        "state": "REPAIRED"
+      },
+      {
+        "finding": "Agent A workflow lint surface included canonical sibling launcher files",
+        "repair_commit": "0550fd3812157aad8db4c6fb6e533073e84038c9",
+        "state": "REPAIRED_TO_A_ONLY"
+      }
+    ]
+  },
+  "consumer_contract": {
+    "schema": "glaciereq.scale-fde.capability-graph-consumer-contract.v1",
+    "owner": "A",
+    "rules": [
+      "catalog_only nodes are discovery hints only and must not authorize execution",
+      "source_inspected or stronger evidence is required before implementation claims",
+      "current failed health observations remain failures and cannot be masked by historical PASS receipts",
+      "typed edges are advisory evidence relationships, not sibling authority transfer",
+      "mission_critical_subgraph is a deterministic evidence projection, not the runtime DAG",
+      "graph_semantic_digest is the stable semantic identity for nodes+edges+mission-critical membership"
+    ],
+    "observed_consumers": [
+      {
+        "consumer": "ScaleControlPlane on canonical main",
+        "source": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse@032cf6e78478fbca1d56e1a6ab64e8cfbfc783ee:src/fde_powerhouse/scale_control_plane.py",
+        "behavior": "ensures SCALE_CAPABILITY_GRAPH.json exists but does not enforce node evidence levels or typed-edge semantics",
+        "boundary": "presence-level consumption"
+      },
+      {
+        "consumer": "Workstream C compounding",
+        "source": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse scale/memory-composition@7bbafb8d6d6eb156cc2527bdb8df53f3c08f197e:src/fde_powerhouse/scale_compounding.py",
+        "behavior": "requires graph ownership A and presence of Aspen Grove Memory + Genius-Mastery donor repositories",
+        "boundary": "donor-presence consumption; no evidence-level threshold observed in inspected path"
+      },
+      {
+        "consumer": "Workstream D integration artifact pin",
+        "source": "canonical shared/WORKSTREAM_D.json@032cf6e78478fbca1d56e1a6ab64e8cfbfc783ee",
+        "behavior": "records capability-graph blob SHA as an input artifact",
+        "boundary": "source-pinned artifact consumption"
+      },
+      {
+        "consumer": "Workstream E shell verifier entry",
+        "source": "GlacierEQ/computer-user scale/verification-product:scripts/ci/scale_agent_e_verify.sh",
+        "behavior": "no direct SCALE_CAPABILITY_GRAPH field consumption observed in inspected entry script",
+        "boundary": "independent verifier may consume graph through deeper code/artifacts; not established by entry script inspection"
+      }
+    ],
+    "integration_risk": "Downstream semantic enforcement is uneven. Agent A supplies explicit evidence semantics; siblings remain responsible for consuming them under ARCHITECTURE_CONTRACT.json."
   }
 }
