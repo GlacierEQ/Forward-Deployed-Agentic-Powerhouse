@@ -265,8 +265,39 @@ def _normalize_edge(edge: Mapping[str, Any]) -> dict[str, Any]:
         item: dict[str, Any] = {
             field: str(record[field]) for field in EDGE_EVIDENCE_REQUIRED_FIELDS
         }
-        item["line_start"] = record.get("line_start")
-        item["line_end"] = record.get("line_end")
+        def _optional_line_number(value: Any, field: str) -> int | None:
+            if value is None:
+                return None
+            if isinstance(value, bool):
+                raise TypeError(
+                    f"edge evidence {field} must be an integer or null"
+                )
+            try:
+                converted = int(value)
+            except (TypeError, ValueError) as exc:
+                raise TypeError(
+                    f"edge evidence {field} must be an integer or null"
+                ) from exc
+            if converted < 1:
+                raise ValueError(
+                    f"edge evidence {field} must be >= 1 when present"
+                )
+            return converted
+
+        item["line_start"] = _optional_line_number(
+            record.get("line_start"), "line_start"
+        )
+        item["line_end"] = _optional_line_number(
+            record.get("line_end"), "line_end"
+        )
+        if (
+            item["line_start"] is not None
+            and item["line_end"] is not None
+            and item["line_end"] < item["line_start"]
+        ):
+            raise ValueError(
+                "edge evidence line_end must be >= line_start"
+            )
         normalized_evidence.append(item)
 
     normalized["evidence"] = sorted(
@@ -416,7 +447,10 @@ def _inspect_with_retries(
         except Exception as exc:  # noqa: BLE001 - preserve bounded worker failure
             last_error = exc
 
-    assert last_error is not None
+    if last_error is None:
+        raise RuntimeError(
+            "retry loop exhausted without capturing an error"
+        )
     return {
         "repository": repository,
         "attempts": retries + 1,
