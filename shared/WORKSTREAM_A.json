@@ -446,7 +446,8 @@
   "terminal_condition": {
     "workstream_a_complete": true,
     "mission_complete": false,
-    "reason": "Agent A discovery/graph/Gatling frontier is complete and is being promoted by exact-path verified transcription from the hardened leaf onto current canonical main; sibling mission execution and final certification remain outside A."
+    "reason": "Agent A is complete and cleanly transcribed onto current canonical main ancestry with exact-head CI proof; promotion remains limited to five A-owned files and does not carry sibling launcher/runtime implementation.",
+    "promotion_ready": true
   },
   "hardening_v2": {
     "started_at": "2026-10-05T23:52:00-10:00",
@@ -756,6 +757,15 @@
           "result": "SUCCESS_PROVIDER_PROOF"
         }
       ]
+    },
+    "clean_promotion_branch": {
+      "branch": "scale/estate-intelligence-promote",
+      "base_revision": "032cf6e78478fbca1d56e1a6ab64e8cfbfc783ee",
+      "verified_revision": "55f8b12229a70040ee58ec552d687616b49d11ef",
+      "workflow_run_id": 38568025302,
+      "conclusion": "SUCCESS",
+      "local_execution_plane": "UNAVAILABLE_AT_PROMOTION_TIME",
+      "local_execution_boundary": "Desktop Commander host offline; exact-head GitHub Actions used as provider-native verification."
     }
   },
   "final_verification_policy": {
@@ -893,6 +903,13 @@
       "pyproject.toml"
     ],
     "reason": "Those excluded surfaces are already canonical on main or cross Agent A's exclusive ownership boundary; they are not carried through the A promotion path.",
-    "terminal_rule": "Promotion branch must pass exact-head Agent A CI before PR readiness or merge."
+    "terminal_rule": "Promotion branch must pass exact-head Agent A CI before PR readiness or merge.",
+    "promotion_ci_run": 38568025302,
+    "promotion_ci_revision": "55f8b12229a70040ee58ec552d687616b49d11ef",
+    "promotion_ci_state": "PASS",
+    "changed_file_count": 5,
+    "ahead_by": 5,
+    "behind_by": 0,
+    "clean_scope_verified": true
   }
 }
