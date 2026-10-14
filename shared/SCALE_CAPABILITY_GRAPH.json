@@ -8953,6 +8953,21 @@
       "all_semantic_matches": true,
       "recommended_workers": 4,
       "best_observed_throughput_repos_per_sec": 4.663
+    },
+    "clean_promotion_branch": {
+      "branch": "scale/estate-intelligence-promote",
+      "base_revision": "032cf6e78478fbca1d56e1a6ab64e8cfbfc783ee",
+      "verified_revision": "55f8b12229a70040ee58ec552d687616b49d11ef",
+      "workflow_run_id": 38568025302,
+      "conclusion": "success",
+      "scope": [
+        ".github/workflows/scale-estate-intelligence.yml",
+        "shared/SCALE_CAPABILITY_GRAPH.json",
+        "shared/WORKSTREAM_A.json",
+        "src/fde_powerhouse/gatling_estate.py",
+        "tests/test_gatling_estate.py"
+      ],
+      "excluded_cross_workstream_changes": true
     }
   },
   "edge_contract": {
@@ -9518,6 +9533,10 @@
     "source_ci_run": 37510025745,
     "target_branch": "scale/estate-intelligence-promote",
     "target_base_revision": "032cf6e78478fbca1d56e1a6ab64e8cfbfc783ee",
-    "policy": "verified_transcription_only_no_blind_merge"
+    "policy": "verified_transcription_only_no_blind_merge",
+    "promotion_ci_run": 38568025302,
+    "promotion_ci_revision": "55f8b12229a70040ee58ec552d687616b49d11ef",
+    "promotion_ci_state": "PASS",
+    "promotion_diff": "5 Agent-A-owned files; 5 commits ahead; 0 behind current main at branch creation"
   }
 }
