@@ -3,8 +3,8 @@ name: Scale Estate Intelligence
 on:
   push:
     branches:
-      - scale/estate-intelligence
-      - scale/estate-intelligence-promote
+      - main
+      - "scale/estate-intelligence*"
   workflow_dispatch:
 
 permissions:

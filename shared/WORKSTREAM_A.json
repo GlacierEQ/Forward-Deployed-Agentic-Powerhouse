@@ -446,8 +446,9 @@
   "terminal_condition": {
     "workstream_a_complete": true,
     "mission_complete": false,
-    "reason": "Agent A is complete, reviewed, exact-head verified after review repairs, and cleanly isolated to five owned promotion files. Downstream semantic-consumption boundaries are now explicit; final mission execution/certification remains sibling-owned.",
-    "promotion_ready": true
+    "reason": "Agent A is implemented, reviewed, verified, transcribed without sibling code, squash-merged to canonical main, read back from main, and passed post-merge CI. Dedicated Agent A semantic validation is being enabled on main as a final durability hardening follow-up.",
+    "promotion_ready": true,
+    "canonical_promotion_complete": true
   },
   "hardening_v2": {
     "started_at": "2026-10-05T23:52:00-10:00",
@@ -773,6 +774,14 @@
       "pr_ci_run": 38568704740,
       "both_green": true,
       "mac_execution_plane": "offline during promotion; no local proof substituted for CI"
+    },
+    "canonical_main": {
+      "revision": "58ae491e4618899e3f61cbb7b615cbf7d79920f1",
+      "merge_receipt": "GitHub PR #14 squash merge",
+      "direct_file_readback": "PASS",
+      "post_merge_ci_run": 38569153452,
+      "post_merge_ci_state": "PASS",
+      "dedicated_agent_a_main_workflow": "enabled in scale/estate-intelligence-receipt follow-up"
     }
   },
   "final_verification_policy": {
@@ -988,5 +997,32 @@
       "workstream_e_entry": "no direct field-level graph consumption observed in inspected shell verifier entry",
       "conclusion": "A now publishes explicit consumer semantics; deeper enforcement remains sibling-owned under ARCHITECTURE_CONTRACT.json."
     }
+  },
+  "canonical_promotion": {
+    "pr": 14,
+    "merge_method": "squash",
+    "canonical_revision": "58ae491e4618899e3f61cbb7b615cbf7d79920f1",
+    "provider_merge_result": "MERGED",
+    "direct_main_readback": true,
+    "post_merge_ci": {
+      "run_id": 38569153452,
+      "conclusion": "SUCCESS",
+      "matrix": [
+        "3.11",
+        "3.12",
+        "3.13"
+      ]
+    },
+    "canonical_blob_readback": {
+      "gatling_engine": "2381fc74393ca0a1026cdaf59475d8a01c13d2a6",
+      "gatling_tests": "bbad826e5815e2460b9b90cda76b8724474e0574",
+      "agent_a_workflow": "0151b63888d6010e4a822295ee7c7bcabb47edde",
+      "capability_graph": "233095d2eb9e8705a7d06f68ecd973fc0931798f",
+      "workstream_a": "a8f007a15ae6e2474f18925fa9bb8dff98bc2cc3"
+    },
+    "promotion_scope": [
+      "Agent A only"
+    ],
+    "sibling_code_transcribed": false
   }
 }
