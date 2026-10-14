@@ -1,0 +1,45 @@
+{
+  "schema": "glaciereq.scale-fde.external-ci-defect.v1",
+  "mission_id": "SCALE-FDE-DEMO-001",
+  "observed_at": "2026-10-14T13:06:00Z",
+  "state": "OPEN_EXTERNAL_EXECUTION_PLANE",
+  "conclusion": "Current computer-user GitHub Actions failures are pre-execution: jobs obtained no runner and executed zero steps. They do not falsify independently executed B/E behavior.",
+  "observations": [
+    {
+      "workstream": "B",
+      "source_revision": "cc73e21fe974931af91e760ada76a6f58c7a5ce2",
+      "workflow_run_id": 38568894959,
+      "job_id": 115868568707,
+      "conclusion": "failure",
+      "runner_id": 0,
+      "executed_steps": 0,
+      "independent_local_evidence": "12/12 tests/test_scale_runtime_durability.py passed in isolated Sprite runtime"
+    },
+    {
+      "workstream": "E",
+      "source_revision": "7898f2082b84f5fbf155f9334c5f7cb23a637576",
+      "workflow_run_id": 38568209719,
+      "job_id": 115866242287,
+      "conclusion": "failure",
+      "runner_id": 0,
+      "executed_steps": 0,
+      "independent_local_evidence": "25 tests + 2 subtests passed; compileall PASS; Ruff PASS in isolated Sprite runtime"
+    },
+    {
+      "workstream": "E",
+      "source_revision": "7898f2082b84f5fbf155f9334c5f7cb23a637576",
+      "workflow_run_id": 38568210620,
+      "job_id": 115866245832,
+      "conclusion": "failure",
+      "runner_id": 0,
+      "executed_steps": 0,
+      "independent_local_evidence": "same exact source as focused verifier proof"
+    }
+  ],
+  "boundary": "No root cause is claimed from runner_id=0 alone. The verified fact is that source verification steps never began.",
+  "remediation_frontier": [
+    "inspect reusable workflow/runner policy separately",
+    "do not weaken B or E behavior to compensate for a pre-execution CI failure",
+    "retain isolated exact-source test receipts until GitHub execution plane is healthy"
+  ]
+}
