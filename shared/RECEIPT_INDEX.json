@@ -103,5 +103,87 @@
       "severity": "critical",
       "reason": "C correctly waits for verified Mission-1 capability registration"
     }
-  ]
+  ],
+  "connector_recovery_snapshot": {
+    "observed_at": "2026-10-18",
+    "purpose": "Recover older connected-services continuity packet without promoting stale projections to authority.",
+    "verified_live": {
+      "github": {
+        "identity": "GlacierEQ",
+        "state": "CONNECTED"
+      },
+      "notion": {
+        "state": "CONNECTED",
+        "recovered_pages": [
+          "🔥 Trinity Integration Command Center",
+          "🕸️ UNIFIED CONNECTOR MESH — Cross-Resilient Intelligence Architecture",
+          "🚀 PHASE 5: ASPEN GROVE OPERATOR MESH (Orchestration Manifest)",
+          "🛰️ CONTINUOUS CONTROL PLANE — Master Loop v1.0 (2026-09-02)"
+        ],
+        "command_center_boundary": "Page exists and was last edited 2026-10-14, but its body contains older Jan/Feb-era status claims and is returned with verification.state=unverified. Treat as historical projection, not current source of truth."
+      },
+      "supabase": {
+        "state": "CONNECTED",
+        "projects": [
+          {
+            "id": "dyhprklicgewmrimecey",
+            "name": "supabase-backend-ops",
+            "status": "ACTIVE_HEALTHY"
+          },
+          {
+            "id": "kjebemdgvjvuutzvhbtp",
+            "name": "supabase-glaciereq",
+            "status": "ACTIVE_HEALTHY"
+          }
+        ],
+        "boundary": "Do not restore the older generic 'Casey + Glacier dual persistence' authority model without current table-level reconciliation."
+      },
+      "linear": {
+        "state": "CONNECTED",
+        "workspace": "Hi-classhomeservices",
+        "boundary": "Recent automation history shows issue creation frequently blocked by workspace free-issue limits; GitHub-to-Linear mapping is not a reliable sole spine."
+      },
+      "n8n": {
+        "state": "CONNECTED",
+        "workflow_count_observed": 18,
+        "active_workflows_observed": 7,
+        "active_examples": [
+          "GEQ L1 Intake: Gmail case mail (2h batch)",
+          "GlacierEQ | Source Receipt Boundaries",
+          "GlacierEQ | Deadline Source Evidence Gate",
+          "GlacierEQ | Integration Release Radar",
+          "GlacierEQ | Automation Failure Ledger",
+          "GEQ L3 Watchers: daily digest",
+          "OMEGA | JOB Career Signal Handoff — Source Bound, NO SEND"
+        ],
+        "notable_blocker": "OMEGA | Notion Task Sync Admission remains READ ONLY / INACTIVE because native Notion probe returned 403; do not publish until source-scoped read/readback is verified."
+      }
+    },
+    "unresolved_or_not_proven_in_this_snapshot": {
+      "gmail_direct": "Direct Gmail connector call required an eligible account link_id; n8n Gmail intake is live, so do not infer Gmail data loss.",
+      "outlook": "Not independently re-read in this snapshot.",
+      "google_drive": "Not independently re-read in this snapshot.",
+      "supermemory": "whoAmI call returned an internal tool error; connection/data-loss state remains UNKNOWN.",
+      "buildkite": "Not independently re-read in this snapshot.",
+      "automations": "Not independently re-read in this snapshot.",
+      "calendly": "Not independently re-read in this snapshot."
+    },
+    "recovered_priority_packet_disposition": {
+      "preserve": [
+        "GitHub receipt/boot discipline",
+        "case-separated mail/evidence custody",
+        "search-before-create",
+        "provider-native readback",
+        "fail-closed n8n admission",
+        "memory search-before-write",
+        "CI receipts bound to exact revision"
+      ],
+      "revise": [
+        "Notion is projection/control surface, not source authority for Scale FDE.",
+        "Supabase authority assignments must follow current project/table contracts, not old Casey/Glacier labels.",
+        "Linear cannot be assumed as complete task spine while free-plan creation limits persist.",
+        "Connector availability must be proven live before being used as a completion claim."
+      ]
+    }
+  }
 }
