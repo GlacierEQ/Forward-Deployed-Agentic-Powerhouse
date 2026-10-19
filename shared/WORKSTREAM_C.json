@@ -1,0 +1,215 @@
+{
+  "schema": "glaciereq.scale-fde.workstream/v1",
+  "workstream": "C",
+  "name": "Memory / Composition / Compounding",
+  "status": "PRETERMINAL_CONSUMER_CI_VERIFIED_AWAITING_REAL_E_SOURCE_PROOF",
+  "ownership": [
+    "Aspen Grove structured mission continuity",
+    "Genius Mastery deterministic capability composition",
+    "cross-process mission resurrection",
+    "verified capability extraction and registration",
+    "Mission-2 automatic reuse of Mission-1 capability"
+  ],
+  "non_ownership": [
+    "runtime/swarm scheduling",
+    "MCP/provider reconciliation execution",
+    "mission-wide verification receipts",
+    "Scale-facing product/UI"
+  ],
+  "continuity_contract": {
+    "authority": "Aspen Grove CaseBrain",
+    "schema": "glaciereq.scale-fde-continuity/v1",
+    "required_collections": [
+      "scale-mission",
+      "scale-capabilities",
+      "scale-decisions",
+      "scale-executions",
+      "scale-failures",
+      "scale-receipts",
+      "scale-continuations"
+    ],
+    "raw_transcript_continuity": "prohibited",
+    "resurrection_fields": [
+      "objective",
+      "constraints",
+      "decisions",
+      "completed_tasks",
+      "receipts",
+      "capabilities",
+      "unresolved_dependencies",
+      "current_frontier",
+      "collection_counts"
+    ]
+  },
+  "compounding_contract": {
+    "extraction_gate": [
+      "verified",
+      "operationally_verified"
+    ],
+    "requires_explicit_reusable_capability": true,
+    "registry_write": "atomic temp-file + fsync + os.replace + directory fsync where supported",
+    "selection": "deterministic mission-fit + maturity + evidence scoring",
+    "minimum_reuse_score": 0.35,
+    "runtime_success_inference": "prohibited"
+  },
+  "revisions": {
+    "aspen_grove_memory": "c5b8bb44016ee9c17e44c58b53f0545bfdc9691f",
+    "genius_mastery": "4ab452f7ee08f865f24e61f011b1c803fc9a1c7d",
+    "fde_sidecar_code": "2e3cfe61c7071422589fd4d234b144203a32efbb",
+    "fde_workflow_pin": "8cfaaeb1d28657cef9b4733f68fb3176f1bde05f",
+    "fde_canonical_frontier": "84cf73675d8f14e601b661522d79ed35a422fe14",
+    "fde_preterminal_capability_consumer": "4fed0c112071baa165760a3ba676a27282c4aa38"
+  },
+  "verification": {
+    "red": {
+      "genius_pre_fix_revision": "f84412fc03b7b8d94ef7767e94a5d3d5cfc092ef",
+      "test": "test_register_capability_preserves_previous_registry_on_interrupted_write",
+      "observed": "failed; interrupted direct write left registry as literal '{'",
+      "execution_plane": "authorized macOS estate verifier"
+    },
+    "green": [
+      {
+        "surface": "Aspen Grove continuity",
+        "result": "2/2 passed",
+        "revision": "c5b8bb44016ee9c17e44c58b53f0545bfdc9691f"
+      },
+      {
+        "surface": "Genius compounding",
+        "result": "7/7 passed; Ruff clean; compile clean",
+        "revision": "4ab452f7ee08f865f24e61f011b1c803fc9a1c7d"
+      },
+      {
+        "surface": "FDE Agent-C contract",
+        "result": "2/2 passed",
+        "revision": "2e3cfe61c7071422589fd4d234b144203a32efbb"
+      },
+      {
+        "surface": "cross-process resurrection + Mission-2 reuse",
+        "result": "passed",
+        "proof_sha256": "6a17eaaf125762dcf66e3d855deb307e0e3b9a057f9dce3a0789137f61efba95",
+        "selection_score": 0.675
+      }
+    ],
+    "proof_truth_boundary": "Synthetic component proof verifies Workstream-C mechanics across exact donor revisions; it does not assert completion of the full five-workstream Scale mission.",
+    "additional_red": [
+      {
+        "revision": "cfc3d6ebadad9dbfbe439c4a1322cf872035bff4",
+        "tests": [
+          "test_extract_reusable_capability_rejects_non_object_contract",
+          "test_register_capability_rejects_invalid_registry_shape"
+        ],
+        "observed": "2/2 failed with ValueError where the typed contract requires TypeError"
+      }
+    ],
+    "canonical_frontier": {
+      "red": {
+        "revision": "665f848e0285809a3af067ae112b52a6b49f1cf0",
+        "workflow_run": 37497754456,
+        "result": "failed at pytest import because prepare_canonical_frontier did not exist; lint passed"
+      },
+      "green": {
+        "revision": "84cf73675d8f14e601b661522d79ed35a422fe14",
+        "focused_workflow_run": 37497964584,
+        "full_ci_run": 37497964137,
+        "result": "focused Agent C contract passed; repository CI passed"
+      },
+      "guarantees": [
+        "canonical mission, Agent-A capability graph, Workstream-E contract and receipt index are loaded as one coherent snapshot",
+        "mission identity must match across canonical mission, Workstream E and receipt index",
+        "Agent-A graph must contain Aspen Grove Memory and Genius-Mastery donors",
+        "all canonical inputs are content-digested before continuity persistence",
+        "missing MISSION_RECEIPT.json is preserved as an external dependency",
+        "capability registry is not mutated while independent mission verification is absent"
+      ]
+    },
+    "preterminal_consumer": {
+      "implementation_head": "6110118867dd93580b082282b90b50c7b127f917",
+      "tests_added_at": "87941e3f995155bd303fdc6588c521cbc8acb78e",
+      "state": "FOCUSED_AND_FULL_CI_GREEN_NOT_LIVE_PROOF",
+      "claims_excluded": [
+        "live provider execution",
+        "real Mission-2 reuse",
+        "mission-wide certification"
+      ],
+      "focused_run_id": 37836860076,
+      "full_ci_run_id": 37836859797,
+      "ci_source_sha": "6110118867dd93580b082282b90b50c7b127f917",
+      "real_mission1_receipt_present": false,
+      "real_mission2_reuse_verified": false
+    }
+  },
+  "defects": [
+    {
+      "id": "C-DEFECT-001",
+      "status": "external_dependency",
+      "summary": "Automatic GitHub-hosted real-donor proof cannot read private donor repositories with the FDE repository github.token.",
+      "containment": "real-donor proof is workflow_dispatch-only and exact-revision local estate proof is preserved; configure ESTATE_CHECKOUT_TOKEN to run it in GitHub Actions."
+    },
+    {
+      "id": "C-DEFECT-002",
+      "status": "recovered",
+      "summary": "Local verification workspace exhausted disk during checkout.",
+      "containment": "removed only disposable Agent-C verification artifacts; persistent proof rerun succeeded with exact revisions."
+    },
+    {
+      "id": "C-DEFECT-003",
+      "status": "external_dependency",
+      "summary": "Aspen native GitHub Actions runner previously accepted jobs with runner_id 0 and executed no test steps.",
+      "containment": "exact Aspen donor tests were executed on the authorized macOS estate verifier; runner repair remains outside Workstream C."
+    },
+    {
+      "id": "C-DEFECT-004",
+      "status": "consumer_implementation_updated_empirical_E_receipt_pending",
+      "summary": "C formerly depended on E terminal MISSION_RECEIPT.json; now consumes E preterminal MISSION1_CAPABILITY_RECEIPT.json under source-bound validation.",
+      "containment": "Consumer logic and negative cases updated on C branch; no capability registered or final mission success inferred until actual E evidence and provider readback."
+    }
+  ],
+  "integration_contract": {
+    "consumes": [
+      "shared/SCALE_FDE_MISSION.yaml",
+      "shared/SCALE_CAPABILITY_GRAPH.json",
+      "E-verified preterminal shared/MISSION1_CAPABILITY_RECEIPT.json with explicit reusable_capability"
+    ],
+    "emits": [
+      "structured Aspen continuity state",
+      "verified reusable capability registry entry",
+      "Mission-2 reuse decision",
+      "this WORKSTREAM_C.json"
+    ],
+    "sibling_boundary": "No sibling workstream implementation is modified or treated as verified by this workstream."
+  },
+  "next_frontier": [
+    "Continue C consumer tests and reconcile C branch against central integration PR #11 typed preterminal handoff",
+    "Register no capability until independently source-verified E preterminal Mission-1 receipt exists",
+    "On real E evidence, compound through Aspen/Genius, execute fresh-process Mission-2 reuse, and return source-bound proof to E",
+    "Preserve final E terminal MISSION_RECEIPT.json as a post-C output, never a prerequisite of C"
+  ],
+  "canonical_shared_snapshot": {
+    "repository": "GlacierEQ/Forward-Deployed-Agentic-Powerhouse",
+    "main_revision": "0e623a771c5eaae79e8b1954228cdcd1e3c5a050",
+    "artifacts": {
+      "SCALE_FDE_MISSION.yaml": {
+        "git_blob_sha": "b33aa00528fc3a26723233a4e350755199a57233"
+      },
+      "SCALE_CAPABILITY_GRAPH.json": {
+        "git_blob_sha": "d37cf7b8355c26a0d27db858d43567b53925eba2"
+      },
+      "WORKSTREAM_E.json": {
+        "git_blob_sha": "ca0ed10cea431ad957eb8ed7a714907f7bfa083b"
+      },
+      "RECEIPT_INDEX.json": {
+        "git_blob_sha": "9f3f59fa63ce6f6fe9fd2a5295ce28c1a3aef306"
+      }
+    },
+    "observed_state": {
+      "mission_id": "SCALE-FDE-DEMO-001",
+      "workstream_e_status": "PARTIAL",
+      "mission_receipt_present": false,
+      "receipt_index_marks_mission_receipt_unresolved": true
+    }
+  },
+  "central_convergence": {
+    "canonical_contract_promoted_main": "032cf6e78478fbca1d56e1a6ab64e8cfbfc783ee",
+    "canonical_contract_pr": 12
+  }
+}
