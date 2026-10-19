@@ -83,8 +83,9 @@ def test_mission_only_exhausts_when_every_workstream_is_verified(
             receipt=_verified_receipt(output, worker),
         )
     state = cp.snapshot()
-    assert state["mission"]["frontier_exhausted"] is True
-    assert state["mission"]["status"] == "verified"
+    assert state["mission"]["workstream_frontier_exhausted"] is True
+    assert state["mission"]["frontier_exhausted"] is False
+    assert state["mission"]["status"] == "awaiting_independent_certification"
 
 
 def test_canonical_contracts_materialize_under_shared_directory(

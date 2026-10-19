@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from dataclasses import dataclass
 from pathlib import Path
@@ -160,6 +161,98 @@ class ScaleControlPlane:
             f"unknown integration: {worker}:{artifact}:{receipt_ref}"
         )
 
+    def _terminal_evidence_valid(self, evidence: Any) -> bool:
+        """Require E's sealed final receipts and C's actual reuse evidence."""
+        if not isinstance(evidence, dict):
+            return False
+        receipts = {}
+        for name in ("execution", "evaluation", "verification", "mission"):
+            receipt = evidence.get(name)
+            if not isinstance(receipt, dict):
+                return False
+            digest = receipt.get("receipt_sha256")
+            body = {k: v for k, v in receipt.items() if k != "receipt_sha256"}
+            observed = hashlib.sha256(json.dumps(
+                body, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+            ).encode("utf-8")).hexdigest()
+            if digest != observed:
+                return False
+            receipts[name] = receipt
+        mission_path = self.root / "shared" / "SCALE_FDE_MISSION.yaml"
+        if not mission_path.exists():
+            return False
+        contract_hash = hashlib.sha256(mission_path.read_bytes()).hexdigest()
+        if any(r.get("mission_contract_sha256") != contract_hash
+               or r.get("mission_id") != "SCALE-FDE-DEMO-001"
+               for r in receipts.values()):
+            return False
+        execution, evaluation = receipts["execution"], receipts["evaluation"]
+        verification, mission = receipts["verification"], receipts["mission"]
+        if (execution.get("status") != "completed"
+                or evaluation.get("verdict") != "FULL_STACK_BETTER"
+                or evaluation.get("baseline_status") != "completed"
+                or evaluation.get("full_stack_status") != "completed"
+                or verification.get("decision") != "CERTIFIED"
+                or mission.get("status") != "VERIFIED_SUCCESS"):
+            return False
+        if not verification.get("verifier_id") or (
+            verification.get("verifier_id") == execution.get("executor_id")
+        ):
+            return False
+        if any(mission.get(f"{name}_receipt_sha256") != receipts[name]["receipt_sha256"]
+               for name in ("execution", "evaluation", "verification")):
+            return False
+        if (verification.get("execution_receipt_sha256") != execution["receipt_sha256"]
+                or verification.get("evaluation_receipt_sha256") != evaluation["receipt_sha256"]):
+            return False
+        return self._verified_mission2_reuse(evidence, verification)
+
+    @staticmethod
+    def _verified_mission2_reuse(evidence: dict[str, Any],
+                                 verification: dict[str, Any]) -> bool:
+        proof = evidence.get("mission2_reuse")
+        if not isinstance(proof, dict):
+            return False
+        first, second = proof.get("mission1"), proof.get("mission2")
+        if not isinstance(first, dict) or not isinstance(second, dict):
+            return False
+        sources = evidence.get("source_revisions")
+        if not isinstance(sources, dict) or not all(
+            isinstance(sources.get(k), str) and len(sources[k]) == 40
+            for k in "BCDE"
+        ):
+            return False
+        readbacks = verification.get("readback_assertions")
+        if not isinstance(readbacks, list) or not readbacks or any(
+            not isinstance(r, dict) or r.get("match_status") != "VERIFIED"
+            for r in readbacks
+        ):
+            return False
+        falsifications = verification.get("falsification_tests")
+        if not isinstance(falsifications, list) or not falsifications or any(
+            not isinstance(t, dict) or t.get("falsified") is not False
+            for t in falsifications
+        ):
+            return False
+        if not verification.get("validated_claims"):
+            return False
+        return bool(
+            second.get("automatic_reuse") is True
+            and first.get("extracted_capability_id")
+            and first["extracted_capability_id"] == second.get("auto_reused_capability_id")
+            and any(p.get("name") == "mission2_automatic_reuse" and p.get("verified") is True
+                    for p in verification.get("postconditions", []) if isinstance(p, dict))
+        )
+
+    def record_terminal_evidence(self, evidence: dict[str, Any]) -> None:
+        verified = self._terminal_evidence_valid(evidence)
+        if not verified:
+            raise ValueError("terminal evidence validation failed")
+        state = self.snapshot()
+        state["mission"]["terminal_evidence"] = evidence
+        state["mission"]["independent_terminal_certification"] = verified
+        self._persist(state)
+
     def _persist(self, state: dict[str, Any]) -> None:
         tasks = [
             task
@@ -193,10 +286,21 @@ class ScaleControlPlane:
             "defects_resolved": defects_resolved,
             "receipts_indexed": receipts_indexed,
         }
-        exhausted = bool(gates) and all(gates.values())
+        workstream_exhausted = bool(gates) and all(gates.values())
+        terminal_certified = bool(
+            state["mission"].get("independent_terminal_certification") is True
+            and self._terminal_evidence_valid(state["mission"].get("terminal_evidence"))
+        )
+        gates["independent_terminal_certification"] = terminal_certified
+        exhausted = workstream_exhausted and terminal_certified
         state["mission"]["verification_gates"] = gates
+        state["mission"]["workstream_frontier_exhausted"] = workstream_exhausted
         state["mission"]["frontier_exhausted"] = exhausted
-        state["mission"]["status"] = "verified" if exhausted else "active"
+        state["mission"]["status"] = (
+            "verified" if exhausted
+            else "awaiting_independent_certification" if workstream_exhausted
+            else "active"
+        )
         self._write_json(self._state_path, state)
         self._materialize_contracts(state)
 
