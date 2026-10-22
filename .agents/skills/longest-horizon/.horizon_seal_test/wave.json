@@ -1,0 +1,12 @@
+{
+  "_envelope": {
+    "content_hash": "4062edaf750fb8074e7e83e0c9028c94e32468a8b6f1614774328ef045150f93",
+    "created_at": 1791575609.1661656,
+    "source": "heavy-seal:1.00:long_horizon.py",
+    "verified_by": "LongHorizonStore"
+  },
+  "name": "wave",
+  "payload": {
+    "ok": true
+  }
+}

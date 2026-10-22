@@ -1,0 +1,363 @@
+{
+  "total_unique_skills": 51,
+  "extracted_skills": [
+    {
+      "name": "agent-development",
+      "source_zip": "agent-development.zip",
+      "target_dir": "/root/.agents/skills/agent-development",
+      "skill_md_path": "/root/.agents/skills/agent-development/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "agentic-eval",
+      "source_zip": "agentic-eval (1).zip",
+      "target_dir": "/root/.agents/skills/agentic-eval",
+      "skill_md_path": "/root/.agents/skills/agentic-eval/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "careful",
+      "source_zip": "careful.zip",
+      "target_dir": "/root/.agents/skills/careful",
+      "skill_md_path": "/root/.agents/skills/careful/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "chrome-devtools",
+      "source_zip": "chrome-devtools.zip",
+      "target_dir": "/root/.agents/skills/chrome-devtools",
+      "skill_md_path": "/root/.agents/skills/chrome-devtools/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "claude-md-improver",
+      "source_zip": "claude-md-improver.zip",
+      "target_dir": "/root/.agents/skills/claude-md-improver",
+      "skill_md_path": "/root/.agents/skills/claude-md-improver/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "code-reviewer",
+      "source_zip": "code-reviewer.zip",
+      "target_dir": "/root/.agents/skills/code-reviewer",
+      "skill_md_path": "/root/.agents/skills/code-reviewer/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "color-palette",
+      "source_zip": "color-palette.zip",
+      "target_dir": "/root/.agents/skills/color-palette",
+      "skill_md_path": "/root/.agents/skills/color-palette/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "cover-letter-generator",
+      "source_zip": "cover-letter-generator.zip",
+      "target_dir": "/root/.agents/skills/cover-letter-generator",
+      "skill_md_path": "/root/.agents/skills/cover-letter-generator/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "data-context-extractor",
+      "source_zip": "data-context-extractor.zip",
+      "target_dir": "/root/.agents/skills/data-context-extractor",
+      "skill_md_path": "/root/.agents/skills/data-context-extractor/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "dispatching-parallel-agents",
+      "source_zip": "dispatching-parallel-agents.zip",
+      "target_dir": "/root/.agents/skills/dispatching-parallel-agents",
+      "skill_md_path": "/root/.agents/skills/dispatching-parallel-agents/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "experimental-design",
+      "source_zip": "experimental-design.zip",
+      "target_dir": "/root/.agents/skills/experimental-design",
+      "skill_md_path": "/root/.agents/skills/experimental-design/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "find-skills",
+      "source_zip": "find-skills (1).zip",
+      "target_dir": "/root/.agents/skills/find-skills",
+      "skill_md_path": "/root/.agents/skills/find-skills/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "finishing-a-development-branch",
+      "source_zip": "finishing-a-development-branch.zip",
+      "target_dir": "/root/.agents/skills/finishing-a-development-branch",
+      "skill_md_path": "/root/.agents/skills/finishing-a-development-branch/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "gemini-live-api-dev",
+      "source_zip": "gemini-live-api-dev.zip",
+      "target_dir": "/root/.agents/skills/gemini-live-api-dev",
+      "skill_md_path": "/root/.agents/skills/gemini-live-api-dev/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "git-commit",
+      "source_zip": "git-commit.zip",
+      "target_dir": "/root/.agents/skills/git-commit",
+      "skill_md_path": "/root/.agents/skills/git-commit/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "git-workflow-and-versioning",
+      "source_zip": "git-workflow-and-versioning.zip",
+      "target_dir": "/root/.agents/skills/git-workflow-and-versioning",
+      "skill_md_path": "/root/.agents/skills/git-workflow-and-versioning/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "graphql-architect",
+      "source_zip": "graphql-architect.zip",
+      "target_dir": "/root/.agents/skills/graphql-architect",
+      "skill_md_path": "/root/.agents/skills/graphql-architect/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "humanizer",
+      "source_zip": "humanizer.zip",
+      "target_dir": "/root/.agents/skills/humanizer",
+      "skill_md_path": "/root/.agents/skills/humanizer/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "hyperframes-keyframes",
+      "source_zip": "hyperframes-keyframes.zip",
+      "target_dir": "/root/.agents/skills/hyperframes-keyframes",
+      "skill_md_path": "/root/.agents/skills/hyperframes-keyframes/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "internet-skill-finder",
+      "source_zip": "internet-skill-finder.zip",
+      "target_dir": "/root/.agents/skills/internet-skill-finder",
+      "skill_md_path": "/root/.agents/skills/internet-skill-finder/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "knowledge-synthesis",
+      "source_zip": "knowledge-synthesis.zip",
+      "target_dir": "/root/.agents/skills/knowledge-synthesis",
+      "skill_md_path": "/root/.agents/skills/knowledge-synthesis/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "langchain-architecture",
+      "source_zip": "langchain-architecture.zip",
+      "target_dir": "/root/.agents/skills/langchain-architecture",
+      "skill_md_path": "/root/.agents/skills/langchain-architecture/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "lesson-learned",
+      "source_zip": "lesson-learned.zip",
+      "target_dir": "/root/.agents/skills/lesson-learned",
+      "skill_md_path": "/root/.agents/skills/lesson-learned/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "make-repo-contribution",
+      "source_zip": "make-repo-contribution.zip",
+      "target_dir": "/root/.agents/skills/make-repo-contribution",
+      "skill_md_path": "/root/.agents/skills/make-repo-contribution/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "mcp-cli",
+      "source_zip": "mcp-cli.zip",
+      "target_dir": "/root/.agents/skills/mcp-cli",
+      "skill_md_path": "/root/.agents/skills/mcp-cli/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "memory-management",
+      "source_zip": "memory-management.zip",
+      "target_dir": "/root/.agents/skills/memory-management",
+      "skill_md_path": "/root/.agents/skills/memory-management/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "memory-recall",
+      "source_zip": "memory-recall.zip",
+      "target_dir": "/root/.agents/skills/memory-recall",
+      "skill_md_path": "/root/.agents/skills/memory-recall/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "mermaid-diagrams",
+      "source_zip": "mermaid-diagrams.zip",
+      "target_dir": "/root/.agents/skills/mermaid-diagrams",
+      "skill_md_path": "/root/.agents/skills/mermaid-diagrams/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "ml-pipeline",
+      "source_zip": "ml-pipeline.zip",
+      "target_dir": "/root/.agents/skills/ml-pipeline",
+      "skill_md_path": "/root/.agents/skills/ml-pipeline/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "mongodb-schema-design",
+      "source_zip": "mongodb-schema-design.zip",
+      "target_dir": "/root/.agents/skills/mongodb-schema-design",
+      "skill_md_path": "/root/.agents/skills/mongodb-schema-design/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "n8n-mcp-tools-expert",
+      "source_zip": "n8n-mcp-tools-expert.zip",
+      "target_dir": "/root/.agents/skills/n8n-mcp-tools-expert",
+      "skill_md_path": "/root/.agents/skills/n8n-mcp-tools-expert/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "n8n-workflow-patterns",
+      "source_zip": "n8n-workflow-patterns.zip",
+      "target_dir": "/root/.agents/skills/n8n-workflow-patterns",
+      "skill_md_path": "/root/.agents/skills/n8n-workflow-patterns/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "no-ai-slop",
+      "source_zip": "no-ai-slop.zip",
+      "target_dir": "/root/.agents/skills/no-ai-slop",
+      "skill_md_path": "/root/.agents/skills/no-ai-slop/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "obsidian-markdown",
+      "source_zip": "obsidian-markdown.zip",
+      "target_dir": "/root/.agents/skills/obsidian-markdown",
+      "skill_md_path": "/root/.agents/skills/obsidian-markdown/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "performance-optimization",
+      "source_zip": "performance-optimization.zip",
+      "target_dir": "/root/.agents/skills/performance-optimization",
+      "skill_md_path": "/root/.agents/skills/performance-optimization/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "prompt-engineer",
+      "source_zip": "prompt-engineer.zip",
+      "target_dir": "/root/.agents/skills/prompt-engineer",
+      "skill_md_path": "/root/.agents/skills/prompt-engineer/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "puppeteer-skill",
+      "source_zip": "puppeteer-skill.zip",
+      "target_dir": "/root/.agents/skills/puppeteer-skill",
+      "skill_md_path": "/root/.agents/skills/puppeteer-skill/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "push-to-github",
+      "source_zip": "push-to-github.zip",
+      "target_dir": "/root/.agents/skills/push-to-github",
+      "skill_md_path": "/root/.agents/skills/push-to-github/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "scrapling",
+      "source_zip": "scrapling.zip",
+      "target_dir": "/root/.agents/skills/scrapling",
+      "skill_md_path": "/root/.agents/skills/scrapling/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "selenium-skill",
+      "source_zip": "selenium-skill.zip",
+      "target_dir": "/root/.agents/skills/selenium-skill",
+      "skill_md_path": "/root/.agents/skills/selenium-skill/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "sn-da-non-spreadsheet-analysis",
+      "source_zip": "sn-da-non-spreadsheet-analysis.zip",
+      "target_dir": "/root/.agents/skills/sn-da-non-spreadsheet-analysis",
+      "skill_md_path": "/root/.agents/skills/sn-da-non-spreadsheet-analysis/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "supabase",
+      "source_zip": "supabase.zip",
+      "target_dir": "/root/.agents/skills/supabase",
+      "skill_md_path": "/root/.agents/skills/supabase/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "system-settings-playbooks",
+      "source_zip": "system-settings-playbooks.zip",
+      "target_dir": "/root/.agents/skills/system-settings-playbooks",
+      "skill_md_path": "/root/.agents/skills/system-settings-playbooks/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "systematic-debugging",
+      "source_zip": "systematic-debugging.zip",
+      "target_dir": "/root/.agents/skills/systematic-debugging",
+      "skill_md_path": "/root/.agents/skills/systematic-debugging/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "torch-geometric",
+      "source_zip": "torch-geometric.zip",
+      "target_dir": "/root/.agents/skills/torch-geometric",
+      "skill_md_path": "/root/.agents/skills/torch-geometric/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "verification-before-completion",
+      "source_zip": "verification-before-completion.zip",
+      "target_dir": "/root/.agents/skills/verification-before-completion",
+      "skill_md_path": "/root/.agents/skills/verification-before-completion/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "war-council",
+      "source_zip": "war-council.zip",
+      "target_dir": "/root/.agents/skills/war-council",
+      "skill_md_path": "/root/.agents/skills/war-council/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "web-design-engineer",
+      "source_zip": "web-design-engineer.zip",
+      "target_dir": "/root/.agents/skills/web-design-engineer",
+      "skill_md_path": "/root/.agents/skills/web-design-engineer/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "web-design-reviewer",
+      "source_zip": "web-design-reviewer.zip",
+      "target_dir": "/root/.agents/skills/web-design-reviewer",
+      "skill_md_path": "/root/.agents/skills/web-design-reviewer/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "workers-best-practices",
+      "source_zip": "workers-best-practices.zip",
+      "target_dir": "/root/.agents/skills/workers-best-practices",
+      "skill_md_path": "/root/.agents/skills/workers-best-practices/SKILL.md",
+      "verified": true
+    },
+    {
+      "name": "writing-skills",
+      "source_zip": "writing-skills.zip",
+      "target_dir": "/root/.agents/skills/writing-skills",
+      "skill_md_path": "/root/.agents/skills/writing-skills/SKILL.md",
+      "verified": true
+    }
+  ],
+  "errors": []
+}

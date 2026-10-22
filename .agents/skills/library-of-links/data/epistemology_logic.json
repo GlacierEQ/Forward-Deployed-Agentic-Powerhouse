@@ -1,0 +1,267 @@
+[
+  {
+    "id": "epis-0003",
+    "title": "Scholarpedia — Algorithmic Probability & Solomonoff Induction",
+    "url": "http://www.scholarpedia.org/article/Algorithmic_probability",
+    "domain": "epistemology_logic",
+    "subdomain": "algorithmic_information_kolmogorov",
+    "description": "Mathematical foundation of optimal inductive inference, Kolmogorov complexity, Occam's razor, and universal sequence prediction.",
+    "tags": [
+      "epistemology",
+      "information_theory",
+      "kolmogorov",
+      "probability",
+      "solomonoff"
+    ],
+    "provenance": {
+      "source": "Ray Solomonoff / Scholarpedia",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T03:00:00Z"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T03:00:00Z",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "epis-0002",
+    "title": "Stanford Encyclopedia of Philosophy (SEP) — Formal Epistemology",
+    "url": "https://plato.stanford.edu/entries/epistemology-formal/",
+    "domain": "epistemology_logic",
+    "subdomain": "bayesian_probability_induction",
+    "description": "Rigorous treatment of Bayesian confirmation theory, belief revision (AGM), epistemic logic, and evidence propagation.",
+    "tags": [
+      "bayesianism",
+      "belief_revision",
+      "epistemology",
+      "logic",
+      "sep",
+      "stanford"
+    ],
+    "provenance": {
+      "source": "Stanford University",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T03:00:00Z"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T03:00:00Z",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "epis-0007",
+    "title": "Metacognitive Prompting & Epistemic Uncertainty Quantification",
+    "url": "https://arxiv.org/abs/2308.05342",
+    "domain": "epistemology_logic",
+    "subdomain": "bayesian_probability_induction",
+    "description": "Self-reflective evaluation of confidence intervals, calibration against hallucinations, and adversarial probing of intermediate reasoning.",
+    "tags": [
+      "bayesian_probability_induction",
+      "calibration",
+      "epistemic_uncertainty",
+      "epistemology_logic",
+      "hallucination_prevention",
+      "metacognition"
+    ],
+    "provenance": {
+      "source": "University of Toronto & Vector Institute",
+      "curator": "APEX Cognitive Distillation Engine",
+      "added_at": "2026-08-29T13:11:57.378022+00:00",
+      "distillation_stage": "COGNITIVE_RECURSIVE_REFLECTION"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:11:57.378022+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "epis-0001",
+    "title": "Judea Pearl — Causal Inference in Statistics, Econometrics, and AI",
+    "url": "https://bayes.cs.ucla.edu/csl/",
+    "domain": "epistemology_logic",
+    "subdomain": "causal_inference_dag",
+    "description": "Foundational mathematics for structural causal models (SCMs), do-calculus, counterfactuals, and DAG invariant topologies (Foundation for L4 Epistemology).",
+    "tags": [
+      "causality",
+      "counterfactuals",
+      "dags",
+      "epistemology",
+      "pearl",
+      "probability"
+    ],
+    "provenance": {
+      "source": "UCLA Cognitive Systems Laboratory",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T03:00:00Z"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T03:00:00Z",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "gh-0008",
+    "title": "DoWhy — Python Library for Causal Inference & Graphical Models",
+    "url": "https://github.com/py-why/dowhy",
+    "domain": "epistemology_logic",
+    "subdomain": "causal_inference_dag",
+    "description": "Unifies structural causal models (Pearl DAGs) and potential outcomes into a 4-step framework: Model, Identify, Estimate, Refute. (⭐ 8,290 stars)",
+    "tags": [
+      "causal_inference",
+      "causal_inference_dag",
+      "dags",
+      "dowhy",
+      "epistemology",
+      "epistemology_logic",
+      "github_breakthrough",
+      "pearl"
+    ],
+    "provenance": {
+      "source": "PyWhy & Microsoft Research",
+      "curator": "APEX GitHub Frontier Sentinel",
+      "added_at": "2026-08-29T13:13:28.902051+00:00",
+      "github_stars": 8290,
+      "classification_tier": "TIER_1_OPEN_SOURCE_BREAKTHROUGH"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:13:28.902051+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "epis-0008",
+    "title": "Von Neumann-Morgenstern Expected Utility & Game Theory (MIT OCW)",
+    "url": "https://ocw.mit.edu/courses/14-126-game-theory-spring-2016/",
+    "domain": "epistemology_logic",
+    "subdomain": "decision_theory_game_theory",
+    "description": "Formal axiomatic decision theory under risk, Bayesian Nash equilibrium, minimax theorem, and mechanism design under incomplete information.",
+    "tags": [
+      "decision_theory",
+      "game_theory",
+      "mit",
+      "nash_equilibrium",
+      "utility_theory"
+    ],
+    "provenance": {
+      "source": "MIT Department of Economics",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T13:30:01.257602+00:00"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:30:01.257602+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "epis-0004",
+    "title": "The Coq / Lean Proof Assistant & Interactive Theorem Proving",
+    "url": "https://coq.inria.fr/",
+    "domain": "epistemology_logic",
+    "subdomain": "formal_verification_proofs",
+    "description": "Calculus of Inductive Constructions (CIC) and Curry-Howard correspondence translating mathematical proofs into executable programs.",
+    "tags": [
+      "coq",
+      "curry_howard",
+      "epistemology",
+      "formal_verification",
+      "inria",
+      "proof_theory"
+    ],
+    "provenance": {
+      "source": "INRIA Formal Methods",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T03:00:00Z"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T03:00:00Z",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "epis-0005",
+    "title": "Anthropic Constitutional AI & Self-Critique Protocols",
+    "url": "https://arxiv.org/abs/2212.08073",
+    "domain": "epistemology_logic",
+    "subdomain": "formal_verification_proofs",
+    "description": "Mechanisms for recursive self-supervision, model-written critiques, and automated verification loops eliminating human feedback bottlenecks.",
+    "tags": [
+      "constitutional_ai",
+      "critique",
+      "epistemology",
+      "epistemology_logic",
+      "formal_verification_proofs",
+      "meta_learning",
+      "self_correction"
+    ],
+    "provenance": {
+      "source": "Anthropic AI Research",
+      "curator": "APEX Cognitive Distillation Engine",
+      "added_at": "2026-08-29T13:11:57.378022+00:00",
+      "distillation_stage": "COGNITIVE_RECURSIVE_REFLECTION"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:11:57.378022+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "epis-0006",
+    "title": "OpenAI Process-Supervised Reward Models (PRMs & Step Verification)",
+    "url": "https://arxiv.org/abs/2305.20050",
+    "domain": "epistemology_logic",
+    "subdomain": "formal_verification_proofs",
+    "description": "Step-by-step verification of mathematical reasoning chains rather than outcome-only evaluation (Foundation for L1/L2 intermediate verification).",
+    "tags": [
+      "chain_of_thought",
+      "epistemology",
+      "epistemology_logic",
+      "formal_verification_proofs",
+      "prm",
+      "step_verification"
+    ],
+    "provenance": {
+      "source": "OpenAI Alignment Team",
+      "curator": "APEX Cognitive Distillation Engine",
+      "added_at": "2026-08-29T13:11:57.378022+00:00",
+      "distillation_stage": "COGNITIVE_RECURSIVE_REFLECTION"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:11:57.378022+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "epis-0009",
+    "title": "Karl Popper — The Logic of Scientific Discovery & Falsificationism",
+    "url": "https://plato.stanford.edu/entries/popper/",
+    "domain": "epistemology_logic",
+    "subdomain": "philosophy_of_science_truth",
+    "description": "Foundations of empirical falsifiability, the demarcation of science from pseudoscience, critical rationalism, and severe testing.",
+    "tags": [
+      "demarcation",
+      "epistemology",
+      "falsifiability",
+      "popper",
+      "scientific_method"
+    ],
+    "provenance": {
+      "source": "Stanford Encyclopedia of Philosophy",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T13:30:01.257602+00:00"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:30:01.257602+00:00",
+      "http_status": 200
+    }
+  }
+]

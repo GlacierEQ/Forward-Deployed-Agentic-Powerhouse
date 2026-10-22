@@ -1,0 +1,12 @@
+{
+  "_envelope": {
+    "content_hash": "afbf9d0f3560b0fd7795e81c42a0a79ee6b6fc67e064f77826aee642cad28d91",
+    "created_at": 1791575609.1744778,
+    "source": "heavy-seal:0.17:.thin_seal.py",
+    "verified_by": "LongHorizonStore"
+  },
+  "name": "thin",
+  "payload": {
+    "v": 1
+  }
+}

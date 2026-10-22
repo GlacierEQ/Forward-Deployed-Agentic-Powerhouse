@@ -1,0 +1,161 @@
+[
+  {
+    "id": "lega-0001",
+    "title": "Hawaiʻi Judiciary JEFS Electronic Filing & Docket Access",
+    "url": "https://www.courts.state.hi.us/legal_references/jefs",
+    "domain": "legal_governance_forensics",
+    "subdomain": "court_rules_jefs",
+    "description": "Hawaiʻi Judiciary Electronic Filing and Service (JEFS) procedural rules, document formats, and authenticated docket retrieval standards.",
+    "tags": [
+      "court_systems",
+      "dockets",
+      "hawaii",
+      "jefs",
+      "legal_forensics"
+    ],
+    "provenance": {
+      "source": "Hawaiʻi State Judiciary",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T03:00:00Z"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T03:00:00Z",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "decl-0001",
+    "title": "CIA FOIA Electronic Reading Room (CREST Database)",
+    "url": "https://www.cia.gov/readingroom/",
+    "domain": "legal_governance_forensics",
+    "subdomain": "digital_forensics_osint",
+    "description": "Declassified intelligence records, scientific research programs, aerial reconnaissance analysis, and technical intelligence transitions.",
+    "tags": [
+      "cia",
+      "crest",
+      "declassified",
+      "digital_forensics_osint",
+      "foia",
+      "intelligence",
+      "legal_governance_forensics",
+      "osint"
+    ],
+    "provenance": {
+      "source": "Central Intelligence Agency (CIA)",
+      "curator": "APEX Frontier Sentinel Engine",
+      "added_at": "2026-08-29T13:11:50.711885+00:00",
+      "classification_tier": "PUBLIC_DECLASSIFIED_OR_OPEN_RESEARCH"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:11:50.711885+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "decl-0002",
+    "title": "FBI The Vault — Electronic FOIA Library",
+    "url": "https://vault.fbi.gov/",
+    "domain": "legal_governance_forensics",
+    "subdomain": "digital_forensics_osint",
+    "description": "Declassified investigative files, cyber threat intelligence archives, forensic laboratory technical bulletins, and historical case records.",
+    "tags": [
+      "cyber_forensics",
+      "declassified",
+      "digital_forensics_osint",
+      "fbi",
+      "foia",
+      "legal_governance_forensics",
+      "vault"
+    ],
+    "provenance": {
+      "source": "Federal Bureau of Investigation (FBI)",
+      "curator": "APEX Frontier Sentinel Engine",
+      "added_at": "2026-08-29T13:11:50.711885+00:00",
+      "classification_tier": "PUBLIC_DECLASSIFIED_OR_OPEN_RESEARCH"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:11:50.711885+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "lega-0003",
+    "title": "NIST SP 800-86 — Guide to Integrating Forensic Techniques into Incident Response",
+    "url": "https://csrc.nist.gov/publications/detail/sp/800-86/final",
+    "domain": "legal_governance_forensics",
+    "subdomain": "evidence_chain_of_custody",
+    "description": "Federal guidelines for digital evidence collection, bit-stream imaging, cryptographic integrity verification, and tamper-proof chain of custody.",
+    "tags": [
+      "chain_of_custody",
+      "digital_evidence",
+      "forensics",
+      "incident_response",
+      "nist"
+    ],
+    "provenance": {
+      "source": "NIST Computer Security Division",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T13:30:01.257602+00:00"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:30:01.257602+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "lega-0004",
+    "title": "Federal Judicial Center (FJC) — Standards of Review & Appellate Benchbook",
+    "url": "https://www.fjc.gov/",
+    "domain": "legal_governance_forensics",
+    "subdomain": "procedural_strategy_appeals",
+    "description": "Controlling judicial standards of review (De Novo, Clear Error, Abuse of Discretion, Substantial Evidence) for federal and appellate litigation.",
+    "tags": [
+      "appellate_practice",
+      "federal_courts",
+      "fjc",
+      "legal_forensics",
+      "standards_of_review"
+    ],
+    "provenance": {
+      "source": "Federal Judicial Center (FJC)",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T13:30:01.257602+00:00"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:30:01.257602+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "lega-0002",
+    "title": "Legal Information Institute (LII) — U.S. Code & Federal Rules",
+    "url": "https://www.law.cornell.edu/",
+    "domain": "legal_governance_forensics",
+    "subdomain": "statutory_constitutional_law",
+    "description": "Comprehensive hyperlinked US Code, Federal Rules of Civil Procedure (FRCP), Federal Rules of Evidence (FRE), and Supreme Court opinions.",
+    "tags": [
+      "cornell",
+      "frcp",
+      "fre",
+      "legal_forensics",
+      "lii",
+      "statutory_authority",
+      "us_code"
+    ],
+    "provenance": {
+      "source": "Cornell Law School",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T03:00:00Z"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T03:00:00Z",
+      "http_status": 200
+    }
+  }
+]

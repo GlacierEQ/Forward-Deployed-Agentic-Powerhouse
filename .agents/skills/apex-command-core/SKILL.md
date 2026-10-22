@@ -1,6 +1,6 @@
 ---
 name: apex-command-core
-description: Mission Control: full bootup, auto-healing, deep-horizon planning, multi-mode execution, and DAG swarm orchestration.
+description: "Mission Control: full bootup, auto-healing, deep-horizon planning, multi-mode execution, and DAG swarm orchestration."
 version: 1.0.0
 status: active
 ---

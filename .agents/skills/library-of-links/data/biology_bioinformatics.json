@@ -1,0 +1,155 @@
+[
+  {
+    "id": "biol-0005",
+    "title": "KEGG Kyoto Encyclopedia of Genes and Genomes",
+    "url": "https://www.genome.jp/kegg/",
+    "domain": "biology_bioinformatics",
+    "subdomain": "cellular_systems_metabolism",
+    "description": "Comprehensive database of biological pathways, metabolic networks, cellular processes, and enzymatic reaction graphs.",
+    "tags": [
+      "biochemistry",
+      "biology",
+      "enzymes",
+      "kegg",
+      "metabolism",
+      "pathways"
+    ],
+    "provenance": {
+      "source": "Kanehisa Laboratories (Kyoto University)",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T13:30:01.257602+00:00"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:30:01.257602+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "biol-0006",
+    "title": "NCBI BLAST Molecular Phylogenetics & Tree of Life",
+    "url": "https://blast.ncbi.nlm.nih.gov/Blast.cgi",
+    "domain": "biology_bioinformatics",
+    "subdomain": "evolutionary_dynamics",
+    "description": "High-throughput sequence alignment, evolutionary distance matrices, maximum likelihood phylogenetic tree reconstruction.",
+    "tags": [
+      "blast",
+      "evolutionary_biology",
+      "ncbi",
+      "phylogenetics",
+      "sequence_alignment"
+    ],
+    "provenance": {
+      "source": "National Library of Medicine / NIH",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T13:30:01.257602+00:00"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:30:01.257602+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "biol-0001",
+    "title": "NCBI National Center for Biotechnology Information & GenBank",
+    "url": "https://www.ncbi.nlm.nih.gov/",
+    "domain": "biology_bioinformatics",
+    "subdomain": "genomics_sequencing",
+    "description": "Authoritative repository for nucleotide sequence databases, PubMed biomedical literature, and BLAST sequence alignment tools.",
+    "tags": [
+      "bioinformatics",
+      "biology",
+      "dna",
+      "genomics",
+      "ncbi",
+      "nih"
+    ],
+    "provenance": {
+      "source": "National Library of Medicine / NIH",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T03:00:00Z"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T03:00:00Z",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "biol-0003",
+    "title": "Allen Institute for Brain Science & Neural Cell Atlas",
+    "url": "https://alleninstitute.org/",
+    "domain": "biology_bioinformatics",
+    "subdomain": "neuroscience_neural_dynamics",
+    "description": "High-resolution cellular mapping of brain connectivity, electrophysiology, single-cell transcriptomics, and neural circuitry.",
+    "tags": [
+      "brain",
+      "connectomics",
+      "neural_dynamics",
+      "neuroscience",
+      "transcriptomics"
+    ],
+    "provenance": {
+      "source": "Allen Institute for Brain Science",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T03:00:00Z"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T03:00:00Z",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "biol-0002",
+    "title": "DeepMind AlphaFold Protein Structure Database",
+    "url": "https://alphafold.ebi.ac.uk/",
+    "domain": "biology_bioinformatics",
+    "subdomain": "structural_biology_proteins",
+    "description": "3D protein structure predictions covering over 200 million cataloged proteins across the tree of life.",
+    "tags": [
+      "alphafold",
+      "biology",
+      "deepmind",
+      "ebi",
+      "proteins",
+      "structural_biology"
+    ],
+    "provenance": {
+      "source": "EMBL-EBI & Google DeepMind",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T03:00:00Z"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T03:00:00Z",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "biol-0004",
+    "title": "Broad Institute CRISPR & Synthetic Biology Portal",
+    "url": "https://www.broadinstitute.org/",
+    "domain": "biology_bioinformatics",
+    "subdomain": "synthetic_biology_crispr",
+    "description": "Cas9/Cas12/Cas13 gene editing architectures, prime editing protocols, base editors, and synthetic genetic circuit design.",
+    "tags": [
+      "broad_institute",
+      "cas9",
+      "crispr",
+      "gene_editing",
+      "synthetic_biology"
+    ],
+    "provenance": {
+      "source": "Broad Institute of MIT and Harvard",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T03:00:00Z"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T03:00:00Z",
+      "http_status": 200
+    }
+  }
+]

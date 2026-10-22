@@ -1,6 +1,6 @@
 ---
 name: apex-connector-mesh
-description: Universal integration fabric: 32+ MCP servers, multi-provider LLM routing, and unified memory query.
+description: "Universal integration fabric: 32+ MCP servers, multi-provider LLM routing, and unified memory query."
 version: 1.0.0
 status: active
 ---

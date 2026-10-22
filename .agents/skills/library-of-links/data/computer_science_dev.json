@@ -1,0 +1,301 @@
+[
+  {
+    "id": "comp-0004",
+    "title": "Rust Reference Manual & Type System",
+    "url": "https://doc.rust-lang.org/reference/",
+    "domain": "computer_science_dev",
+    "subdomain": "compiler_design_type_systems",
+    "description": "Affine type system, borrow checker invariants, memory layout guarantees, monomorphization, and unsafe boundary semantics.",
+    "tags": [
+      "borrow_checker",
+      "compilers",
+      "memory_safety",
+      "rust",
+      "type_systems"
+    ],
+    "provenance": {
+      "source": "Rust Project Developers",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T03:00:00Z"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T03:00:00Z",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "gh-0005",
+    "title": "OpenAI Triton — Language and Compiler for Custom Deep Learning Operations",
+    "url": "https://github.com/triton-lang/triton",
+    "domain": "computer_science_dev",
+    "subdomain": "compiler_design_type_systems",
+    "description": "Python-based programming language and optimizing compiler for writing highly efficient GPU kernels without raw CUDA complexity. (⭐ 20,037 stars)",
+    "tags": [
+      "compiler_design_type_systems",
+      "compilers",
+      "computer_science_dev",
+      "github_breakthrough",
+      "gpu_kernels",
+      "openai",
+      "triton"
+    ],
+    "provenance": {
+      "source": "OpenAI / Triton Team",
+      "curator": "APEX GitHub Frontier Sentinel",
+      "added_at": "2026-08-29T13:13:28.902051+00:00",
+      "github_stars": 20037,
+      "classification_tier": "TIER_1_OPEN_SOURCE_BREAKTHROUGH"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:13:28.902051+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "comp-0005",
+    "title": "Zero-Knowledge Proofs (zk-SNARKs / zk-STARKs) Reference",
+    "url": "https://zkp.science/",
+    "domain": "computer_science_dev",
+    "subdomain": "cryptography_zero_knowledge",
+    "description": "Cryptographic polynomial commitments, arithmetic circuits, R1CS/PLONK/FRI systems, and verifiable computation proofs.",
+    "tags": [
+      "cryptography",
+      "plonk",
+      "r1cs",
+      "zk_proofs",
+      "zk_snarks"
+    ],
+    "provenance": {
+      "source": "ZKP Research Community",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T03:00:00Z"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T03:00:00Z",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "gh-0009",
+    "title": "Arkworks — zk-SNARKs Ecosystem in Rust",
+    "url": "https://github.com/arkworks-rs/snark",
+    "domain": "computer_science_dev",
+    "subdomain": "cryptography_zero_knowledge",
+    "description": "High-performance Rust libraries for finite fields, elliptic curves, polynomial commitment schemes, and zero-knowledge SNARKs. (⭐ 915 stars)",
+    "tags": [
+      "computer_science_dev",
+      "cryptography",
+      "cryptography_zero_knowledge",
+      "finite_fields",
+      "github_breakthrough",
+      "rust",
+      "zk_snarks"
+    ],
+    "provenance": {
+      "source": "Arkworks zkSNARK Consortium",
+      "curator": "APEX GitHub Frontier Sentinel",
+      "added_at": "2026-08-29T13:13:28.902051+00:00",
+      "github_stars": 915,
+      "classification_tier": "TIER_1_OPEN_SOURCE_BREAKTHROUGH"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:13:28.902051+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "comp-0003",
+    "title": "SQLite Architecture & Write-Ahead Logging (WAL)",
+    "url": "https://www.sqlite.org/wal.html",
+    "domain": "computer_science_dev",
+    "subdomain": "database_engines_storage",
+    "description": "Internal architecture for SQLite concurrency, lock-free read transactions via WAL, and B-tree page cache design.",
+    "tags": [
+      "concurrency",
+      "databases",
+      "engineering_dev",
+      "sqlite",
+      "wal"
+    ],
+    "provenance": {
+      "source": "SQLite Development Team",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T03:00:00Z"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T03:00:00Z",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "comp-0002",
+    "title": "The Raft Distributed Consensus Protocol",
+    "url": "https://raft.github.io/",
+    "domain": "computer_science_dev",
+    "subdomain": "distributed_systems_consensus",
+    "description": "Leader election, log replication, safety guarantees, and state machine replication for distributed fault-tolerant systems.",
+    "tags": [
+      "consensus",
+      "distributed_systems",
+      "leader_election",
+      "raft",
+      "replication"
+    ],
+    "provenance": {
+      "source": "Diego Ongaro & John Ousterhout (Stanford)",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T03:00:00Z"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T03:00:00Z",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "comp-0006",
+    "title": "IETF RFC Standards Repository & POSIX Socket Protocols",
+    "url": "https://www.rfc-editor.org/",
+    "domain": "computer_science_dev",
+    "subdomain": "networking_protocols_posix",
+    "description": "Authoritative Internet Engineering Task Force RFC specifications: TCP/IP (RFC 793), QUIC (RFC 9000), HTTP/3 (RFC 9114), and TLS 1.3 (RFC 8446).",
+    "tags": [
+      "http3",
+      "ietf",
+      "networking",
+      "posix",
+      "quic",
+      "rfc",
+      "tcp_ip"
+    ],
+    "provenance": {
+      "source": "Internet Engineering Task Force (IETF)",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T13:30:01.257602+00:00"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:30:01.257602+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "comp-0001",
+    "title": "The Linux Kernel Documentation",
+    "url": "https://docs.kernel.org/",
+    "domain": "computer_science_dev",
+    "subdomain": "os_kernel_internals",
+    "description": "Complete architecture documentation for Linux memory management, VFS, process scheduling, cgroups, and syscall interfaces.",
+    "tags": [
+      "c",
+      "engineering_dev",
+      "kernel",
+      "linux",
+      "os_internals",
+      "posix"
+    ],
+    "provenance": {
+      "source": "Linux Kernel Organization",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T03:00:00Z"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T03:00:00Z",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "decl-0003",
+    "title": "DARPA Open Catalog & Transitioned Technologies",
+    "url": "https://www.darpa.mil/our-research/open-catalog",
+    "domain": "computer_science_dev",
+    "subdomain": "os_kernel_internals",
+    "description": "Open source software, architectures, hardware models, and peer-reviewed results from DARPA advanced defense research programs.",
+    "tags": [
+      "computer_science_dev",
+      "cyber_security",
+      "darpa",
+      "defense_tech",
+      "distributed_systems",
+      "open_catalog",
+      "os_kernel_internals"
+    ],
+    "provenance": {
+      "source": "Defense Advanced Research Projects Agency (DARPA)",
+      "curator": "APEX Frontier Sentinel Engine",
+      "added_at": "2026-08-29T13:11:50.711885+00:00",
+      "classification_tier": "PUBLIC_DECLASSIFIED_OR_OPEN_RESEARCH"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:11:50.711885+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "gh-0006",
+    "title": "Tokio — Event-Driven Non-Blocking I/O Platform for Rust",
+    "url": "https://github.com/tokio-rs/tokio",
+    "domain": "computer_science_dev",
+    "subdomain": "os_kernel_internals",
+    "description": "Asynchronous runtime for Rust with multi-threaded work-stealing scheduler, non-blocking network sockets, and timer wheels. (⭐ 33,034 stars)",
+    "tags": [
+      "async",
+      "computer_science_dev",
+      "concurrency",
+      "github_breakthrough",
+      "networking",
+      "os_kernel_internals",
+      "rust",
+      "tokio"
+    ],
+    "provenance": {
+      "source": "Tokio Project",
+      "curator": "APEX GitHub Frontier Sentinel",
+      "added_at": "2026-08-29T13:13:28.902051+00:00",
+      "github_stars": 33034,
+      "classification_tier": "TIER_1_OPEN_SOURCE_BREAKTHROUGH"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:13:28.902051+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "gh-0007",
+    "title": "Wasmtime — Fast and Secure WebAssembly & WASI Runtime",
+    "url": "https://github.com/bytecodealliance/wasmtime",
+    "domain": "computer_science_dev",
+    "subdomain": "virtualization_hypervisors",
+    "description": "Standalone WebAssembly runtime engineered on Cranelift code generator enforcing strict capability-based security (WASI). (⭐ 18,579 stars)",
+    "tags": [
+      "computer_science_dev",
+      "cranelift",
+      "github_breakthrough",
+      "sandboxing",
+      "virtualization",
+      "virtualization_hypervisors",
+      "wasi",
+      "wasm"
+    ],
+    "provenance": {
+      "source": "Bytecode Alliance",
+      "curator": "APEX GitHub Frontier Sentinel",
+      "added_at": "2026-08-29T13:13:28.902051+00:00",
+      "github_stars": 18579,
+      "classification_tier": "TIER_1_OPEN_SOURCE_BREAKTHROUGH"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:13:28.902051+00:00",
+      "http_status": 200
+    }
+  }
+]

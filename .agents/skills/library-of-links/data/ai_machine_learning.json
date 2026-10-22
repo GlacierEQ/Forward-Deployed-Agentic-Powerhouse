@@ -1,0 +1,241 @@
+[
+  {
+    "id": "aiml-0004",
+    "title": "Denoising Diffusion Probabilistic Models (DDPM / Score-Based Models)",
+    "url": "https://arxiv.org/abs/2006.11239",
+    "domain": "ai_machine_learning",
+    "subdomain": "diffusion_generative_models",
+    "description": "Foundational formulation of continuous score-matching, Langevin dynamics, and reverse stochastic differential equations for generative diffusion.",
+    "tags": [
+      "ai",
+      "arxiv",
+      "ddpm",
+      "diffusion_models",
+      "generative_ai",
+      "score_based"
+    ],
+    "provenance": {
+      "source": "Ho, Jain, Abbeel (UC Berkeley)",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T13:30:01.257602+00:00"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:30:01.257602+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "aiml-0005",
+    "title": "PyKEEN — Python Knowledge Graph Embeddings Framework",
+    "url": "https://github.com/pykeen/pykeen",
+    "domain": "ai_machine_learning",
+    "subdomain": "knowledge_graphs_embeddings",
+    "description": "State-of-the-art framework for learning relational knowledge graph embeddings (RotatE, TransE, ComplEx, TuckER) for multi-hop reasoning.",
+    "tags": [
+      "embeddings",
+      "github",
+      "knowledge_graphs",
+      "pykeen",
+      "relational_learning"
+    ],
+    "provenance": {
+      "source": "PyKEEN Research Consortium",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T13:30:01.257602+00:00"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:30:01.257602+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "aiml-0003",
+    "title": "AWQ & GPTQ Post-Training Quantization for Fast Inference",
+    "url": "https://arxiv.org/abs/2306.00978",
+    "domain": "ai_machine_learning",
+    "subdomain": "model_compression_quantization",
+    "description": "Activation-aware Weight Quantization (AWQ) preserving outlier channel activations for efficient 4-bit/8-bit edge deployment.",
+    "tags": [
+      "awq",
+      "inference",
+      "optimization",
+      "pruning",
+      "quantization"
+    ],
+    "provenance": {
+      "source": "Lin et al. (MIT HAN Lab)",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T03:00:00Z"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T03:00:00Z",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "gh-0003",
+    "title": "vLLM — High-Throughput Memory-Efficient LLM Serving Engine",
+    "url": "https://github.com/vllm-project/vllm",
+    "domain": "ai_machine_learning",
+    "subdomain": "model_compression_quantization",
+    "description": "PagedAttention memory virtualization achieving near-zero waste in KV cache management and state-of-the-art inference throughput. (⭐ 90,386 stars)",
+    "tags": [
+      "ai_infra",
+      "ai_machine_learning",
+      "github_breakthrough",
+      "inference",
+      "kv_cache",
+      "model_compression_quantization",
+      "paged_attention",
+      "vllm"
+    ],
+    "provenance": {
+      "source": "UC Berkeley LMSYS",
+      "curator": "APEX GitHub Frontier Sentinel",
+      "added_at": "2026-08-29T13:13:28.902051+00:00",
+      "github_stars": 90386,
+      "classification_tier": "TIER_1_OPEN_SOURCE_BREAKTHROUGH"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:13:28.902051+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "gh-0004",
+    "title": "llama.cpp — Port of LLM Inference in Pure C/C++",
+    "url": "https://github.com/ggerganov/llama.cpp",
+    "domain": "ai_machine_learning",
+    "subdomain": "model_compression_quantization",
+    "description": "Plain C/C++ implementation without dependencies for CPU/GPU quantized tensor inference (1.5-bit to 8-bit GGUF execution). (⭐ 126,189 stars)",
+    "tags": [
+      "ai_machine_learning",
+      "c_cpp",
+      "edge_ai",
+      "gguf",
+      "github_breakthrough",
+      "llama_cpp",
+      "model_compression_quantization",
+      "quantization"
+    ],
+    "provenance": {
+      "source": "Georgi Gerganov & Open-Source Community",
+      "curator": "APEX GitHub Frontier Sentinel",
+      "added_at": "2026-08-29T13:13:28.902051+00:00",
+      "github_stars": 126189,
+      "classification_tier": "TIER_1_OPEN_SOURCE_BREAKTHROUGH"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:13:28.902051+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "aiml-0006",
+    "title": "DeepProbLog — Unifying Neural Networks and First-Order Logic",
+    "url": "https://arxiv.org/abs/1805.10872",
+    "domain": "ai_machine_learning",
+    "subdomain": "neurosymbolic_ai_first_order_logic",
+    "description": "Neurosymbolic AI architecture bridging deep neural representations with exact first-order probabilistic logic programming and differentiable deduction.",
+    "tags": [
+      "differentiable_logic",
+      "first_order_logic",
+      "neurosymbolic",
+      "problog",
+      "symbolic_ai"
+    ],
+    "provenance": {
+      "source": "Manhaeve et al. (KU Leuven)",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T13:30:01.257602+00:00"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:30:01.257602+00:00",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "aiml-0002",
+    "title": "Reinforcement Learning from Human Feedback (RLHF / PPO / DPO)",
+    "url": "https://arxiv.org/abs/2305.18290",
+    "domain": "ai_machine_learning",
+    "subdomain": "reinforcement_learning_rlhf",
+    "description": "Direct Preference Optimization (DPO) and PPO alignment dynamics for steering LLM reasoning and policy outputs.",
+    "tags": [
+      "alignment",
+      "dpo",
+      "ppo",
+      "reinforcement_learning",
+      "rlhf"
+    ],
+    "provenance": {
+      "source": "Rafailov et al. (Stanford University)",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T03:00:00Z"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T03:00:00Z",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "aiml-0001",
+    "title": "Attention Is All You Need — Transformer Architecture",
+    "url": "https://arxiv.org/abs/1706.03762",
+    "domain": "ai_machine_learning",
+    "subdomain": "transformer_attention_mechanisms",
+    "description": "Foundational paper on Multi-Head Self-Attention, positional encodings, cross-attention, and sequence-to-sequence scaling laws.",
+    "tags": [
+      "arxiv",
+      "attention",
+      "deep_learning",
+      "nlp",
+      "transformers"
+    ],
+    "provenance": {
+      "source": "Vaswani et al. (Google Brain / Research)",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T03:00:00Z"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T03:00:00Z",
+      "http_status": 200
+    }
+  },
+  {
+    "id": "fron-0001",
+    "title": "arXiv Frontier AI & Neural Systems (cs.AI / cs.LG / cs.CL)",
+    "url": "https://arxiv.org/list/cs.AI/recent",
+    "domain": "ai_machine_learning",
+    "subdomain": "transformer_attention_mechanisms",
+    "description": "Real-time preprints on frontier deep learning, reasoning models, mechanistic interpretability, and agentic reinforcement learning.",
+    "tags": [
+      "ai_machine_learning",
+      "ai_research",
+      "arxiv",
+      "frontier",
+      "llm",
+      "neural_systems",
+      "transformer_attention_mechanisms"
+    ],
+    "provenance": {
+      "source": "Cornell University arXiv",
+      "curator": "APEX Frontier Sentinel Engine",
+      "added_at": "2026-08-29T13:11:50.711885+00:00",
+      "classification_tier": "PUBLIC_DECLASSIFIED_OR_OPEN_RESEARCH"
+    },
+    "verification": {
+      "status": "LIVE",
+      "last_checked": "2026-08-29T13:11:50.711885+00:00",
+      "http_status": 200
+    }
+  }
+]

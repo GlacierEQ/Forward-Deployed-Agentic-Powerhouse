@@ -8,15 +8,38 @@ import os
 import sys
 import json
 import time
+import socket
 import urllib.request
 from pathlib import Path
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from typing import Any
 
 sys.path.insert(0, "/root/.agents/skills/apex-sovereign-supreme/scripts")
-from apex_runtime_security import secure_tls_context, DEFAULT_RETRY, with_retry, verify_bearer_token, auth_required
+from apex_runtime_security import secure_tls_context, DEFAULT_RETRY, with_retry, auth_required
 
 ctx = secure_tls_context()
+
+TOKEN_FILE = Path("/tmp/apex_runtime_token")
+
+def get_runtime_token() -> str:
+    """Get runtime token from env or token file."""
+    token = os.environ.get("APEX_RUNTIME_API_TOKEN")
+    if token:
+        return token
+    if TOKEN_FILE.exists():
+        return TOKEN_FILE.read_text().strip()
+    return ""
+
+def verify_bearer_token(headers: dict) -> bool:
+    """Verify Authorization: Bearer <token> against APEX_RUNTIME_API_TOKEN or token file."""
+    token = get_runtime_token()
+    if not token:
+        return False
+    supplied = headers.get("Authorization", "")
+    if supplied.startswith("Bearer "):
+        supplied = supplied[7:]
+    import hmac
+    return bool(supplied) and hmac.compare_digest(supplied, token)
 
 SMITHERY_REMOTE_URL = os.environ.get("SMITHERY_REMOTE_URL", "https://mcp.smithery.ai/GlacierEQ?mode=smart")
 CACHE_DIR = Path("/root/.apex/mcp_cache")
@@ -105,6 +128,8 @@ class SmitheryProxyHandler(BaseHTTPRequestHandler):
         tool_name = params.get("tool") or params.get("name", "")
         args = params.get("arguments") or params.get("args", {})
 
+        smithery_api_key = os.environ.get("SMITHERY_API_KEY") or os.environ.get("SMITHERY_KEY")
+
         @with_retry(DEFAULT_RETRY)
         def _remote_call():
             req_data = {
@@ -113,10 +138,13 @@ class SmitheryProxyHandler(BaseHTTPRequestHandler):
                 "method": "tools/call",
                 "params": {"name": tool_name, "arguments": args},
             }
+            headers = {"Content-Type": "application/json"}
+            if smithery_api_key:
+                headers["Authorization"] = f"Bearer {smithery_api_key}"
             req = urllib.request.Request(
                 SMITHERY_REMOTE_URL,
                 data=json.dumps(req_data).encode("utf-8"),
-                headers={"Content-Type": "application/json"},
+                headers=headers,
             )
             with urllib.request.urlopen(req, timeout=12, context=ctx) as r:
                 return json.loads(r.read().decode("utf-8"))
@@ -129,6 +157,7 @@ class SmitheryProxyHandler(BaseHTTPRequestHandler):
 def run_server(port: int = 8999):
     server = ThreadingHTTPServer(("127.0.0.1", port), SmitheryProxyHandler)
     server.allow_reuse_address = True
+    server.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     print(f"🔌 APEX Smithery JSON-RPC Mesh Proxy active on http://127.0.0.1:{port}")
     server.serve_forever()
 

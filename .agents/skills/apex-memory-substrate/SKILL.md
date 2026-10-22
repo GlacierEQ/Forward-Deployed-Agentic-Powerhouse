@@ -1,6 +1,6 @@
 ---
 name: apex-memory-substrate
-description: Durable intelligence layer: pointer-indexed persistence (Aspen-Grove), hybrid retrieval, and multi-VP adjudication.
+description: "Durable intelligence layer: pointer-indexed persistence (Aspen-Grove), hybrid retrieval, and multi-VP adjudication."
 version: 1.0.0
 status: active
 ---

@@ -1,0 +1,1568 @@
+[
+  {
+    "id": "inst-0005",
+    "title": "pro_code_humanized_engineering.md — Principal Engineer Code Craftsmanship",
+    "url": "file:///root/.agents/rules/pro_code_humanized_engineering.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "code_craftsmanship",
+    "description": "Enforces humanized architecture, intent-revealing domain naming, consequential 'WHY' documentation of invariants and trade-offs, actionable diagnostics, and complete realization (zero TODOs/stubs).",
+    "tags": [
+      "code_craftsmanship",
+      "humanized_code",
+      "instructions_arsenal",
+      "principal_engineer",
+      "pro_code"
+    ],
+    "provenance": {
+      "source": "APEX Workspace Rules",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T02:58:00Z"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "7b271a3383b1ca0e121f992cb026328a2780f0f896080c0ae3c7a7080c3b75e8",
+      "bytes": 2493,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0055",
+    "title": "pro_code_humanized_engineering.md — Principal Systems Engineer Craftsmanship Contract",
+    "url": "file:///data/data/com.termux/files/home/monolith/rules/pro_code_humanized_engineering.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "code_craftsmanship",
+    "description": "Principal Systems Engineer Craftsmanship Contract",
+    "tags": [
+      "code_craftsmanship",
+      "instructions_arsenal",
+      "pro_code_humanized_engineering"
+    ],
+    "provenance": {
+      "source": "Local Estate File (pro_code_humanized_engineering.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "7b271a3383b1ca0e121f992cb026328a2780f0f896080c0ae3c7a7080c3b75e8",
+      "bytes": 2493,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0003",
+    "title": "EPISTEMOLOGY.md — The L0–L5 Epistemic Hierarchy & Anti-Symptom Law",
+    "url": "file:///root/.agents/skills/apex-command-core/EPISTEMOLOGY.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "epistemic_doctrine",
+    "description": "6-level epistemic standard (L0 Ground Truth, L1 Component, L2 Pipeline, L3 Substrate, L4 Causal/Anti-Symptom-Chasing, L5 Holographic Mesh). The Rule of Three: Stop mutating on >3 failures and fix root generator in 1 pass.",
+    "tags": [
+      "anti_symptom_chasing",
+      "causality",
+      "epistemology",
+      "epistemology_framework",
+      "instructions_arsenal",
+      "l0_l5"
+    ],
+    "provenance": {
+      "source": "APEX Command Core Skill",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T02:58:00Z"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "9aacdc4d19c7bd86feec37c4cced122c9cc8e797d6962aab1ed739e516fc20e5",
+      "bytes": 11980,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0002",
+    "title": "CONSTANTS.md — Estate Invariant Constants & Physical Laws",
+    "url": "file:///root/CONSTANTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "estate_invariants",
+    "description": "Unbending mathematical constants: Decentralized Holographic Mesh (no single-winner), Zero-Fake-Truth boundary, L0-L5 operational constraints, PRoot 7.6GB RAM leverage limits, 305+ exported vault keys.",
+    "tags": [
+      "axioms",
+      "constants",
+      "hardware_limits",
+      "invariants",
+      "instructions_arsenal"
+    ],
+    "provenance": {
+      "source": "APEX Mathematical Foundation",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T02:58:00Z"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "29742ae8d35b8d38d2ce0393e4555d372c80f8983a0cff33802370ff6ffd8ed1",
+      "bytes": 6041,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0009",
+    "title": "CONSTANTS.md — Estate Invariant Constants & Physical Laws",
+    "url": "file:///root/.agents/skills/apex-command-core/CONSTANTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "estate_invariants",
+    "description": "Estate Invariant Constants & Physical Laws",
+    "tags": [
+      "constants",
+      "estate_invariants",
+      "instructions_arsenal"
+    ],
+    "provenance": {
+      "source": "Local Estate File (CONSTANTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "29742ae8d35b8d38d2ce0393e4555d372c80f8983a0cff33802370ff6ffd8ed1",
+      "bytes": 6041,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0016",
+    "title": "MASTER_FOUNDRY.md — 4-Wave Autonomous Master Build Foundry",
+    "url": "file:///root/.gemini/antigravity-cli/brain/d59bea5d-a77c-42b4-8035-7d536f7c32c9/MASTER_FOUNDRY.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "foundry_architecture",
+    "description": "4-Wave Autonomous Master Build Foundry",
+    "tags": [
+      "foundry_architecture",
+      "instructions_arsenal",
+      "master_foundry"
+    ],
+    "provenance": {
+      "source": "Local Estate File (MASTER_FOUNDRY.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "7b52c8dfa76711324a9386e8e371883f6fed28d248cea1bea0b3da3010ce7c76",
+      "bytes": 27789,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0050",
+    "title": "MASTER_FOUNDRY.md — 4-Wave Autonomous Master Build Foundry",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/04_LEGAL_AND_FORENSIC_INTEL/case_1fdv_nexus/mastermind/MASTER_FOUNDRY.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "foundry_architecture",
+    "description": "4-Wave Autonomous Master Build Foundry",
+    "tags": [
+      "foundry_architecture",
+      "instructions_arsenal",
+      "master_foundry"
+    ],
+    "provenance": {
+      "source": "Local Estate File (MASTER_FOUNDRY.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "7b52c8dfa76711324a9386e8e371883f6fed28d248cea1bea0b3da3010ce7c76",
+      "bytes": 27789,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0006",
+    "title": "MASTER_FOUNDRY.md — 4-Wave Autonomous Build Foundry",
+    "url": "file:///root/.agents/skills/apex-command-core/MASTER_FOUNDRY.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "foundry_lifecycle",
+    "description": "Master blueprint for Wave 1 (Make It Run - Monolith test reconciliation), Wave 2 (Core Product Loop), Wave 3 (Self-Hardening Swarm), Wave 4 (Sovereignty & Decentralization).",
+    "tags": [
+      "foundry",
+      "foundry_lifecycle",
+      "instructions_arsenal",
+      "master_plan",
+      "waves"
+    ],
+    "provenance": {
+      "source": "APEX Mastermind Core",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T02:58:00Z"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "7b52c8dfa76711324a9386e8e371883f6fed28d248cea1bea0b3da3010ce7c76",
+      "bytes": 27789,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0010",
+    "title": "EXCELLENCE.md — 12-Stage Boolean Machine Gate Specification",
+    "url": "file:///root/.agents/skills/apex-engineering-excellence/EXCELLENCE.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "machine_gate_contracts",
+    "description": "12-Stage Boolean Machine Gate Specification",
+    "tags": [
+      "excellence",
+      "instructions_arsenal",
+      "machine_gate_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (EXCELLENCE.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "cacfa213d43ed7eabc119a15bbb646ce281129404db052f77dff52be767ac991",
+      "bytes": 5482,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0053",
+    "title": "EXCELLENCE.md — 12-Stage Boolean Machine Gate Specification",
+    "url": "file:///data/data/com.termux/files/home/monolith/foundations/EXCELLENCE.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "machine_gate_contracts",
+    "description": "12-Stage Boolean Machine Gate Specification",
+    "tags": [
+      "excellence",
+      "instructions_arsenal",
+      "machine_gate_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (EXCELLENCE.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "95a7bb2fc124a95181a587894e9b28675ed031bf1e1c5206cb3b960ea93e932d",
+      "bytes": 1598,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0054",
+    "title": "EXCELLENCE.md — 12-Stage Boolean Machine Gate Specification",
+    "url": "file:///data/data/com.termux/files/home/monolith/governance/EXCELLENCE.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "machine_gate_contracts",
+    "description": "12-Stage Boolean Machine Gate Specification",
+    "tags": [
+      "excellence",
+      "instructions_arsenal",
+      "machine_gate_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (EXCELLENCE.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "cacfa213d43ed7eabc119a15bbb646ce281129404db052f77dff52be767ac991",
+      "bytes": 5482,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0004",
+    "title": "EXCELLENCE.md — APEX Best-in-Class Pro-Code Engineering Standard",
+    "url": "file:///root/EXCELLENCE.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "machine_gates",
+    "description": "12-stage boolean machine gate verification contract (GATE_01_PROPOSAL to GATE_12_PROMOTED), zero-fake truth enforcement, proof receipts (SHA256), and anti-symptom-chasing protocols.",
+    "tags": [
+      "excellence",
+      "gate_contracts",
+      "instructions_arsenal",
+      "machine_gates",
+      "pro_code",
+      "verification"
+    ],
+    "provenance": {
+      "source": "APEX Engineering Excellence Skill",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T02:58:00Z"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "cacfa213d43ed7eabc119a15bbb646ce281129404db052f77dff52be767ac991",
+      "bytes": 5482,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0001",
+    "title": "AGENTS.md — APEX Sovereign Agent Operating Contract",
+    "url": "file:///root/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contract",
+    "description": "Supreme operating law for all estate agents: §0 Operator Hard Constraints, §1 Supreme Law, §6 Swarm DAG Architecture, §7 Legal Intelligence Stack, §8.6 L0-L5 Epistemic Ladder, §9 Pro-Code Engineering.",
+    "tags": [
+      "agents",
+      "contracts",
+      "governance",
+      "holographic_mesh",
+      "instructions_arsenal",
+      "supreme_law"
+    ],
+    "provenance": {
+      "source": "APEX Control Plane Core",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T02:58:00Z"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "7273758cb07ef1896b3cc43dc4a4f9f306f7048264c462802daea2f0f3d933be",
+      "bytes": 43754,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0008",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///root/.agents/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "7273758cb07ef1896b3cc43dc4a4f9f306f7048264c462802daea2f0f3d933be",
+      "bytes": 43754,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0012",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///root/computer-user/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "9775e0b05509c23530a1d921f9663688825e50ec3428a74ac851cde6b27e7629",
+      "bytes": 4497,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0013",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///root/antigravity-cli/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "aa83d20312f15ea7eeb8dd6efc7df4f615ff5d6d97ebdc5fef07e5361a0f7463",
+      "bytes": 24073,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0014",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///root/.bun/install/cache/@GH@anomalyco-ghostty-web-83c0a07@@@1/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "114f1be22c4d9ae5fa23d9e0c55f586cb19553c8e9e91ff290876b653f82f864",
+      "bytes": 11779,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0015",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///root/.config/opencode/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "ae12fdd9b6df762ac8386a9e5f514b26190df3f6b96df3ca716aeb016dc8d701",
+      "bytes": 2498,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0017",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "beefb3f7f228709b14e4384ce3bd9eeb2b5d44773e501dd3aaa7a036cf6f9bea",
+      "bytes": 2164,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0018",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/apex-alpha/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "9ce54cb2b05d309078e1c3efb75e5881c441312bc892f5070ae67e0959dda930",
+      "bytes": 1312,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0019",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/apex-omega/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "9ce54cb2b05d309078e1c3efb75e5881c441312bc892f5070ae67e0959dda930",
+      "bytes": 1312,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0020",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/the-tower-of-babel/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "b41d0fbd4c5e999dacaf70be98fbf5d6a50c8a0794ca32280aa154a995eb0ab9",
+      "bytes": 3411,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0021",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/monolith/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "5f355d75c3837a798f082ddf46e37a67ba2c4372d0ab87ee2f5abfe9d5ce7211",
+      "bytes": 7592,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0022",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "dfd8c0adcc1b0c4252b4230076b27833fb1d06f357401092aac00b7664e5c44b",
+      "bytes": 1143,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0023",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MiMo_Code_Isolated_Workspace/MiMo-Config/computer-user-core/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "dfd8c0adcc1b0c4252b4230076b27833fb1d06f357401092aac00b7664e5c44b",
+      "bytes": 1143,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0024",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MiMo_Code_Isolated_Workspace/.mimocode/gemini_skills/antigravity-awesome-skills/skills/react-best-practices/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "9288e276adf1a8e907721874d5c1ca7ea62d57ca81750d5ac9d0d87f4e1c52f8",
+      "bytes": 60535,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0025",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MiMo_Code_Isolated_Workspace/.mimocode/gemini_skills/antigravity-awesome-skills/skills/postgres-best-practices/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "a5226ca435fe12cf69ef8343aeaa5a9f2ae40679986b09eacb247711471e8722",
+      "bytes": 44927,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0026",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/SPACEX_PORTFOLIO/spacex-telemetry/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "2af501afe574b08b05e62e4d8a6fcd0c18b1957626cbffd79b97a0e97e1b0738",
+      "bytes": 790,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0027",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/SPACEX_PORTFOLIO/spacex-orbital-mechanics/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "dfd8c0adcc1b0c4252b4230076b27833fb1d06f357401092aac00b7664e5c44b",
+      "bytes": 1143,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0028",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/SPACEX_PORTFOLIO/spacex-launch-sequencer/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "dfd8c0adcc1b0c4252b4230076b27833fb1d06f357401092aac00b7664e5c44b",
+      "bytes": 1143,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0029",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/SPACEX_PORTFOLIO/spacex-ground-network/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "dfd8c0adcc1b0c4252b4230076b27833fb1d06f357401092aac00b7664e5c44b",
+      "bytes": 1143,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0030",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/SPACEX_PORTFOLIO/spacex-propulsion-monitor/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "dfd8c0adcc1b0c4252b4230076b27833fb1d06f357401092aac00b7664e5c44b",
+      "bytes": 1143,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0031",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/SPACEX_PORTFOLIO/spacex-satellite-mesh/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "dfd8c0adcc1b0c4252b4230076b27833fb1d06f357401092aac00b7664e5c44b",
+      "bytes": 1143,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0032",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/SPACEX_PORTFOLIO/spacex-recovery-dynamics/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "dfd8c0adcc1b0c4252b4230076b27833fb1d06f357401092aac00b7664e5c44b",
+      "bytes": 1143,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0033",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/SPACEX_PORTFOLIO/spacex-mission-control/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "dfd8c0adcc1b0c4252b4230076b27833fb1d06f357401092aac00b7664e5c44b",
+      "bytes": 1143,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0034",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/SPACEX_PORTFOLIO/spacex-cryogenics/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "dfd8c0adcc1b0c4252b4230076b27833fb1d06f357401092aac00b7664e5c44b",
+      "bytes": 1143,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0035",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/SPACEX_PORTFOLIO/spacex-autonomy/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "dfd8c0adcc1b0c4252b4230076b27833fb1d06f357401092aac00b7664e5c44b",
+      "bytes": 1143,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0036",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/SPACEX_PORTFOLIO/spacex-orbital-assembly/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "dfd8c0adcc1b0c4252b4230076b27833fb1d06f357401092aac00b7664e5c44b",
+      "bytes": 1143,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0037",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/SPACEX_PORTFOLIO/spacex-thermal-protection/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "dfd8c0adcc1b0c4252b4230076b27833fb1d06f357401092aac00b7664e5c44b",
+      "bytes": 1143,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0038",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/CONSOLIDATED/SUPPORT_DATA/UNSORTED/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "35e58aa43e3572cdc8bb7eb4b47cf83a91c73b0895751d912433bb68ea77eddf",
+      "bytes": 1029,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0039",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/CONSOLIDATED/SUPPORT_DATA/UNSORTED/kai-linux-custom/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "de32254d92917ac0715f26b4c9a3e33a73d19d6bf64364b4886ef0804f197971",
+      "bytes": 487,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0040",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/CONSOLIDATED/SUPPORT_DATA/UNSORTED/MiMo-Code/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "8114dd81d119c51e34f915cd0667e4dd3ae62411481a166dfbe8457fc6005f46",
+      "bytes": 2707,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0041",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/CONSOLIDATED/SUPPORT_DATA/UNSORTED/MiMo-Code/packages/app/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "0f30cbdccab8eb9335d59733978b5d328d70e56d7cce095bfc7a3a03534190a4",
+      "bytes": 1024,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0042",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/CONSOLIDATED/SUPPORT_DATA/UNSORTED/MiMo-Code/packages/desktop/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "de82030fe8460f2dc2fd16be8c058387c122e12ed3e94459ee55f6ac0fa767e7",
+      "bytes": 160,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0043",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/CONSOLIDATED/SUPPORT_DATA/UNSORTED/MiMo-Code/packages/opencode/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "22bd6168be26dce16b5b1fa7b8456ba180e92449c19b823b86af35ce106ba1cb",
+      "bytes": 6384,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0044",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/CONSOLIDATED/SUPPORT_DATA/UNSORTED/MiMo-Code/packages/opencode/test/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "3e4ceebdb404df0f590ae438c48a9f7d8338331b81c42798fb0556087c721b29",
+      "bytes": 4518,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0045",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/10_ARCHIVE_AND_HISTORICAL/experimental_scraps/MISSIONS/CONSOLIDATED/INFRASTRUCTURE/colossus-gateway/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "d2faef8788d9f368a7a1b643ef03c6055fc575f7edaad1230c82b2a6926584d3",
+      "bytes": 1835,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0046",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/09_APPLICATIONS_AND_SURFACES/control_surfaces/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "dfd8c0adcc1b0c4252b4230076b27833fb1d06f357401092aac00b7664e5c44b",
+      "bytes": 1143,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0047",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/08_DEVELOPER_TOOLS_AND_CLI/apex_cli_tools/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "beefb3f7f228709b14e4384ce3bd9eeb2b5d44773e501dd3aaa7a036cf6f9bea",
+      "bytes": 2164,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0048",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/04_LEGAL_AND_FORENSIC_INTEL/case_1fdv_nexus/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "30112c069adc279849ab2a22c099719b766228818eb51f7a754f6ef404d8b0f4",
+      "bytes": 6197,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0049",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/04_LEGAL_AND_FORENSIC_INTEL/dockets_and_motions/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "dfd8c0adcc1b0c4252b4230076b27833fb1d06f357401092aac00b7664e5c44b",
+      "bytes": 1143,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0051",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/03_DOCUMENT_AND_PROOF_GENERATORS/evidence_packagers/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "6327efcce0c631580cee5bf2dcac8f884a81172a0261fa3c8ca458a72f603165",
+      "bytes": 94496,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0052",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/CATEGORIES/02_AI_ENGINES_AND_MODELS/swarm_orchestrators/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "4a3cd78017393e54fc13295ca74b75c5dc74ac6a84dbbabb93a50a75451ceb8b",
+      "bytes": 3051,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0056",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/.apex_automation/apex-cli/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "2beb8f8f994c562c87d42f39fbff4d521436b44f4c2844238f7e86d3988bfc89",
+      "bytes": 404,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0057",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cargo-xwin-0.23.0/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "7bc5eba4aef4a7ea8c70bd6344cef8b5cdd8a94ab08757a676e7b44719e4f869",
+      "bytes": 663,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0058",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cargo-zigbuild-0.23.0/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "506e87e1c63d8c59be8537c7215de14f24732bea003f769776110545c977dc2b",
+      "bytes": 1040,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0059",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zerocopy-0.8.48/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "a9e2393b5fdd56c2538faa9ff7a3d695cbbb957f60afbd5e224df9440e7622ad",
+      "bytes": 3035,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0060",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/.openclaw/workspace/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "621a27efa5661f07a92c1857f29f66d3ecd29c64dabb19cf57594e13a34452e2",
+      "bytes": 2150,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0061",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/.mimocode/gemini_skills/antigravity-awesome-skills/skills/react-best-practices/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "9288e276adf1a8e907721874d5c1ca7ea62d57ca81750d5ac9d0d87f4e1c52f8",
+      "bytes": 60535,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0062",
+    "title": "AGENTS.md — Sovereign & Holographic Mesh Operating Contract",
+    "url": "file:///data/data/com.termux/files/home/.mimocode/gemini_skills/antigravity-awesome-skills/skills/postgres-best-practices/AGENTS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "operating_contracts",
+    "description": "Sovereign & Holographic Mesh Operating Contract",
+    "tags": [
+      "agents",
+      "instructions_arsenal",
+      "operating_contracts"
+    ],
+    "provenance": {
+      "source": "Local Estate File (AGENTS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "a5226ca435fe12cf69ef8343aeaa5a9f2ae40679986b09eacb247711471e8722",
+      "bytes": 44927,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0007",
+    "title": "REPO_EXCELLENCE_CRYSTALLIZED.md — Executable Repo State Machine",
+    "url": "file:///root/REPO_EXCELLENCE_CRYSTALLIZED.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "state_machine",
+    "description": "Formal state machine for repository lifecycle transitions, target contracts, proof receipts, four independent axes (completeness, correctness, integration, performance), and holographic mesh alignment.",
+    "tags": [
+      "instructions_arsenal",
+      "repo_lifecycle",
+      "state_machine",
+      "target_contract"
+    ],
+    "provenance": {
+      "source": "APEX Repo Excellence Suite",
+      "curator": "GlacierEQ APEX Mesh",
+      "added_at": "2026-08-29T02:58:00Z"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "f11d3aeb81284d45633007649aa5a4e204d598638dd7477e12e681d50634fb53",
+      "bytes": 25484,
+      "http_status": 200
+    }
+  },
+  {
+    "id": "inst-0011",
+    "title": "PHASE_PLAYBOOKS.md — Longest Horizon Swarm Execution Playbooks",
+    "url": "file:///root/.agents/skills/longest-horizon/references/PHASE_PLAYBOOKS.md",
+    "domain": "instructions_arsenal",
+    "subdomain": "swarm_orchestration_dag",
+    "description": "Longest Horizon Swarm Execution Playbooks",
+    "tags": [
+      "instructions_arsenal",
+      "phase_playbooks",
+      "swarm_orchestration_dag"
+    ],
+    "provenance": {
+      "source": "Local Estate File (PHASE_PLAYBOOKS.md)",
+      "curator": "APEX Arsenal Synchronizer",
+      "added_at": "2026-08-29T13:22:20.744913+00:00"
+    },
+    "verification": {
+      "status": "VERIFIED_FILE",
+      "last_checked": "2026-08-29T13:22:20.744913+00:00",
+      "sha256": "2c870b532fae3407b00ca5b271eda4507af2bffd36ceb857e641a3a264946247",
+      "bytes": 2423,
+      "http_status": 200
+    }
+  }
+]
