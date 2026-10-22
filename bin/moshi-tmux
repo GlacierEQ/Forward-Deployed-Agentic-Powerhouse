@@ -8,7 +8,7 @@ SESSION_NAME="moshi"
 # Check if session already exists
 if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
     echo "[*] Tmux session '$SESSION_NAME' already active."
-    if [ -t 0 ]; then
+    if [ -t 0 ] && [ -n "$TERM" ] && [ "$TERM" != "dumb" ]; then
         echo "[*] Attaching to existing session..."
         exec tmux attach-session -t "$SESSION_NAME"
     else
@@ -43,7 +43,7 @@ tmux send-keys -t "$SESSION_NAME:0.2" "clear && echo '[*] Interactive Root Shell
 tmux select-pane -t "$SESSION_NAME:0.0"
 
 echo "[+] Moshi tmux session '$SESSION_NAME' initialized successfully!"
-if [ -t 0 ]; then
+if [ -t 0 ] && [ -n "$TERM" ] && [ "$TERM" != "dumb" ]; then
     exec tmux attach-session -t "$SESSION_NAME"
 else
     echo "[*] Session running detached in background. Attach anytime via: tmux attach -t $SESSION_NAME"

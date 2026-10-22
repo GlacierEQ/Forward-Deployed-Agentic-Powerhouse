@@ -8,6 +8,7 @@ Supports multiple service accounts and OAuth accounts.
 import json
 import sys
 import os
+import socket
 from pathlib import Path
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from typing import Dict, Any, List
@@ -316,8 +317,9 @@ class LocalGoogleMCPHandler(BaseHTTPRequestHandler):
 
 
 def main():
-    port = 8888
+    port = 8887
     server = ThreadingHTTPServer(("127.0.0.1", port), LocalGoogleMCPHandler)
+    server.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     print(f"🌐 APEX Local Google Multi-Account MCP Server running on http://127.0.0.1:{port}")
     print("   Multi-account support: Service Accounts + OAuth")
     print("   Tools: Drive, Gmail, Photos, Sheets, Docs, Calendar")
