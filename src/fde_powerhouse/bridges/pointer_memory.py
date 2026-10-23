@@ -12,6 +12,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+from .._paths import path_is_file
 from ..estate import load_estate, resolve_repo
 
 DEFAULT_POINTER_LOCATIONS: list[Path] = [
@@ -38,12 +39,12 @@ class PointerMemoryBridge:
         if explicit and Path(explicit).is_file():
             return Path(explicit)
         for loc in DEFAULT_POINTER_LOCATIONS:
-            if loc.is_file():
+            if path_is_file(loc):
                 return loc
         if self.aspen_repo.get("available"):
             root = Path(self.aspen_repo["effective_path"])
             cand = root / "APEX_POINTER_INDEX.json"
-            if cand.is_file():
+            if path_is_file(cand):
                 return cand
         return None
 

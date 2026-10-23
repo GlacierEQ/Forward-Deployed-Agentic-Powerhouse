@@ -12,6 +12,7 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
 
+from .._paths import path_is_dir
 from ..estate import load_estate
 
 DEFAULT_MODELS: list[str] = [
@@ -74,7 +75,7 @@ class GeminiLiveBridge:
             or self.groq_key
             or self.anthropic_key
             or os.environ.get("MIMO_LOCAL_ACTIVE") == "1"
-            or Path("/root/.gemini").is_dir()
+            or path_is_dir("/root/.gemini")
             or Path("/data/data/com.termux/files/home/.gemini").is_dir()
         )
 
@@ -154,7 +155,7 @@ class GeminiLiveBridge:
         providers = {
             "gemini": bool(
                 self.api_key
-                or Path("/root/.gemini").is_dir()
+                or path_is_dir("/root/.gemini")
                 or Path("/data/data/com.termux/files/home/.gemini").is_dir()
             ),
             "groq": bool(self.groq_key),
