@@ -184,15 +184,15 @@ def process_audio_file(filepath: Path, filename: str):
         try:
             db_path = "/root/LEGAL_WARFARE_PACKAGE_1FDV/evidence_vault/casebuilder.sqlite3"
             if os.path.exists(db_path):
-                conn = sqlite3.connect(db_path)
-                cur = conn.cursor()
-                cur.execute(
-                    "INSERT OR REPLACE INTO evidence_items (id, case_id, sha256, byte_size, original_name, mime_type, source_uri, acquired_at) "
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-                    (f"ev-{sha[:12]}", "1FDV-23-0001009", sha, file_size, filename, "audio/transcribed", str(filepath), out_payload["processed_at"])
-                )
-                conn.commit()
-                conn.close()
+                with sqlite3.connect(db_path, timeout=30.0) as conn:
+                    conn.execute("PRAGMA journal_mode=WAL;")
+                    conn.execute("PRAGMA busy_timeout=30000;")
+                    cur = conn.cursor()
+                    cur.execute(
+                        "INSERT OR REPLACE INTO evidence_items (id, case_id, sha256, byte_size, original_name, mime_type, source_uri, custodian, sensitivity, acquired_at, object_path, created_run_id) "
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                        (f"ev-{sha[:12]}", "1FDV-23-0001009", sha, file_size, filename, "audio/transcribed", str(filepath), "Casey Barton", "CONFIDENTIAL_EVIDENTIARY", out_payload["processed_at"], str(filepath), "run-apex-forensic-workbench")
+                    )
         except Exception as sqle:
             print(f"[!] SQLite update note: {sqle}")
 

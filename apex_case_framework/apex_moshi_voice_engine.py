@@ -11,6 +11,7 @@ import sys
 import os
 import argparse
 import time
+import subprocess
 from pathlib import Path
 import numpy as np
 import torch
@@ -44,7 +45,20 @@ def compress_audio(input_path: str, output_path: str = None):
         
     print(f"[*] Reading audio from: {input_file}")
     # Mimi uses 24000 Hz mono audio
-    pcm, sample_rate = sphn.read(str(input_file), sample_rate=24000)
+    try:
+        pcm, sample_rate = sphn.read(str(input_file), sample_rate=24000)
+    except Exception as read_err:
+        # Universal fallback via ffmpeg for m4a, mp3, ogg, etc.
+        temp_wav = Path(f"/tmp/sphn_conv_{int(time.time()*1000)}.wav")
+        conv_res = subprocess.run(
+            ["ffmpeg", "-y", "-i", str(input_file), "-ar", "24000", "-ac", "1", str(temp_wav)],
+            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+        )
+        if conv_res.returncode == 0 and temp_wav.exists():
+            pcm, sample_rate = sphn.read(str(temp_wav), sample_rate=24000)
+            temp_wav.unlink(missing_ok=True)
+        else:
+            raise read_err
     # Ensure 2D (channels, samples) and convert to mono (1, samples)
     if pcm.ndim == 1:
         pcm = pcm[np.newaxis, :]
