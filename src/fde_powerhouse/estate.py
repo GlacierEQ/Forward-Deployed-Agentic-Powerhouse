@@ -8,6 +8,8 @@ from typing import Any
 
 import yaml
 
+from ._paths import path_exists
+
 DEFAULT_CONFIG = Path(__file__).resolve().parents[2] / "configs" / "estate.yaml"
 
 CANDIDATE_ESTATE_PATHS: dict[str, list[str]] = {
@@ -77,12 +79,12 @@ def resolve_repo(estate: dict[str, Any], key: str) -> dict[str, Any]:
         # Check automatic candidates for local APEX estate environment
         auto_found = None
         for candidate in CANDIDATE_ESTATE_PATHS.get(key, []):
-            if Path(candidate).exists():
+            if path_exists(candidate):
                 auto_found = candidate
                 break
         entry["effective_path"] = auto_found
 
-    entry["available"] = bool(entry["effective_path"] and Path(entry["effective_path"]).exists())
+    entry["available"] = bool(entry["effective_path"] and path_exists(entry["effective_path"]))
     return entry
 
 
