@@ -8,7 +8,15 @@ import sys
 from pathlib import Path
 
 from . import __version__
-from .bridges import GeniusBridge, MegaSkillsBridge, MemoryBridge, PipelineBridge
+from .bridges import (
+    GeminiLiveBridge,
+    GeniusBridge,
+    MCPMeshBridge,
+    MegaSkillsBridge,
+    MemoryBridge,
+    PipelineBridge,
+    PointerMemoryBridge,
+)
 from .cycle import run_cycle
 from .edge_probe import probe_edge
 from .edge_store import history_summary, persist_probe
@@ -44,6 +52,9 @@ def cmd_doctor(_: argparse.Namespace) -> int:
         ("genius", GeniusBridge().probe()),
         ("memory", MemoryBridge().probe()),
         ("pipelines", PipelineBridge().probe()),
+        ("gemini_live", GeminiLiveBridge().probe()),
+        ("mcp_mesh", MCPMeshBridge().probe()),
+        ("pointer_memory", PointerMemoryBridge().probe()),
     ):
         avail = probe.get("available")
         if avail is None and isinstance(probe, dict):
@@ -186,6 +197,9 @@ def cmd_probe(args: argparse.Namespace) -> int:
         "genius": GeniusBridge().probe(),
         "memory": MemoryBridge().probe(),
         "pipelines": PipelineBridge().probe(),
+        "gemini_live": GeminiLiveBridge().probe(),
+        "mcp_mesh": MCPMeshBridge().probe(),
+        "pointer_memory": PointerMemoryBridge().probe(),
     }
     if args.bridge:
         probes = {args.bridge: probes[args.bridge]}
@@ -307,7 +321,19 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("estate").set_defaults(func=cmd_estate)
 
     p = sub.add_parser("probe")
-    p.add_argument("--bridge", choices=["mega_skills", "genius", "memory", "pipelines"], default=None)
+    p.add_argument(
+        "--bridge",
+        choices=[
+            "mega_skills",
+            "genius",
+            "memory",
+            "pipelines",
+            "gemini_live",
+            "mcp_mesh",
+            "pointer_memory",
+        ],
+        default=None,
+    )
     p.set_defaults(func=cmd_probe)
 
     p = sub.add_parser("compose")

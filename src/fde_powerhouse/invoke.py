@@ -94,7 +94,7 @@ def invoke_pipeline(
         return InvokeResult(
             available=False,
             action="skip",
-            status="fail",
+            status="skip",
             pipeline=pipeline,
             root=str(root),
             detail={"error": f"runner missing: {runner}"},

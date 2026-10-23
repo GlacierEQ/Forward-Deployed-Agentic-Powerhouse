@@ -1,8 +1,11 @@
 from fde_powerhouse.bridges import (
+    GeminiLiveBridge,
     GeniusBridge,
+    MCPMeshBridge,
     MegaSkillsBridge,
     MemoryBridge,
     PipelineBridge,
+    PointerMemoryBridge,
 )
 
 
@@ -28,3 +31,21 @@ def test_memory_probe():
 def test_pipeline_probe():
     p = PipelineBridge().probe()
     assert p.get("default_deploy_mode") == "approval_packet_only"
+
+
+def test_gemini_live_probe():
+    p = GeminiLiveBridge().probe()
+    assert "available" in p
+    assert "supported_models" in p
+
+
+def test_mcp_mesh_probe():
+    p = MCPMeshBridge().probe()
+    assert "available" in p
+    assert "mesh_topology" in p
+
+
+def test_pointer_memory_probe():
+    p = PointerMemoryBridge().probe()
+    assert "available" in p
+    assert "tiers" in p

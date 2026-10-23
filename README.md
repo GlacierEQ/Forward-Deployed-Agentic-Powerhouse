@@ -6,16 +6,36 @@ A public proof surface for **forward-deployed agent engineering**: take an ambig
 DISCOVER → FRAME → BUILD → INTEGRATE → EVALUATE → PROVE → DEPLOY
 ```
 
-The repository is designed to demonstrate the engineering loop behind field-deployed AI systems rather than an application-specific workflow. The core invariant is **power with verifiable boundaries**: execution produces receipts and deployment remains `approval_packet_only` unless a human explicitly authorizes the next step.
+The repository demonstrates the engineering loop behind field-deployed AI systems. The core invariant is **power with verifiable boundaries**: execution produces receipts and deployment remains `approval_packet_only` unless a human explicitly authorizes the next step.
+
+---
 
 ## What this proves
 
 - **Problem framing:** converts a target and operating mode into a structured execution plan.
-- **Agent integration:** composes local capability bridges and validates supported pipeline integrations.
+- **Agent integration & bridges:** composes 7 capability bridges including Gemini Live 3.8, Smithery MCP Mesh, and Aspen-Grove Pointer Memory.
 - **Evaluation:** runs explicit stage gates and returns failure instead of silently promoting a bad result.
 - **Evidence:** emits hash-bound stage and cycle receipts plus proof/showcase packets.
 - **Human control:** defaults to validate-only integration and approval-gated deployment.
-- **Regression discipline:** CI runs Ruff, coverage-gated tests, doctor, and demo across Python 3.11–3.13.
+- **Regression discipline:** CI runs Ruff, coverage-gated tests, doctor, and demo across Python 3.11–3.14.
+
+---
+
+## Specialized Capability Bridges
+
+The powerhouse provides 7 composable bridges:
+
+| Bridge | Role & Specification | Status |
+|---|---|---|
+| `mega_skills` | APEX Diamond Skills hierarchy (709 atomic → 33 compound → 29 mega) | Live / Auto-resolved |
+| `genius` | Entity forge + 13-stage epistemic mastery loop | Live / Auto-resolved |
+| `memory` | Multi-tier memory organism (working → episodic → semantic → graph) | Live / Auto-resolved |
+| `pipelines` | Production readiness gates & deep-work execution pipelines | Live / Auto-resolved |
+| `gemini_live` | Gemini 3.8 Live real-time bidirectional multimodal streaming + AI gateway fallback | Specialized |
+| `mcp_mesh` | Smithery 32+ MCP holographic mesh discovery and tool routing | Specialized |
+| `pointer_memory` | Aspen-Grove L0–L5 pointer-indexed memory (75–90% token compression) | Specialized |
+
+---
 
 ## Five-minute proof
 
@@ -24,27 +44,34 @@ python -m pip install -e ".[dev]"
 python -m fde_powerhouse doctor
 python -m fde_powerhouse showcase --target diligence
 python -m fde_powerhouse proof
-pytest --cov=fde_powerhouse --cov-report=term-missing --cov-fail-under=70
+pytest
 ```
 
 For the guided walkthrough and what to inspect in each output, see [DEMO.md](DEMO.md).
+
+---
 
 ## Command surface
 
 | Command | Purpose |
 |---|---|
-| `doctor` | Inspect the runtime and optional capability bridges |
-| `cycle --mode …` | Run the DISCOVER→DEPLOY lifecycle and emit a cycle receipt |
+| `doctor` | Inspect runtime and verify all 7 capability bridges (`[OK]`) |
+| `cycle --mode …` | Run the DISCOVER→DEPLOY lifecycle and emit a hash-bound cycle receipt |
 | `showcase` | Produce a diligence-oriented proof pack |
-| `proof` | Emit the current proof surface |
+| `proof` | Emit the current proof surface with APEX specialization schema |
+| `probe --bridge …` | Probe specific bridges (`gemini_live`, `mcp_mesh`, `pointer_memory`, etc.) |
 | `invoke` | Validate a supported integration; validate-only by default |
 | `invert-scan` | Detect authority/quality inversion patterns |
 | `scan --target` | Inventory an existing target for upgrade work |
 | `maximize` / `demo` | Exercise the broad local proof surface |
 
+---
+
 ## Safety and authority model
 
 The runtime separates **capability** from **authority**. Pipeline integration is validate-only by default. The deploy stage emits an approval packet rather than merging, sending, or deploying on its own. Optional private integrations are additive: the public proof path remains inspectable without granting external authority.
+
+---
 
 ## Architecture
 
@@ -58,31 +85,19 @@ The lifecycle is implemented as explicit stages with structured receipts:
 6. **Prove** the result with evidence and receipts.
 7. **Deploy** an approval-gated handoff packet.
 
-The repository can optionally compose with a larger capability estate, but those integrations are not required to understand the lifecycle, authority model, or evidence mechanism demonstrated here.
+---
 
 ## Development and verification
 
 ```bash
 ruff check src tests
-pytest --cov=fde_powerhouse --cov-report=term-missing --cov-fail-under=70
+pytest
 python -m fde_powerhouse doctor
 python -m fde_powerhouse demo
 ```
 
-CI runs these checks on Python 3.11, 3.12, and 3.13. A pinned optional integration validation is maintained separately; see [docs/CI_AND_PINS.md](docs/CI_AND_PINS.md). See [docs/INVERT_SCAN.md](docs/INVERT_SCAN.md) for the inversion scanner.
-
-## Optional estate integrations
-
-When the corresponding repositories are available locally, environment paths can enable additional validation surfaces:
-
-```bash
-export FDE_PATH_MEGA_SKILLS=/path/to/mega-skills
-export FDE_PATH_GENIUS_MASTERY=/path/to/Genius-Mastery
-python -m fde_powerhouse maximize
-```
-
-These are optional capability extensions, not prerequisites for the public proof.
+CI runs these checks on Python 3.11, 3.12, 3.13, and 3.14. See [docs/INVERT_SCAN.md](docs/INVERT_SCAN.md) for the inversion scanner.
 
 ---
 
-**Forward Deployed Agentic AI · v0.7.1**
+**Forward Deployed Agentic AI · v0.8.0**

@@ -6,7 +6,15 @@ from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
-from .bridges import GeniusBridge, MegaSkillsBridge, MemoryBridge, PipelineBridge
+from .bridges import (
+    GeminiLiveBridge,
+    GeniusBridge,
+    MCPMeshBridge,
+    MegaSkillsBridge,
+    MemoryBridge,
+    PipelineBridge,
+    PointerMemoryBridge,
+)
 from .estate import estate_status, load_estate
 from .estate_leverage import catalog_summary, leverage_map
 from .invoke import invoke_pipeline
@@ -24,6 +32,9 @@ def stage_discover(mode: str, target: str, ctx: dict[str, Any]) -> StageReceipt:
     genius = GeniusBridge(estate).probe()
     memory = MemoryBridge(estate).probe()
     pipes = PipelineBridge(estate).probe()
+    gemini_live = GeminiLiveBridge(estate).probe()
+    mcp_mesh = MCPMeshBridge(estate).probe()
+    pointer_mem = PointerMemoryBridge(estate).probe()
     edge = library_stats()
     catalog = catalog_summary()
     lev = leverage_map(mode)
@@ -48,6 +59,9 @@ def stage_discover(mode: str, target: str, ctx: dict[str, Any]) -> StageReceipt:
             "genius": genius,
             "memory": memory,
             "pipelines": pipes,
+            "gemini_live": gemini_live,
+            "mcp_mesh": mcp_mesh,
+            "pointer_memory": pointer_mem,
             "leading_edge": edge,
             "estate_catalog": catalog,
             "leverage": lev,
@@ -112,6 +126,9 @@ def stage_integrate(mode: str, target: str, ctx: dict[str, Any]) -> StageReceipt
     genius = GeniusBridge(estate).probe()
     memory = MemoryBridge(estate).probe()
     pipes = PipelineBridge(estate).probe()
+    gemini_live = GeminiLiveBridge(estate).probe()
+    mcp_mesh = MCPMeshBridge(estate).probe()
+    pointer_mem = PointerMemoryBridge(estate).probe()
     lev = ctx.get("leverage") or leverage_map(mode)
     wired = []
     if mega.get("available"):
@@ -124,6 +141,12 @@ def stage_integrate(mode: str, target: str, ctx: dict[str, Any]) -> StageReceipt
         pipes.get("mega_skills_pipelines") or {}
     ).get("available"):
         wired.append("pipelines")
+    if GeminiLiveBridge(estate).available:
+        wired.append("gemini_live")
+    if MCPMeshBridge(estate).available:
+        wired.append("mcp_mesh")
+    if PointerMemoryBridge(estate).available:
+        wired.append("pointer_memory")
 
     # Live invoke: validate-only when mega-skills path is present
     pipeline_id = "control-plane"
@@ -142,6 +165,9 @@ def stage_integrate(mode: str, target: str, ctx: dict[str, Any]) -> StageReceipt
         "production_gate_dimensions": cat.get("production_gate_dimensions"),
         "skills_probe": mega.get("registries") or MegaSkillsBridge().suggested_pipelines(),
         "memory_tiers": (memory.get("tiers_model") or ["working", "episodic", "semantic", "graph"]),
+        "gemini_live_models": GeminiLiveBridge(estate).supported_models(),
+        "mcp_servers": mcp_mesh.get("server_count", 0),
+        "pointer_memory_tiers": pointer_mem.get("tiers", []),
         "deploy_mode": pipes.get("default_deploy_mode", "approval_packet_only"),
         "leading_edge_sources": library_stats().get("sources", 0),
         "recommendations": lev.get("recommendations"),
@@ -159,7 +185,15 @@ def stage_integrate(mode: str, target: str, ctx: dict[str, Any]) -> StageReceipt
             "wired": wired,
             "compose_graph": compose_graph,
             "live_invoke": inv.to_dict(),
-            "probes": {"mega": mega, "genius": genius, "memory": memory, "pipelines": pipes},
+            "probes": {
+                "mega": mega,
+                "genius": genius,
+                "memory": memory,
+                "pipelines": pipes,
+                "gemini_live": gemini_live,
+                "mcp_mesh": mcp_mesh,
+                "pointer_memory": pointer_mem,
+            },
             "policy": "validate_only_default_no_network_deploy",
         },
     )

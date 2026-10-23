@@ -33,6 +33,13 @@ def test_probe(capsys):
     assert main(["probe"]) == 0
 
 
+def test_probe_bridges(capsys):
+    for b in ("gemini_live", "mcp_mesh", "pointer_memory"):
+        assert main(["probe", "--bridge", b]) == 0
+        data = json.loads(capsys.readouterr().out)
+        assert b in data
+
+
 def test_invert_scan_clean(tmp_path, capsys):
     (tmp_path / "ok.py").write_text("x = 1\n")
     rc = main(["invert-scan", "--target", str(tmp_path), "--work-dir", str(tmp_path)])

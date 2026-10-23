@@ -45,6 +45,16 @@ class MegaSkillsBridge:
                     registries[name] = {"path": str(path), "error": str(exc)}
             else:
                 registries[name] = {"missing": True}
+
+        # Check for local skills directory layout (e.g. .agents/skills)
+        skill_files = list(root.glob("*/SKILL.md")) if root.is_dir() else []
+        if skill_files and all(r.get("missing") for r in registries.values()):
+            registries["skills_directory"] = {
+                "path": str(root),
+                "entries": len(skill_files),
+                "skills": sorted([p.parent.name for p in skill_files]),
+            }
+
         return {
             "available": True,
             "repo": self.entry.get("repo"),

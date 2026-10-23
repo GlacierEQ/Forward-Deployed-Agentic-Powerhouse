@@ -36,8 +36,9 @@ class GeniusBridge:
             "schemas/capability.schema.json",
             "schemas/role-brief.schema.json",
             "pyproject.toml",
+            "genius/engine.py",
         ):
-            markers[rel] = (root / rel).is_file()
+            markers[rel] = (root / rel).is_file() or (root / rel).is_dir()
         return {
             "available": True,
             "repo": self.entry.get("repo"),

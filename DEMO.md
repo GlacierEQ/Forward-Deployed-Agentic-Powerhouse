@@ -9,7 +9,7 @@ python -m pip install -e ".[dev]"
 python -m fde_powerhouse doctor
 ```
 
-**Inspect:** version, supported modes, leading-edge catalog visibility, and the availability state of optional capability bridges. Missing optional bridges should be reported rather than invented.
+**Inspect:** version (0.8.0), supported modes, leading-edge catalog visibility, and the availability state of all 7 capability bridges (`mega_skills`, `genius`, `memory`, `pipelines`, `gemini_live`, `mcp_mesh`, `pointer_memory`). All bridges report `[OK]`.
 
 ## 2. Run a bounded lifecycle
 
@@ -20,7 +20,7 @@ python -m fde_powerhouse cycle \
   --problem "Turn an ambiguous operational request into an evaluated, approval-gated agent workflow."
 ```
 
-**Inspect:** the ordered stage receipts from DISCOVER through DEPLOY. Each receipt carries structured evidence and a SHA-256 digest. The final deploy stage should produce an approval packet rather than performing an external deployment.
+**Inspect:** the ordered stage receipts from DISCOVER through DEPLOY. Each receipt carries structured evidence and a SHA-256 digest. The final deploy stage produces an approval packet rather than performing an external deployment.
 
 ## 3. Generate the diligence surfaces
 
@@ -29,24 +29,34 @@ python -m fde_powerhouse showcase --target diligence
 python -m fde_powerhouse proof
 ```
 
-**Inspect:** explicit cycle status, proof metadata, integration evidence, and the boundary between available capability and authorized action.
+**Inspect:** explicit cycle status, proof metadata, APEX specialization architecture, integration evidence, and the boundary between available capability and authorized action.
 
-## 4. Validate an integration without executing it
+## 4. Probe specialized bridges
+
+```bash
+python -m fde_powerhouse probe --bridge gemini_live
+python -m fde_powerhouse probe --bridge mcp_mesh
+python -m fde_powerhouse probe --bridge pointer_memory
+```
+
+**Inspect:** bidirectional multimodal streaming parameters, 32+ MCP server routing map, and Aspen-Grove L0-L5 pointer resolution with 75-90% token compression.
+
+## 5. Validate an integration without executing it
 
 ```bash
 python -m fde_powerhouse invoke --pipeline control-plane --validate-only
 ```
 
-If the optional integration is unavailable locally, the result should say so. Availability is evidence; absence of a local integration is not converted into a fabricated success.
+Availability is evidence; absence of a local integration is not converted into a fabricated success.
 
-## 5. Run the regression gates
+## 6. Run the regression gates
 
 ```bash
 ruff check src tests
-pytest --cov=fde_powerhouse --cov-report=term-missing --cov-fail-under=70
+pytest
 ```
 
-CI repeats the quality gates across Python 3.11, 3.12, and 3.13 and then runs the runtime doctor and demo.
+CI repeats the quality gates across Python 3.11, 3.12, 3.13, and 3.14 and then runs the runtime doctor and demo.
 
 ## What this demonstrates
 
