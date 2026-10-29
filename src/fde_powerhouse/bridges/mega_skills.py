@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from ..estate import load_estate, resolve_repo
+from ..estate import load_estate, resolve_repo, safe_glob, safe_is_dir, safe_is_file
 
 
 class MegaSkillsBridge:
@@ -34,7 +34,7 @@ class MegaSkillsBridge:
         registries = {}
         for name in ("skills.json", "combo-skills.json", "mega-skills.json", "pipelines.json"):
             path = root / "registry" / name
-            if path.is_file():
+            if safe_is_file(path):
                 try:
                     data = json.loads(path.read_text())
                     registries[name] = {
@@ -47,7 +47,7 @@ class MegaSkillsBridge:
                 registries[name] = {"missing": True}
 
         # Check for local skills directory layout (e.g. .agents/skills)
-        skill_files = list(root.glob("*/SKILL.md")) if root.is_dir() else []
+        skill_files = safe_glob(root, "*/SKILL.md") if safe_is_dir(root) else []
         if skill_files and all(r.get("missing") for r in registries.values()):
             registries["skills_directory"] = {
                 "path": str(root),

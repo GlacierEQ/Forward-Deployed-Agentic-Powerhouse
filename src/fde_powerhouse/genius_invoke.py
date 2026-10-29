@@ -9,7 +9,7 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
 
-from .estate import load_estate, resolve_repo
+from .estate import load_estate, resolve_repo, safe_is_dir, safe_is_file
 
 
 @dataclass
@@ -32,7 +32,7 @@ def genius_root() -> Path | None:
     if entry.get("available") and entry.get("effective_path"):
         return Path(entry["effective_path"])
     env = os.environ.get("FDE_PATH_GENIUS_MASTERY")
-    if env and Path(env).is_dir():
+    if env and safe_is_dir(env):
         return Path(env)
     return None
 
@@ -40,7 +40,7 @@ def genius_root() -> Path | None:
 def _env_with_src(root: Path) -> dict[str, str]:
     env = os.environ.copy()
     src = root / "src"
-    if src.is_dir():
+    if safe_is_dir(src):
         env["PYTHONPATH"] = str(src) + os.pathsep + env.get("PYTHONPATH", "")
     return env
 
@@ -83,9 +83,9 @@ def invoke_genius_doctor(timeout_sec: int = 60) -> GeniusInvokeResult:
             )
         last_err = _tail((proc.stderr or "") + (proc.stdout or ""))
     markers = {
-        "GENIUS.yaml": (root / "GENIUS.yaml").is_file(),
-        "ROLE.yaml": (root / "ROLE.yaml").is_file(),
-        "pyproject.toml": (root / "pyproject.toml").is_file(),
+        "GENIUS.yaml": safe_is_file(root / "GENIUS.yaml"),
+        "ROLE.yaml": safe_is_file(root / "ROLE.yaml"),
+        "pyproject.toml": safe_is_file(root / "pyproject.toml"),
     }
     if all(markers.values()):
         return GeniusInvokeResult(
@@ -149,7 +149,7 @@ def invoke_genius_synthesize(
         "--dest", str(dest_path.resolve()),
     ]
     mega = os.environ.get("FDE_PATH_MEGA_SKILLS")
-    if mega and Path(mega).is_dir():
+    if mega and safe_is_dir(mega):
         cmd.extend(["--mega-skills-root", mega])
     try:
         proc = subprocess.run(

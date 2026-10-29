@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from ..estate import load_estate, resolve_repo
+from ..estate import load_estate, resolve_repo, safe_is_file
 
 
 class PipelineBridge:
@@ -29,5 +29,5 @@ class PipelineBridge:
             "available": True,
             "repo": entry.get("repo"),
             "root": str(root),
-            "has_readme": (root / "README.md").is_file(),
+            "has_readme": safe_is_file(root / "README.md"),
         }

@@ -14,7 +14,7 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
 
-from .estate import load_estate, resolve_repo
+from .estate import load_estate, resolve_repo, safe_is_dir, safe_is_file
 
 ALLOWED_PIPELINES = frozenset(
     {
@@ -50,7 +50,7 @@ def mega_skills_root() -> Path | None:
     if entry.get("available") and entry.get("effective_path"):
         return Path(entry["effective_path"])
     env = os.environ.get("FDE_PATH_MEGA_SKILLS")
-    if env and Path(env).is_dir():
+    if env and safe_is_dir(env):
         return Path(env)
     return None
 
@@ -90,7 +90,7 @@ def invoke_pipeline(
         )
 
     runner = root / "scripts" / "run_deep_work_pipeline.py"
-    if not runner.is_file():
+    if not safe_is_file(runner):
         return InvokeResult(
             available=False,
             action="skip",
@@ -181,7 +181,7 @@ def invoke_validate_hierarchy(timeout_sec: int = 180) -> InvokeResult:
             detail={"hint": "Set FDE_PATH_MEGA_SKILLS"},
         )
     script = root / "scripts" / "validate_hierarchy.py"
-    if not script.is_file():
+    if not safe_is_file(script):
         return InvokeResult(
             available=False,
             action="skip",

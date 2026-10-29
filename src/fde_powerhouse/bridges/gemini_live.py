@@ -9,10 +9,9 @@ from __future__ import annotations
 
 import os
 from dataclasses import asdict, dataclass, field
-from pathlib import Path
 from typing import Any
 
-from ..estate import load_estate
+from ..estate import load_estate, safe_is_dir
 
 DEFAULT_MODELS: list[str] = [
     "gemini-2.0-flash-exp",
@@ -74,8 +73,8 @@ class GeminiLiveBridge:
             or self.groq_key
             or self.anthropic_key
             or os.environ.get("MIMO_LOCAL_ACTIVE") == "1"
-            or Path("/root/.gemini").is_dir()
-            or Path("/data/data/com.termux/files/home/.gemini").is_dir()
+            or safe_is_dir("/root/.gemini")
+            or safe_is_dir("/data/data/com.termux/files/home/.gemini")
         )
 
     def supported_models(self) -> list[str]:
@@ -154,8 +153,8 @@ class GeminiLiveBridge:
         providers = {
             "gemini": bool(
                 self.api_key
-                or Path("/root/.gemini").is_dir()
-                or Path("/data/data/com.termux/files/home/.gemini").is_dir()
+                or safe_is_dir("/root/.gemini")
+                or safe_is_dir("/data/data/com.termux/files/home/.gemini")
             ),
             "groq": bool(self.groq_key),
             "anthropic": bool(self.anthropic_key),

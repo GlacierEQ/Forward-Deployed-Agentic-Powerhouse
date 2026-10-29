@@ -11,7 +11,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from ..estate import load_estate
+from ..estate import load_estate, safe_exists, safe_is_file
 
 CORE_MCP_SERVERS: dict[str, list[str]] = {
     "mem0-gateway": [
@@ -91,7 +91,7 @@ class MCPMeshBridge:
     @property
     def available(self) -> bool:
         """True if any MCP configuration or server definition path exists."""
-        return any(p.exists() for p in self.config_paths) or bool(CORE_MCP_SERVERS)
+        return any(safe_exists(p) for p in self.config_paths) or bool(CORE_MCP_SERVERS)
 
     def discover_servers(self) -> dict[str, dict[str, Any]]:
         """Discover live and configured servers across the mesh."""
@@ -107,7 +107,7 @@ class MCPMeshBridge:
 
         # Check disk configs if present
         for p in self.config_paths:
-            if p.is_file() and p.suffix == ".json":
+            if safe_is_file(p) and p.suffix == ".json":
                 try:
                     data = json.loads(p.read_text(encoding="utf-8"))
                     custom_servers = data.get("mcpServers") or data.get("servers") or {}
@@ -158,5 +158,5 @@ class MCPMeshBridge:
             "server_count": len(discovered),
             "tool_count": total_tools,
             "servers": sorted(discovered.keys()),
-            "active_configs": [str(p) for p in self.config_paths if p.exists()],
+            "active_configs": [str(p) for p in self.config_paths if safe_exists(p)],
         }

@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from ..estate import load_estate, resolve_repo
+from ..estate import load_estate, resolve_repo, safe_is_dir, safe_is_file
 
 
 class GeniusBridge:
@@ -38,7 +38,7 @@ class GeniusBridge:
             "pyproject.toml",
             "genius/engine.py",
         ):
-            markers[rel] = (root / rel).is_file() or (root / rel).is_dir()
+            markers[rel] = safe_is_file(root / rel) or safe_is_dir(root / rel)
         return {
             "available": True,
             "repo": self.entry.get("repo"),

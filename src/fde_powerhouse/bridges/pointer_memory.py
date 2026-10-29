@@ -12,7 +12,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from ..estate import load_estate, resolve_repo
+from ..estate import load_estate, resolve_repo, safe_is_file
 
 DEFAULT_POINTER_LOCATIONS: list[Path] = [
     Path("/root/aspen-grove-core/APEX_POINTER_INDEX.json"),
@@ -35,15 +35,15 @@ class PointerMemoryBridge:
         self.index_path = self._locate_index(index_path)
 
     def _locate_index(self, explicit: Path | str | None) -> Path | None:
-        if explicit and Path(explicit).is_file():
+        if explicit and safe_is_file(explicit):
             return Path(explicit)
         for loc in DEFAULT_POINTER_LOCATIONS:
-            if loc.is_file():
+            if safe_is_file(loc):
                 return loc
         if self.aspen_repo.get("available"):
             root = Path(self.aspen_repo["effective_path"])
             cand = root / "APEX_POINTER_INDEX.json"
-            if cand.is_file():
+            if safe_is_file(cand):
                 return cand
         return None
 
@@ -54,7 +54,7 @@ class PointerMemoryBridge:
 
     def load_index(self) -> dict[str, Any]:
         """Load and parse the active pointer index."""
-        if not self.index_path or not self.index_path.is_file():
+        if not self.index_path or not safe_is_file(self.index_path):
             return {
                 "schema_id": "glaciereq.aspen-grove-pointer-index.v2",
                 "pointers": {},
@@ -92,7 +92,7 @@ class PointerMemoryBridge:
         """Construct an in-memory or registered pointer record with SHA-256 bound receipt."""
         computed_hash = sha256_hash
         p = Path(target_path)
-        if not computed_hash and p.is_file():
+        if not computed_hash and safe_is_file(p):
             h = hashlib.sha256()
             try:
                 h.update(p.read_bytes())
@@ -111,7 +111,7 @@ class PointerMemoryBridge:
     def verify_provenance(self, target_path: str, expected_sha256: str) -> bool:
         """Verify byte-level L0 cryptographic provenance against an expected SHA-256."""
         p = Path(target_path)
-        if not p.is_file():
+        if not safe_is_file(p):
             return False
         h = hashlib.sha256()
         try:
